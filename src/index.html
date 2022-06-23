@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/myStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="./js/translations.js"></script>
+    <script src="./js/map.js" type="module"></script>
+    <script src="./js/nav.js"></script>
+
+    <title>Transport Game</title>
+</head>
+<body>
+    <section  style="float: left;position: absolute;padding:10px">
+        <img id="chosenLanguage" title="Wybrany język" class="makeItBigger" src="./img/pl2.png"/>
+        <img style="display: none" src="./img/ru2.png"/>
+        <img style="display: none" src="./img/gb2.png"/>
+    </section>
+    <div id="mainNav" class="nav">
+        <ol>
+            <li><a id="link0" href="#">Panel gracza</a>
+                <ul class="list">
+                    <li><a id="manual" rel="noopener noreferrer">Instrukcja</a></li>
+                    <li><a id="myAchievements" rel="noopener noreferrer">Moje osiągnięcia</a></li>   
+                    <li><a id="languages" rel="noopener noreferrer">Wybierz język</a>
+                        <ul class="languagesList" hidden="hidden">
+                            <li id="polish">Polski</li>
+                            <li id="english">Angielski</li>
+                            <li id="russian">Rosyjski</li>
+                        </ul>
+                    </li>   
+                </ul>
+            </li>
+            <li><a id="link1" href="#">Giełda</a>
+            </li>
+            <li><a id="link2" href="#">Tabor</a>
+            </li>
+            <li><a id="link3" href="#">Kraje</a>
+            </li>
+        </ol>
+    </div>
+    <div class="nav2">
+        <div class="nav2children"><span id="bus">Autobusy: </span><span id="busValue">0</span></div>
+        <div class="nav2children"><span id="planes">Samoloty: </span><span id="planesValue">0</span></div>
+        <div class="nav2children"><span id="trains">Pociągi: </span><span id="trainsValue">0</span></div>
+        <div class="nav2children2"><span id="money">Pieniądze: </span><span id="moneyValue">315</span><span id="moneyCurrency">$</span></div>
+        <div class="nav2children2"><span id="influence">Wpływy: </span><span id="influenceValue">10</span></div>
+    </div>
+</div> 
+
+    <div class="map">
+        <img style="width:100%" src="./img/mapa-europy-1934.png">
+        <div class="date country">
+            <span class="dateValue">01.01.1935</span>
+        </div>
+
+      
+        <svg  style="z-index: 2;" class="form__icon polishMapLocation">
+            <use href="./img/icons.svg#icon-poland2"id="polishMap"></use>
+        </svg>
+   
+
+        <svg  style="z-index: 2;" class="form__icon lithuanianMapLocation">
+            <use href="./img/icons.svg#icon-lithuenia"id="lithuaniaMap"></use>
+        </svg>
+
+        <svg style="z-index: 1;" class="form__icon ussrMapLocation">
+            <use href="./img/icons.svg#icon-ussr"id="ussrMap"></use>
+        </svg>
+
+        <svg style="z-index: 3;" class="form__icon czechoslovakiaMapLocation">
+            <use href="./img/icons.svg#icon-czechoslovakia"id="czechoslovakiaMap"></use>
+        </svg>
+
+        <svg style="z-index: 3;" class="form__icon austriaMapLocation">
+            <use href="./img/icons.svg#icon-austria"id="austriaMap"></use>
+        </svg>
+
+        <!-- <div class="austria country">
+            <span class="information">Austria 8,917mln people</span>
+        </div> -->
+
+
+        <div class="germany country">
+            <span class="information">Germany 83,24mln people</span>
+        </div>
+  
+        <div class="greatBritain country">
+            <span class="information">Great Britain 5,459mln people</span>
+        </div>
+
+
+        <div class="france country">
+            <span class="information">France 67,39mln people</span>
+        </div>
+    </div>
+   <script>
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,316 @@
+    .map {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        display: block;
+        
+    }
+
+    .displayInformationAboutCountryOnMap{
+        /* display: inline-block; */
+        transition: all 1.2s ease;
+        opacity: 0.8;
+    }
+
+    .hideInformationAboutCountryOnMap{
+        transition: all 0.8s;
+        opacity: 0;
+        /* display: none; */
+    }
+
+    .polishMapLocation{
+        top: 35%;
+        left: 66.8%;
+        position: absolute;
+    }
+
+    #polishMap{
+        fill: #ea5c68;
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #polishMap:hover{
+        stroke: gold;
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+    
+
+    .lithuanianMapLocation {
+        top: 35%;
+        left: 72.7%;
+        position: absolute;
+    }
+
+    #lithuaniaMap{
+        fill: #0ed145; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #lithuaniaMap:hover{
+        stroke: blue;
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .ussrMapLocation {
+        top: 0%;
+        left: 79.2%;
+        position: absolute;
+    }
+
+    #ussrMap{
+        fill: #d10e1e; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #ussrMap:hover{
+        stroke: blue;
+        stroke-width: 0.5;
+        stroke-opacity: 0.35; 
+        cursor: pointer;
+    }
+
+    .czechoslovakiaMapLocation {
+        top: 52.7%;
+        left: 60.8%;
+        position: absolute;
+    }
+
+    #czechoslovakiaMap{
+        fill: #161f9c; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #czechoslovakiaMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .austriaMapLocation {
+        top: 60%;
+        left: 63%;
+        position: absolute;
+    }
+
+    #austriaMap{
+        fill: #a2083a; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #austriaMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .date {
+        top:5.5%;
+        left:45.8%;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+
+    
+    .germany {
+        top: 45%;
+        left: 56%;
+    }
+
+    .greatBritain {
+        top: 40%;
+        left: 40%;
+    }
+
+
+
+    .france {
+        top: 58%;
+        left: 44%;
+    }
+ 
+
+    .information {
+        font-size: 12px;
+   
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        /* opacity: 0; */
+        /* transition: opacity 0.5s ease-in-out; */
+        
+      }
+
+    .country {
+        position: absolute;
+        cursor: pointer; 
+        z-index: 1;
+    }
+
+    /* .country:hover .information {
+        visibility: visible;
+        opacity: 0.8;
+      } */
+
+.nav
+{ 
+	padding: 10px 0;
+	background-color: #c34f4f;
+	text-align: center;
+	border-top: 1px solid #751b1b;
+	border-bottom: 1px solid #751b1b;
+}
+
+.nav2
+{ 
+	padding: 10px 0;
+	background-color: #814fc3;
+	border-top: 1px solid #2b1675;
+	border-bottom: 1px solid #2f1b75;
+}
+
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+}
+
+ol a
+{
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+
+ol > li
+{
+	float: left;
+	width: 150px;
+	height: 40px;
+	border-right: 1px dashed #751b1b;
+}
+
+ol > li:first-child
+{
+	border-left: 1px dashed #751b1b;
+}
+
+ol > li:hover
+{
+	background-color: #cf6969;
+}
+
+ol > li:hover > a
+{
+	color: #451717;
+}
+
+ol > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+}
+
+ol > li:hover > ul
+{
+	display: block;
+}
+
+ol > li > ul > li
+{
+	background-color:#cf6969;
+	position: relative;
+	z-index: 100;
+	border-top: 1px dashed #751b1b;
+}
+
+ol > li > ul > li:hover
+{
+	background-color: #c34f4f;
+}
+
+ol > li > ul > li:hover > a
+{
+	color: #451717;
+}
+
+.nav2children {
+    display: inline-block;
+    padding-right: 50px; 
+    padding-left: 50px;
+
+    color:white;
+}
+
+.nav2children2 {
+    display: inline-block;
+    float: right;
+    padding-right: 50px; 
+    padding-left: 50px;
+    color:white;
+}
+
+
+.languagesList{
+    padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	line-height: 200%;
+    cursor:pointer;
+    color: #ffffff;
+
+}
+
+.languagesList > li:hover   {
+    background-color: burlywood;
+}
+
+.makeItBigger{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+.makeItBigger:hover{
+    cursor: pointer;
+    -o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -moz-transform: scale(1.4);
+    -o-transform:scale(1.4);
+    -webkit-transform: scale(1.4);
+}
+
+.list{
+    cursor:pointer
+}

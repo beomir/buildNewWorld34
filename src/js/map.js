@@ -57,6 +57,90 @@ Notify.init({
       
     }
 
+    let norway = {
+      height: 330,
+      width: 290.4,
+      specialities: {
+          1: goods.additional[2]
+        },  
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5
+        },
+        population: 2.9
+      }
+
+      let sweden = {
+        height: 427.45,
+        width: 354.8,
+        specialities: {
+            1: goods.specific[2],
+            2: goods.specific[3],
+            3: goods.main[2]
+          },  
+          goodCosts: {
+            coal: 30,
+            steel: 70,
+            aluminium: 80,
+            copper: 60,
+            lead: 50,
+            grain: 5,
+            oil: 100,
+            wine: 35,
+            fish: 5,
+            flour: 10,
+            clothes: 20,
+            zinc: 75,
+            wolfram: 100,
+            mechanicalParts: 150
+          },
+          goodsAvailability: {
+            coal: 100,
+            steel: 80,
+            aluminium: 50,
+            copper: 120,
+            lead: 80,
+            grain: 1000,
+            oil: 300,
+            wine: 50,
+            fish: 70,
+            flour: 80,
+            clothes: 90,
+            zinc: 15,
+            wolfram: 40,
+            mechanicalParts: 5
+          },
+          population: 6.2
+        }
+
    let ussr = {
     height: 840,
     width: 398,
@@ -102,8 +186,8 @@ Notify.init({
     }
 
     let germany = {
-      height: 188,
-      width: 97,
+      height:  260.4,
+      width: 420 ,
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -274,8 +358,8 @@ Notify.init({
     }
 
     let greatBritain = {
-      height: 150,
-      width: 120,
+      height: 400,
+      width: 286,
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -318,8 +402,8 @@ Notify.init({
     }
 
     let austria = {
-      height: 55,
-      width: 58,
+      height: 79.2,
+      width: 180,
       specialities: {
         1: goods.additional[3]
         },
@@ -359,8 +443,8 @@ Notify.init({
     }
 
     let france = {
-      height: 180,
-      width: 180,
+      height: 365,
+      width: 324.8,
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -418,12 +502,22 @@ Notify.init({
     const austriaMapLocation = $(".austriaMapLocation")[0];
     let austriaMap = document.querySelector("#austriaMap");
 
-    const countryGermanyOnMap = document.querySelector(".germany");
-    
-    
-    // const countryAustriaOnMap = document.querySelector(".austria");
-    const countryFranceOnMap = document.querySelector(".france");
-    const countryGreatBritainOnMap = document.querySelector(".greatBritain");
+    const germanyMapLocation = $(".germanyMapLocation")[0];
+    let germanyMap = document.querySelector("#germanyMap");
+
+    const franceMapLocation = $(".franceMapLocation")[0];
+    let franceMap = document.querySelector("#franceMap");
+
+    const greatBritainMapLocation = $(".greatBritainMapLocation")[0];
+    let greatBritainMap = document.querySelector("#greatBritainMap");
+
+    const norwayMapLocation = $(".norwayMapLocation")[0];
+    let norwayMap = document.querySelector("#norwayMap");
+
+    const swedenMapLocation = $(".swedenMapLocation")[0];
+    let swedenMap = document.querySelector("#swedenMap");
+
+  
     const dateValueOnMap = document.querySelector(".dateValue");
     const dateOnMap = document.querySelector(".date");
 
@@ -448,34 +542,57 @@ Notify.init({
     polishMap.addEventListener("mouseover", 
     function(){ 
           selectedCountryName = "poland";
-          selectedCountry = refreshObjectsTranslation(selectedCountryName);
-          specialitiesList = "";
-          for(let specNbr in selectedCountry.specialities){
-            if(specNbr < Object.keys(selectedCountry.specialities).length){
-            specialitiesList += selectedCountry.specialities[specNbr] + ", "
-          } else {
-            specialitiesList += selectedCountry.specialities[specNbr]
-          }
-          }
+          countrySpecialities(selectedCountryName)
+      });
 
-         let notifyInfoValue = notifyInfo(selectedCountry)
+          ////Norway
+    norwayMap.addEventListener("click", 
+    function(){ 
+        alert("You chosen Norway, good move!"); 
+      }
+    );
+    norwayMap.addEventListener("mouseover", 
+    function(){ 
+          selectedCountryName = "norway";
+          countrySpecialities(selectedCountryName)
+      });
 
-            Notify.info(notifyInfoValue)
-    
+      ////Sweden
+    swedenMap.addEventListener("click", 
+    function(){ 
+        alert("You chosen Norway, good move!"); 
+      }
+    );
+    swedenMap.addEventListener("mouseover", 
+    function(){ 
+          selectedCountryName = "sweden";
+          countrySpecialities(selectedCountryName)
+      });
+      
+
+    ////Germany
+    germanyMap.addEventListener("click", 
+    function(){ alert("You chosen Germany, bad move!"); }
+    );
+
+    germanyMap.addEventListener("mouseover", 
+    function(){ 
+          selectedCountryName = "germany";
+          countrySpecialities(selectedCountryName)
       });
 
       
 
-
-    ////Germany
-    countryGermanyOnMap.addEventListener("click", 
-    function(){ alert("You chosen Germany, bad move!"); }
-    );
-
     ////GB
-    countryGreatBritainOnMap.addEventListener("click", 
+    greatBritainMap.addEventListener("click", 
     function(){ alert("You chosen GB, bad move!"); }
     );
+
+    greatBritainMap.addEventListener("mouseover", 
+    function(){ 
+      selectedCountryName = "greatBritain";
+      countrySpecialities(selectedCountryName)
+      });
 
     ////USSR
     ussrMap.addEventListener("click", 
@@ -485,17 +602,7 @@ Notify.init({
     ussrMap.addEventListener("mouseover", 
     function(){ 
       selectedCountryName = "ussr";
-      selectedCountry = refreshObjectsTranslation(selectedCountryName);
-      specialitiesList = "";
-      for(let specNbr in selectedCountry.specialities){
-        if(specNbr < Object.keys(selectedCountry.specialities).length){
-        specialitiesList += selectedCountry.specialities[specNbr] + ", "
-      } else {
-        specialitiesList += selectedCountry.specialities[specNbr]
-      }
-      }
-     let notifyInfoValue = notifyInfo(selectedCountry)
-        Notify.info(notifyInfoValue)
+      countrySpecialities(selectedCountryName)
       });
 
 
@@ -507,47 +614,31 @@ Notify.init({
     czechoslovakiaMap.addEventListener("mouseover", 
     function(){ 
           selectedCountryName = "czechoslovakia";
-          selectedCountry = refreshObjectsTranslation(selectedCountryName);
-          specialitiesList = "";
-          for(let specNbr in selectedCountry.specialities){
-            if(specNbr < Object.keys(selectedCountry.specialities).length){
-            specialitiesList += selectedCountry.specialities[specNbr] + ", "
-          } else {
-            specialitiesList += selectedCountry.specialities[specNbr]
-          }
-          }
-
-         let notifyInfoValue = notifyInfo(selectedCountry)
-
-            Notify.info(notifyInfoValue)
+          countrySpecialities(selectedCountryName)
     
       });
 
     ////Austria
-    austriaMapLocation.addEventListener("click", 
+    austriaMap.addEventListener("click", 
     function(){ alert("You chosen Austria, good move!"); }
     );
 
-    austriaMapLocation.addEventListener("mouseover", 
+    austriaMap.addEventListener("mouseover", 
     function(){ 
       selectedCountryName = "austria";
-      selectedCountry = refreshObjectsTranslation(selectedCountryName);
-      specialitiesList = "";
-      for(let specNbr in selectedCountry.specialities){
-        if(specNbr < Object.keys(selectedCountry.specialities).length){
-        specialitiesList += selectedCountry.specialities[specNbr] + ", "
-      } else {
-        specialitiesList += selectedCountry.specialities[specNbr]
-      }
-      }
-     let notifyInfoValue = notifyInfo(selectedCountry)
-        Notify.info(notifyInfoValue)
+      countrySpecialities(selectedCountryName)
       });
 
     ////France
-    countryFranceOnMap.addEventListener("click", 
+    franceMap.addEventListener("click", 
     function(){ alert("You chosen France, good move!"); }
     );
+
+    franceMap.addEventListener("mouseover", 
+    function(){ 
+      selectedCountryName = "france";
+      countrySpecialities(selectedCountryName)
+      });
 
     ////Lituenia
     lithuaniaMap.addEventListener("click", 
@@ -557,17 +648,7 @@ Notify.init({
     lithuaniaMap.addEventListener("mouseover", 
     function(){ 
       selectedCountryName = "lithuania";
-      selectedCountry = refreshObjectsTranslation(selectedCountryName);
-      specialitiesList = "";
-      for(let specNbr in selectedCountry.specialities){
-        if(specNbr < Object.keys(selectedCountry.specialities).length){
-        specialitiesList += selectedCountry.specialities[specNbr] + ", "
-      } else {
-        specialitiesList += selectedCountry.specialities[specNbr]
-      }
-      }
-     let notifyInfoValue = notifyInfo(selectedCountry)
-        Notify.info(notifyInfoValue)
+      countrySpecialities(selectedCountryName)
       });
 
 
@@ -582,8 +663,8 @@ Notify.init({
       lithuanianMapLocation.style.height = (factor * lithuania.height) + "px";
       lithuanianMapLocation.style.width = (factor * lithuania.width) + "px";
 
-      countryGermanyOnMap.style.height = (factor * germany.height) + "px";
-      countryGermanyOnMap.style.width = (factor * germany.width) + "px";
+      germanyMapLocation.style.height = (factor * germany.height) + "px";
+      germanyMapLocation.style.width = (factor * germany.width) + "px";
 
       ussrMapLocation.style.height = (factor * ussr.height) + "px";
       ussrMapLocation.style.width = (factor * ussr.width) + "px";
@@ -591,14 +672,20 @@ Notify.init({
       czechoslovakiaMapLocation.style.height = (factor * czechoslovakia.height) + "px";
       czechoslovakiaMapLocation.style.width = (factor * czechoslovakia.width) + "px";
 
-      countryGreatBritainOnMap.style.height = (factor * greatBritain.height) + "px";
-      countryGreatBritainOnMap.style.width = (factor * greatBritain.width) + "px";
-
+      greatBritainMapLocation.style.height = (factor * greatBritain.height) + "px";
+      greatBritainMapLocation.style.width = (factor * greatBritain.width) + "px";
+      
       austriaMapLocation.style.height = (factor * austria.height) + "px";
       austriaMapLocation.style.width = (factor * austria.width) + "px";
 
-      countryFranceOnMap.style.height = (factor * france.height) + "px";
-      countryFranceOnMap.style.width = (factor * france.width) + "px";
+      franceMapLocation.style.height = (factor * france.height) + "px";
+      franceMapLocation.style.width = (factor * france.width) + "px";
+
+      norwayMapLocation.style.height = (factor * norway.height) + "px";
+      norwayMapLocation.style.width = (factor * norway.width) + "px";
+
+      swedenMapLocation.style.height = (factor * sweden.height) + "px";
+      swedenMapLocation.style.width = (factor * sweden.width) + "px";
       
       dateValueOnMap.style.fontSize = (factor * date.fontSize) + "px"
       dateOnMap.style.fontSize = (factor * date.height) + "px"
@@ -608,7 +695,19 @@ Notify.init({
       factor = resolution / 1887 ;
     }
 
-  
+    function countrySpecialities(selectedCountryName){
+      selectedCountry = refreshObjectsTranslation(selectedCountryName);
+      specialitiesList = "";
+      for(let specNbr in selectedCountry.specialities){
+        if(specNbr < Object.keys(selectedCountry.specialities).length){
+        specialitiesList += selectedCountry.specialities[specNbr] + ", "
+      } else {
+        specialitiesList += selectedCountry.specialities[specNbr]
+      }
+      }
+     let notifyInfoValue = notifyInfo(selectedCountry)
+        Notify.info(notifyInfoValue)
+    }
 
     function notifyInfo(selectedCountry){
     return  "<b>" + selectedLanguage[selectedCountryName] + "</b>" + ": <br> " + selectedLanguage.population + ": " + selectedCountry.population + " " + selectedLanguage.milionShortcut

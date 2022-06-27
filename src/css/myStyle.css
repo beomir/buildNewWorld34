@@ -1,0 +1,448 @@
+    .map {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        display: block;
+        
+    }
+
+    .polishMapLocation{
+        top: 35%;
+        left: 66.8%;
+        position: absolute;
+    }
+
+    #polishMap{
+        fill: #ea5c68;
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #polishMap:hover{
+        stroke: gold;
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+    
+
+    .lithuanianMapLocation {
+        top: 35%;
+        left: 72.7%;
+        position: absolute;
+    }
+
+    #lithuaniaMap{
+        fill: #0ed145; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #lithuaniaMap:hover{
+        stroke: blue;
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .ussrMapLocation {
+        top: 0%;
+        left: 79.2%;
+        position: absolute;
+    }
+
+    #ussrMap{
+        fill: #d10e1e; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #ussrMap:hover{
+        stroke: blue;
+        stroke-width: 0.5;
+        stroke-opacity: 0.35; 
+        cursor: pointer;
+    }
+
+    .czechoslovakiaMapLocation {
+        top: 52.7%;
+        left: 60.8%;
+        position: absolute;
+    }
+
+    #czechoslovakiaMap{
+        fill: #161f9c; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #czechoslovakiaMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1.5;
+        stroke-opacity: 1; 
+        cursor: pointer;
+    }
+
+    .austriaMapLocation {
+        top: 59.4%;
+        left: 58.2%;
+        position: absolute;
+    }
+
+    #austriaMap{
+        fill: #a2083a; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #austriaMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1.5;
+        stroke-opacity: 1; 
+        cursor: pointer;
+    }
+
+    .germanyMapLocation {
+        top: 39.4%;
+        left: 53%;
+        position: absolute;
+    }
+
+    #germanyMap{
+        fill: #585f69; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #germanyMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .franceMapLocation {
+        top: 47.7%;
+        left: 38.7%;
+        position: absolute;
+    }
+
+    #franceMap{
+        fill: #3d7fbc; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #franceMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .greatBritainMapLocation {
+        top: 20%;
+        left: 33%;
+        position: absolute;
+    }
+
+    #greatBritainMap{
+        fill: #fd0050; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #greatBritainMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1;
+        stroke-opacity: 0.7; 
+        cursor: pointer;
+    }
+
+    .norwayMapLocation {
+        top: 0%;
+        left: 51.3%;
+        position: absolute;
+    }
+
+    #norwayMap{
+        fill: #7a808c; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #norwayMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 0.7;
+        stroke-opacity: 0.5; 
+        cursor: pointer;
+    }
+
+    .swedenMapLocation {
+        top: 0%;
+        left: 59.1%;
+        position: absolute;
+    }
+
+    #swedenMap{
+        fill: #4eafe2; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #swedenMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 0.7;
+        stroke-opacity: 0.5; 
+        cursor: pointer;
+    }
+
+    .finlandMapLocation {
+        top: 0%;
+        left: 72.8%;
+        position: absolute;
+    }
+
+    #finlandMap{
+        fill: #fcf8ed; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #finlandMap:hover{
+        stroke: rgb(111, 145, 231);
+        stroke-width: 1;
+        stroke-opacity: 0.7;  
+        cursor: pointer;
+    }
+
+    .estoniaMapLocation {
+        top: 24.4%;
+        left: 74.1%;
+        position: absolute;
+    }
+
+    #estoniaMap{
+        fill: #3f48cc; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #estoniaMap:hover{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1.5;
+        stroke-opacity: 1; 
+        cursor: pointer;
+    }
+
+    .latviaMapLocation {
+        top: 30.4%;
+        left: 73%;
+        position: absolute;
+    }
+
+    #latviaMap{
+        fill: #7e1429; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    #latviaMap:hover{
+        stroke: rgb(111, 145, 231);
+        stroke-width: 1.5;
+        stroke-opacity: 1; 
+        cursor: pointer;
+    }
+
+    .denmarkMapLocation{
+        top: 31.5%;
+        left: 56.2%;
+        position: absolute;
+    }
+
+    .icelandMapLocation{
+        top: 0%;
+        left: 13.8%;
+        position: absolute;
+    }
+
+    .denmarkMap{
+        fill: #9bc9ea; 
+        transition: stroke-width 0.5s ease-out;
+        stroke-width: 0;
+        stroke-opacity: 0; 
+    }
+
+    .dannishTerritory:hover .denmarkMap{
+        stroke: rgb(102, 255, 0);
+        stroke-width: 1.5;
+        stroke-opacity: 1; 
+        cursor: pointer;
+    }
+
+    .date {
+        top:5.5%;
+        left:45.8%;
+        font-size: 35px;
+        font-weight: bold;
+        position: absolute;
+        cursor: pointer; 
+        z-index: 1;
+    }
+
+
+
+.nav
+{ 
+	padding: 10px 0;
+	background-color: #c34f4f;
+	text-align: center;
+	border-top: 1px solid #751b1b;
+	border-bottom: 1px solid #751b1b;
+}
+
+.nav2
+{ 
+	padding: 10px 0;
+	background-color: #814fc3;
+	border-top: 1px solid #2b1675;
+	border-bottom: 1px solid #2f1b75;
+}
+
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+}
+
+ol a
+{
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+
+ol > li
+{
+	float: left;
+	width: 150px;
+	height: 40px;
+	border-right: 1px dashed #751b1b;
+}
+
+ol > li:first-child
+{
+	border-left: 1px dashed #751b1b;
+}
+
+ol > li:hover
+{
+	background-color: #cf6969;
+}
+
+ol > li:hover > a
+{
+	color: #451717;
+}
+
+ol > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+}
+
+ol > li:hover > ul
+{
+	display: block;
+}
+
+ol > li > ul > li
+{
+	background-color:#cf6969;
+	position: relative;
+	z-index: 100;
+	border-top: 1px dashed #751b1b;
+}
+
+ol > li > ul > li:hover
+{
+	background-color: #c34f4f;
+}
+
+ol > li > ul > li:hover > a
+{
+	color: #451717;
+}
+
+.nav2children {
+    display: inline-block;
+    padding-right: 50px; 
+    padding-left: 50px;
+
+    color:white;
+}
+
+.nav2children2 {
+    display: inline-block;
+    float: right;
+    padding-right: 50px; 
+    padding-left: 50px;
+    color:white;
+}
+
+
+.languagesList{
+    padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	line-height: 200%;
+    cursor:pointer;
+    color: #ffffff;
+
+}
+
+.languagesList > li:hover   {
+    background-color: burlywood;
+}
+
+.makeItBigger{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+.makeItBigger:hover{
+    cursor: pointer;
+    -o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -moz-transform: scale(1.4);
+    -o-transform:scale(1.4);
+    -webkit-transform: scale(1.4);
+}
+
+.list{
+    cursor:pointer
+}

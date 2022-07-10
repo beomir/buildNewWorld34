@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+<<<<<<< HEAD
     const clock = document.querySelector('.clock');
     const clockStyles = window.getComputedStyle(clock);
     const clockInitialHeight = clockStyles.height;
@@ -21,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let yNewPositionOfDate = window.scrollY + anChildLeft.getBoundingClientRect().top // Y
 
     let scrolled = false;
+=======
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     const languagesList = document.querySelector(".languagesList");
     const languages = document.getElementById("languages");
     
@@ -34,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         languagesList.setAttribute("hidden", "hidden");
     }
     });
+<<<<<<< HEAD
 
 
     $(document).ready(function(){
@@ -72,4 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ifScrolled();
         });
     });
+=======
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 });

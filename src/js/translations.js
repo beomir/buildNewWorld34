@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 import {clickedCountryName,currentRoute} from './map'
 import {addAvaiableGoodOptions,translateCurrentRoute} from './transportPanel'
 
 
+=======
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 document.addEventListener("DOMContentLoaded", () => {
 const languagesListTranslation = document.querySelector(".languagesList");
 
@@ -62,7 +65,11 @@ const   polish = {
         turkey: "Turcja",
         denmark: "Dania",
         netherland: "Holandia",
+<<<<<<< HEAD
         belgium: "Belgia",
+=======
+        belgue: "Belgia",
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "mln",
         coal: "Węgiel",
         steel: "Stal",
@@ -82,6 +89,7 @@ const   polish = {
         mostAvailable: "Najbardziej dostępne",
         theLeastAvailable : "Najmniej dostępne",
         theMostExpensive : "Najdroższe",
+<<<<<<< HEAD
         theCheapest : "Najtańsze",
         nickel: "Nikiel",
         chrome: "Chrom",
@@ -121,6 +129,9 @@ const   polish = {
         howManyToTransport : "Ile chcesz przetransportować",
         isNotANeighborOf: "nie jest sąsiadem"
         
+=======
+        theCheapest : "Najtańsze"
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
     
 const   english = {
@@ -164,7 +175,11 @@ const   english = {
         turkey: "Turkey",
         denmark: "Denmark",
         netherland: "Netherland",
+<<<<<<< HEAD
         belgium: "Belgium",
+=======
+        belgue: "Belgue",
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "mln",
         coal: "Coal",
         steel: "Steel",
@@ -184,6 +199,7 @@ const   english = {
         mostAvailable: "Most Available",
         theLeastAvailable : "The Least Available",
         theMostExpensive : "The Most Expensive",
+<<<<<<< HEAD
         theCheapest : "The Cheapest",
         nickel: "Nickel",
         chrome: "Chrome",
@@ -222,6 +238,9 @@ const   english = {
         goodCostInEndCountry : "The price of the good in the end country",
         howManyToTransport : "How many do you want to transport",
         isNotANeighborOf: "is not a neighbor of"
+=======
+        theCheapest : "The Cheapest"
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
     
 const   russian = {
@@ -265,7 +284,11 @@ const   russian = {
         turkey: "Турция",
         denmark: "Дания",
         netherland: "Нидерланды",
+<<<<<<< HEAD
         belgium: "бельгия",
+=======
+        belgue: "бельгия",
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "млн",
         coal: "каменный уголь",
         steel: "стали",
@@ -285,6 +308,7 @@ const   russian = {
         mostAvailable: "Самый доступный",
         theLeastAvailable : "Наименее доступный",
         theMostExpensive : "Самый дорогой",
+<<<<<<< HEAD
         theCheapest : "Самый дешевый",
         nickel: "никель",
         chrome: "Хром",
@@ -326,6 +350,17 @@ const   russian = {
     }
 
 export let selectedLanguage = polish;
+=======
+        theCheapest : "Самый дешевый"
+    }
+
+    
+    
+let selectedLanguage = polish;
+
+  
+
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
   function toggleLanguage(){
       //////catch all ids on site
@@ -340,6 +375,7 @@ export let selectedLanguage = polish;
    const translationSelectLanguage = document.getElementById("languages");
    const translationManual = document.getElementById("manual");
    const translationMyAchievements = document.getElementById("myAchievements");
+<<<<<<< HEAD
    const pauseLaunched = document.getElementById("pauseLaunched");
    const createTransport = document.getElementById("createTransport");
    const countryMarket = document.getElementById("countryMarket");
@@ -361,6 +397,8 @@ export let selectedLanguage = polish;
    const goodCostInEndCountry = $(".goodCostInEndCountry")[1];
    const goodCostInStartedCountry = $(".goodCostInStartedCountry")[1];
    const howManyToTransport = $(".howManyToTransport")[1];
+=======
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -374,6 +412,7 @@ export let selectedLanguage = polish;
     translationSelectLanguage.innerHTML = selectedLanguage.selectLanguage;
     translationManual.innerHTML = selectedLanguage.instruction;
     translationMyAchievements.innerHTML = selectedLanguage.myAchievements;
+<<<<<<< HEAD
     pauseLaunched.innerHTML = selectedLanguage.pauseLaunched;
     createTransport.innerHTML = selectedLanguage.createTransport;
     countryMarket.innerHTML = selectedLanguage.countryMarket;
@@ -400,6 +439,11 @@ export let selectedLanguage = polish;
   }
 
   export function refreshObjectsTranslation(searchedObject){
+=======
+  }
+
+  function refreshObjectsTranslation(searchedObject){
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
    
      goods ={
         main: {
@@ -421,10 +465,14 @@ export let selectedLanguage = polish;
           1: selectedLanguage.zinc,
           2: selectedLanguage.wolfram,
           3: selectedLanguage.ideas,
+<<<<<<< HEAD
           4: selectedLanguage.mechanicalParts,
           5: selectedLanguage.chrome,
           6: selectedLanguage.nickel,
           7: selectedLanguage.forestGoods
+=======
+          4: selectedLanguage.mechanicalParts
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         }
       }
   
@@ -463,10 +511,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -508,10 +560,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -554,10 +610,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -600,10 +660,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -647,10 +711,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -691,10 +759,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -738,10 +810,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -782,10 +858,14 @@ export let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
+<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -801,20 +881,32 @@ export let selectedLanguage = polish;
             clothes: 90,
             zinc: 15,
             wolfram: 40,
+<<<<<<< HEAD
             mechanicalParts: 5,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
+=======
+            mechanicalParts: 5
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           population: 2.9
         }
 
         let sweden = {
+<<<<<<< HEAD
           height: 427.45,
           width: 354.8,
           specialities: {
               1: goods.specific[2],
               2: goods.main[4],
+=======
+          height: 330,
+          width: 290.4,
+          specialities: {
+              1: goods.specific[2],
+              2: goods.specific[3],
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               3: goods.main[2]
             },  
             goodCosts: {
@@ -831,10 +923,14 @@ export let selectedLanguage = polish;
               clothes: 20,
               zinc: 75,
               wolfram: 100,
+<<<<<<< HEAD
               mechanicalParts: 150,
               chrome : 5,
               nickel: 3,
               forestGoods: 20
+=======
+              mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             },
             goodsAvailability: {
               coal: 100,
@@ -850,20 +946,33 @@ export let selectedLanguage = polish;
               clothes: 90,
               zinc: 15,
               wolfram: 40,
+<<<<<<< HEAD
               mechanicalParts: 5,
               chrome : 1,
               nickel: 2,
               forestGoods: 50
+=======
+              mechanicalParts: 5
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             },
             population: 6.2
           }
 
           let finland = {
+<<<<<<< HEAD
             height: 257.1,
             width: 275,
             specialities: {
                 1: goods.specific[6],
                 2: goods.additional[2]
+=======
+            height: 330,
+            width: 290.4,
+            specialities: {
+                1: goods.specific[2],
+                2: goods.specific[3],
+                3: goods.main[2]
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },  
               goodCosts: {
                 coal: 30,
@@ -879,10 +988,14 @@ export let selectedLanguage = polish;
                 clothes: 20,
                 zinc: 75,
                 wolfram: 100,
+<<<<<<< HEAD
                 mechanicalParts: 150,
                 chrome : 5,
                 nickel: 3,
                 forestGoods: 20
+=======
+                mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },
               goodsAvailability: {
                 coal: 100,
@@ -900,6 +1013,7 @@ export let selectedLanguage = polish;
                 wolfram: 40,
                 mechanicalParts: 5
               },
+<<<<<<< HEAD
               population: 3.5
             }
 
@@ -908,6 +1022,18 @@ export let selectedLanguage = polish;
               width: 170,
               specialities: {
                   1: goods.specific[7]
+=======
+              population: 6.2
+            }
+
+            let latvia = {
+              height: 330,
+              width: 290.4,
+              specialities: {
+                  1: goods.specific[2],
+                  2: goods.specific[3],
+                  3: goods.main[2]
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },  
                 goodCosts: {
                   coal: 30,
@@ -923,10 +1049,14 @@ export let selectedLanguage = polish;
                   clothes: 20,
                   zinc: 75,
                   wolfram: 100,
+<<<<<<< HEAD
                   mechanicalParts: 150,
                   chrome : 5,
                   nickel: 3,
                   forestGoods: 20
+=======
+                  mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },
                 goodsAvailability: {
                   coal: 100,
@@ -942,6 +1072,7 @@ export let selectedLanguage = polish;
                   clothes: 90,
                   zinc: 15,
                   wolfram: 40,
+<<<<<<< HEAD
                   mechanicalParts: 5,
                   chrome : 1,
                   nickel: 2,
@@ -955,6 +1086,20 @@ export let selectedLanguage = polish;
                 width: 150,
                 specialities: {
                   1: goods.additional[2]
+=======
+                  mechanicalParts: 5
+                },
+                population: 6.2
+              }
+    
+              let estonia = {
+                height: 330,
+                width: 290.4,
+                specialities: {
+                    1: goods.specific[2],
+                    2: goods.specific[3],
+                    3: goods.main[2]
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },  
                   goodCosts: {
                     coal: 30,
@@ -970,10 +1115,14 @@ export let selectedLanguage = polish;
                     clothes: 20,
                     zinc: 75,
                     wolfram: 100,
+<<<<<<< HEAD
                     mechanicalParts: 150,
                     chrome : 5,
                     nickel: 3,
                     forestGoods: 20
+=======
+                    mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },
                   goodsAvailability: {
                     coal: 100,
@@ -991,9 +1140,14 @@ export let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
+<<<<<<< HEAD
                   population: 1.1
                 }
 
+=======
+                  population: 6.2
+                }
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 let romania = {
                   height: 330,
                   width: 290.4,
@@ -1016,10 +1170,14 @@ export let selectedLanguage = polish;
                       clothes: 20,
                       zinc: 75,
                       wolfram: 100,
+<<<<<<< HEAD
                       mechanicalParts: 150,
                       chrome : 5,
                       nickel: 3,
                       forestGoods: 20
+=======
+                      mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     },
                     goodsAvailability: {
                       coal: 100,
@@ -1037,7 +1195,11 @@ export let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
+<<<<<<< HEAD
                     population: 15
+=======
+                    population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
                   let hungary = {
                     height: 330,
@@ -1061,10 +1223,14 @@ export let selectedLanguage = polish;
                         clothes: 20,
                         zinc: 75,
                         wolfram: 100,
+<<<<<<< HEAD
                         mechanicalParts: 150,
                         chrome : 5,
                         nickel: 3,
                         forestGoods: 20
+=======
+                        mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                       },
                       goodsAvailability: {
                         coal: 100,
@@ -1082,7 +1248,11 @@ export let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
+<<<<<<< HEAD
                       population: 8.9
+=======
+                      population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     }
 
             let turkey = {
@@ -1107,10 +1277,14 @@ export let selectedLanguage = polish;
                 clothes: 20,
                 zinc: 75,
                 wolfram: 100,
+<<<<<<< HEAD
                 mechanicalParts: 150,
                 chrome : 5,
                 nickel: 3,
                 forestGoods: 20
+=======
+                mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },
               goodsAvailability: {
                 coal: 100,
@@ -1128,7 +1302,11 @@ export let selectedLanguage = polish;
                 wolfram: 40,
                 mechanicalParts: 5
               },
+<<<<<<< HEAD
               population: 16.2
+=======
+              population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             }
 
 
@@ -1154,10 +1332,14 @@ export let selectedLanguage = polish;
                   clothes: 20,
                   zinc: 75,
                   wolfram: 100,
+<<<<<<< HEAD
                   mechanicalParts: 150,
                   chrome : 5,
                   nickel: 3,
                   forestGoods: 20
+=======
+                  mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },
                 goodsAvailability: {
                   coal: 100,
@@ -1175,7 +1357,11 @@ export let selectedLanguage = polish;
                   wolfram: 40,
                   mechanicalParts: 5
                 },
+<<<<<<< HEAD
                 population: 14
+=======
+                population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               }
 
               let greece = {
@@ -1200,10 +1386,14 @@ export let selectedLanguage = polish;
                     clothes: 20,
                     zinc: 75,
                     wolfram: 100,
+<<<<<<< HEAD
                     mechanicalParts: 150,
                     chrome : 5,
                     nickel: 3,
                     forestGoods: 20
+=======
+                    mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },
                   goodsAvailability: {
                     coal: 100,
@@ -1221,7 +1411,11 @@ export let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
+<<<<<<< HEAD
                   population: 6.8
+=======
+                  population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 }
 
 
@@ -1247,10 +1441,14 @@ export let selectedLanguage = polish;
                       clothes: 20,
                       zinc: 75,
                       wolfram: 100,
+<<<<<<< HEAD
                       mechanicalParts: 150,
                       chrome : 5,
                       nickel: 3,
                       forestGoods: 20
+=======
+                      mechanicalParts: 150
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     },
                     goodsAvailability: {
                       coal: 100,
@@ -1268,7 +1466,11 @@ export let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
+<<<<<<< HEAD
                     population: 42
+=======
+                    population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
 
             let spain = {
@@ -1311,7 +1513,11 @@ export let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
+<<<<<<< HEAD
                   population: 24
+=======
+                  population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 }
 
 
@@ -1355,7 +1561,11 @@ export let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
+<<<<<<< HEAD
                     population: 7.1
+=======
+                    population: 6.2
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
   
                   let bulgaria = {
@@ -1398,6 +1608,7 @@ export let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
+<<<<<<< HEAD
                       population: 6.3
                     }
                     
@@ -2061,6 +2272,14 @@ export let selectedLanguage = polish;
         population: 2.5
     }
     
+=======
+                      population: 6.2
+                    }
+
+
+  
+
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       listObjects = {
         "goods" : goods,
         "ussr" : ussr,
@@ -2084,6 +2303,7 @@ export let selectedLanguage = polish;
         "greece" : greece,
         "italy" : italy,
         "spain" : spain,
+<<<<<<< HEAD
         "portugal" : portugal,
         "denmark" : denmark,
         "belgium" : belgium,
@@ -2098,6 +2318,10 @@ export let selectedLanguage = polish;
         "irelandNorth" : irelandNorth,
         "ireland" : ireland,
         "easternPrussia" : easternPrussia
+=======
+        "portugal" : portugal
+
+>>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
     
     let myObject = listObjects[searchedObject];

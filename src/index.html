@@ -5,20 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/myStyle.css">
+    <link rel="stylesheet" href="./css/countries.css">
+    <link rel="stylesheet" href="./css/clock.css">
+    <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="./js/translations.js"></script>
+    <script src="./js/translations.js" type="module"></script>
     <script src="./js/map.js" type="module"></script>
     <script src="./js/nav.js"></script>
+    <script src="./js/gameLogic.js" type="module"></script>
+    <script src="./js/transportPanel.js" type="module"></script>
 
     <title>Transport Game</title>
 </head>
 <body>
+
+<section class="nav sticky">
     <section  style="float: left;position: absolute;padding:10px">
         <img id="chosenLanguage" title="Wybrany język" class="makeItBigger" src="./img/pl2.png"/>
         <img style="display: none" src="./img/ru2.png"/>
         <img style="display: none" src="./img/gb2.png"/>
-    </section>
-    <div id="mainNav" class="nav">
+        <div id="pauseLaunched">Pauza</div>
+</section>
+
+    <div id="mainNav" class="mainNav">
         <ol>
             <li><a id="link0" href="#">Panel gracza</a>
                 <ul class="list">
@@ -41,20 +50,40 @@
             </li>
         </ol>
     </div>
-    <div class="nav2">
-        <div class="nav2children"><span id="bus">Autobusy: </span><span id="busValue">0</span></div>
-        <div class="nav2children"><span id="planes">Samoloty: </span><span id="planesValue">0</span></div>
-        <div class="nav2children"><span id="trains">Pociągi: </span><span id="trainsValue">0</span></div>
-        <div class="nav2children2"><span id="money">Pieniądze: </span><span id="moneyValue">315</span><span id="moneyCurrency">$</span></div>
-        <div class="nav2children2"><span id="influence">Wpływy: </span><span id="influenceValue">10</span></div>
+    <div class="additionalNav">
+        <div class="anChildLeft"><span id="busStock">Autobusy: </span><span id="busValue">0</span></div>
+        <div class="anChildLeft"><span id="planesStock">Samoloty: </span><span id="planesValue">0</span></div>
+        <div class="anChildLeft"><span id="trainsStock">Pociągi: </span><span id="trainsValue">0</span></div>
+        <div class="anChildLeftClose" id="startContainer">
+            <svg class="icon">
+                <use href="./img/icons.svg#icon-play-solid" id="start"></use>
+            </svg>
+        </div>
+        <div class="anChildLeftClose" id="pauseContainer" style="display: none">
+            <svg class="icon">
+                <use href="./img/icons.svg#icon-pause-solid" id="pause"></use>
+            </svg>
+        </div>
+        <div class="time"><span id="timeWatch"></span></div>
+        <div class="anChildRight"><span id="money">Pieniądze: </span><span id="moneyValue">315</span><span id="moneyCurrency">$</span></div>
+        <div class="anChildRight"><span id="influence">Wpływy: </span><span id="influenceValue">10</span></div>
     </div>
 </div> 
-
+</section>
     <div class="map">
         <img style="width:100%" src="./img/mapa-europy-1934.png">
-        <div class="date country">
+        <div class="date">
             <span class="dateValue">01.01.1935</span>
         </div>
+
+        <article class="clock">
+            <div class="hours-container">
+              <div class="hours"></div>
+            </div>
+            <div class="minutes-container">
+              <div class="minutes"></div>
+            </div>
+        </article>
 
       
         <svg  style="z-index: 3;" class="form__icon polishMapLocation">
@@ -62,7 +91,7 @@
         </svg>
    
 
-        <svg  style="z-index: 3;" class="form__icon lithuanianMapLocation">
+        <svg  style="z-index: 4;" class="form__icon lithuanianMapLocation">
             <use href="./img/icons.svg#icon-lithuenia"id="lithuaniaMap"></use>
         </svg>
 
@@ -75,20 +104,29 @@
         </svg>
 
         <svg style="z-index: 5;" class="form__icon austriaMapLocation">
-            <use href="./img/icons.svg#icon-austria3"id="austriaMap"></use>
+            <use href="./img/icons.svg#icon-austria3" class="austroHungarianMonarchyMap" id="austriaMap"></use>
         </svg>
 
         <svg style="z-index: 2;" class="form__icon germanyMapLocation">
-            <use href="./img/icons.svg#icon-germany3"id="germanyMap"></use>
+            <use href="./img/icons.svg#icon-germany2"class="germanyMap"></use>
+        </svg>
+
+        <svg style="z-index: 4;" class="form__icon easternPrussiaMapLocation">
+            <use href="./img/icons.svg#icon-easternPrussia"class="easternPrussiaMap"></use>
         </svg>
 
         <svg style="z-index: 1;" class="form__icon franceMapLocation">
-            <use href="./img/icons.svg#icon-france"id="franceMap"></use>
+            <use href="./img/icons.svg#icon-france" class="franceMap"></use>
         </svg>
 
-        <svg style="z-index: 1;" class="form__icon greatBritainMapLocation">
-            <use href="./img/icons.svg#icon-greatBritain"id="greatBritainMap"></use>
+        <svg style="z-index: 3;" class="form__icon corsicaMapLocation">
+            <use href="./img/icons.svg#icon-corsica" class="corsicaMap" ></use>
         </svg>
+
+        <svg style="z-index: 4;" class="form__icon algieriaMapLocation">
+            <use href="./img/icons.svg#icon-algieria" class="algieriaMap"></use>
+        </svg>
+
 
         <svg style="z-index: 1;" class="form__icon norwayMapLocation">
             <use href="./img/icons.svg#icon-norway"id="norwayMap"></use>
@@ -106,21 +144,176 @@
             <use href="./img/icons.svg#icon-estonia"id="estoniaMap"></use>
         </svg>
 
-        <svg style="z-index: 2;" class="form__icon latviaMapLocation">
+        <svg style="z-index: 3;" class="form__icon latviaMapLocation">
             <use href="./img/icons.svg#icon-latvia"id="latviaMap"></use>
         </svg>
 
-    <section class="dannishTerritory">
+ 
         <svg style="z-index: 0;" class="form__icon denmarkMapLocation">
             <use href="./img/icons.svg#icon-denmark5" class="denmarkMap"></use>
         </svg>
 
         <svg style="z-index: 0;" class="form__icon icelandMapLocation">
-            <use href="./img/icons.svg#icon-iceland" class="denmarkMap"></use>
+            <use href="./img/icons.svg#icon-iceland" class="icelandMap"></use>
         </svg>
+
+
+
+    <svg style="z-index: 3;" class="form__icon belgiumMapLocation">
+        <use href="./img/icons.svg#icon-belgium" class="belgiumMap"></use>
+    </svg>
+
+    <svg style="z-index: 2;" class="form__icon netherlandMapLocation">
+        <use href="./img/icons.svg#icon-netherland" class="netherlandMap"></use>
+    </svg>
+
+    <svg style="z-index: 3;" class="form__icon hungaryMapLocation">
+        <use href="./img/icons.svg#icon-hungary" class="austroHungarianMonarchyMap" id="hungaryMap"></use>
+    </svg>
+
+    <svg style="z-index: 2;" class="form__icon romaniaMapLocation">
+        <use href="./img/icons.svg#icon-romania"  id="romaniaMap"></use>
+    </svg>
+
+    <svg style="z-index: 2;" class="form__icon bulgariaMapLocation">
+        <use href="./img/icons.svg#icon-bulgaria"  id="bulgariaMap"></use>
+    </svg>
+
+    <svg style="z-index: 2;" class="form__icon yugoslaviaMapLocation">
+        <use href="./img/icons.svg#icon-yugoslavia"  id="yugoslaviaMap"></use>
+    </svg>
+
+    <svg style="z-index: 2;" class="form__icon albaniaMapLocation">
+        <use href="./img/icons.svg#icon-albania"  id="albaniaMap"></use>
+    </svg>
+
+    <svg style="z-index: 1;" class="form__icon greeceMapLocation">
+        <use href="./img/icons.svg#icon-greece"  id="greeceMap"></use>
+    </svg>
+
+    <svg style="z-index: 1;" class="form__icon turkeyMapLocation">
+        <use href="./img/icons.svg#icon-turkey"  id="turkeyMap"></use>
+    </svg>
+
+        <svg style="z-index: 1;" class="form__icon italyMapLocation">
+            <use href="./img/icons.svg#icon-italy3" class="italyMap"></use>
+        </svg>
+        <svg style="z-index: 1;" class="form__icon sicilyMapLocation">
+            <use href="./img/icons.svg#icon-sicily" class="sicilyMap"></use>
+        </svg>
+        <svg style="z-index: 1;" class="form__icon sardyniaMapLocation">
+            <use href="./img/icons.svg#icon-sardynia" class="sardyniaMap"></use>
+        </svg>
+
+        <svg style="z-index: 8;" class="form__icon switzerlandMapLocation">
+            <use href="./img/icons.svg#icon-switzerland" class="switzerlandMap"></use>
+        </svg>
+
+        <svg style="z-index: 1;" class="form__icon spainMapLocation">
+            <use href="./img/icons.svg#icon-spain" class="spainMap"></use>
+        </svg>
+
+        <svg style="z-index: 3;" class="form__icon portugalMapLocation">
+            <use href="./img/icons.svg#icon-portugal" class="portugalMap"></use>
+        </svg>
+ 
+        <svg style="z-index: 1;" class="form__icon greatBritainMapLocation">
+            <use href="./img/icons.svg#icon-GB1"class="greatBritainMap"></use>
+        </svg>
+
+        <svg style="z-index: 2;" class="form__icon irelandNorthMapLocation">
+            <use href="./img/icons.svg#icon-irleandNorth" class="irelandNorthMap"></use>
+        </svg>
+
+        <svg style="z-index: 1;" class="form__icon irelandMapLocation">
+            <use href="./img/icons.svg#icon-irleand" class="irelandMap"></use>
+        </svg>
+    
+    <ol class="countryPanelList" style="top:50%;left:0;visibility: hidden;">
+        <img id="placeForFlag" title="Zamknij okno" class="countryFlagActionCountry" src="./img/country_icons/Poland-icon.png"  height="50%">
+        <li id="createTransport">Stwórz transport</li>
+        <li id="countryMarket">Rynek krajowy</li>
+        <li id="checkCountryDetails">Zobacz szczegóły kraju</li>
+    </ol>
+
+    <div class="createTransportPanel" style="visibility: hidden;">
+        <div class="createTransportPanelContent">
+            <div class="countryStart">
+                <span class="countryStartName">Kraj początkowy </span>
+                <span> :</span>
+                <span class="countryStartNameValue">Polska</span>
+            </div>
+            <div class="selectWare"><span class="selectWare">Wybierz towar</span><span> :</span>
+                <select class="wares">
+                    <option class="availableGoodOption"></option>
+                </select>
+            </div>
+            <div class="transportType">
+                <span class="transportType">Typ transportu</span>
+                <select class="transportType">
+                    <option id="bus">Autobusowy</option>
+                    <option id="truck" style="display:none">Cięzarowy</option>
+                    <option id="railway">Kolejowy</option>
+                    <option id="maritime">Morski</option>
+                    <option id="air" style="display:none">Lotniczy</option>
+                </select>
+            </div>
+            <div class="availableQty">
+                <span class="availableQty">Dostępna ilość</span><span>: </span><span class="availableQtyValue values"></span>
+            </div>
+            <div class="howManyToTransport">
+                <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input id="howManyToTransportValue" type="number"></input>
+            </div>
+            <div class="goodCostInStartedCountry">
+                <span class="goodCostInStartedCountry">Cena towaru w kraju startowym</span><span>: </span><span class="goodCostInStartedCountryValue values"></span>
+            </div>
+            <div class="routeBy">
+                <span class="routeBy">Trasa przez:</span>
+                <div class="route values"></div>
+                <span class="endCountryOfTheRoute">Końcowy kraj trasy:</span>
+                <div class="endCountryOfTheRoute values"></div>
+            </div>
+            <div class="goodCostInEndCountry">
+                <span class="goodCostInEndCountry">Cena towaru w kraju końcowym</span><span>: </span><span class="goodCostInEndCountryValue values"></span>
+            </div>
+        </div>
+        <img src="./img/icons/cross-icon.png" class="createTransportPanelSwitchOff" height="50">
+    </div>
+
+
+
+    <section>
+        <img src="./img/country_icons/German-Reich-icon.png" style="display: none;">
+        <img src="./img/country_icons/Albania-Flag-icon.png" style="display: none;">
+        <img src="./img/country_icons/Austria-icon.png" style="display: none;">
+        <img src="./img/country_icons/Belgium-icon.png" style="display: none;">
+        <img src="./img/country_icons/Bulgaria-icon.png" style="display: none;">
+        <img src="./img/country_icons/Czech-Republic-icon.png" style="display: none;">
+        <img src="./img/country_icons/Denmark-icon.png" style="display: none;">
+        <img src="./img/country_icons/Estonia-icon.png" style="display: none;">
+        <img src="./img/country_icons/Finland-icon.png" style="display: none;">
+        <img src="./img/country_icons/France-icon.png" style="display: none;">
+        <img src="./img/country_icons/Greece-icon.png" style="display: none;">
+        <img src="./img/country_icons/Hungary-icon.png" style="display: none;">
+        <img src="./img/country_icons/Iceland-icon.png" style="display: none;">
+        <img src="./img/country_icons/Ireland-icon.png" style="display: none;">
+        <img src="./img/country_icons/Italy-icon.png" style="display: none;">
+        <img src="./img/country_icons/Lithuania-icon.png" style="display: none;">
+        <img src="./img/country_icons/Netherlands-icon.png" style="display: none;">
+        <img src="./img/country_icons/Norway-icon.png" style="display: none;">
+        <img src="./img/country_icons/Portugal-icon.png" style="display: none;">
+        <img src="./img/country_icons/Romania-icon.png" style="display: none;">
+        <img src="./img/country_icons/Spain-icon.png" style="display: none;">
+        <img src="./img/country_icons/Romania-icon.png" style="display: none;">
+        <img src="./img/country_icons/Sweden-icon.png" style="display: none;">
+        <img src="./img/country_icons/Switzerland-Flag-icon.png" style="display: none;">
+        <img src="./img/country_icons/Turkey-icon.png" style="display: none;">
+        <img src="./img/country_icons/Ulster-icon.png" style="display: none;">
+        <img src="./img/country_icons/United-Kingdom-icon.png" style="display: none;">
+        <img src="./img/country_icons/ussr.png" style="display: none;">
+        <img src="./img/country_icons/Yugoslavia-Flag-icon.png" style="display: none;">
+        <img src="./img/country_icons/Latvia-Flag-icon.png" style="display: none;">
     </section>
-
-
     </div>
    <script>
 

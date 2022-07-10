@@ -1,0 +1,691 @@
+.polishMapLocation{
+    top: 35%;
+    left: 66.8%;
+    position: absolute;
+}
+
+#polishMap{
+    fill: #ea5c68;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#polishMap:hover{
+    stroke: gold;
+    stroke-width: 1;
+    stroke-opacity: 0.7; 
+    cursor: pointer;
+}
+
+
+.lithuanianMapLocation {
+    top: 35%;
+    left: 72.7%;
+    position: absolute;
+}
+
+#lithuaniaMap{
+    fill: #0ed145; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#lithuaniaMap:hover{
+    stroke: blue;
+    stroke-width: 1;
+    stroke-opacity: 0.7; 
+    cursor: pointer;
+}
+
+.ussrMapLocation {
+    top: 0%;
+    left: 79.2%;
+    position: absolute;
+}
+
+#ussrMap{
+    fill: #d10e1e; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#ussrMap:hover{
+    stroke: blue;
+    stroke-width: 0.5;
+    stroke-opacity: 0.35; 
+    cursor: pointer;
+}
+
+.czechoslovakiaMapLocation {
+    top: 52.7%;
+    left: 61%;
+    position: absolute;
+}
+
+#czechoslovakiaMap{
+    fill: #161f9c; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#czechoslovakiaMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.austriaMapLocation {
+    top: 59.4%;
+    left: 58.2%;
+    position: absolute;
+}
+
+#austriaMap{
+    fill: #a2083a; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#austriaMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+
+.norwayMapLocation {
+    top: 0%;
+    left: 51.3%;
+    position: absolute;
+}
+
+#norwayMap{
+    fill: #7a808c; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#norwayMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 0.7;
+    stroke-opacity: 0.5; 
+    cursor: pointer;
+}
+
+.swedenMapLocation {
+    top: 0%;
+    left: 59.1%;
+    position: absolute;
+}
+
+#swedenMap{
+    fill: #4eafe2; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#swedenMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 0.7;
+    stroke-opacity: 0.5; 
+    cursor: pointer;
+}
+
+.finlandMapLocation {
+    top: 0%;
+    left: 72.8%;
+    position: absolute;
+}
+
+#finlandMap{
+    fill: #fcf8ed; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#finlandMap:hover{
+    stroke: rgb(111, 145, 231);
+    stroke-width: 1;
+    stroke-opacity: 0.7;  
+    cursor: pointer;
+}
+
+.estoniaMapLocation {
+    top: 24.4%;
+    left: 74.1%;
+    position: absolute;
+}
+
+#estoniaMap{
+    fill: #3f48cc; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#estoniaMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.latviaMapLocation {
+    top: 30.4%;
+    left: 73%;
+    position: absolute;
+}
+
+#latviaMap{
+    fill: #7e1429; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#latviaMap:hover{
+    stroke: rgb(111, 145, 231);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.denmarkMapLocation{
+    top: 31.5%;
+    left: 56.2%;
+    position: absolute;
+}
+
+.icelandMap{
+    fill: #9bc9ea; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.icelandMapLocation{
+    top: 0%;
+    left: 13.8%;
+    position: absolute;
+}
+
+.denmarkMap{
+    fill: #9bc9ea; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+
+
+.date {
+    top:5.5%;
+    left:45.8%;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    cursor: pointer; 
+    z-index: 1;
+}
+
+.belgiumMapLocation {
+    top: 50.3%;
+    left: 48.8%;
+    position: absolute;
+}
+
+.belgiumMap{
+    fill: black; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.belgiumMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.netherlandMapLocation {
+    top: 45%;
+    left: 49.9%;
+    position: absolute;
+}
+
+.netherlandMap{
+    fill: #ff7b00; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.netherlandMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.hungaryMapLocation {
+    top: 59.1%;
+    left: 66.85%;
+    position: absolute;
+}
+
+#hungaryMap{
+    fill: #29ad7c;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#hungaryMap:hover{
+    stroke: rgb(213, 238, 236);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+
+.romaniaMapLocation {
+    top: 58.5%;
+    left: 71.8%;
+    position: absolute;
+}
+
+#romaniaMap{
+    fill: #c4ff0e;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#romaniaMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.bulgariaMapLocation {
+    top: 71.45%;
+    left: 74.25%;
+    position: absolute;
+}
+
+#bulgariaMap{
+    fill: #01aab7;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#bulgariaMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.yugoslaviaMapLocation {
+    top: 64.9%;
+    left: 63.7%;
+    position: absolute;
+}
+
+#yugoslaviaMap{
+    fill: #004a77;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#yugoslaviaMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 1;
+    stroke-opacity: 0.7; 
+    cursor: pointer;
+}
+
+.albaniaMapLocation {
+    top: 77.6%;
+    left: 70.4%;
+    position: absolute;
+}
+
+#albaniaMap{
+    fill: #ff7f27;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#albaniaMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 1;
+    stroke-opacity: 0.7; 
+    cursor: pointer;
+}
+
+.greeceMapLocation {
+    top: 77.9%;
+    left: 71.4%;
+    position: absolute;
+}
+
+#greeceMap{
+    fill: #9c75ae;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#greeceMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 0.9;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+.turkeyMapLocation {
+    top: 77.8%;
+    left: 79.6%;
+    position: absolute;
+}
+
+#turkeyMap{
+    fill: #3d8182;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+#turkeyMap:hover{
+    stroke: rgb(26, 5, 119);
+    stroke-width: 0.9;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+.italyMapLocation {
+    top: 62.1%;
+    left: 54.5%;
+    position: absolute;
+}
+
+.italyMap{
+    fill: #13ab7a;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.sardyniaMap{
+    fill: #13ab7a;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.sardyniaMapLocation {
+    top: 80.6%;
+    left: 55.8%;
+    position: absolute;
+}
+
+.sicilyMap{
+    fill: #13ab7a;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.sicilyMapLocation {
+    top: 88.6%;
+    left: 61.6%;
+    position: absolute;
+}
+
+
+.italyMapOn{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 0.9;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+
+
+.irelandMapLocation {
+    top: 37.7%;
+    left: 31.4%;
+    position: absolute;
+}
+
+.irelandMap{
+    fill: #ffca18;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.greatBritainMapLocation {
+    top: 20%;
+    left: 33%;
+    position: absolute;
+}
+
+.greatBritainMap{
+    fill: #fd0050; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.irelandNorthMapLocation {
+    top: 39.1%;
+    left: 34.9%;
+    position: absolute;
+}
+
+.irelandNorthMap{
+    fill: #fd0050;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+
+.franceMapLocation {
+    top: 47.7%;
+    left: 38.7%;
+    position: absolute;
+}
+
+
+.franceMap{
+    fill: #3d7fbc; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.corsicaMapLocation {
+    top: 75.8%;
+    left: 56.3%;
+    position: absolute;
+}
+
+.corsicaMap{
+    fill: #3d7fbc;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.algieriaMapLocation {
+    top: 90.8%;
+    left: 42.3%;
+    position: absolute;
+}
+
+.algieriaMap{
+    fill: #3d7fbc;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.germanyMapLocation {
+    top: 39.9%;
+    left: 50.7%;
+    position: absolute;
+}
+
+.germanyMap{
+    fill: #585f69; 
+
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.easternPrussiaMapLocation {
+    top: 39%;
+    left: 69.8%;
+    position: absolute;
+}
+
+.easternPrussiaMap{
+    fill: #585f69; 
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.switzerlandMapLocation {
+    top: 62.5%;
+    left: 53.6%;
+    position: absolute;
+}
+
+.switzerlandMap{
+    fill: #ec1c24;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.switzerlandMap:hover{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 2;
+    stroke-opacity: 1.5; 
+    cursor: pointer;
+}
+
+.spainMapLocation {
+    top: 73.5%;
+    left: 33.4%;
+    position: absolute;
+}
+
+.spainMap{
+    fill: #fbaf35;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.spainMap:hover{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 1;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+.portugalMapLocation {
+    top: 78.4%;
+    left: 33%;
+    position: absolute;
+}
+
+.portugalMap{
+    fill: #6eaf2d;
+    transition: stroke-width 0.5s ease-out;
+    stroke-width: 0;
+    stroke-opacity: 0; 
+}
+
+.portugalMap:hover{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+
+.smallMapOnYellow{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 2;
+    stroke-opacity: 1.5; 
+    cursor: pointer;
+}
+
+.mediumMapOnYellow{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.bigMapOnYellow{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 1;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+.hugeMapOnYellow{
+    stroke: rgb(102, 255, 0);
+    stroke-width: 0.5;
+    stroke-opacity: 0.9; 
+    cursor: pointer;
+}
+
+.smallMapOnViolet{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 2;
+    stroke-opacity: 1.5; 
+    cursor: pointer;
+}
+
+.mediumMapOnViolet{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 1.5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+}
+
+.bigMapOnViolet{
+    stroke: rgb(76, 0, 255);
+    stroke-width: 1;
+    stroke-opacity: 0.6; 
+    cursor: pointer;
+}
+
+
+
+
+

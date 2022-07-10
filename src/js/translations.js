@@ -1,3 +1,7 @@
+import {clickedCountryName,currentRoute} from './map'
+import {addAvaiableGoodOptions,translateCurrentRoute} from './transportPanel'
+
+
 document.addEventListener("DOMContentLoaded", () => {
 const languagesListTranslation = document.querySelector(".languagesList");
 
@@ -58,7 +62,7 @@ const   polish = {
         turkey: "Turcja",
         denmark: "Dania",
         netherland: "Holandia",
-        belgue: "Belgia",
+        belgium: "Belgia",
         milionShortcut: "mln",
         coal: "Węgiel",
         steel: "Stal",
@@ -81,7 +85,42 @@ const   polish = {
         theCheapest : "Najtańsze",
         nickel: "Nikiel",
         chrome: "Chrom",
-        forestGoods : "Dobra leśne"
+        forestGoods : "Dobra leśne",
+        iceland : "Islandia",
+        sicily : "Sycylia",
+        sardynia : "Sardynia",
+        corsica : "Korsyka",
+        algieria : "Algieria",
+        ireland : "Irlandia",
+        irelandNorth : "Irlandia Północna",
+        easternPrussia : "Prusy wschodnie",
+        pauseLaunched : "Pauza",
+        hour: "Godzina",
+        createTransport : "Stwórz transport",
+        countryMarket : "Rynek krajowy",
+        checkCountryDetails : "Zobacz szczegóły kraju",
+        truck : "Cięzarowy",
+        bus : "Autobusowy",
+        railway : "Kolejowy",
+        maritime : "Morski",
+        air : "Lotniczy",
+        countryStartName : "Kraj początkowy",
+        transportType : "Typ transportu",
+        wares : "Towary",
+        selectWare : "Wybierz towar",
+        passengers: "Pasażerowie",
+        country: "Kraj",
+        alreadyAddedToRoute: "jest już dodany do trasy",
+        cannotAddCountry: "Nie można dodać kraju",
+        toRouteBecauseItIsTheStartingCountry : "do trasy ponieważ jest on krajem początkowym",
+        routeBy : "Trasa przez",
+        endCountryOfTheRoute : "Kraj końcowy trasy",
+        availableQty : "Dostępna ilość",
+        goodCostInStartedCountry : "Cena towaru w kraju startowym" ,
+        goodCostInEndCountry : "Cena towaru w kraju końcowym",
+        howManyToTransport : "Ile chcesz przetransportować",
+        isNotANeighborOf: "nie jest sąsiadem"
+        
     }
     
 const   english = {
@@ -125,7 +164,7 @@ const   english = {
         turkey: "Turkey",
         denmark: "Denmark",
         netherland: "Netherland",
-        belgue: "Belgue",
+        belgium: "Belgium",
         milionShortcut: "mln",
         coal: "Coal",
         steel: "Steel",
@@ -148,7 +187,41 @@ const   english = {
         theCheapest : "The Cheapest",
         nickel: "Nickel",
         chrome: "Chrome",
-        forestGoods : "Forest goods"
+        forestGoods : "Forest goods",
+        iceland : "Iceland",
+        sicily : "Sicily",
+        sardynia : "Sardinia",
+        corsica : "Corsica",
+        algieria : "Algeria",
+        ireland : "Ireland",
+        irelandNorth : "Northern Ireland",
+        easternPrussia : "Eastern Prussia",
+        pauseLaunched : "Pause",
+        hour: "Hour",
+        createTransport : "Create transport",
+        countryMarket : "Country market",
+        checkCountryDetails : "Check country details",
+        truck : "Truck",
+        bus : "Bus",
+        railway : "Railway",
+        maritime : "Maritime",
+        air : "Air",
+        countryStartName : "Country start name",
+        transportType : "Transport type",
+        wares : "Wares",
+        selectWare : "Select ware",
+        passengers: "Passengers",
+        country: "Country",
+        alreadyAddedToRoute: "already added to route",
+        cannotAddCountry: "Can't add country",
+        toRouteBecauseItIsTheStartingCountry : "to the route as it is the starting country",
+        routeBy : "Route by",
+        endCountryOfTheRoute : "End country of the route",
+        availableQty : "Available quantity",
+        goodCostInStartedCountry : "The price of the good in the starting country" ,
+        goodCostInEndCountry : "The price of the good in the end country",
+        howManyToTransport : "How many do you want to transport",
+        isNotANeighborOf: "is not a neighbor of"
     }
     
 const   russian = {
@@ -192,7 +265,7 @@ const   russian = {
         turkey: "Турция",
         denmark: "Дания",
         netherland: "Нидерланды",
-        belgue: "бельгия",
+        belgium: "бельгия",
         milionShortcut: "млн",
         coal: "каменный уголь",
         steel: "стали",
@@ -215,15 +288,44 @@ const   russian = {
         theCheapest : "Самый дешевый",
         nickel: "никель",
         chrome: "Хром",
-        forestGoods : "Лесные товары"
+        forestGoods : "Лесные товары",
+        iceland : "Исландия",
+        sicily : "Сицилия",
+        sardynia : "Сардиния",
+        corsica : "Корсика",
+        algieria : "Алжир",
+        ireland : "Ирландия",
+        irelandNorth : "Северная Ирландия",
+        easternPrussia : "Восточная Пруссия",
+        pauseLaunched : "Пауза",
+        hour: "Час",
+        createTransport : "Создать транспорт",
+        countryMarket : "Загородный рынок",
+        checkCountryDetails : "Проверить информацию о стране",
+        truck : "Грузовая машина",
+        bus : "Автобус",
+        railway : "Железнодорожный",
+        maritime : "морской",
+        air : "Воздуха",
+        countryStartName : "Начальное название страны",
+        transportType : "Тип транспорта",
+        wares : "Товары",
+        selectWare : "Выберите продукт",
+        passengers: "Пассажиры",
+        country: "Страна",
+        alreadyAddedToRoute: "уже добавлено в маршрут",
+        cannotAddCountry: "Невозможно добавить страну",
+        toRouteBecauseItIsTheStartingCountry : "к маршруту, так как это стартовая страна",
+        routeBy : "Маршрут по",
+        endCountryOfTheRoute : "Kонечная страна маршрута",
+        availableQty : "Доступное количество",
+        goodCostInStartedCountry : "Цена товара в стартовой стране" ,
+        goodCostInEndCountry : "Цена товара в конечной стране",
+        howManyToTransport : "Сколько вы хотите перевезти",
+        isNotANeighborOf: "не является соседом"
     }
 
-    
-    
-let selectedLanguage = polish;
-
-  
-
+export let selectedLanguage = polish;
 
   function toggleLanguage(){
       //////catch all ids on site
@@ -238,6 +340,27 @@ let selectedLanguage = polish;
    const translationSelectLanguage = document.getElementById("languages");
    const translationManual = document.getElementById("manual");
    const translationMyAchievements = document.getElementById("myAchievements");
+   const pauseLaunched = document.getElementById("pauseLaunched");
+   const createTransport = document.getElementById("createTransport");
+   const countryMarket = document.getElementById("countryMarket");
+   const checkCountryDetails = document.getElementById("checkCountryDetails");
+
+   const truck = document.getElementById("truck");
+   const bus = document.getElementById("bus");
+   const railway = document.getElementById("railway");
+   const maritime = document.getElementById("maritime");
+   const air = document.getElementById("air");
+   const countryStartName = $(".countryStartName")[0];
+   const transportType =  $(".transportType")[1];
+   const selectWare =  $(".selectWare")[1];  
+   const countryStartNameValue = $(".countryStartNameValue")[0];
+   const routeBy = $(".routeBy")[1];
+   const endCountryOfTheRoute = $(".endCountryOfTheRoute")[0];
+   const availableQty = $(".availableQty")[1];
+
+   const goodCostInEndCountry = $(".goodCostInEndCountry")[1];
+   const goodCostInStartedCountry = $(".goodCostInStartedCountry")[1];
+   const howManyToTransport = $(".howManyToTransport")[1];
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -251,9 +374,32 @@ let selectedLanguage = polish;
     translationSelectLanguage.innerHTML = selectedLanguage.selectLanguage;
     translationManual.innerHTML = selectedLanguage.instruction;
     translationMyAchievements.innerHTML = selectedLanguage.myAchievements;
+    pauseLaunched.innerHTML = selectedLanguage.pauseLaunched;
+    createTransport.innerHTML = selectedLanguage.createTransport;
+    countryMarket.innerHTML = selectedLanguage.countryMarket;
+    checkCountryDetails.innerHTML = selectedLanguage.checkCountryDetails;
+    countryStartNameValue.innerHTML = selectedLanguage[clickedCountryName];
+    
+    truck.innerHTML = selectedLanguage.truck;
+    bus.innerHTML = selectedLanguage.bus;
+    railway.innerHTML = selectedLanguage.railway;
+    maritime.innerHTML = selectedLanguage.maritime;
+    air.innerHTML = selectedLanguage.air;
+    countryStartName.innerHTML = selectedLanguage.countryStartName;
+    transportType.innerHTML = selectedLanguage.transportType;
+    selectWare.innerHTML = selectedLanguage.selectWare;
+    routeBy.innerHTML = selectedLanguage.routeBy;
+    endCountryOfTheRoute.innerHTML = selectedLanguage.endCountryOfTheRoute;
+    availableQty.innerHTML = selectedLanguage.availableQty;
+    goodCostInStartedCountry.innerHTML = selectedLanguage.goodCostInStartedCountry;
+    goodCostInEndCountry.innerHTML = selectedLanguage.goodCostInEndCountry;
+    howManyToTransport.innerHTML = selectedLanguage.howManyToTransport;
+
+    addAvaiableGoodOptions();
+    translateCurrentRoute(currentRoute);
   }
 
-  function refreshObjectsTranslation(searchedObject){
+  export function refreshObjectsTranslation(searchedObject){
    
      goods ={
         main: {
@@ -891,7 +1037,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-                    population: 1.1
+                    population: 15
                   }
                   let hungary = {
                     height: 330,
@@ -936,7 +1082,7 @@ let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
-                      population: 6.2
+                      population: 8.9
                     }
 
             let turkey = {
@@ -982,7 +1128,7 @@ let selectedLanguage = polish;
                 wolfram: 40,
                 mechanicalParts: 5
               },
-              population: 6.2
+              population: 16.2
             }
 
 
@@ -1029,7 +1175,7 @@ let selectedLanguage = polish;
                   wolfram: 40,
                   mechanicalParts: 5
                 },
-                population: 6.2
+                population: 14
               }
 
               let greece = {
@@ -1075,7 +1221,7 @@ let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
-                  population: 6.2
+                  population: 6.8
                 }
 
 
@@ -1122,7 +1268,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-                    population: 6.2
+                    population: 42
                   }
 
             let spain = {
@@ -1165,7 +1311,7 @@ let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
-                  population: 6.2
+                  population: 24
                 }
 
 
@@ -1209,7 +1355,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-                    population: 6.2
+                    population: 7.1
                   }
   
                   let bulgaria = {
@@ -1252,7 +1398,7 @@ let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
-                      population: 6.2
+                      population: 6.3
                     }
                     
                     let denmark = {
@@ -1301,8 +1447,620 @@ let selectedLanguage = polish;
                         },
                         population: 3.7
                     }
+              
+                    let belgium = {
+                      height: 110,
+                      width: 105.6,
+                      specialities: {
+                        1: goods.additional[2]
+                        },
+                        goodCosts: {
+                          coal: 30,
+                          steel: 70,
+                          aluminium: 80,
+                          copper: 60,
+                          lead: 50,
+                          grain: 5,
+                          oil: 100,
+                          wine: 35,
+                          fish: 5,
+                          flour: 10,
+                          clothes: 20,
+                          zinc: 75,
+                          wolfram: 100,
+                          mechanicalParts: 150,
+                          chrome : 5,
+                          nickel: 3,
+                          forestGoods: 20
+                        },
+                        goodsAvailability: {
+                          coal: 100,
+                          steel: 80,
+                          aluminium: 50,
+                          copper: 120,
+                          lead: 80,
+                          grain: 1000,
+                          oil: 300,
+                          wine: 50,
+                          fish: 70,
+                          flour: 80,
+                          clothes: 90,
+                          zinc: 15,
+                          wolfram: 40,
+                          mechanicalParts: 5,
+                          chrome : 1,
+                          nickel: 2,
+                          forestGoods: 50
+                        },
+                        population: 8.3
+                    }
+
+                    let netherland = {
+                      height: 110,
+                      width: 105.6,
+                      specialities: {
+                        1: goods.additional[2]
+                        },
+                        goodCosts: {
+                          coal: 30,
+                          steel: 70,
+                          aluminium: 80,
+                          copper: 60,
+                          lead: 50,
+                          grain: 5,
+                          oil: 100,
+                          wine: 35,
+                          fish: 5,
+                          flour: 10,
+                          clothes: 20,
+                          zinc: 75,
+                          wolfram: 100,
+                          mechanicalParts: 150,
+                          chrome : 5,
+                          nickel: 3,
+                          forestGoods: 20
+                        },
+                        goodsAvailability: {
+                          coal: 100,
+                          steel: 80,
+                          aluminium: 50,
+                          copper: 120,
+                          lead: 80,
+                          grain: 1000,
+                          oil: 300,
+                          wine: 50,
+                          fish: 70,
+                          flour: 80,
+                          clothes: 90,
+                          zinc: 15,
+                          wolfram: 40,
+                          mechanicalParts: 5,
+                          chrome : 1,
+                          nickel: 2,
+                          forestGoods: 50
+                        },
+                        population: 8.3
+                    }
+
+                    let albania = {
+                      height: 78.7,
+                      width: 100,
+                      specialities: {
+                        1: goods.additional[2]
+                        },
+                        goodCosts: {
+                          coal: 30,
+                          steel: 70,
+                          aluminium: 80,
+                          copper: 60,
+                          lead: 50,
+                          grain: 5,
+                          oil: 100,
+                          wine: 35,
+                          fish: 5,
+                          flour: 10,
+                          clothes: 20,
+                          zinc: 75,
+                          wolfram: 100,
+                          mechanicalParts: 150,
+                          chrome : 5,
+                          nickel: 3,
+                          forestGoods: 20
+                        },
+                        goodsAvailability: {
+                          coal: 100,
+                          steel: 80,
+                          aluminium: 50,
+                          copper: 120,
+                          lead: 80,
+                          grain: 1000,
+                          oil: 300,
+                          wine: 50,
+                          fish: 70,
+                          flour: 80,
+                          clothes: 90,
+                          zinc: 15,
+                          wolfram: 40,
+                          mechanicalParts: 5,
+                          chrome : 1,
+                          nickel: 2,
+                          forestGoods: 50
+                        },
+                        population: 1
+                    }
+
+                    iceland = {
+                      height: 123.5,
+                      width: 260,
+                      specialities: {
+                        1: goods.additional[2]
+                        },
+                        goodCosts: {
+                          coal: 30,
+                          steel: 70,
+                          aluminium: 80,
+                          copper: 60,
+                          lead: 50,
+                          grain: 5,
+                          oil: 100,
+                          wine: 35,
+                          fish: 5,
+                          flour: 10,
+                          clothes: 20,
+                          zinc: 75,
+                          wolfram: 100,
+                          mechanicalParts: 150,
+                          chrome : 5,
+                          nickel: 3,
+                          forestGoods: 20
+                        },
+                        goodsAvailability: {
+                          coal: 100,
+                          steel: 80,
+                          aluminium: 50,
+                          copper: 120,
+                          lead: 80,
+                          grain: 1000,
+                          oil: 300,
+                          wine: 50,
+                          fish: 70,
+                          flour: 80,
+                          clothes: 90,
+                          zinc: 15,
+                          wolfram: 40,
+                          mechanicalParts: 5,
+                          chrome : 1,
+                          nickel: 2,
+                          forestGoods: 50
+                        },
+                        population: 0.5
+                    }
+
   
 
+    let switzerland = {
+      height: 80,
+      width: 45.6,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 4.1
+    }
+
+    sicily = {
+      height: 54.2,
+      width: 80,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 4
+    }
+
+    sardynia = {
+      height: 80,
+      width: 53.6,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 1
+    }
+
+       sardynia = {
+      height: 80,
+      width: 53.6,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 1
+    }
+
+    corsica = {
+      height: 55,
+      width: 34.65,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 0.2
+    }
+
+    algieria = {
+      height: 95.2,
+      width: 280,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 7
+    }
+
+    irelandNorth = {
+      height: 95.2,
+      width: 280,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 1.3
+    }
+
+    ireland = {
+      height: 95.2,
+      width: 280,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 3
+    }
+
+    easternPrussia = {
+      height: 155,
+      width: 139.5,
+      specialities: {
+        1: goods.additional[2]
+        },
+        goodCosts: {
+          coal: 30,
+          steel: 70,
+          aluminium: 80,
+          copper: 60,
+          lead: 50,
+          grain: 5,
+          oil: 100,
+          wine: 35,
+          fish: 5,
+          flour: 10,
+          clothes: 20,
+          zinc: 75,
+          wolfram: 100,
+          mechanicalParts: 150,
+          chrome : 5,
+          nickel: 3,
+          forestGoods: 20
+        },
+        goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        population: 2.5
+    }
+    
       listObjects = {
         "goods" : goods,
         "ussr" : ussr,
@@ -1327,8 +2085,19 @@ let selectedLanguage = polish;
         "italy" : italy,
         "spain" : spain,
         "portugal" : portugal,
-        "denmark" : denmark
-
+        "denmark" : denmark,
+        "belgium" : belgium,
+        "netherland" : netherland,
+        "albania" : albania,
+        "iceland" : iceland,
+        "switzerland" : switzerland,
+        "sicily" : sicily,
+        "sardynia" : sardynia,
+        "corsica" : corsica,
+        "algieria" : algieria,
+        "irelandNorth" : irelandNorth,
+        "ireland" : ireland,
+        "easternPrussia" : easternPrussia
     }
     
     let myObject = listObjects[searchedObject];

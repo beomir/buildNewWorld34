@@ -1,311 +1,52 @@
-    .map {
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        display: block;
-        
-    }
+body{
+	margin: 0 !important;
+}
 
-    .polishMapLocation{
-        top: 35%;
-        left: 66.8%;
-        position: absolute;
-    }
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	stroke-width: 0;
+	
+	transition: stroke-width 0.5s ease-out;
+  }
 
-    #polishMap{
-        fill: #ea5c68;
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
+#start{
+	fill: black;
+}
 
-    #polishMap:hover{
-        stroke: gold;
-        stroke-width: 1;
-        stroke-opacity: 0.7; 
-        cursor: pointer;
-    }
-    
+#pause{
+	fill: black;
+}
 
-    .lithuanianMapLocation {
-        top: 35%;
-        left: 72.7%;
-        position: absolute;
-    }
-
-    #lithuaniaMap{
-        fill: #0ed145; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #lithuaniaMap:hover{
-        stroke: blue;
-        stroke-width: 1;
-        stroke-opacity: 0.7; 
-        cursor: pointer;
-    }
-
-    .ussrMapLocation {
-        top: 0%;
-        left: 79.2%;
-        position: absolute;
-    }
-
-    #ussrMap{
-        fill: #d10e1e; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #ussrMap:hover{
-        stroke: blue;
-        stroke-width: 0.5;
-        stroke-opacity: 0.35; 
-        cursor: pointer;
-    }
-
-    .czechoslovakiaMapLocation {
-        top: 52.7%;
-        left: 60.8%;
-        position: absolute;
-    }
-
-    #czechoslovakiaMap{
-        fill: #161f9c; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #czechoslovakiaMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1.5;
-        stroke-opacity: 1; 
-        cursor: pointer;
-    }
-
-    .austriaMapLocation {
-        top: 59.4%;
-        left: 58.2%;
-        position: absolute;
-    }
-
-    #austriaMap{
-        fill: #a2083a; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #austriaMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1.5;
-        stroke-opacity: 1; 
-        cursor: pointer;
-    }
-
-    .germanyMapLocation {
-        top: 39.4%;
-        left: 53%;
-        position: absolute;
-    }
-
-    #germanyMap{
-        fill: #585f69; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #germanyMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1;
-        stroke-opacity: 0.7; 
-        cursor: pointer;
-    }
-
-    .franceMapLocation {
-        top: 47.7%;
-        left: 38.7%;
-        position: absolute;
-    }
-
-    #franceMap{
-        fill: #3d7fbc; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #franceMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1;
-        stroke-opacity: 0.7; 
-        cursor: pointer;
-    }
-
-    .greatBritainMapLocation {
-        top: 20%;
-        left: 33%;
-        position: absolute;
-    }
-
-    #greatBritainMap{
-        fill: #fd0050; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #greatBritainMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1;
-        stroke-opacity: 0.7; 
-        cursor: pointer;
-    }
-
-    .norwayMapLocation {
-        top: 0%;
-        left: 51.3%;
-        position: absolute;
-    }
-
-    #norwayMap{
-        fill: #7a808c; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #norwayMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 0.7;
-        stroke-opacity: 0.5; 
-        cursor: pointer;
-    }
-
-    .swedenMapLocation {
-        top: 0%;
-        left: 59.1%;
-        position: absolute;
-    }
-
-    #swedenMap{
-        fill: #4eafe2; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #swedenMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 0.7;
-        stroke-opacity: 0.5; 
-        cursor: pointer;
-    }
-
-    .finlandMapLocation {
-        top: 0%;
-        left: 72.8%;
-        position: absolute;
-    }
-
-    #finlandMap{
-        fill: #fcf8ed; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #finlandMap:hover{
-        stroke: rgb(111, 145, 231);
-        stroke-width: 1;
-        stroke-opacity: 0.7;  
-        cursor: pointer;
-    }
-
-    .estoniaMapLocation {
-        top: 24.4%;
-        left: 74.1%;
-        position: absolute;
-    }
-
-    #estoniaMap{
-        fill: #3f48cc; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #estoniaMap:hover{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1.5;
-        stroke-opacity: 1; 
-        cursor: pointer;
-    }
-
-    .latviaMapLocation {
-        top: 30.4%;
-        left: 73%;
-        position: absolute;
-    }
-
-    #latviaMap{
-        fill: #7e1429; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    #latviaMap:hover{
-        stroke: rgb(111, 145, 231);
-        stroke-width: 1.5;
-        stroke-opacity: 1; 
-        cursor: pointer;
-    }
-
-    .denmarkMapLocation{
-        top: 31.5%;
-        left: 56.2%;
-        position: absolute;
-    }
-
-    .icelandMapLocation{
-        top: 0%;
-        left: 13.8%;
-        position: absolute;
-    }
-
-    .denmarkMap{
-        fill: #9bc9ea; 
-        transition: stroke-width 0.5s ease-out;
-        stroke-width: 0;
-        stroke-opacity: 0; 
-    }
-
-    .dannishTerritory:hover .denmarkMap{
-        stroke: rgb(102, 255, 0);
-        stroke-width: 1.5;
-        stroke-opacity: 1; 
-        cursor: pointer;
-    }
-
-    .date {
-        top:5.5%;
-        left:45.8%;
-        font-size: 35px;
-        font-weight: bold;
-        position: absolute;
-        cursor: pointer; 
-        z-index: 1;
-    }
+.icon:hover{
+	-o-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    stroke: rgb(255, 255, 255);
+    stroke-width: 5;
+    stroke-opacity: 1; 
+    cursor: pointer;
+	-moz-transform: scale(1.6);
+    -o-transform:scale(1.6);
+    -webkit-transform: scale(1.6);
+}
+  
 
 
+.map {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: block;
+}
 
-.nav
+.date{
+	transition: all .5s ease-in-out;
+}
+
+   
+.mainNav
 { 
 	padding: 10px 0;
 	background-color: #c34f4f;
@@ -314,7 +55,7 @@
 	border-bottom: 1px solid #751b1b;
 }
 
-.nav2
+.additionalNav
 { 
 	padding: 10px 0;
 	background-color: #814fc3;
@@ -322,7 +63,58 @@
 	border-bottom: 1px solid #2f1b75;
 }
 
-ol
+.sticky
+{
+	width: 100%;
+	position: sticky;
+	left: 0;
+	top: 0;
+	z-index: 100;
+}
+
+.countryFlagActionCountry {
+    position: absolute;
+    top: 0;
+    right:0;
+    cursor: pointer;
+    
+}
+
+
+.countryFlagActionCountry:hover {
+	filter: brightness(50%);
+    -o-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.countryPanelList {
+	font-family: 'Dekko';
+	list-style-type: none;
+	background-color: #2b1675;
+	color: white;
+	position: absolute;
+	z-index: 200;
+	border:3px solid red;
+	padding-right: 1%;
+	padding-left: 0;
+	border-radius: 5%;
+
+	-webkit-box-shadow: 23px 10px 45px -5px rgba(176, 27, 183, 1);
+	-moz-box-shadow: 23px 10px 45px -5px rgba(176, 27, 183, 1);
+	box-shadow: 23px 10px 45px -5px rgba(176, 27, 183, 1);
+	
+}
+
+
+
+.countryPanelList > li:hover {
+	cursor: pointer;
+	background-color: rgb(150, 150, 1);
+}
+
+
+.mainNav > ol
 {
 	padding: 0;
 	margin: 0;
@@ -333,14 +125,14 @@ ol
 	display: inline-block;
 }
 
-ol a
+.mainNav > ol a
 {
 	color: #ffffff;
 	text-decoration: none;
 	display: block;
 }
 
-ol > li
+.mainNav > ol > li
 {
 	float: left;
 	width: 150px;
@@ -348,22 +140,23 @@ ol > li
 	border-right: 1px dashed #751b1b;
 }
 
-ol > li:first-child
+.mainNav > ol > li:first-child
 {
 	border-left: 1px dashed #751b1b;
 }
 
-ol > li:hover
+.mainNav > ol > li:hover
 {
 	background-color: #cf6969;
+	z-index: 100;
 }
 
-ol > li:hover > a
+.mainNav > ol > li:hover > a
 {
 	color: #451717;
 }
 
-ol > li > ul
+.mainNav > ol > li > ul
 {
 	list-style-type: none;
 	padding: 0;
@@ -372,12 +165,12 @@ ol > li > ul
 	display: none;
 }
 
-ol > li:hover > ul
+.mainNav > ol > li:hover > ul
 {
 	display: block;
 }
 
-ol > li > ul > li
+.mainNav > ol > li > ul > li
 {
 	background-color:#cf6969;
 	position: relative;
@@ -385,27 +178,41 @@ ol > li > ul > li
 	border-top: 1px dashed #751b1b;
 }
 
-ol > li > ul > li:hover
+.mainNav > ol > li > ul > li:hover
 {
 	background-color: #c34f4f;
 }
 
-ol > li > ul > li:hover > a
+.mainNav > ol > li > ul > li:hover > a
 {
 	color: #451717;
 }
 
-.nav2children {
+.anChildLeft {
     display: inline-block;
     padding-right: 50px; 
     padding-left: 50px;
-
     color:white;
 }
 
-.nav2children2 {
+.anChildLeftClose {
+    display: inline-block;
+    padding-right: 5px; 
+    padding-left: 5px;
+    color:white;
+}
+
+.anChildRight {
     display: inline-block;
     float: right;
+    padding-right: 50px; 
+    padding-left: 50px;
+    color:white;
+}
+
+.time {
+    display: inline-block;
+    text-align: center;
     padding-right: 50px; 
     padding-left: 50px;
     color:white;
@@ -444,5 +251,47 @@ ol > li > ul > li:hover > a
 }
 
 .list{
-    cursor:pointer
+    cursor:pointer;
+	z-index: 600;
 }
+
+#pauseLaunched{
+	-o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+	background: -webkit-linear-gradient(#e7e7e7, #4fc419);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color:white;
+	display: inline-block;
+	padding-left: 50;
+	font-size: xx-large;
+}
+
+.createTransportPanelContent {
+	border: 4px solid #2f1b75;
+	background-color: #751b1b;
+	color: aliceblue;
+	font-family: 'Dekko';
+	display: inline-block;
+}
+
+.createTransportPanelSwitchOff{
+	display: inline-block;
+	top: 0;
+	position:absolute;
+	cursor: pointer;
+}
+
+.createTransportPanel {
+	top:50%;
+	left:0;
+	z-index: 200;
+	position:fixed;
+}
+
+.values {
+	font-weight: bold;
+	color:aquamarine;
+}
+

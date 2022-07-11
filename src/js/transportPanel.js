@@ -31,6 +31,30 @@ let selectedWare;
 let endCountryObject;
 let goodPriceInEndCountry;
 const howManyToTransportValue = document.getElementById("howManyToTransportValue");
+const transportTypeValue = document.getElementById("transportTypeValue");
+
+let type;
+let lastTransportType;
+let typeDetail;
+let calculetedRouteDistance = 0;
+
+let transportType =  {
+    land:{
+        bus: true,
+        railway: false,
+        truck: false
+    },
+    sea:{
+        maritime: false
+    },
+    air:{
+        plane: false,
+        airship: false
+    }
+}
+
+let lastActiveTransportType = ["land","bus"];
+
 
 
 createTransport.addEventListener("click", 
@@ -103,34 +127,47 @@ export function buildRoute(firstClickedCountryName){
         Notify.failure(notifyFailureValue);
     }
     else if(!currentRoute.includes(firstClickedCountryName)){
-            let clickedCountryConnections = countryConnections.land[firstClickedCountryName].direct
-            //check startedCountry neighbors
-            if(currentRoute.length == 0){
-                let startRouteCountry = countryConnections.land[startedCountry].direct 
+        let selectedTransportTypeToTransfer
+            //land type:
+            if(lastActiveTransportType[0] == "land"){
+                selectedTransportTypeToTransfer = "land";
+                if(currentRoute.length == 0){
+                    let startLandRouteCountry = countryConnections.land[startedCountry].direct 
 
-                if(startRouteCountry[firstClickedCountryName] != null){
-                    addToRoute(firstClickedCountryName);
-                } else{
-                    let notANeighbors = notANeighborsMessage(startedCountry,firstClickedCountryName)
-                    Notify.failure(notANeighbors);
+                    //check startedCountry neighbors
+                    if(startLandRouteCountry[firstClickedCountryName] != null){
+                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                    } else{
+                        let notANeighbors = notANeighborsMessage(startedCountry,firstClickedCountryName)
+                        Notify.failure(notANeighbors);
+                    }
+                    
+                }else{
+                    let lastCountryInRoute = currentRoute[currentRoute.length - 1];
+                    let lastCountryInRouteConnections = countryConnections.land[lastCountryInRoute].direct
+
+                    if(lastCountryInRouteConnections[firstClickedCountryName] != null){
+                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                    }else{
+                        let notANeighbors = notANeighborsMessage(lastCountryInRoute,firstClickedCountryName)
+                        Notify.failure(notANeighbors);
+                    }  
                 }
-                
-            } ///TODO make a if for country durring route
-            
-            else{
-            ///
-            addToRoute(firstClickedCountryName);
-            // currentRoute.push(firstClickedCountryName);
-            // currentRouteTranslated.push(selectedLanguage[firstClickedCountryName]);
-            // route.innerHTML = currentRouteTranslated;
-            // currentEndCountryOfTheRoute = currentRoute[currentRoute.length - 1];
-        
-            // endCountryOfTheRoute.innerHTML = selectedLanguage[currentEndCountryOfTheRoute];
-            // endCountryObject = listObjects[currentEndCountryOfTheRoute];
-            // goodPriceInEndCountry = endCountryObject.goodCosts[selectedWare];
-            // goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
-        }
-
+            } else if(lastActiveTransportType[0] == "sea"){
+                selectedTransportTypeToTransfer = "sea";
+                let startSeaRouteCountry = countryConnections.sea[startedCountry]
+                if(currentRoute.length > 0){
+                    let maritimeRouteFailure = selectedLanguage.maritimeRouteOverSize;
+                    blockInfoNotify();
+                    Notify.failure(maritimeRouteFailure);
+                }
+                else if(startSeaRouteCountry[firstClickedCountryName] != null){
+                    addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                }else if(!listObjects[firstClickedCountryName].accessToWaterReservoirs){
+                    let withoutAccessToSeaMessage = withoutAccessToSea(firstClickedCountryName);
+                    Notify.failure(withoutAccessToSeaMessage);
+                }
+            }
     } else{
         let notifyFailureValue = countryAlreadyInRoute(firstClickedCountryName)
         Notify.failure(notifyFailureValue)
@@ -152,6 +189,11 @@ function notANeighborsMessage(startedCountry,firstClickedCountryName){
     return "<strong>" +selectedLanguage[startedCountry] + "</strong> " + selectedLanguage.isNotANeighborOf +": <strong><i>" +  selectedLanguage[firstClickedCountryName] + "</i></strong>";
 }
 
+function withoutAccessToSea(firstClickedCountryName){
+    blockInfoNotify();
+    return "<strong>" + selectedLanguage[firstClickedCountryName] + "</strong> " + selectedLanguage.doNotHaveAccessToSea
+}
+
 export function translateCurrentRoute(currentRoute){
     cleanCurrentRoute();
     if(temporaryRouteValues.length>0){
@@ -167,6 +209,9 @@ export function translateCurrentRoute(currentRoute){
             route.innerHTML = currentRouteTranslated;
         }
     }
+    //translate typeOfTransportValue
+    transportTypeValue.innerHTML = selectedLanguage[lastActiveTransportType[0]];
+
 
 }
 
@@ -190,6 +235,23 @@ wares.addEventListener("change",function(){
         if(howManyToTransportValue.value > availableGoodQuantity){
         howManyToTransportValue.value = availableGoodQuantity;
     }
+});
+
+transportTypeList.addEventListener("change",function(){
+    originNameOfSelectedTransport = getObjKeysByObjectAndValue(selectedLanguage,transportTypeList.value)[0];
+    let lastActiveTransportBeforeChange = lastActiveTransportType[0];
+    checkWhichTransportType(originNameOfSelectedTransport);
+    
+    if(lastActiveTransportBeforeChange != lastActiveTransportType[0]){
+        cleanCurrentRoute();
+
+        currentEndCountryOfTheRoute = null;
+        endCountryOfTheRoute.innerHTML = "";
+        goodPriceInEndCountry = "";
+        goodCostInEndCountryValue.innerHTML = ""
+    }
+ 
+
 })
 
 function blockInfoNotify(){
@@ -218,7 +280,7 @@ function setProperTransportBasedOnGoods(){
     }
 }
 
-function addToRoute(firstClickedCountryName){
+function addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer){
     currentRoute.push(firstClickedCountryName);
     currentRouteTranslated.push(selectedLanguage[firstClickedCountryName]);
     route.innerHTML = currentRouteTranslated;
@@ -229,4 +291,69 @@ function addToRoute(firstClickedCountryName){
     goodPriceInEndCountry = endCountryObject.goodCosts[selectedWare];
     goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
 
+    //calculate route distance
+    let distance
+    if(currentRoute.length == 1){ //first country connected
+        if(selectedTransportTypeToTransfer =="land"){
+            distance = countryConnections.land[startedCountry].direct[firstClickedCountryName];
+            calculetedRouteDistance += distance;
+            console.log(distance);
+        } else if(selectedTransportTypeToTransfer =="sea"){
+            distance = countryConnections.sea[startedCountry][firstClickedCountryName];
+            calculetedRouteDistance += distance;
+            console.log(distance);
+        }
+
+        // calculetedRouteDistance += 
+    }else{ //next country connected
+
+    }
+    
+
+};
+
+function checkWhichTransportType(selectedTransportType){
+    if(transportType.land[selectedTransportType] != null){
+        transportType.land[selectedTransportType] = true;
+
+        type = lastActiveTransportType[0];
+        lastTransportType = transportType[type];
+        typeDetail = lastActiveTransportType[1];
+
+        lastTransportType[typeDetail] = false;
+        lastActiveTransportType = ["land",selectedTransportType];
+        transportTypeValue.innerHTML = selectedLanguage.land;
+
+        // return typeDetail;
+    } else if(transportType.sea[selectedTransportType] != null){
+        transportType.sea[selectedTransportType] = true;
+
+        type = lastActiveTransportType[0];
+        lastTransportType = transportType[type];
+        typeDetail = lastActiveTransportType[1];
+
+        lastTransportType[typeDetail] = false;
+        lastActiveTransportType = ["sea",selectedTransportType];
+        transportTypeValue.innerHTML = selectedLanguage.maritime;
+
+        // return typeDetail;
+
+    } else if(transportType.air[selectedTransportType] != null){
+        transportType.air[selectedTransportType] = true;
+
+        type = lastActiveTransportType[0];
+        lastTransportType = transportType[type];
+        typeDetail = lastActiveTransportType[1];
+        
+        lastTransportType[typeDetail] = false;
+        lastActiveTransportType = ["air",selectedTransportType];
+        transportTypeValue.innerHTML = selectedLanguage.air;
+
+        // return typeDetail;
+    }
 }
+
+function getObjKeysByObjectAndValue(obj, value) {
+    return Object.keys(obj).filter(key => obj[key] === value);
+  }
+

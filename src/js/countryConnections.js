@@ -156,6 +156,20 @@ export let countryConnections = {
                 
             }
         },
+        yugoslavia:{
+            direct:{
+            "italy"   : 1277,
+            "austria" : 763,
+            "greece"  : 1094,
+            "hungary" : 378,
+            "romania" : 593,
+            "bulgaria": 392,
+            "albania" : 628
+            },
+            transit:{
+                
+            }
+        },
         switzerland:{
             direct:{
                 "germany" : 959,

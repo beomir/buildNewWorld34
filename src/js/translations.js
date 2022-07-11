@@ -21,6 +21,8 @@ languagesListTranslation.addEventListener("click",function(e){
   });
 });
 
+
+
 const   polish = {
         specialization: "Specjalizacja",
         population: "Populacja",
@@ -99,13 +101,13 @@ const   polish = {
         createTransport : "Stwórz transport",
         countryMarket : "Rynek krajowy",
         checkCountryDetails : "Zobacz szczegóły kraju",
-        truck : "Cięzarowy",
+        truck : "Ciężarowy",
         bus : "Autobusowy",
         railway : "Kolejowy",
         maritime : "Morski",
         air : "Lotniczy",
         countryStartName : "Kraj początkowy",
-        transportType : "Typ transportu",
+        typeOfTransport : "Typ transportu",
         wares : "Towary",
         selectWare : "Wybierz towar",
         passengers: "Pasażerowie",
@@ -119,7 +121,13 @@ const   polish = {
         goodCostInStartedCountry : "Cena towaru w kraju startowym" ,
         goodCostInEndCountry : "Cena towaru w kraju końcowym",
         howManyToTransport : "Ile chcesz przetransportować",
-        isNotANeighborOf: "nie jest sąsiadem"
+        isNotANeighborOf: "nie jest sąsiadem",
+        land: "Lądowy",
+        transportType: "Rodzaj transportu",
+        sea: "Morski",
+        maritimeRouteOverSize: "Trasa morska nie może być stworzona z więcej niż 2 krajów",
+        doNotHaveAccessToSea: "nie ma dostępu do morza",
+        routeDistance: "Długość trasy"
         
     }
     
@@ -207,7 +215,7 @@ const   english = {
         maritime : "Maritime",
         air : "Air",
         countryStartName : "Country start name",
-        transportType : "Transport type",
+        typeOfTransport : "Type of transport",
         wares : "Wares",
         selectWare : "Select ware",
         passengers: "Passengers",
@@ -221,7 +229,13 @@ const   english = {
         goodCostInStartedCountry : "The price of the good in the starting country" ,
         goodCostInEndCountry : "The price of the good in the end country",
         howManyToTransport : "How many do you want to transport",
-        isNotANeighborOf: "is not a neighbor of"
+        isNotANeighborOf: "is not a neighbor of",
+        land: "Land",
+        transportType: "Transport type",
+        sea: "Sea",
+        maritimeRouteOverSize: "The sea route cannot be composed of more than 2 countries",
+        doNotHaveAccessToSea: "do not have access to sea",
+        routeDistance: "Route distance"
     }
     
 const   russian = {
@@ -308,7 +322,7 @@ const   russian = {
         maritime : "морской",
         air : "Воздуха",
         countryStartName : "Начальное название страны",
-        transportType : "Тип транспорта",
+        typeOfTransport : "Вид транспорта",
         wares : "Товары",
         selectWare : "Выберите продукт",
         passengers: "Пассажиры",
@@ -322,7 +336,13 @@ const   russian = {
         goodCostInStartedCountry : "Цена товара в стартовой стране" ,
         goodCostInEndCountry : "Цена товара в конечной стране",
         howManyToTransport : "Сколько вы хотите перевезти",
-        isNotANeighborOf: "не является соседом"
+        isNotANeighborOf: "не является соседом",
+        land: "Земельные участки",
+        transportType: "Тип транспорта",
+        sea: "морской",
+        maritimeRouteOverSize: "Морской путь не может состоять более чем из 2 стран",
+        doNotHaveAccessToSea: "не имеют выхода к морю",
+        routeDistance: "Расстояние маршрута"
     }
 
 export let selectedLanguage = polish;
@@ -351,7 +371,7 @@ export let selectedLanguage = polish;
    const maritime = document.getElementById("maritime");
    const air = document.getElementById("air");
    const countryStartName = $(".countryStartName")[0];
-   const transportType =  $(".transportType")[1];
+   const typeOfTransport =  document.getElementById("typeOfTransport")
    const selectWare =  $(".selectWare")[1];  
    const countryStartNameValue = $(".countryStartNameValue")[0];
    const routeBy = $(".routeBy")[1];
@@ -361,6 +381,9 @@ export let selectedLanguage = polish;
    const goodCostInEndCountry = $(".goodCostInEndCountry")[1];
    const goodCostInStartedCountry = $(".goodCostInStartedCountry")[1];
    const howManyToTransport = $(".howManyToTransport")[1];
+   const transportType = document.getElementById("transportType");
+
+   const routeDistance = $(".routeDistance")[1];
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -386,7 +409,7 @@ export let selectedLanguage = polish;
     maritime.innerHTML = selectedLanguage.maritime;
     air.innerHTML = selectedLanguage.air;
     countryStartName.innerHTML = selectedLanguage.countryStartName;
-    transportType.innerHTML = selectedLanguage.transportType;
+    typeOfTransport.innerHTML = selectedLanguage.typeOfTransport;
     selectWare.innerHTML = selectedLanguage.selectWare;
     routeBy.innerHTML = selectedLanguage.routeBy;
     endCountryOfTheRoute.innerHTML = selectedLanguage.endCountryOfTheRoute;
@@ -394,6 +417,9 @@ export let selectedLanguage = polish;
     goodCostInStartedCountry.innerHTML = selectedLanguage.goodCostInStartedCountry;
     goodCostInEndCountry.innerHTML = selectedLanguage.goodCostInEndCountry;
     howManyToTransport.innerHTML = selectedLanguage.howManyToTransport;
+    transportType.innerHTML = selectedLanguage.transportType;
+
+    routeDistance.innerHTML = selectedLanguage.routeDistance;
 
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);

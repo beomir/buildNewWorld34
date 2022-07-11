@@ -237,6 +237,7 @@
     </ol>
 
     <div class="createTransportPanel" style="visibility: hidden;">
+        <div class="createTransportPanelTitle"><span id="transportType">Rodzaj transportu</span>: <span id="transportTypeValue" style="font-weight: bold">Lądowy</span></div>
         <div class="createTransportPanelContent">
             <div class="countryStart">
                 <span class="countryStartName">Kraj początkowy </span>
@@ -249,13 +250,13 @@
                 </select>
             </div>
             <div class="transportType">
-                <span class="transportType">Typ transportu</span>
+                <span class="transportType" id="typeOfTransport">Typ transportu</span>
                 <select class="transportType">
-                    <option id="bus">Autobusowy</option>
-                    <option id="truck" style="display:none">Cięzarowy</option>
-                    <option id="railway">Kolejowy</option>
-                    <option id="maritime">Morski</option>
-                    <option id="air" style="display:none">Lotniczy</option>
+                    <option id="bus" name="bus">Autobusowy</option>
+                    <option id="truck" name="truck" style="display:none">Ciężarowy</option>
+                    <option id="railway" name="railway">Kolejowy</option>
+                    <option id="maritime" name="maritime">Morski</option>
+                    <option id="air" name="air" style="display:none">Lotniczy</option>
                 </select>
             </div>
             <div class="availableQty">
@@ -275,6 +276,9 @@
             </div>
             <div class="goodCostInEndCountry">
                 <span class="goodCostInEndCountry">Cena towaru w kraju końcowym</span><span>: </span><span class="goodCostInEndCountryValue values"></span>
+            </div>
+            <div class="routeDistance">
+                <span class="routeDistance">Długość trasy</span><span>: </span><span class="routeDistanceValue values"></span>
             </div>
         </div>
         <img src="./img/icons/cross-icon.png" class="createTransportPanelSwitchOff" height="50">

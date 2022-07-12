@@ -127,7 +127,9 @@ const   polish = {
         sea: "Morski",
         maritimeRouteOverSize: "Trasa morska nie może być stworzona z więcej niż 2 krajów",
         doNotHaveAccessToSea: "nie ma dostępu do morza",
-        routeDistance: "Długość trasy"
+        routeDistance: "Długość trasy",
+        distanceUnitValue: "km",
+        alreadyAllCountriesDeletedFromRoute: "Wszystkie kraje zostały już wycofane z trasy"
         
     }
     
@@ -235,7 +237,9 @@ const   english = {
         sea: "Sea",
         maritimeRouteOverSize: "The sea route cannot be composed of more than 2 countries",
         doNotHaveAccessToSea: "do not have access to sea",
-        routeDistance: "Route distance"
+        routeDistance: "Route distance",
+        distanceUnitValue: "km",
+        alreadyAllCountriesDeletedFromRoute: "Already all countries were deleted from route"
     }
     
 const   russian = {
@@ -342,7 +346,9 @@ const   russian = {
         sea: "морской",
         maritimeRouteOverSize: "Морской путь не может состоять более чем из 2 стран",
         doNotHaveAccessToSea: "не имеют выхода к морю",
-        routeDistance: "Расстояние маршрута"
+        routeDistance: "Расстояние маршрута",
+        distanceUnitValue: "км",
+        alreadyAllCountriesDeletedFromRoute: "Уже все страны удалены из маршрута"
     }
 
 export let selectedLanguage = polish;
@@ -384,6 +390,7 @@ export let selectedLanguage = polish;
    const transportType = document.getElementById("transportType");
 
    const routeDistance = $(".routeDistance")[1];
+   const distanceUnitValue = document.getElementById("distanceUnitValue");
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -420,6 +427,7 @@ export let selectedLanguage = polish;
     transportType.innerHTML = selectedLanguage.transportType;
 
     routeDistance.innerHTML = selectedLanguage.routeDistance;
+    distanceUnitValue.innerHTML = selectedLanguage.distanceUnitValue
 
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);

@@ -305,3 +305,22 @@ body{
 	color:aquamarine;
 }
 
+.inRoute{
+	-o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -moz-transform: scale(1.05);
+    -o-transform:scale(1.05);
+    -webkit-transform: scale(1.05);
+	filter:brightness(150%);
+}
+
+.inRouteBigCountry{
+	-o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -moz-transform: scale(1.01);
+    -o-transform:scale(1.01);
+    -webkit-transform: scale(1.01);
+	filter:brightness(150%);
+}

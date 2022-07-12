@@ -38,6 +38,11 @@ let lastTransportType;
 let typeDetail;
 let calculetedRouteDistance = 0;
 
+let distanceRoute = [];
+const routeDistanceValue = $(".routeDistanceValue")[0];
+const bigCountry = ["ussr","germany","france","italy","spain","sweden","norway","poland"];
+let clickedCountryTags = [];
+
 let transportType =  {
     land:{
         bus: true,
@@ -106,6 +111,7 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
     createTransportPanel.style.visibility = "hidden";
     cleanCurrentRoute();
     toggleClickedCreateTransport();
+    cleanRouteDistance();
 
     currentEndCountryOfTheRoute = null;
     endCountryOfTheRoute.innerHTML = "";
@@ -120,7 +126,7 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
 
 })
 
-export function buildRoute(firstClickedCountryName){
+export function buildRoute(firstClickedCountryName,event){
     
     if(startedCountry == firstClickedCountryName){
         let notifyFailureValue = startCountryCannotBeAPartOfRoute(startedCountry);
@@ -136,7 +142,7 @@ export function buildRoute(firstClickedCountryName){
 
                     //check startedCountry neighbors
                     if(startLandRouteCountry[firstClickedCountryName] != null){
-                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer,event);
                     } else{
                         let notANeighbors = notANeighborsMessage(startedCountry,firstClickedCountryName)
                         Notify.failure(notANeighbors);
@@ -147,7 +153,7 @@ export function buildRoute(firstClickedCountryName){
                     let lastCountryInRouteConnections = countryConnections.land[lastCountryInRoute].direct
 
                     if(lastCountryInRouteConnections[firstClickedCountryName] != null){
-                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                        addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer,event);
                     }else{
                         let notANeighbors = notANeighborsMessage(lastCountryInRoute,firstClickedCountryName)
                         Notify.failure(notANeighbors);
@@ -168,6 +174,8 @@ export function buildRoute(firstClickedCountryName){
                     Notify.failure(withoutAccessToSeaMessage);
                 }
             }
+    } else if(firstClickedCountryName == currentRoute[currentRoute.length - 1]){
+        removeLastElementFromRoute(event,firstClickedCountryName);
     } else{
         let notifyFailureValue = countryAlreadyInRoute(firstClickedCountryName)
         Notify.failure(notifyFailureValue)
@@ -192,6 +200,11 @@ function notANeighborsMessage(startedCountry,firstClickedCountryName){
 function withoutAccessToSea(firstClickedCountryName){
     blockInfoNotify();
     return "<strong>" + selectedLanguage[firstClickedCountryName] + "</strong> " + selectedLanguage.doNotHaveAccessToSea
+}
+
+function alreadyAllCountriesDeletedFromRoute(){
+    blockInfoNotify();
+    return selectedLanguage.alreadyAllCountriesDeletedFromRoute;
 }
 
 export function translateCurrentRoute(currentRoute){
@@ -280,8 +293,10 @@ function setProperTransportBasedOnGoods(){
     }
 }
 
-function addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer){
+function addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer,event){
+
     currentRoute.push(firstClickedCountryName);
+    clickedCountryTags.push(event.target)
     currentRouteTranslated.push(selectedLanguage[firstClickedCountryName]);
     route.innerHTML = currentRouteTranslated;
     currentEndCountryOfTheRoute = currentRoute[currentRoute.length - 1];
@@ -291,22 +306,37 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
     goodPriceInEndCountry = endCountryObject.goodCosts[selectedWare];
     goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
 
+    if(bigCountry.includes(firstClickedCountryName)){
+        event.target.parentElement.classList.add("inRouteBigCountry");
+        event.target.classList.add("inRouteBorderBigCountry");
+    } else{
+        event.target.parentElement.classList.add("inRoute");
+        event.target.classList.add("inRouteBorder");
+    }
+
+
+
     //calculate route distance
     let distance
     if(currentRoute.length == 1){ //first country connected
         if(selectedTransportTypeToTransfer =="land"){
             distance = countryConnections.land[startedCountry].direct[firstClickedCountryName];
-            calculetedRouteDistance += distance;
-            console.log(distance);
+            calculetedRouteDistance += distance ;
+            distanceRoute.push(distance);
+            routeDistanceValue.innerHTML = calculetedRouteDistance;
+            
+            
         } else if(selectedTransportTypeToTransfer =="sea"){
             distance = countryConnections.sea[startedCountry][firstClickedCountryName];
-            calculetedRouteDistance += distance;
-            console.log(distance);
+            calculetedRouteDistance += distance ;
+            routeDistanceValue.innerHTML = calculetedRouteDistance;
         }
 
-        // calculetedRouteDistance += 
     }else{ //next country connected
-
+        distance = countryConnections.land[currentRoute[currentRoute.length - 2]].direct[firstClickedCountryName];
+        calculetedRouteDistance += distance 
+        distanceRoute.push(distance);
+        routeDistanceValue.innerHTML = calculetedRouteDistance;
     }
     
 
@@ -357,3 +387,49 @@ function getObjKeysByObjectAndValue(obj, value) {
     return Object.keys(obj).filter(key => obj[key] === value);
   }
 
+  function cleanRouteDistance(){
+    distanceRoute = [];
+    calculetedRouteDistance = 0;
+    routeDistanceValue.innerHTML = calculetedRouteDistance;
+
+    for(let i=0; i < clickedCountryTags.length; i++){
+        clickedCountryTags[i].parentElement.classList.remove("inRouteBigCountry");
+        clickedCountryTags[i].classList.remove("inRouteBorderBigCountry");
+        clickedCountryTags[i].parentElement.classList.remove("inRoute");
+        clickedCountryTags[i].classList.remove("inRouteBorder");
+    };
+
+    clickedCountryTags = [];
+  };
+
+
+  function removeLastElementFromRoute(event,firstClickedCountryName){
+        if(distanceRoute.length > 0){
+        const distanceForLastCountryInRoute = distanceRoute[distanceRoute.length - 1]
+        distanceRoute.pop();
+        currentRoute.pop();
+        currentRouteTranslated.pop();
+
+        clickedCountryTags.pop();
+
+        if(bigCountry.includes(firstClickedCountryName)){
+            event.target.parentElement.classList.remove("inRouteBigCountry");
+            event.target.classList.remove("inRouteBorderBigCountry");
+        } else{
+            event.target.parentElement.classList.remove("inRoute")
+            event.target.classList.remove("inRouteBorder")
+        }
+
+        if(currentRoute[currentRoute.length - 1] == null){
+            endCountryOfTheRoute.innerHTML = "";
+        } else{
+            currentEndCountryOfTheRoute = currentRoute[currentRoute.length - 1]; 
+            endCountryOfTheRoute.innerHTML = selectedLanguage[currentEndCountryOfTheRoute];
+        }
+        calculetedRouteDistance -= distanceForLastCountryInRoute;
+        routeDistanceValue.innerHTML = calculetedRouteDistance;
+        route.innerHTML = currentRouteTranslated;     
+    } else{
+        Notify.failure(alreadyAllCountriesDeletedFromRoute());
+    }
+  };

@@ -1557,7 +1557,7 @@ export let countries = {
       width: 89,
       neighbors :{
         1 : "belgium",
-        2 : "france"
+        2 : "germany"
       },
       accessToWaterReservoirs : true,
       balticSea: false,
@@ -2098,20 +2098,20 @@ export let countries = {
     }
   }
 
-    let polishMap = document.querySelector("#polishMap");
     const polishMapLocation = $(".polishMapLocation")[0];
+    let polishMap = document.querySelector(".polishMap");
 
     const lithuanianMapLocation = $(".lithuanianMapLocation")[0];
-    let lithuaniaMap = document.querySelector("#lithuaniaMap");
+    let lithuaniaMap = document.querySelector(".lithuaniaMap");
 
     const ussrMapLocation = $(".ussrMapLocation")[0];
-    let ussrMap = document.querySelector("#ussrMap");
+    let ussrMap = document.querySelector(".ussrMap");
 
     const czechoslovakiaMapLocation = $(".czechoslovakiaMapLocation")[0];
-    let czechoslovakiaMap = document.querySelector("#czechoslovakiaMap");
+    let czechoslovakiaMap = document.querySelector(".czechoslovakiaMap");
 
     const austriaMapLocation = $(".austriaMapLocation")[0];
-    let austriaMap = document.querySelector("#austriaMap");
+    let austriaMap = document.querySelector(".austriaMap");
 
     const germanyMapLocation = $(".germanyMapLocation")[0];
     let germanyMap = document.querySelector(".germanyMap");
@@ -2126,19 +2126,19 @@ export let countries = {
     let greatBritainMap = document.querySelector(".greatBritainMap");
 
     const norwayMapLocation = $(".norwayMapLocation")[0];
-    let norwayMap = document.querySelector("#norwayMap");
+    let norwayMap = document.querySelector(".norwayMap");
 
     const swedenMapLocation = $(".swedenMapLocation")[0];
-    let swedenMap = document.querySelector("#swedenMap");
+    let swedenMap = document.querySelector(".swedenMap");
 
     const finlandMapLocation = $(".finlandMapLocation")[0];
-    let finlandMap = document.querySelector("#finlandMap");
+    let finlandMap = document.querySelector(".finlandMap");
 
     const estoniaMapLocation = $(".estoniaMapLocation")[0];
-    let estoniaMap = document.querySelector("#estoniaMap");
+    let estoniaMap = document.querySelector(".estoniaMap");
 
     const latviaMapLocation = $(".latviaMapLocation")[0];
-    let latviaMap = document.querySelector("#latviaMap");
+    let latviaMap = document.querySelector(".latviaMap");
 
     const denmarkMapLocation = $(".denmarkMapLocation")[0];
     let denmarkMap = document.querySelector(".denmarkMap");
@@ -2153,25 +2153,25 @@ export let countries = {
     let netherlandMap = document.querySelector(".netherlandMap");
 
     const hungaryMapLocation = $(".hungaryMapLocation")[0];
-    let hungaryMap = $(".austroHungarianMonarchyMap")[1];
+    let hungaryMap = $(".hungaryMap")[0];
 
     const romaniaMapLocation = $(".romaniaMapLocation")[0];
-    let romaniaMap = document.querySelector("#romaniaMap");
+    let romaniaMap = document.querySelector(".romaniaMap");
 
     const bulgariaMapLocation = $(".bulgariaMapLocation")[0];
-    let bulgariaMap = document.querySelector("#bulgariaMap");
+    let bulgariaMap = document.querySelector(".bulgariaMap");
 
     const yugoslaviaMapLocation = $(".yugoslaviaMapLocation")[0];
-    let yugoslaviaMap = document.querySelector("#yugoslaviaMap");
+    let yugoslaviaMap = document.querySelector(".yugoslaviaMap");
 
     const albaniaMapLocation = $(".albaniaMapLocation")[0];
-    let albaniaMap = document.querySelector("#albaniaMap");
+    let albaniaMap = document.querySelector(".albaniaMap");
 
     const greeceMapLocation = $(".greeceMapLocation")[0];
-    let greeceMap = document.querySelector("#greeceMap");
+    let greeceMap = document.querySelector(".greeceMap");
 
     const turkeyMapLocation = $(".turkeyMapLocation")[0];
-    let turkeyMap = document.querySelector("#turkeyMap");
+    let turkeyMap = document.querySelector(".turkeyMap");
 
     const italyMapLocation = $(".italyMapLocation")[0];
     let italyMap = document.querySelector(".italyMap");
@@ -2235,7 +2235,7 @@ export let countries = {
         if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2253,7 +2253,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2272,7 +2272,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
       }
     );
@@ -2290,7 +2290,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2308,7 +2308,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2326,7 +2326,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2345,7 +2345,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2364,7 +2364,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2385,7 +2385,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2411,7 +2411,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
       } else{
         firstClickedCountryName = "easternPrussia"
@@ -2419,7 +2419,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
       }
   }
@@ -2456,7 +2456,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
      }
     );
@@ -2476,7 +2476,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     }
     );
@@ -2496,7 +2496,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     }
     );
@@ -2515,7 +2515,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     });
 
@@ -2539,7 +2539,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     });
 
@@ -2557,7 +2557,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         } 
     });
 
@@ -2583,7 +2583,7 @@ export let countries = {
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "iceland"
@@ -2591,7 +2591,7 @@ export let countries = {
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -2626,7 +2626,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 }
  );
@@ -2645,7 +2645,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2663,7 +2663,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
  });
 
@@ -2681,7 +2681,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2699,7 +2699,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -2717,7 +2717,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -2735,7 +2735,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -2753,7 +2753,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2771,7 +2771,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2789,7 +2789,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2814,7 +2814,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "sicily"
@@ -2822,7 +2822,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -2858,7 +2858,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "sardynia"
@@ -2866,7 +2866,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -2902,7 +2902,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       } 
   } else {
     firstClickedCountryName = "corsica"
@@ -2910,7 +2910,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -2948,7 +2948,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "algieria"
@@ -2956,7 +2956,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 
@@ -2993,7 +2993,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -3014,7 +3014,7 @@ greatBritainMap.addEventListener("click",
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   });
 
@@ -3039,7 +3039,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else{
     firstClickedCountryName = "ireland"
@@ -3047,7 +3047,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -3085,7 +3085,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else{
     firstClickedCountryName = "irelandNorth"
@@ -3093,7 +3093,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 

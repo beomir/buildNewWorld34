@@ -361,6 +361,15 @@ export let countryConnections = {
                 
             }
         },
+        denmark:{
+            direct:{
+                "germany" : 766,
+                "sweden" : 658
+            },
+            transit:{
+                
+            }
+        },
         greatBritain:{
             direct:{
                 "ireland" : 166//belfast
@@ -368,7 +377,25 @@ export let countryConnections = {
             transit:{
                 
             }
-        }
+        },belgium:{
+            direct:{
+                "netherland" : 210,
+                "france" : 313,
+                "germany" : 754
+            },
+            transit:{
+
+            }
+        },
+        netherland:{
+            direct:{
+                "belgium" : 210,
+                "germany" : 655
+            },
+            transit:{
+
+            }
+        },
     },
     sea:{
         poland:{ //gdańsk

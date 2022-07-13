@@ -25,9 +25,10 @@ export let currentRouteTranslated = [];
 const route = $(".route")[0];
 
 let timeWatch = document.querySelector("#timeWatch");
+export let lastClickedCountryTag;
 
 let pulsingIntervalCounter;
-let dateValue = {
+export let dateValue = {
       day: "1",
       month: "1",
       year: "1935"
@@ -3503,6 +3504,7 @@ function(){
       hideActionForCountryList();
     };
 
+    lastClickedCountryTag = event.target;
     controlPanelWidth = $(".countryPanelList").width(); //Y
     controlPanelHeight = $(".countryPanelList").height(); //X
 

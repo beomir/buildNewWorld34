@@ -421,7 +421,8 @@ export let countryConnections = {
             "turkey": 7367,
             "bulgaria": 7643,
             "romania": 7730,
-            "iceland": 2824
+            "iceland": 2824,
+            "ireland" : 2346
         },
         sweden:{ //Sztokholm
             "poland": 638,
@@ -446,7 +447,8 @@ export let countryConnections = {
             "turkey": 7656, //istanbul
             "bulgaria": 7932, //varna
             "romania": 8019, //costantza
-            "iceland": 3113 //ryjkavik
+            "iceland": 3113, //ryjkavik
+            "ireland" : 2631 //dublin
         },
         finland:{ // Helsinki
             "poland": 781,
@@ -471,7 +473,8 @@ export let countryConnections = {
             "turkey": 7893,
             "bulgaria": 8169,
             "romania": 8256,
-            "iceland": 3350 
+            "iceland": 3350,
+            "ireland" : 2865
         },
         denmark:{ // Kopenhaga
             "poland": 507,
@@ -496,7 +499,8 @@ export let countryConnections = {
             "turkey": 6874,
             "bulgaria": 7150,
             "romania": 7237,
-            "iceland": 2331 
+            "iceland": 2331,
+            "ireland" : 1861
         },
         greatBritain:{ // Southampton
             "poland": 1979,
@@ -521,7 +525,8 @@ export let countryConnections = {
             "turkey": 5446,
             "bulgaria": 5722,
             "romania": 5809,
-            "iceland": 2342 
+            "iceland": 2342,
+            "ireland" : 722
         },
         lithuania:{ // Kłajpeda
             "poland": 216,
@@ -546,7 +551,8 @@ export let countryConnections = {
             "turkey": 7352,
             "bulgaria": 7624,
             "romania": 7710,
-            "iceland": 2876 
+            "iceland": 2876,
+            "ireland" : 2440
         },
         latvia:{ // Ryga
             "poland": 614,
@@ -571,7 +577,8 @@ export let countryConnections = {
             "turkey": 7630,
             "bulgaria": 7902,
             "romania": 7988,
-            "iceland": 3153 
+            "iceland": 3153,
+            "ireland" : 2717
         },
         estonia:{ // Talin
             "poland": 751,
@@ -596,7 +603,8 @@ export let countryConnections = {
             "turkey": 7739,
             "bulgaria": 8011,
             "romania": 8097,
-            "iceland": 3263 
+            "iceland": 3263,
+            "ireland" : 2826
         },
         ussr:{ //from leningrad
             "poland": 1046,
@@ -621,7 +629,8 @@ export let countryConnections = {
             "turkey": 8035,
             "bulgaria": 8265,
             "romania": 8393,
-            "iceland": 3558 
+            "iceland": 3558,
+            "ireland" : 3122
         },
         norway:{ // Oslo
             "poland": 996,
@@ -646,7 +655,8 @@ export let countryConnections = {
             "turkey": 6789,
             "bulgaria": 7065,
             "romania": 7152,
-            "iceland": 2183
+            "iceland": 2183,
+            "ireland" : 1713
         },
         germany:{ // Hamburg
             "poland": 803,
@@ -671,7 +681,8 @@ export let countryConnections = {
             "turkey": 6230,
             "bulgaria": 6502,
             "romania": 6588,
-            "iceland": 2252
+            "iceland": 2252,
+            "ireland" : 1607
         },
         netherland:{ // Amsterdam
             "poland": 1551,
@@ -696,7 +707,8 @@ export let countryConnections = {
             "turkey": 5819,
             "bulgaria": 6091,
             "romania": 6177,
-            "iceland": 2120
+            "iceland": 2120,
+            "ireland" : 1197
         },
         belgium:{ // Antwerpia
             "poland": 1796,
@@ -721,7 +733,8 @@ export let countryConnections = {
             "turkey": 5777,
             "bulgaria": 6049,
             "romania": 6135,
-            "iceland": 2279
+            "iceland": 2279,
+            "ireland" : 1155
         },
         france:{ //from cherbourg
             "poland": 2027,
@@ -746,7 +759,8 @@ export let countryConnections = {
             "turkey": 5271,
             "bulgaria": 5553,
             "romania": 5639,
-            "iceland": 2263
+            "iceland": 2263,
+            "ireland" : 678
         },
         spain:{ //from bilbao
             "poland": 2940,
@@ -771,7 +785,8 @@ export let countryConnections = {
             "turkey": 4856,
             "bulgaria": 5128,
             "romania": 5214,
-            "iceland": 2660
+            "iceland": 2660,
+            "ireland" : 1153
         },
         portugal:{ // Lizbona
             "poland": 3524,
@@ -796,7 +811,8 @@ export let countryConnections = {
             "turkey": 3830,
             "bulgaria": 4102,
             "romania": 4188,
-            "iceland": 2993
+            "iceland": 2993,
+            "ireland" : 1677
         },
         italy:{ //from genoa
             "poland": 5602,
@@ -821,7 +837,8 @@ export let countryConnections = {
             "turkey": 2345,
             "bulgaria": 2617,
             "romania": 2702,
-            "iceland": 5062
+            "iceland": 5062,
+            "ireland" : 3728
         },
         yugoslavia:{ //from split
             "poland": 6789,
@@ -846,7 +863,8 @@ export let countryConnections = {
             "turkey": 1808,
             "bulgaria": 2080,
             "romania": 2166,
-            "iceland": 6232
+            "iceland": 6232,
+            "ireland" : 4898
         },
         albania:{ // Vlore
             "poland": 6404,
@@ -871,7 +889,8 @@ export let countryConnections = {
             "turkey": 1374,
             "bulgaria": 1646,
             "romania": 1731,
-            "iceland": 5852
+            "iceland": 5852,
+            "ireland" : 4518
         },
         greece:{ //from pireus
             "poland": 6776,
@@ -896,7 +915,8 @@ export let countryConnections = {
             "turkey": 642,
             "bulgaria": 914,
             "romania": 1000,
-            "iceland": 6219
+            "iceland": 6219,
+            "ireland" : 4885
         },
         turkey:{ //from istanbul
             "poland": 7367,
@@ -921,7 +941,8 @@ export let countryConnections = {
             "greece": 1374,
             "bulgaria": 271,
             "romania": 357,
-            "iceland": 6801
+            "iceland": 6801,
+            "ireland" : 5467
         },
         bulgaria:{ //from varna
             "poland": 7643,
@@ -946,7 +967,8 @@ export let countryConnections = {
             "greece": 914,
             "turkey": 271,
             "romania": 138,
-            "iceland": 7073
+            "iceland": 7073,
+            "ireland" : 5739
         },
         romania:{ // Kostancja
             "poland": 7730,
@@ -971,7 +993,8 @@ export let countryConnections = {
             "greece": 1000,
             "turkey": 357,
             "bulgaria": 138,
-            "iceland": 7159
+            "iceland": 7159,
+            "ireland" : 5825
         },
         iceland:{ //Reykiavik
             "poland": 2824,
@@ -996,7 +1019,34 @@ export let countryConnections = {
             "greece": 1000,
             "turkey": 6801,
             "bulgaria": 7073,
-            "romania": 7159
+            "romania": 7159,
+            "ireland" : 1635
+        },
+        ireland:{ //Reykiavik
+            "poland": 2346,
+            "sweden": 2631,
+            "finland": 2865,
+            "denmark": 1861,
+            "greatBritain": 722,
+            "lithuania": 2440, 
+            "latvia": 2717,
+            "estonia": 2826,
+            "ussr": 3122,
+            "norway": 1713, 
+            "germany": 1607,
+            "netherland": 1197,
+            "belgium": 1155,
+            "france": 678,
+            "spain": 1153,
+            "portugal": 1677,
+            "italy": 3728,
+            "yugoslavia": 4898,
+            "albania": 4518,//
+            "greece": 4885,
+            "turkey": 5467,
+            "bulgaria": 5739,
+            "romania": 5825,
+            "iceland": 1635 
         }
     }
 }

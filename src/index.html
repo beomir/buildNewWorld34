@@ -14,6 +14,7 @@
     <script src="./js/nav.js"></script>
     <script src="./js/gameLogic.js" type="module"></script>
     <script src="./js/transportPanel.js" type="module"></script>
+    <script src="./js/countryConnections.js" type="module"></script>
 
     <title>Transport Game</title>
 </head>
@@ -252,11 +253,16 @@
             <div class="transportType">
                 <span class="transportType" id="typeOfTransport">Typ transportu</span>
                 <select class="transportType">
-                    <option id="bus" name="bus">Autobusowy</option>
-                    <option id="truck" name="truck" style="display:none">Ciężarowy</option>
-                    <option id="railway" name="railway">Kolejowy</option>
-                    <option id="maritime" name="maritime">Morski</option>
-                    <option id="air" name="air" style="display:none">Lotniczy</option>
+                    <option id="bus">Autobusowy</option>
+                    <option id="truck" style="display:none">Ciężarowy</option>
+                    <option id="railway">Kolejowy</option>
+                    <option id="maritime">Morski</option>
+                    <option id="air" style="display:none">Lotniczy</option>
+                </select>
+                <select class="meanOfTransport">
+                    <option class="transportModel">AECtypeQ</option>
+                    <option class="transportModel">AMO4</option>
+                    <option class="transportModel">LeylandTitan</option>
                 </select>
             </div>
             <div class="availableQty">
@@ -279,6 +285,14 @@
             </div>
             <div class="routeDistance">
                 <span class="routeDistance">Długość trasy</span><span>: </span><span class="routeDistanceValue values"></span><span> </span><span id="distanceUnit">km</span>
+            </div>
+            <div class="costs">
+                <div><span class="singularCost">Koszt za</span><span id="distanceUnit"> km</span><span>: </span><span class="singularCost values">0</span></div>
+                <div><span class="calculatedCost">Koszt wyliczony</span><span>: </span><span class="calculatedCost values">0</span></div>
+            </div>
+            <div class="earnings">
+                <div><span class="income">Dochód</span><span>: </span><span class="income values">0</span></div>
+                <div><span class="profit">Zysk</span><span>: </span><span class="profit values">0</span></div>
             </div>
         </div>
         <img src="./img/icons/cross-icon.png" class="createTransportPanelSwitchOff" height="50">

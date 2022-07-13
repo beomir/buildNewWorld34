@@ -1,7 +1,9 @@
-import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated} from './map';
-import {selectedLanguage} from './translations'
-import {countryConnections} from './countryConnections'
+import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue} from './map';
+import {selectedLanguage} from './translations';
+import {countryConnections} from './countryConnections';
+import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 const createTransport = document.querySelector("#createTransport")
 const createTransportPanel = $(".createTransportPanel")[0];
@@ -40,8 +42,13 @@ let calculetedRouteDistance = 0;
 
 let distanceRoute = [];
 const routeDistanceValue = $(".routeDistanceValue")[0];
-const bigCountry = ["ussr","germany","france","italy","spain","sweden","norway","poland"];
+const bigCountry = ["ussr","germany","france","italy","spain","sweden","norway","poland","greatBritain"];
 let clickedCountryTags = [];
+
+const originalNameOfVehicles = new Map(); // to future use for translate for example ship names
+const meanOfTransport = document.querySelector(".meanOfTransport");
+const singularCost = document.querySelector(".singularCost");
+
 
 let transportType =  {
     land:{
@@ -69,13 +76,14 @@ function(){
     toggleClickedCreateTransport();
     cleanCurrentRoute();
 
-    setProperTransportBasedOnGoods()
+    setProperTransportBasedOnGoods();
 
-    let myObject = listObjects[clickedCountryName];
     startedCountry = clickedCountryName;
     addAvaiableGoodOptions();
-    countryStartNameValue.innerHTML = selectedLanguage[clickedCountryName]
+    countryStartNameValue.innerHTML = selectedLanguage[clickedCountryName];
+
     createTransportPanel.style.visibility = "visible";
+    highlightCountry(startedCountry,lastClickedCountryTag);
 
 });
 
@@ -168,7 +176,7 @@ export function buildRoute(firstClickedCountryName,event){
                     Notify.failure(maritimeRouteFailure);
                 }
                 else if(startSeaRouteCountry[firstClickedCountryName] != null){
-                    addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer);
+                    addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer,event);
                 }else if(!listObjects[firstClickedCountryName].accessToWaterReservoirs){
                     let withoutAccessToSeaMessage = withoutAccessToSea(firstClickedCountryName);
                     Notify.failure(withoutAccessToSeaMessage);
@@ -230,9 +238,11 @@ export function translateCurrentRoute(currentRoute){
 
 wares.addEventListener("change",function(){
 
-    setProperTransportBasedOnGoods();    
+    setProperTransportBasedOnGoods();  
+    setProperMeansOfTransport(transportTypeList.value);  
     selectedWare = originNameOfWares.get(wares.value);
     let startCountryObject = listObjects[startedCountry];
+    
     let availableGoodQuantity = startCountryObject.goodsAvailability[selectedWare];
     let goodPriceInStartedCountry = startCountryObject.goodCosts[selectedWare];
     
@@ -251,20 +261,36 @@ wares.addEventListener("change",function(){
 });
 
 transportTypeList.addEventListener("change",function(){
+
     originNameOfSelectedTransport = getObjKeysByObjectAndValue(selectedLanguage,transportTypeList.value)[0];
     let lastActiveTransportBeforeChange = lastActiveTransportType[0];
     checkWhichTransportType(originNameOfSelectedTransport);
+    setProperMeansOfTransport(transportTypeList.value);
     
     if(lastActiveTransportBeforeChange != lastActiveTransportType[0]){
         cleanCurrentRoute();
+        /////////////////////////////////////
+
+         distanceRoute = [];
+         calculetedRouteDistance = 0;
+         routeDistanceValue.innerHTML = calculetedRouteDistance;
+     
+         for(let i=0; i < clickedCountryTags.length; i++){
+             clickedCountryTags[i].parentElement.classList.remove("inRouteBigCountry");
+             clickedCountryTags[i].classList.remove("inRouteBorderBigCountry");
+             clickedCountryTags[i].parentElement.classList.remove("inRoute");
+             clickedCountryTags[i].classList.remove("inRouteBorder");
+         };
+
+         clickedCountryTags = [];
 
         currentEndCountryOfTheRoute = null;
         endCountryOfTheRoute.innerHTML = "";
         goodPriceInEndCountry = "";
         goodCostInEndCountryValue.innerHTML = ""
-    }
- 
+        
 
+    }
 })
 
 function blockInfoNotify(){
@@ -276,20 +302,75 @@ function allowToDisplayInfoNotify(){
     blockageForInfoNotify = false;
 }
 
+function setProperMeansOfTransport(transportTypeName){
+    let passengersTranslation = selectedLanguage["passengers"];
+    let truckTranslation = selectedLanguage["truck"];
+    let busTranslation = selectedLanguage["bus"]; 
+    let maritimeTranslation = selectedLanguage["maritime"]; 
+    let railwayTranslation = selectedLanguage["railway"];
+
+    const transportModel = $(".transportModel");
+    transportModel.remove();
+
+    if(transportTypeName == truckTranslation){
+        let vechicles = meansOfTransportList[dateValue.year].vechicles.trucks
+        for(let vehicle in vechicles){
+            addOptionsToMeanOfTransport(vehicle);
+        }
+    } else if(transportTypeName == busTranslation){
+        let buses = meansOfTransportList[dateValue.year].vechicles.bus
+        for(let bus in buses){
+            addOptionsToMeanOfTransport(bus);
+        }
+
+    } else if(transportTypeName == maritimeTranslation){
+            if(wares.value == passengersTranslation){
+                let passengerShips = meansOfTransportList[dateValue.year].ships.passangerShips
+                for(let passengerShip in passengerShips){
+                    addOptionsToMeanOfTransport(passengerShip);
+                }
+            } else {
+                let loadShips = meansOfTransportList[dateValue.year].ships.loadShips
+                for(let loadShip in loadShips){
+                    addOptionsToMeanOfTransport(loadShip);
+                }
+            }
+
+    } else if(transportTypeName == railwayTranslation){
+        if(wares.value == passengersTranslation){
+            let passengerRailways = meansOfTransportList[dateValue.year].trains.passengerTrains
+            for(let passengerRailway in passengerRailways){
+                addOptionsToMeanOfTransport(passengerRailway);
+                
+            }
+        } else {
+            let loadRailways = meansOfTransportList[dateValue.year].trains.loadTrains
+            for(let loadRailway in loadRailways){
+                addOptionsToMeanOfTransport(loadRailway);
+            }
+        }
+    }
+
+    
+}
+
 function setProperTransportBasedOnGoods(){
     let passengersTranslation = selectedLanguage["passengers"];
     let truckTranslation = selectedLanguage["truck"];
     let busTranslation = selectedLanguage["bus"];
 
-
     if(wares.value == passengersTranslation || wares.value == ""){
         truckOption.style.display = "none"
         busOption.style.display = ""
-        transportTypeList.value = busTranslation
+        if(transportTypeList.value == truckTranslation){
+            transportTypeList.value = busTranslation
+        } 
     } else {
         truckOption.style.display = ""
         busOption.style.display = "none"
-        transportTypeList.value = truckTranslation
+        if(transportTypeList.value == busTranslation){
+            transportTypeList.value = truckTranslation
+        } 
     }
 }
 
@@ -306,16 +387,7 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
     goodPriceInEndCountry = endCountryObject.goodCosts[selectedWare];
     goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
 
-    if(bigCountry.includes(firstClickedCountryName)){
-        event.target.parentElement.classList.add("inRouteBigCountry");
-        event.target.classList.add("inRouteBorderBigCountry");
-    } else{
-        event.target.parentElement.classList.add("inRoute");
-        event.target.classList.add("inRouteBorder");
-    }
-
-
-
+    highlightCountry(firstClickedCountryName,event.target);
     //calculate route distance
     let distance
     if(currentRoute.length == 1){ //first country connected
@@ -329,6 +401,7 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
         } else if(selectedTransportTypeToTransfer =="sea"){
             distance = countryConnections.sea[startedCountry][firstClickedCountryName];
             calculetedRouteDistance += distance ;
+            distanceRoute.push(distance)
             routeDistanceValue.innerHTML = calculetedRouteDistance;
         }
 
@@ -400,28 +473,29 @@ function getObjKeysByObjectAndValue(obj, value) {
     };
 
     clickedCountryTags = [];
+
+    lastClickedCountryTag.parentElement.classList.remove("inRouteBigCountry");
+    lastClickedCountryTag.classList.remove("inRouteBorderBigCountry");
+    lastClickedCountryTag.parentElement.classList.remove("inRoute");
+    lastClickedCountryTag.classList.remove("inRouteBorder");
+
+   
   };
 
 
   function removeLastElementFromRoute(event,firstClickedCountryName){
         if(distanceRoute.length > 0){
-        const distanceForLastCountryInRoute = distanceRoute[distanceRoute.length - 1]
+        const distanceForLastCountryInRoute = distanceRoute[distanceRoute.length - 1];
+
         distanceRoute.pop();
         currentRoute.pop();
         currentRouteTranslated.pop();
-
         clickedCountryTags.pop();
-
-        if(bigCountry.includes(firstClickedCountryName)){
-            event.target.parentElement.classList.remove("inRouteBigCountry");
-            event.target.classList.remove("inRouteBorderBigCountry");
-        } else{
-            event.target.parentElement.classList.remove("inRoute")
-            event.target.classList.remove("inRouteBorder")
-        }
+        highlightCountryOff(firstClickedCountryName,event.target)
 
         if(currentRoute[currentRoute.length - 1] == null){
             endCountryOfTheRoute.innerHTML = "";
+            goodCostInEndCountryValue.innerHTML = 0;
         } else{
             currentEndCountryOfTheRoute = currentRoute[currentRoute.length - 1]; 
             endCountryOfTheRoute.innerHTML = selectedLanguage[currentEndCountryOfTheRoute];
@@ -433,3 +507,33 @@ function getObjKeysByObjectAndValue(obj, value) {
         Notify.failure(alreadyAllCountriesDeletedFromRoute());
     }
   };
+
+  function highlightCountry(firstClickedCountryName,tagToHighlight){
+    if(bigCountry.includes(firstClickedCountryName)){
+        tagToHighlight.parentElement.classList.add("inRouteBigCountry");
+        tagToHighlight.classList.add("inRouteBorderBigCountry");
+    } else{
+        tagToHighlight.parentElement.classList.add("inRoute");
+        tagToHighlight.classList.add("inRouteBorder");
+    }
+  }
+
+  function highlightCountryOff(firstClickedCountryName,tagToHighlightOff){
+    if(bigCountry.includes(firstClickedCountryName)){
+        tagToHighlightOff.parentElement.classList.remove("inRouteBigCountry");
+        tagToHighlightOff.classList.remove("inRouteBorderBigCountry");
+    } else{
+        tagToHighlightOff.parentElement.classList.remove("inRoute")
+        tagToHighlightOff.classList.remove("inRouteBorder")
+    }
+  }
+
+  function addOptionsToMeanOfTransport(optionValue){
+    // originalNameOfVehicles.set(selectedLanguage[vehicle],vehicle)
+    let selectedGoodOption = document.createElement('option');
+    selectedGoodOption.classList.add('transportModel');
+    selectedGoodOption.value = optionValue;
+
+    selectedGoodOption.innerHTML = optionValue;
+    meanOfTransport.appendChild(selectedGoodOption);
+  }

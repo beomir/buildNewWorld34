@@ -294,7 +294,7 @@ body{
 }
 
 .createTransportPanel {
-	top:50%;
+	top:30%;
 	left:0;
 	z-index: 200;
 	position:fixed;
@@ -323,4 +323,33 @@ body{
     -o-transform:scale(1.01);
     -webkit-transform: scale(1.01);
 	filter:brightness(150%);
+}
+
+.busTransportTypeData{
+	font-family: 'Dekko';
+	/* -o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s; */
+	background-color: #c34f7f;
+	border-bottom: 4px solid #2f1b75;
+	border-left: 4px solid #2f1b75;
+	border-right: 4px solid #2f1b75;
+}
+
+.earningsPlus{
+	font-family: 'Dekko';
+	background-color: #dd9b0c;
+	border-bottom: 4px solid #2f1b75;
+	border-left: 4px solid #2f1b75;
+	border-right: 4px solid #2f1b75;
+	color:white;
+}
+
+.earningsMinus{
+	font-family: 'Dekko';
+	background-color: #533b06;
+	border-bottom: 4px solid #2f1b75;
+	border-left: 4px solid #2f1b75;
+	border-right: 4px solid #2f1b75;
+	color:white;
 }

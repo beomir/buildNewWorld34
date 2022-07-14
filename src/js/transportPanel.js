@@ -13,7 +13,7 @@ const createTransportPanelSwitchOff = $(".createTransportPanelSwitchOff")[0];
 const wares = $(".wares")[0];
 const truckOption = document.getElementById("truck");
 const busOption = document.getElementById("bus");
-const transportTypeList = $(".transportType")[2];
+const transportTypeList = document.getElementById("transportTypeList");
 
 const blockageForInfoNotifyTime = 5000;
 export let blockageForInfoNotify = false;
@@ -42,13 +42,24 @@ let calculetedRouteDistance = 0;
 
 let distanceRoute = [];
 const routeDistanceValue = $(".routeDistanceValue")[0];
-const bigCountry = ["ussr","germany","france","italy","spain","sweden","norway","poland","greatBritain"];
+const bigCountry = ["ussr","germany","france","italy","spain","sweden","norwnpmay","poland","greatBritain"];
 let clickedCountryTags = [];
 
 const originalNameOfVehicles = new Map(); // to future use for translate for example ship names
 const meanOfTransport = document.querySelector(".meanOfTransport");
-const singularCost = document.querySelector(".singularCost");
+const singularCostValue = document.querySelector(".singularCostValue");
 
+const calculatedCostValue = document.querySelector(".calculatedCostValue");
+let availableGoodQuantity;
+const capacityValue = document.querySelector(".capacityValue");
+const neccesseryQtyValue = document.querySelector(".neccesseryQtyValue");
+
+const speedValue = document.querySelector(".speedValue");
+let speedValueOfSelectedTransport;
+let capacityOfSelectedTransport;
+let neededTransportUnits = 0;
+
+const earnings = document.getElementById("earnings")
 
 let transportType =  {
     land:{
@@ -239,11 +250,12 @@ export function translateCurrentRoute(currentRoute){
 wares.addEventListener("change",function(){
 
     setProperTransportBasedOnGoods();  
+    calculateCostValue()
     setProperMeansOfTransport(transportTypeList.value);  
     selectedWare = originNameOfWares.get(wares.value);
     let startCountryObject = listObjects[startedCountry];
     
-    let availableGoodQuantity = startCountryObject.goodsAvailability[selectedWare];
+    availableGoodQuantity = startCountryObject.goodsAvailability[selectedWare];
     let goodPriceInStartedCountry = startCountryObject.goodCosts[selectedWare];
     
     goodCostInStartedCountryValue.innerHTML = goodPriceInStartedCountry;
@@ -260,17 +272,33 @@ wares.addEventListener("change",function(){
     }
 });
 
-transportTypeList.addEventListener("change",function(){
+howManyToTransportValue.addEventListener("change",function(){
+    if(howManyToTransportValue.value>availableGoodQuantity){
+        howManyToTransportValue.value = availableGoodQuantity;
+    }
 
+    neededTransportUnits = howManyToTransportValue.value / capacityOfSelectedTransport ;
+    if(Math.ceil(neededTransportUnits) == 0){
+        neededTransportUnits = 1;
+    } else{
+        neededTransportUnits =  Math.ceil(neededTransportUnits);
+    };
+    
+    neccesseryQtyValue.innerHTML = neededTransportUnits;
+    calculateCostValue();
+    
+})
+
+transportTypeList.addEventListener("change",function(){
     originNameOfSelectedTransport = getObjKeysByObjectAndValue(selectedLanguage,transportTypeList.value)[0];
     let lastActiveTransportBeforeChange = lastActiveTransportType[0];
+    
     checkWhichTransportType(originNameOfSelectedTransport);
     setProperMeansOfTransport(transportTypeList.value);
+    calculateCostValue();
     
     if(lastActiveTransportBeforeChange != lastActiveTransportType[0]){
         cleanCurrentRoute();
-        /////////////////////////////////////
-
          distanceRoute = [];
          calculetedRouteDistance = 0;
          routeDistanceValue.innerHTML = calculetedRouteDistance;
@@ -313,7 +341,7 @@ function setProperMeansOfTransport(transportTypeName){
     transportModel.remove();
 
     if(transportTypeName == truckTranslation){
-        let vechicles = meansOfTransportList[dateValue.year].vechicles.trucks
+        let vechicles = meansOfTransportList[dateValue.year].vechicles.truck
         for(let vehicle in vechicles){
             addOptionsToMeanOfTransport(vehicle);
         }
@@ -325,12 +353,12 @@ function setProperMeansOfTransport(transportTypeName){
 
     } else if(transportTypeName == maritimeTranslation){
             if(wares.value == passengersTranslation){
-                let passengerShips = meansOfTransportList[dateValue.year].ships.passangerShips
+                let passengerShips = meansOfTransportList[dateValue.year].maritime.passangerShips
                 for(let passengerShip in passengerShips){
                     addOptionsToMeanOfTransport(passengerShip);
                 }
             } else {
-                let loadShips = meansOfTransportList[dateValue.year].ships.loadShips
+                let loadShips = meansOfTransportList[dateValue.year].maritime.loadShips
                 for(let loadShip in loadShips){
                     addOptionsToMeanOfTransport(loadShip);
                 }
@@ -358,18 +386,31 @@ function setProperTransportBasedOnGoods(){
     let passengersTranslation = selectedLanguage["passengers"];
     let truckTranslation = selectedLanguage["truck"];
     let busTranslation = selectedLanguage["bus"];
+    let railwayTranslation = selectedLanguage["railway"];
 
-    if(wares.value == passengersTranslation || wares.value == ""){
+    if(transportTypeList.value == railwayTranslation){
+        lastActiveTransportType = ["land","railway"];
+        setProperMeansOfTransport(selectedLanguage["railway"]);
+        calculateCostValue();
+    }  
+
+    if(wares.value == passengersTranslation || wares.value == ""){ 
         truckOption.style.display = "none"
         busOption.style.display = ""
         if(transportTypeList.value == truckTranslation){
             transportTypeList.value = busTranslation
-        } 
+            lastActiveTransportType = ["land","bus"];
+            setProperMeansOfTransport(selectedLanguage["bus"]);
+            calculateCostValue();
+        }
     } else {
         truckOption.style.display = ""
         busOption.style.display = "none"
         if(transportTypeList.value == busTranslation){
             transportTypeList.value = truckTranslation
+            lastActiveTransportType = ["land","truck"];
+            setProperMeansOfTransport(selectedLanguage["truck"]);
+            calculateCostValue();
         } 
     }
 }
@@ -412,7 +453,7 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
         routeDistanceValue.innerHTML = calculetedRouteDistance;
     }
     
-
+    calculateCostValue();
 };
 
 function checkWhichTransportType(selectedTransportType){
@@ -503,6 +544,7 @@ function getObjKeysByObjectAndValue(obj, value) {
         calculetedRouteDistance -= distanceForLastCountryInRoute;
         routeDistanceValue.innerHTML = calculetedRouteDistance;
         route.innerHTML = currentRouteTranslated;     
+        calculateCostValue();
     } else{
         Notify.failure(alreadyAllCountriesDeletedFromRoute());
     }
@@ -536,4 +578,66 @@ function getObjKeysByObjectAndValue(obj, value) {
 
     selectedGoodOption.innerHTML = optionValue;
     meanOfTransport.appendChild(selectedGoodOption);
+  };
+  
+
+  meanOfTransport.addEventListener("change",function(){    
+    calculateCostValue();
+  })
+
+  function calculateCostValue(){
+    let mainTransportTypeName;
+    let middleTransportTypeName;
+    if(lastActiveTransportType[1] == "bus" || lastActiveTransportType[1] == "truck"){
+        mainTransportTypeName = "vechicles"
+        middleTransportTypeName = lastActiveTransportType[1];
+    } else if(lastActiveTransportType[1] == "railway"){
+            mainTransportTypeName = "trains"
+            if(wares.value == selectedLanguage.passengers){
+                middleTransportTypeName = "passengerTrains"
+            } else {
+                middleTransportTypeName = "loadTrains"
+            }
+
+    }else if(lastActiveTransportType[1] == "maritime"){
+        mainTransportTypeName = lastActiveTransportType[1]
+        if(wares.value == selectedLanguage.passengers){
+            middleTransportTypeName = "passangerShips"
+        } else {
+            middleTransportTypeName = "loadShips"
+        }
+    }
+    let selectedTransportTypeCost = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].cost;
+    singularCostValue.innerHTML = selectedTransportTypeCost;
+    console.log(selectedTransportTypeCost);
+    console.log(calculetedRouteDistance);
+    console.log(neededTransportUnits);
+    console.log(selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits);
+    calculatedCostValue.innerHTML = selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits;
+    displayEarningPanel();
+    displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName);
+    displayTransportTypeSpeed(mainTransportTypeName,middleTransportTypeName);
+  };
+
+  function displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName){
+    if(middleTransportTypeName == "bus" || middleTransportTypeName == "passangerShips" || middleTransportTypeName == "passengerTrains"){
+        capacityOfSelectedTransport = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].passengers
+        capacityValue.innerHTML = capacityOfSelectedTransport
+    } else {
+        capacityOfSelectedTransport = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].payLoad
+        capacityValue.innerHTML = capacityOfSelectedTransport
+    }
+  };
+
+  function displayTransportTypeSpeed(mainTransportTypeName,middleTransportTypeName){
+    speedValueOfSelectedTransport = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].speed;
+    speedValue.innerHTML = speedValueOfSelectedTransport
   }
+
+  function displayEarningPanel(){
+
+    earnings.style.visibility = "visible"
+  }
+
+    
+

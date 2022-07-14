@@ -129,7 +129,16 @@ const   polish = {
         doNotHaveAccessToSea: "nie ma dostępu do morza",
         routeDistance: "Długość trasy",
         distanceUnitValue: "km",
-        alreadyAllCountriesDeletedFromRoute: "Wszystkie kraje zostały już wycofane z trasy"
+        alreadyAllCountriesDeletedFromRoute: "Wszystkie kraje zostały już wycofane z trasy",
+        capacity: "Ładowność",
+        quantityNeeded : "Potrzebna ilość",
+        speedUnitKmH : "km/h",
+        speed : "Prędkość",
+        estimatedArrival: "Szacowany czas przybycia",
+        costFor: "Koszt za",
+        calculatedCost : "Koszt wyliczony",
+        income : "Dochód",
+        profit : "Zysk"
         
     }
     
@@ -239,7 +248,16 @@ const   english = {
         doNotHaveAccessToSea: "do not have access to sea",
         routeDistance: "Route distance",
         distanceUnitValue: "km",
-        alreadyAllCountriesDeletedFromRoute: "Already all countries were deleted from route"
+        alreadyAllCountriesDeletedFromRoute: "Already all countries were deleted from route",
+        capacity: "Capacity",
+        quantityNeeded : "Quantity needed",
+        speedUnitKmH : "km/h",
+        speed : "Speed",
+        estimatedArrival: "Estimated arrival time",
+        costFor: "Cost for",
+        calculatedCost : "Calculated cost",
+        income : "Income",
+        profit : "Profit"
     }
     
 const   russian = {
@@ -348,7 +366,16 @@ const   russian = {
         doNotHaveAccessToSea: "не имеют выхода к морю",
         routeDistance: "Расстояние маршрута",
         distanceUnitValue: "км",
-        alreadyAllCountriesDeletedFromRoute: "Уже все страны удалены из маршрута"
+        alreadyAllCountriesDeletedFromRoute: "Уже все страны удалены из маршрута",
+        capacity: "Вместимость",
+        quantityNeeded : "Необходимое количество",
+        speedUnitKmH : "км/ч",
+        speed : "Скорость",
+        estimatedArrival: "Ожидаемое время прибытия",
+        costFor: "Стоимость для",
+        calculatedCost : "Расчетная стоимость",
+        income : "Доход",
+        profit : "Прибыль"
     }
 
 export let selectedLanguage = polish;
@@ -390,7 +417,17 @@ export let selectedLanguage = polish;
    const transportType = document.getElementById("transportType");
 
    const routeDistance = $(".routeDistance")[1];
-   const distanceUnitValue = document.getElementById("distanceUnitValue");
+   const distanceUnit = $(".distanceUnit")[1];
+   const capacity = $(".capacity")[0];
+   const quantityNeeded =  $(".neccesseryQty")[0];
+   const speed =  $(".speed")[0];
+   const speedUnitKmH = $(".speedUnitKmH")[0];
+   const estimatedArrival = $(".estimatedArrival")[0];
+
+   const costFor = $(".singularCost")[0];
+   const calculatedCost = $(".calculatedCost")[0];
+   const income = $(".income")[0];
+   const profit = $(".profit")[0];
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -427,8 +464,19 @@ export let selectedLanguage = polish;
     transportType.innerHTML = selectedLanguage.transportType;
 
     routeDistance.innerHTML = selectedLanguage.routeDistance;
-    distanceUnitValue.innerHTML = selectedLanguage.distanceUnitValue
+    distanceUnit.innerHTML = selectedLanguage.distanceUnitValue;
+    capacity.innerHTML = selectedLanguage.capacity;
+    quantityNeeded.innerHTML = selectedLanguage.quantityNeeded;
+    speed.innerHTML = selectedLanguage.speed;
+    speedUnitKmH.innerHTML = selectedLanguage.speedUnitKmH;
 
+    estimatedArrival.innerHTML = selectedLanguage.estimatedArrival;
+    profit.innerHTML = selectedLanguage.profit;
+    costFor.innerHTML = selectedLanguage.costFor ;
+    calculatedCost.innerHTML = selectedLanguage.calculatedCost ;
+    income.innerHTML = selectedLanguage.income ;
+
+    
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);
   }

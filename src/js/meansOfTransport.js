@@ -1,7 +1,7 @@
 export const meansOfTransportList = {
     1935:{
         vechicles:{
-                trucks:{
+                truck:{
                         renaultTTD6:{
                             payLoad: 15,
                             cost: 1,
@@ -41,7 +41,7 @@ export const meansOfTransportList = {
                     }
                 }  
         },
-        ships:{
+        maritime:{
             passangerShips:{
                     steamer:{
                         passengers: 700,

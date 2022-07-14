@@ -128,6 +128,7 @@ export function addAvaiableGoodOptions(){
 
 createTransportPanelSwitchOff.addEventListener('click',function(){
     createTransportPanel.style.visibility = "hidden";
+    earnings.style.visibility = "hidden";
     cleanCurrentRoute();
     toggleClickedCreateTransport();
     cleanRouteDistance();

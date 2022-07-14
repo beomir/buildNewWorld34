@@ -20,16 +20,16 @@ body{
 }
 
 .icon:hover{
-	-o-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
+	transition: all 0.3s;
+    transition: all 0.3s;
+    transition: all 0.3s;
     stroke: rgb(255, 255, 255);
     stroke-width: 5;
     stroke-opacity: 1; 
     cursor: pointer;
-	-moz-transform: scale(1.6);
-    -o-transform:scale(1.6);
-    -webkit-transform: scale(1.6);
+	transform: scale(1.6);
+    transform:scale(1.6);
+    transform: scale(1.6);
 }
   
 
@@ -83,9 +83,9 @@ body{
 
 .countryFlagActionCountry:hover {
 	filter: brightness(50%);
-    -o-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .countryPanelList {
@@ -235,19 +235,19 @@ body{
 }
 
 .makeItBigger{
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 .makeItBigger:hover{
     cursor: pointer;
-    -o-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -webkit-transition: all 0.6s;
-    -moz-transform: scale(1.4);
-    -o-transform:scale(1.4);
-    -webkit-transform: scale(1.4);
+    transition: all 0.6s;
+    transition: all 0.6s;
+    transition: all 0.6s;
+    transform: scale(1.4);
+    transform:scale(1.4);
+    transform: scale(1.4);
 }
 
 .list{
@@ -256,11 +256,11 @@ body{
 }
 
 #pauseLaunched{
-	-o-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -webkit-transition: all 0.6s;
+	transition: all 0.6s;
+    transition: all 0.6s;
+    transition: all 0.6s;
 	background: -webkit-linear-gradient(#e7e7e7, #4fc419);
-	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	color:white;
 	display: inline-block;
@@ -306,22 +306,22 @@ body{
 }
 
 .inRoute{
-	-o-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -webkit-transition: all 0.6s;
-    -moz-transform: scale(1.05);
-    -o-transform:scale(1.05);
-    -webkit-transform: scale(1.05);
+	transition: all 0.6s;
+    transition: all 0.6s;
+    transition: all 0.6s;
+    transform: scale(1.05);
+    transform:scale(1.05);
+    transform: scale(1.05);
 	filter:brightness(150%);
 }
 
 .inRouteBigCountry{
-	-o-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -webkit-transition: all 0.6s;
-    -moz-transform: scale(1.01);
-    -o-transform:scale(1.01);
-    -webkit-transform: scale(1.01);
+	transition: all 0.6s;
+    transition: all 0.6s;
+    transition: all 0.6s;
+    transform: scale(1.01);
+    transform:scale(1.01);
+    transform: scale(1.01);
 	filter:brightness(150%);
 }
 

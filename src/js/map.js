@@ -1,17 +1,12 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
-<<<<<<< HEAD
 import {selectedLanguage, refreshObjectsTranslation} from './translations'
 import {buildRoute,blockageForInfoNotify} from './transportPanel'
 
-=======
-import './translations';
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
 let selectedCountryName;
 let selectedCountry;
 let specialitiesList = "";
-<<<<<<< HEAD
 let pulsingInterval;
 
 let pauseClicked = false;
@@ -30,9 +25,10 @@ export let currentRouteTranslated = [];
 const route = $(".route")[0];
 
 let timeWatch = document.querySelector("#timeWatch");
+export let lastClickedCountryTag;
 
 let pulsingIntervalCounter;
-let dateValue = {
+export let dateValue = {
       day: "1",
       month: "1",
       year: "1935"
@@ -41,8 +37,6 @@ let dateValue = {
 let time = {
     hour: 0
 }
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
 // Confirm.init({
 //   width: '350px',
@@ -56,17 +50,12 @@ let time = {
 Notify.init({
   width: '350px',
   position: 'right-bottom',
-<<<<<<< HEAD
   timeout: 5000,
-=======
-  timeout: 3000,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
   plainText: false,
   showOnlyTheLastOne: true,
   info: {
     background: '#2b1675',
   },
-<<<<<<< HEAD
   failure: {
     background: '#751b1b'
 }
@@ -74,11 +63,6 @@ Notify.init({
 
 
 
-=======
-});
-
-   
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     let goods ={
       main: {
             1: selectedLanguage.coal,
@@ -99,14 +83,10 @@ Notify.init({
         1: selectedLanguage.zinc,
         2: selectedLanguage.wolfram,
         3: selectedLanguage.ideas,
-<<<<<<< HEAD
         4: selectedLanguage.mechanicalParts,
         5: selectedLanguage.chrome,
         6: selectedLanguage.nickel,
         7: selectedLanguage.forestGoods
-=======
-        4: selectedLanguage.mechanicalParts
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       }
     }
 
@@ -116,7 +96,6 @@ Notify.init({
       
     }
 
-<<<<<<< HEAD
 export let countries = {
      norway: {
       height: 330,
@@ -129,11 +108,6 @@ export let countries = {
       accessToWaterReservoirs : true,
       balticSea: false,
       blackSea: false,
-=======
-    let norway = {
-      height: 330,
-      width: 290.4,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
           1: goods.additional[2]
         },  
@@ -151,14 +125,10 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
@@ -174,7 +144,6 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
@@ -198,19 +167,6 @@ export let countries = {
         specialities: {
             1: goods.specific[2],
             2: goods.main[4],
-=======
-          mechanicalParts: 5
-        },
-        population: 2.9
-      }
-
-      let sweden = {
-        height: 427.45,
-        width: 354.8,
-        specialities: {
-            1: goods.specific[2],
-            2: goods.specific[3],
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             3: goods.main[2]
           },  
           goodCosts: {
@@ -227,14 +183,10 @@ export let countries = {
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -250,7 +202,6 @@ export let countries = {
             clothes: 90,
             zinc: 15,
             wolfram: 40,
-<<<<<<< HEAD
             mechanicalParts: 5,
             chrome : 1,
             nickel: 2,
@@ -971,16 +922,6 @@ export let countries = {
     balticSea: true,
     blackSea: true,
     otherSea: false,
-=======
-            mechanicalParts: 5
-          },
-          population: 6.2
-        }
-
-   let ussr = {
-    height: 840,
-    width: 398,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -1001,14 +942,10 @@ export let countries = {
         clothes: 20,
         zinc: 75,
         wolfram: 100,
-<<<<<<< HEAD
         mechanicalParts: 150,
         chrome : 5,
         nickel: 3,
         forestGoods: 20
-=======
-        mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       goodsAvailability: {
         coal: 100,
@@ -1024,19 +961,14 @@ export let countries = {
         clothes: 90,
         zinc: 15,
         wolfram: 40,
-<<<<<<< HEAD
         mechanicalParts: 5,
         chrome : 1,
         nickel: 2,
         forestGoods: 50
-=======
-        mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       population: 159
     }
 
-<<<<<<< HEAD
     , germany: {
       height:  260.4,
       width: 420 ,
@@ -1055,11 +987,6 @@ export let countries = {
       balticSea: true,
       blackSea: false,
       otherSea: true,
-=======
-    let germany = {
-      height:  260.4,
-      width: 420 ,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -1079,14 +1006,10 @@ export let countries = {
         clothes: 20,
         zinc: 75,
         wolfram: 100,
-<<<<<<< HEAD
         mechanicalParts: 150,
         chrome : 5,
         nickel: 3,
         forestGoods: 20
-=======
-        mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       goodsAvailability: {
         coal: 100,
@@ -1102,19 +1025,14 @@ export let countries = {
         clothes: 90,
         zinc: 15,
         wolfram: 40,
-<<<<<<< HEAD
         mechanicalParts: 5,
         chrome : 1,
         nickel: 2,
         forestGoods: 50
-=======
-        mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       population: 74
     }
 
-<<<<<<< HEAD
    , lithuania: {
     height: 101, 
     width: 134, 
@@ -1127,11 +1045,6 @@ export let countries = {
     balticSea: true,
     blackSea: false,
     otherSea: false,
-=======
-   let lithuania = {
-    height: 101, 
-    width: 134, 
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     specialities: {
       1: goods.main[6],
       2: goods.main[7],
@@ -1151,14 +1064,10 @@ export let countries = {
         clothes: 20,
         zinc: 75,
         wolfram: 100,
-<<<<<<< HEAD
         mechanicalParts: 150,
         chrome : 5,
         nickel: 3,
         forestGoods: 20
-=======
-        mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       goodsAvailability: {
         coal: 100,
@@ -1174,19 +1083,14 @@ export let countries = {
         clothes: 90,
         zinc: 15,
         wolfram: 40,
-<<<<<<< HEAD
         mechanicalParts: 5,
         chrome : 1,
         nickel: 2,
         forestGoods: 50
-=======
-        mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       },
       population: 2
     }
 
-<<<<<<< HEAD
     , poland: {
       height: 298,
       width: 286,
@@ -1202,11 +1106,6 @@ export let countries = {
       balticSea: true,
       blackSea: false,
       otherSea: false,
-=======
-    let poland = {
-      height: 298,
-      width: 286,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.main[6],
         2: goods.main[7],
@@ -1226,14 +1125,10 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
@@ -1249,19 +1144,14 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
           forestGoods: 50
-=======
-          mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         population: 30
       }
 
-<<<<<<< HEAD
     , czechoslovakia: {
       height: 105.9,
       width: 325,
@@ -1276,11 +1166,6 @@ export let countries = {
       balticSea: false,
       blackSea: false,
       otherSea: false,
-=======
-    let czechoslovakia = {
-      height: 110.2,
-      width: 334,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.main[2],
         2: goods.main[4],
@@ -1300,14 +1185,10 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
@@ -1323,19 +1204,14 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
           forestGoods: 50
-=======
-          mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         population: 13
     }
 
-<<<<<<< HEAD
     , greatBritain: {
       height: 400,
       width: 286,
@@ -1346,11 +1222,6 @@ export let countries = {
       balticSea: false,
       blackSea: false,
       otherSea: true,
-=======
-    let greatBritain = {
-      height: 400,
-      width: 286,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -1371,24 +1242,16 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
           steel: 80,
           aluminium: 50,
-<<<<<<< HEAD
           copper: 180,
-=======
-          copper: 120,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           lead: 80,
           grain: 1000,
           oil: 300,
@@ -1398,19 +1261,14 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
           forestGoods: 50
-=======
-          mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
       population: 47
     }
 
-<<<<<<< HEAD
     , austria: {
       height: 79.2,
       width: 180,
@@ -1426,11 +1284,6 @@ export let countries = {
       balticSea: false,
       blackSea: false,
       otherSea: false,
-=======
-    let austria = {
-      height: 79.2,
-      width: 180,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.additional[3]
         },
@@ -1448,14 +1301,10 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
@@ -1471,19 +1320,14 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
           forestGoods: 50
-=======
-          mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         population: 6.8
     }
 
-<<<<<<< HEAD
     , france: {
       height: 365,
       width: 324.8,
@@ -1498,11 +1342,6 @@ export let countries = {
       balticSea: false,
       blackSea: false,
       otherSea: true,
-=======
-    let france = {
-      height: 365,
-      width: 324.8,
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       specialities: {
         1: goods.main[1],
         2: goods.main[2],
@@ -1510,7 +1349,6 @@ export let countries = {
         4: goods.additional[1]
         },
         goodCosts: {
-<<<<<<< HEAD
           coal: 35,
           steel: 75,
           aluminium: 85,
@@ -1566,8 +1404,6 @@ export let countries = {
         1: goods.additional[2]
         },
         goodCosts: {
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           coal: 30,
           steel: 70,
           aluminium: 80,
@@ -1581,14 +1417,10 @@ export let countries = {
           clothes: 20,
           zinc: 75,
           wolfram: 100,
-<<<<<<< HEAD
           mechanicalParts: 150,
           chrome : 5,
           nickel: 3,
           forestGoods: 20
-=======
-          mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         },
         goodsAvailability: {
           coal: 100,
@@ -1604,7 +1436,6 @@ export let countries = {
           clothes: 90,
           zinc: 15,
           wolfram: 40,
-<<<<<<< HEAD
           mechanicalParts: 5,
           chrome : 1,
           nickel: 2,
@@ -1727,7 +1558,7 @@ export let countries = {
       width: 89,
       neighbors :{
         1 : "belgium",
-        2 : "france"
+        2 : "germany"
       },
       accessToWaterReservoirs : true,
       balticSea: false,
@@ -2268,20 +2099,20 @@ export let countries = {
     }
   }
 
-    let polishMap = document.querySelector("#polishMap");
     const polishMapLocation = $(".polishMapLocation")[0];
+    let polishMap = document.querySelector(".polishMap");
 
     const lithuanianMapLocation = $(".lithuanianMapLocation")[0];
-    let lithuaniaMap = document.querySelector("#lithuaniaMap");
+    let lithuaniaMap = document.querySelector(".lithuaniaMap");
 
     const ussrMapLocation = $(".ussrMapLocation")[0];
-    let ussrMap = document.querySelector("#ussrMap");
+    let ussrMap = document.querySelector(".ussrMap");
 
     const czechoslovakiaMapLocation = $(".czechoslovakiaMapLocation")[0];
-    let czechoslovakiaMap = document.querySelector("#czechoslovakiaMap");
+    let czechoslovakiaMap = document.querySelector(".czechoslovakiaMap");
 
     const austriaMapLocation = $(".austriaMapLocation")[0];
-    let austriaMap = document.querySelector("#austriaMap");
+    let austriaMap = document.querySelector(".austriaMap");
 
     const germanyMapLocation = $(".germanyMapLocation")[0];
     let germanyMap = document.querySelector(".germanyMap");
@@ -2294,53 +2125,21 @@ export let countries = {
 
     const greatBritainMapLocation = $(".greatBritainMapLocation")[0];
     let greatBritainMap = document.querySelector(".greatBritainMap");
-=======
-          mechanicalParts: 5
-        },
-        population: 42
-    }
-    
-
-    let polishMap = document.querySelector("#polishMap");
-    const polishMapLocation = $(".polishMapLocation")[0];
-
-    const lithuanianMapLocation = $(".lithuanianMapLocation")[0];
-    let lithuaniaMap = document.querySelector("#lithuaniaMap");
-
-    const ussrMapLocation = $(".ussrMapLocation")[0];
-    let ussrMap = document.querySelector("#ussrMap");
-
-    const czechoslovakiaMapLocation = $(".czechoslovakiaMapLocation")[0];
-    let czechoslovakiaMap = document.querySelector("#czechoslovakiaMap");
-
-    const austriaMapLocation = $(".austriaMapLocation")[0];
-    let austriaMap = document.querySelector("#austriaMap");
-
-    const germanyMapLocation = $(".germanyMapLocation")[0];
-    let germanyMap = document.querySelector("#germanyMap");
-
-    const franceMapLocation = $(".franceMapLocation")[0];
-    let franceMap = document.querySelector("#franceMap");
-
-    const greatBritainMapLocation = $(".greatBritainMapLocation")[0];
-    let greatBritainMap = document.querySelector("#greatBritainMap");
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
     const norwayMapLocation = $(".norwayMapLocation")[0];
-    let norwayMap = document.querySelector("#norwayMap");
+    let norwayMap = document.querySelector(".norwayMap");
 
     const swedenMapLocation = $(".swedenMapLocation")[0];
-    let swedenMap = document.querySelector("#swedenMap");
+    let swedenMap = document.querySelector(".swedenMap");
 
-<<<<<<< HEAD
     const finlandMapLocation = $(".finlandMapLocation")[0];
-    let finlandMap = document.querySelector("#finlandMap");
+    let finlandMap = document.querySelector(".finlandMap");
 
     const estoniaMapLocation = $(".estoniaMapLocation")[0];
-    let estoniaMap = document.querySelector("#estoniaMap");
+    let estoniaMap = document.querySelector(".estoniaMap");
 
     const latviaMapLocation = $(".latviaMapLocation")[0];
-    let latviaMap = document.querySelector("#latviaMap");
+    let latviaMap = document.querySelector(".latviaMap");
 
     const denmarkMapLocation = $(".denmarkMapLocation")[0];
     let denmarkMap = document.querySelector(".denmarkMap");
@@ -2355,25 +2154,25 @@ export let countries = {
     let netherlandMap = document.querySelector(".netherlandMap");
 
     const hungaryMapLocation = $(".hungaryMapLocation")[0];
-    let hungaryMap = $(".austroHungarianMonarchyMap")[1];
+    let hungaryMap = $(".hungaryMap")[0];
 
     const romaniaMapLocation = $(".romaniaMapLocation")[0];
-    let romaniaMap = document.querySelector("#romaniaMap");
+    let romaniaMap = document.querySelector(".romaniaMap");
 
     const bulgariaMapLocation = $(".bulgariaMapLocation")[0];
-    let bulgariaMap = document.querySelector("#bulgariaMap");
+    let bulgariaMap = document.querySelector(".bulgariaMap");
 
     const yugoslaviaMapLocation = $(".yugoslaviaMapLocation")[0];
-    let yugoslaviaMap = document.querySelector("#yugoslaviaMap");
+    let yugoslaviaMap = document.querySelector(".yugoslaviaMap");
 
     const albaniaMapLocation = $(".albaniaMapLocation")[0];
-    let albaniaMap = document.querySelector("#albaniaMap");
+    let albaniaMap = document.querySelector(".albaniaMap");
 
     const greeceMapLocation = $(".greeceMapLocation")[0];
-    let greeceMap = document.querySelector("#greeceMap");
+    let greeceMap = document.querySelector(".greeceMap");
 
     const turkeyMapLocation = $(".turkeyMapLocation")[0];
-    let turkeyMap = document.querySelector("#turkeyMap");
+    let turkeyMap = document.querySelector(".turkeyMap");
 
     const italyMapLocation = $(".italyMapLocation")[0];
     let italyMap = document.querySelector(".italyMap");
@@ -2420,15 +2219,6 @@ export let countries = {
     let irishTerritories = ["Ireland"];
     let germanyTerritories = ["Germany","EasternPrussia"];
 
-=======
-  
-    const dateValueOnMap = document.querySelector(".dateValue");
-    const dateOnMap = document.querySelector(".date");
-
-    let resolution = $("#mainNav").width();
-    let factor;
-    
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     calculateResoluctionFactor(resolution)
     recalculateCountriesPositionsBasedOnResolution(factor)
 
@@ -2436,7 +2226,6 @@ export let countries = {
       resolution = $("#mainNav").width();
       calculateResoluctionFactor(resolution)
       recalculateCountriesPositionsBasedOnResolution(factor)
-<<<<<<< HEAD
     })
 
     ////Portugal
@@ -2447,7 +2236,7 @@ export let countries = {
         if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2465,7 +2254,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
     );
@@ -2474,25 +2263,18 @@ export let countries = {
           selectedCountryName = "spain";
           countrySpecialities(selectedCountryName)
       });
-=======
-    })
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     
     ////Poland
     polishMap.addEventListener("click", 
     function(){ 
-<<<<<<< HEAD
         // alert("You chosen Poland, good move!"); 
         firstClickedCountryName = "poland"
         smallFlagSrc = "/Poland-icon.532b2fd1.png"
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
-=======
-        alert("You chosen Poland, good move!"); 
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       }
     );
     polishMap.addEventListener("mouseover", 
@@ -2504,17 +2286,13 @@ export let countries = {
           ////Norway
     norwayMap.addEventListener("click", 
     function(){ 
-<<<<<<< HEAD
       firstClickedCountryName = "norway"
       smallFlagSrc = "/Norway-icon.4a8c8a5e.png"
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
-=======
-        alert("You chosen Norway, good move!"); 
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       }
     );
     norwayMap.addEventListener("mouseover", 
@@ -2526,17 +2304,13 @@ export let countries = {
       ////Sweden
     swedenMap.addEventListener("click", 
     function(){ 
-<<<<<<< HEAD
       firstClickedCountryName = "sweden"
       smallFlagSrc = "/Sweden-icon.da710607.png"
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
-=======
-        alert("You chosen Norway, good move!"); 
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       }
     );
     swedenMap.addEventListener("mouseover", 
@@ -2544,7 +2318,6 @@ export let countries = {
           selectedCountryName = "sweden";
           countrySpecialities(selectedCountryName)
       });
-<<<<<<< HEAD
 
       ////Finland
       finlandMap.addEventListener("click", 
@@ -2554,7 +2327,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2573,7 +2346,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2592,7 +2365,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
         }
       );
@@ -2602,13 +2375,10 @@ export let countries = {
             selectedCountryName = "estonia";
             countrySpecialities(selectedCountryName)
         });
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       
 
     ////Germany
     germanyMap.addEventListener("click", 
-<<<<<<< HEAD
     function(){ 
       // alert("You chosen Germany, bad move!"); 
       firstClickedCountryName = "germany"
@@ -2616,17 +2386,13 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
       }
-=======
-    function(){ alert("You chosen Germany, bad move!"); }
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     );
 
     germanyMap.addEventListener("mouseover", 
     function(){ 
-<<<<<<< HEAD
           checkGermanTerritoriesMouseover();
           selectedCountryName = "germany";
           countrySpecialities(selectedCountryName);
@@ -2646,7 +2412,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
       } else{
         firstClickedCountryName = "easternPrussia"
@@ -2654,7 +2420,7 @@ export let countries = {
         if(!clickedCreateTransport){
           showList(event,firstClickedCountryName,smallFlagSrc)
           } else {
-            buildRoute(firstClickedCountryName);
+            buildRoute(firstClickedCountryName,event);
           }
       }
   }
@@ -2691,31 +2457,9 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
      }
-=======
-          selectedCountryName = "germany";
-          countrySpecialities(selectedCountryName)
-      });
-
-      
-
-    ////GB
-    greatBritainMap.addEventListener("click", 
-    function(){ alert("You chosen GB, bad move!"); }
-    );
-
-    greatBritainMap.addEventListener("mouseover", 
-    function(){ 
-      selectedCountryName = "greatBritain";
-      countrySpecialities(selectedCountryName)
-      });
-
-    ////USSR
-    ussrMap.addEventListener("click", 
-    function(){ alert("You chosen USSR, bad move!"); }
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     );
 
     ussrMap.addEventListener("mouseover", 
@@ -2727,19 +2471,15 @@ export let countries = {
 
     ///Czechoslovakia
     czechoslovakiaMap.addEventListener("click", 
-<<<<<<< HEAD
     function(){ 
       firstClickedCountryName = "czechoslovakia"
       smallFlagSrc = "/Czech-Republic-icon.7f214b3b.png"
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     }
-=======
-    function(){ alert("You chosen Czechoslovakia, good move!"); }
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     );
 
     czechoslovakiaMap.addEventListener("mouseover", 
@@ -2751,19 +2491,15 @@ export let countries = {
 
     ////Austria
     austriaMap.addEventListener("click", 
-<<<<<<< HEAD
     function(){ 
       firstClickedCountryName = "austria"
       smallFlagSrc = "/Austria-icon.41c64192.png"
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     }
-=======
-    function(){ alert("You chosen Austria, good move!"); }
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     );
 
     austriaMap.addEventListener("mouseover", 
@@ -2774,32 +2510,23 @@ export let countries = {
 
     ////France
     franceMap.addEventListener("click", 
-<<<<<<< HEAD
     function(){ 
       firstClickedCountryName = "france"
       smallFlagSrc = "/France-icon.2690ec9f.png"
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     });
 
     franceMap.addEventListener("mouseover", 
     function(){ 
       checkFrenchTerritoriesMouseover();
-=======
-    function(){ alert("You chosen France, good move!"); }
-    );
-
-    franceMap.addEventListener("mouseover", 
-    function(){ 
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       selectedCountryName = "france";
       countrySpecialities(selectedCountryName)
       });
 
-<<<<<<< HEAD
       franceMap.addEventListener("mouseout", 
       function(){ 
         checkFrenchTerritoriesMouseout();
@@ -2813,15 +2540,9 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         }
     });
-=======
-    ////Lituenia
-    lithuaniaMap.addEventListener("click", 
-    function(){ alert("You chosen Lithuania, good move!"); }
-    );
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
     lithuaniaMap.addEventListener("mouseover", 
     function(){ 
@@ -2829,7 +2550,6 @@ export let countries = {
       countrySpecialities(selectedCountryName)
       });
 
-<<<<<<< HEAD
     ////Denmark
     denmarkMap.addEventListener("click", 
     function(){ 
@@ -2838,7 +2558,7 @@ export let countries = {
       if(!clickedCreateTransport){
         showList(event,firstClickedCountryName,smallFlagSrc)
         } else {
-          buildRoute(firstClickedCountryName);
+          buildRoute(firstClickedCountryName,event);
         } 
     });
 
@@ -2864,7 +2584,7 @@ export let countries = {
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "iceland"
@@ -2872,7 +2592,7 @@ export let countries = {
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -2907,7 +2627,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 }
  );
@@ -2926,7 +2646,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2944,7 +2664,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
  });
 
@@ -2962,7 +2682,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -2980,7 +2700,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -2998,7 +2718,7 @@ export let countries = {
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -3016,7 +2736,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     } 
 });
 
@@ -3034,7 +2754,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -3052,7 +2772,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -3070,7 +2790,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -3095,7 +2815,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "sicily"
@@ -3103,7 +2823,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -3139,7 +2859,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "sardynia"
@@ -3147,7 +2867,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -3183,7 +2903,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       } 
   } else {
     firstClickedCountryName = "corsica"
@@ -3191,7 +2911,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -3229,7 +2949,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else {
     firstClickedCountryName = "algieria"
@@ -3237,7 +2957,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 
@@ -3274,7 +2994,7 @@ function(){
   if(!clickedCreateTransport){
     showList(event,firstClickedCountryName,smallFlagSrc)
     } else {
-      buildRoute(firstClickedCountryName);
+      buildRoute(firstClickedCountryName,event);
     }
 });
 
@@ -3295,7 +3015,7 @@ greatBritainMap.addEventListener("click",
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   });
 
@@ -3320,7 +3040,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else{
     firstClickedCountryName = "ireland"
@@ -3328,7 +3048,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 });
@@ -3366,7 +3086,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   } else{
     firstClickedCountryName = "irelandNorth"
@@ -3374,7 +3094,7 @@ function(){
     if(!clickedCreateTransport){
       showList(event,firstClickedCountryName,smallFlagSrc)
       } else {
-        buildRoute(firstClickedCountryName);
+        buildRoute(firstClickedCountryName,event);
       }
   }
 
@@ -3403,15 +3123,11 @@ function(){
     $(irelandNorthMap).removeClass("smallMapOnYellow");
   }
 });
-=======
-
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
 
 
     function recalculateCountriesPositionsBasedOnResolution(){
   
-<<<<<<< HEAD
       polishMapLocation.style.height = (factor * countries.poland.height) + "px";
       polishMapLocation.style.width = (factor * countries.poland.width) + "px";
 
@@ -3517,37 +3233,6 @@ function(){
       easternPrussiaMapLocation.style.height = (factor * countries.easternPrussia.height) + "px";
       easternPrussiaMapLocation.style.width = (factor * countries.easternPrussia.width) + "px";
 
-=======
-      polishMapLocation.style.height = (factor * poland.height) + "px";
-      polishMapLocation.style.width = (factor * poland.width) + "px";
-
-      lithuanianMapLocation.style.height = (factor * lithuania.height) + "px";
-      lithuanianMapLocation.style.width = (factor * lithuania.width) + "px";
-
-      germanyMapLocation.style.height = (factor * germany.height) + "px";
-      germanyMapLocation.style.width = (factor * germany.width) + "px";
-
-      ussrMapLocation.style.height = (factor * ussr.height) + "px";
-      ussrMapLocation.style.width = (factor * ussr.width) + "px";
-
-      czechoslovakiaMapLocation.style.height = (factor * czechoslovakia.height) + "px";
-      czechoslovakiaMapLocation.style.width = (factor * czechoslovakia.width) + "px";
-
-      greatBritainMapLocation.style.height = (factor * greatBritain.height) + "px";
-      greatBritainMapLocation.style.width = (factor * greatBritain.width) + "px";
-      
-      austriaMapLocation.style.height = (factor * austria.height) + "px";
-      austriaMapLocation.style.width = (factor * austria.width) + "px";
-
-      franceMapLocation.style.height = (factor * france.height) + "px";
-      franceMapLocation.style.width = (factor * france.width) + "px";
-
-      norwayMapLocation.style.height = (factor * norway.height) + "px";
-      norwayMapLocation.style.width = (factor * norway.width) + "px";
-
-      swedenMapLocation.style.height = (factor * sweden.height) + "px";
-      swedenMapLocation.style.width = (factor * sweden.width) + "px";
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       
       dateValueOnMap.style.fontSize = (factor * date.fontSize) + "px"
       dateOnMap.style.fontSize = (factor * date.height) + "px"
@@ -3568,13 +3253,9 @@ function(){
       }
       }
      let notifyInfoValue = notifyInfo(selectedCountry)
-<<<<<<< HEAD
      if(!blockageForInfoNotify){
         Notify.info(notifyInfoValue)
      }
-=======
-        Notify.info(notifyInfoValue)
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
 
     function notifyInfo(selectedCountry){
@@ -3582,7 +3263,6 @@ function(){
             + "<br>" + selectedLanguage.specialization + ": " + specialitiesList
     }
 
-<<<<<<< HEAD
     function checkItalianTerritoriesMouseover(){
       if(italyTerritories.includes("Italy") && italyTerritories.includes("Sicily") && italyTerritories.includes("Sardynia")){
         $(italyMap).addClass("italyMapOn")
@@ -3824,6 +3504,7 @@ function(){
       hideActionForCountryList();
     };
 
+    lastClickedCountryTag = event.target;
     controlPanelWidth = $(".countryPanelList").width(); //Y
     controlPanelHeight = $(".countryPanelList").height(); //X
 
@@ -3926,7 +3607,5 @@ export let listObjects = {
     "ireland" : countries.ireland,
     "easternPrussia" : countries.easternPrussia
 }
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
 

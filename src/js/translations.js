@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import {clickedCountryName,currentRoute} from './map'
 import {addAvaiableGoodOptions,translateCurrentRoute} from './transportPanel'
 
 
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 document.addEventListener("DOMContentLoaded", () => {
 const languagesListTranslation = document.querySelector(".languagesList");
 
@@ -23,6 +20,8 @@ languagesListTranslation.addEventListener("click",function(e){
     }
   });
 });
+
+
 
 const   polish = {
         specialization: "Specjalizacja",
@@ -65,11 +64,7 @@ const   polish = {
         turkey: "Turcja",
         denmark: "Dania",
         netherland: "Holandia",
-<<<<<<< HEAD
         belgium: "Belgia",
-=======
-        belgue: "Belgia",
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "mln",
         coal: "Węgiel",
         steel: "Stal",
@@ -89,7 +84,6 @@ const   polish = {
         mostAvailable: "Najbardziej dostępne",
         theLeastAvailable : "Najmniej dostępne",
         theMostExpensive : "Najdroższe",
-<<<<<<< HEAD
         theCheapest : "Najtańsze",
         nickel: "Nikiel",
         chrome: "Chrom",
@@ -107,13 +101,13 @@ const   polish = {
         createTransport : "Stwórz transport",
         countryMarket : "Rynek krajowy",
         checkCountryDetails : "Zobacz szczegóły kraju",
-        truck : "Cięzarowy",
+        truck : "Ciężarowy",
         bus : "Autobusowy",
         railway : "Kolejowy",
         maritime : "Morski",
         air : "Lotniczy",
         countryStartName : "Kraj początkowy",
-        transportType : "Typ transportu",
+        typeOfTransport : "Typ transportu",
         wares : "Towary",
         selectWare : "Wybierz towar",
         passengers: "Pasażerowie",
@@ -127,11 +121,25 @@ const   polish = {
         goodCostInStartedCountry : "Cena towaru w kraju startowym" ,
         goodCostInEndCountry : "Cena towaru w kraju końcowym",
         howManyToTransport : "Ile chcesz przetransportować",
-        isNotANeighborOf: "nie jest sąsiadem"
+        isNotANeighborOf: "nie jest sąsiadem",
+        land: "Lądowy",
+        transportType: "Rodzaj transportu",
+        sea: "Morski",
+        maritimeRouteOverSize: "Trasa morska nie może być stworzona z więcej niż 2 krajów",
+        doNotHaveAccessToSea: "nie ma dostępu do morza",
+        routeDistance: "Długość trasy",
+        distanceUnitValue: "km",
+        alreadyAllCountriesDeletedFromRoute: "Wszystkie kraje zostały już wycofane z trasy",
+        capacity: "Ładowność",
+        quantityNeeded : "Potrzebna ilość",
+        speedUnitKmH : "km/h",
+        speed : "Prędkość",
+        estimatedArrival: "Szacowany czas przybycia",
+        costFor: "Koszt za",
+        calculatedCost : "Koszt wyliczony",
+        income : "Dochód",
+        profit : "Zysk"
         
-=======
-        theCheapest : "Najtańsze"
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
     
 const   english = {
@@ -175,11 +183,7 @@ const   english = {
         turkey: "Turkey",
         denmark: "Denmark",
         netherland: "Netherland",
-<<<<<<< HEAD
         belgium: "Belgium",
-=======
-        belgue: "Belgue",
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "mln",
         coal: "Coal",
         steel: "Steel",
@@ -199,7 +203,6 @@ const   english = {
         mostAvailable: "Most Available",
         theLeastAvailable : "The Least Available",
         theMostExpensive : "The Most Expensive",
-<<<<<<< HEAD
         theCheapest : "The Cheapest",
         nickel: "Nickel",
         chrome: "Chrome",
@@ -223,7 +226,7 @@ const   english = {
         maritime : "Maritime",
         air : "Air",
         countryStartName : "Country start name",
-        transportType : "Transport type",
+        typeOfTransport : "Type of transport",
         wares : "Wares",
         selectWare : "Select ware",
         passengers: "Passengers",
@@ -237,10 +240,24 @@ const   english = {
         goodCostInStartedCountry : "The price of the good in the starting country" ,
         goodCostInEndCountry : "The price of the good in the end country",
         howManyToTransport : "How many do you want to transport",
-        isNotANeighborOf: "is not a neighbor of"
-=======
-        theCheapest : "The Cheapest"
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
+        isNotANeighborOf: "is not a neighbor of",
+        land: "Land",
+        transportType: "Transport type",
+        sea: "Sea",
+        maritimeRouteOverSize: "The sea route cannot be composed of more than 2 countries",
+        doNotHaveAccessToSea: "do not have access to sea",
+        routeDistance: "Route distance",
+        distanceUnitValue: "km",
+        alreadyAllCountriesDeletedFromRoute: "Already all countries were deleted from route",
+        capacity: "Capacity",
+        quantityNeeded : "Quantity needed",
+        speedUnitKmH : "km/h",
+        speed : "Speed",
+        estimatedArrival: "Estimated arrival time",
+        costFor: "Cost for",
+        calculatedCost : "Calculated cost",
+        income : "Income",
+        profit : "Profit"
     }
     
 const   russian = {
@@ -284,11 +301,7 @@ const   russian = {
         turkey: "Турция",
         denmark: "Дания",
         netherland: "Нидерланды",
-<<<<<<< HEAD
         belgium: "бельгия",
-=======
-        belgue: "бельгия",
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         milionShortcut: "млн",
         coal: "каменный уголь",
         steel: "стали",
@@ -308,7 +321,6 @@ const   russian = {
         mostAvailable: "Самый доступный",
         theLeastAvailable : "Наименее доступный",
         theMostExpensive : "Самый дорогой",
-<<<<<<< HEAD
         theCheapest : "Самый дешевый",
         nickel: "никель",
         chrome: "Хром",
@@ -332,7 +344,7 @@ const   russian = {
         maritime : "морской",
         air : "Воздуха",
         countryStartName : "Начальное название страны",
-        transportType : "Тип транспорта",
+        typeOfTransport : "Вид транспорта",
         wares : "Товары",
         selectWare : "Выберите продукт",
         passengers: "Пассажиры",
@@ -346,21 +358,27 @@ const   russian = {
         goodCostInStartedCountry : "Цена товара в стартовой стране" ,
         goodCostInEndCountry : "Цена товара в конечной стране",
         howManyToTransport : "Сколько вы хотите перевезти",
-        isNotANeighborOf: "не является соседом"
+        isNotANeighborOf: "не является соседом",
+        land: "Земельные участки",
+        transportType: "Тип транспорта",
+        sea: "морской",
+        maritimeRouteOverSize: "Морской путь не может состоять более чем из 2 стран",
+        doNotHaveAccessToSea: "не имеют выхода к морю",
+        routeDistance: "Расстояние маршрута",
+        distanceUnitValue: "км",
+        alreadyAllCountriesDeletedFromRoute: "Уже все страны удалены из маршрута",
+        capacity: "Вместимость",
+        quantityNeeded : "Необходимое количество",
+        speedUnitKmH : "км/ч",
+        speed : "Скорость",
+        estimatedArrival: "Ожидаемое время прибытия",
+        costFor: "Стоимость для",
+        calculatedCost : "Расчетная стоимость",
+        income : "Доход",
+        profit : "Прибыль"
     }
 
 export let selectedLanguage = polish;
-=======
-        theCheapest : "Самый дешевый"
-    }
-
-    
-    
-let selectedLanguage = polish;
-
-  
-
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
 
   function toggleLanguage(){
       //////catch all ids on site
@@ -375,7 +393,6 @@ let selectedLanguage = polish;
    const translationSelectLanguage = document.getElementById("languages");
    const translationManual = document.getElementById("manual");
    const translationMyAchievements = document.getElementById("myAchievements");
-<<<<<<< HEAD
    const pauseLaunched = document.getElementById("pauseLaunched");
    const createTransport = document.getElementById("createTransport");
    const countryMarket = document.getElementById("countryMarket");
@@ -387,7 +404,7 @@ let selectedLanguage = polish;
    const maritime = document.getElementById("maritime");
    const air = document.getElementById("air");
    const countryStartName = $(".countryStartName")[0];
-   const transportType =  $(".transportType")[1];
+   const typeOfTransport =  document.getElementById("typeOfTransport")
    const selectWare =  $(".selectWare")[1];  
    const countryStartNameValue = $(".countryStartNameValue")[0];
    const routeBy = $(".routeBy")[1];
@@ -397,8 +414,20 @@ let selectedLanguage = polish;
    const goodCostInEndCountry = $(".goodCostInEndCountry")[1];
    const goodCostInStartedCountry = $(".goodCostInStartedCountry")[1];
    const howManyToTransport = $(".howManyToTransport")[1];
-=======
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
+   const transportType = document.getElementById("transportType");
+
+   const routeDistance = $(".routeDistance")[1];
+   const distanceUnit = $(".distanceUnit")[1];
+   const capacity = $(".capacity")[0];
+   const quantityNeeded =  $(".neccesseryQty")[0];
+   const speed =  $(".speed")[0];
+   const speedUnitKmH = $(".speedUnitKmH")[0];
+   const estimatedArrival = $(".estimatedArrival")[0];
+
+   const costFor = $(".singularCost")[0];
+   const calculatedCost = $(".calculatedCost")[0];
+   const income = $(".income")[0];
+   const profit = $(".profit")[0];
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -412,7 +441,6 @@ let selectedLanguage = polish;
     translationSelectLanguage.innerHTML = selectedLanguage.selectLanguage;
     translationManual.innerHTML = selectedLanguage.instruction;
     translationMyAchievements.innerHTML = selectedLanguage.myAchievements;
-<<<<<<< HEAD
     pauseLaunched.innerHTML = selectedLanguage.pauseLaunched;
     createTransport.innerHTML = selectedLanguage.createTransport;
     countryMarket.innerHTML = selectedLanguage.countryMarket;
@@ -425,7 +453,7 @@ let selectedLanguage = polish;
     maritime.innerHTML = selectedLanguage.maritime;
     air.innerHTML = selectedLanguage.air;
     countryStartName.innerHTML = selectedLanguage.countryStartName;
-    transportType.innerHTML = selectedLanguage.transportType;
+    typeOfTransport.innerHTML = selectedLanguage.typeOfTransport;
     selectWare.innerHTML = selectedLanguage.selectWare;
     routeBy.innerHTML = selectedLanguage.routeBy;
     endCountryOfTheRoute.innerHTML = selectedLanguage.endCountryOfTheRoute;
@@ -433,17 +461,27 @@ let selectedLanguage = polish;
     goodCostInStartedCountry.innerHTML = selectedLanguage.goodCostInStartedCountry;
     goodCostInEndCountry.innerHTML = selectedLanguage.goodCostInEndCountry;
     howManyToTransport.innerHTML = selectedLanguage.howManyToTransport;
+    transportType.innerHTML = selectedLanguage.transportType;
 
+    routeDistance.innerHTML = selectedLanguage.routeDistance;
+    distanceUnit.innerHTML = selectedLanguage.distanceUnitValue;
+    capacity.innerHTML = selectedLanguage.capacity;
+    quantityNeeded.innerHTML = selectedLanguage.quantityNeeded;
+    speed.innerHTML = selectedLanguage.speed;
+    speedUnitKmH.innerHTML = selectedLanguage.speedUnitKmH;
+
+    estimatedArrival.innerHTML = selectedLanguage.estimatedArrival;
+    profit.innerHTML = selectedLanguage.profit;
+    costFor.innerHTML = selectedLanguage.costFor ;
+    calculatedCost.innerHTML = selectedLanguage.calculatedCost ;
+    income.innerHTML = selectedLanguage.income ;
+
+    
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);
   }
 
   export function refreshObjectsTranslation(searchedObject){
-=======
-  }
-
-  function refreshObjectsTranslation(searchedObject){
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
    
      goods ={
         main: {
@@ -465,14 +503,10 @@ let selectedLanguage = polish;
           1: selectedLanguage.zinc,
           2: selectedLanguage.wolfram,
           3: selectedLanguage.ideas,
-<<<<<<< HEAD
           4: selectedLanguage.mechanicalParts,
           5: selectedLanguage.chrome,
           6: selectedLanguage.nickel,
           7: selectedLanguage.forestGoods
-=======
-          4: selectedLanguage.mechanicalParts
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
         }
       }
   
@@ -511,14 +545,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -560,14 +590,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -610,14 +636,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -660,14 +682,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -711,14 +729,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -759,14 +773,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -810,14 +820,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -858,14 +864,10 @@ let selectedLanguage = polish;
             clothes: 20,
             zinc: 75,
             wolfram: 100,
-<<<<<<< HEAD
             mechanicalParts: 150,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           goodsAvailability: {
             coal: 100,
@@ -881,32 +883,20 @@ let selectedLanguage = polish;
             clothes: 90,
             zinc: 15,
             wolfram: 40,
-<<<<<<< HEAD
             mechanicalParts: 5,
             chrome : 5,
             nickel: 3,
             forestGoods: 20
-=======
-            mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
           },
           population: 2.9
         }
 
         let sweden = {
-<<<<<<< HEAD
           height: 427.45,
           width: 354.8,
           specialities: {
               1: goods.specific[2],
               2: goods.main[4],
-=======
-          height: 330,
-          width: 290.4,
-          specialities: {
-              1: goods.specific[2],
-              2: goods.specific[3],
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               3: goods.main[2]
             },  
             goodCosts: {
@@ -923,14 +913,10 @@ let selectedLanguage = polish;
               clothes: 20,
               zinc: 75,
               wolfram: 100,
-<<<<<<< HEAD
               mechanicalParts: 150,
               chrome : 5,
               nickel: 3,
               forestGoods: 20
-=======
-              mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             },
             goodsAvailability: {
               coal: 100,
@@ -946,33 +932,20 @@ let selectedLanguage = polish;
               clothes: 90,
               zinc: 15,
               wolfram: 40,
-<<<<<<< HEAD
               mechanicalParts: 5,
               chrome : 1,
               nickel: 2,
               forestGoods: 50
-=======
-              mechanicalParts: 5
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             },
             population: 6.2
           }
 
           let finland = {
-<<<<<<< HEAD
             height: 257.1,
             width: 275,
             specialities: {
                 1: goods.specific[6],
                 2: goods.additional[2]
-=======
-            height: 330,
-            width: 290.4,
-            specialities: {
-                1: goods.specific[2],
-                2: goods.specific[3],
-                3: goods.main[2]
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },  
               goodCosts: {
                 coal: 30,
@@ -988,14 +961,10 @@ let selectedLanguage = polish;
                 clothes: 20,
                 zinc: 75,
                 wolfram: 100,
-<<<<<<< HEAD
                 mechanicalParts: 150,
                 chrome : 5,
                 nickel: 3,
                 forestGoods: 20
-=======
-                mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },
               goodsAvailability: {
                 coal: 100,
@@ -1013,7 +982,6 @@ let selectedLanguage = polish;
                 wolfram: 40,
                 mechanicalParts: 5
               },
-<<<<<<< HEAD
               population: 3.5
             }
 
@@ -1022,18 +990,6 @@ let selectedLanguage = polish;
               width: 170,
               specialities: {
                   1: goods.specific[7]
-=======
-              population: 6.2
-            }
-
-            let latvia = {
-              height: 330,
-              width: 290.4,
-              specialities: {
-                  1: goods.specific[2],
-                  2: goods.specific[3],
-                  3: goods.main[2]
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },  
                 goodCosts: {
                   coal: 30,
@@ -1049,14 +1005,10 @@ let selectedLanguage = polish;
                   clothes: 20,
                   zinc: 75,
                   wolfram: 100,
-<<<<<<< HEAD
                   mechanicalParts: 150,
                   chrome : 5,
                   nickel: 3,
                   forestGoods: 20
-=======
-                  mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },
                 goodsAvailability: {
                   coal: 100,
@@ -1072,7 +1024,6 @@ let selectedLanguage = polish;
                   clothes: 90,
                   zinc: 15,
                   wolfram: 40,
-<<<<<<< HEAD
                   mechanicalParts: 5,
                   chrome : 1,
                   nickel: 2,
@@ -1086,20 +1037,6 @@ let selectedLanguage = polish;
                 width: 150,
                 specialities: {
                   1: goods.additional[2]
-=======
-                  mechanicalParts: 5
-                },
-                population: 6.2
-              }
-    
-              let estonia = {
-                height: 330,
-                width: 290.4,
-                specialities: {
-                    1: goods.specific[2],
-                    2: goods.specific[3],
-                    3: goods.main[2]
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },  
                   goodCosts: {
                     coal: 30,
@@ -1115,14 +1052,10 @@ let selectedLanguage = polish;
                     clothes: 20,
                     zinc: 75,
                     wolfram: 100,
-<<<<<<< HEAD
                     mechanicalParts: 150,
                     chrome : 5,
                     nickel: 3,
                     forestGoods: 20
-=======
-                    mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },
                   goodsAvailability: {
                     coal: 100,
@@ -1140,14 +1073,9 @@ let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
-<<<<<<< HEAD
                   population: 1.1
                 }
 
-=======
-                  population: 6.2
-                }
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 let romania = {
                   height: 330,
                   width: 290.4,
@@ -1170,14 +1098,10 @@ let selectedLanguage = polish;
                       clothes: 20,
                       zinc: 75,
                       wolfram: 100,
-<<<<<<< HEAD
                       mechanicalParts: 150,
                       chrome : 5,
                       nickel: 3,
                       forestGoods: 20
-=======
-                      mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     },
                     goodsAvailability: {
                       coal: 100,
@@ -1195,11 +1119,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-<<<<<<< HEAD
                     population: 15
-=======
-                    population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
                   let hungary = {
                     height: 330,
@@ -1223,14 +1143,10 @@ let selectedLanguage = polish;
                         clothes: 20,
                         zinc: 75,
                         wolfram: 100,
-<<<<<<< HEAD
                         mechanicalParts: 150,
                         chrome : 5,
                         nickel: 3,
                         forestGoods: 20
-=======
-                        mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                       },
                       goodsAvailability: {
                         coal: 100,
@@ -1248,11 +1164,7 @@ let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
-<<<<<<< HEAD
                       population: 8.9
-=======
-                      population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     }
 
             let turkey = {
@@ -1277,14 +1189,10 @@ let selectedLanguage = polish;
                 clothes: 20,
                 zinc: 75,
                 wolfram: 100,
-<<<<<<< HEAD
                 mechanicalParts: 150,
                 chrome : 5,
                 nickel: 3,
                 forestGoods: 20
-=======
-                mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               },
               goodsAvailability: {
                 coal: 100,
@@ -1302,11 +1210,7 @@ let selectedLanguage = polish;
                 wolfram: 40,
                 mechanicalParts: 5
               },
-<<<<<<< HEAD
               population: 16.2
-=======
-              population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
             }
 
 
@@ -1332,14 +1236,10 @@ let selectedLanguage = polish;
                   clothes: 20,
                   zinc: 75,
                   wolfram: 100,
-<<<<<<< HEAD
                   mechanicalParts: 150,
                   chrome : 5,
                   nickel: 3,
                   forestGoods: 20
-=======
-                  mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 },
                 goodsAvailability: {
                   coal: 100,
@@ -1357,11 +1257,7 @@ let selectedLanguage = polish;
                   wolfram: 40,
                   mechanicalParts: 5
                 },
-<<<<<<< HEAD
                 population: 14
-=======
-                population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
               }
 
               let greece = {
@@ -1386,14 +1282,10 @@ let selectedLanguage = polish;
                     clothes: 20,
                     zinc: 75,
                     wolfram: 100,
-<<<<<<< HEAD
                     mechanicalParts: 150,
                     chrome : 5,
                     nickel: 3,
                     forestGoods: 20
-=======
-                    mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   },
                   goodsAvailability: {
                     coal: 100,
@@ -1411,11 +1303,7 @@ let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
-<<<<<<< HEAD
                   population: 6.8
-=======
-                  population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 }
 
 
@@ -1441,14 +1329,10 @@ let selectedLanguage = polish;
                       clothes: 20,
                       zinc: 75,
                       wolfram: 100,
-<<<<<<< HEAD
                       mechanicalParts: 150,
                       chrome : 5,
                       nickel: 3,
                       forestGoods: 20
-=======
-                      mechanicalParts: 150
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                     },
                     goodsAvailability: {
                       coal: 100,
@@ -1466,11 +1350,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-<<<<<<< HEAD
                     population: 42
-=======
-                    population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
 
             let spain = {
@@ -1513,11 +1393,7 @@ let selectedLanguage = polish;
                     wolfram: 40,
                     mechanicalParts: 5
                   },
-<<<<<<< HEAD
                   population: 24
-=======
-                  population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                 }
 
 
@@ -1561,11 +1437,7 @@ let selectedLanguage = polish;
                       wolfram: 40,
                       mechanicalParts: 5
                     },
-<<<<<<< HEAD
                     population: 7.1
-=======
-                    population: 6.2
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
                   }
   
                   let bulgaria = {
@@ -1608,7 +1480,6 @@ let selectedLanguage = polish;
                         wolfram: 40,
                         mechanicalParts: 5
                       },
-<<<<<<< HEAD
                       population: 6.3
                     }
                     
@@ -2272,14 +2143,6 @@ let selectedLanguage = polish;
         population: 2.5
     }
     
-=======
-                      population: 6.2
-                    }
-
-
-  
-
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
       listObjects = {
         "goods" : goods,
         "ussr" : ussr,
@@ -2303,7 +2166,6 @@ let selectedLanguage = polish;
         "greece" : greece,
         "italy" : italy,
         "spain" : spain,
-<<<<<<< HEAD
         "portugal" : portugal,
         "denmark" : denmark,
         "belgium" : belgium,
@@ -2318,10 +2180,6 @@ let selectedLanguage = polish;
         "irelandNorth" : irelandNorth,
         "ireland" : ireland,
         "easternPrussia" : easternPrussia
-=======
-        "portugal" : portugal
-
->>>>>>> f60823ec125d4d31e17ffab4d8602db55eaf6cb2
     }
     
     let myObject = listObjects[searchedObject];

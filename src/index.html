@@ -269,7 +269,7 @@
                 <span class="availableQty">Dostępna ilość</span><span>: </span><span class="availableQtyValue values"></span>
             </div>
             <div class="howManyToTransport">
-                <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input id="howManyToTransportValue" type="number"></input>
+                <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input id="howManyToTransportValue" min="0" type="number"></input>
             </div>
             <div class="goodCostInStartedCountry">
                 <span class="goodCostInStartedCountry">Cena towaru w kraju startowym</span><span>: </span><span class="goodCostInStartedCountryValue values"></span>
@@ -288,12 +288,12 @@
             </div>
         </div>
         <img src="./img/icons/cross-icon.png" class="createTransportPanelSwitchOff" height="50">
-        <div id="transportTypeData" class="busTransportTypeData">
-            <img style="position:absolute;right: 2%;" src="./img/icons/bus-icon.png" id="transportTypeImg" height="50">
+        <div id="transportTypeData" class="transportTypeData">
+            <img style="position:absolute;right: 2%;" src="./img/icons/bus-icon.png" class="transportTypeImg" height="70">
             <div class="transportTypeDetails">
                 <div><span class="capacity">Ładowność</span><span>: </span><span class="capacityValue values">30</span></div>
                 <div><span class="neccesseryQty">Potrzebna ilość</span><span>: </span><span class="neccesseryQtyValue values">0</span></div>
-                <div><span class="speed">Prędkość</span><span>: </span><span class="speedValue values">0</span><span> </span><span id="speedUnit" class="speedUnitKmH">km/h</span></div>
+                <div><span class="speed">Prędkość</span><span>: </span><span class="speedValue values">22</span><span> </span><span id="speedUnit" class="speedUnitKmH">km/h</span></div>
                 <div><span class="estimatedArrival">Szacowany czas przybycia</span><span>: </span><span class="estimateArrivalValue values"></span></div>
             </div>
             <div class="costs">
@@ -310,37 +310,40 @@
     
 
 
-    <section>
-        <img src="./img/country_icons/German-Reich-icon.png" style="display: none;">
-        <img src="./img/country_icons/Albania-Flag-icon.png" style="display: none;">
-        <img src="./img/country_icons/Austria-icon.png" style="display: none;">
-        <img src="./img/country_icons/Belgium-icon.png" style="display: none;">
-        <img src="./img/country_icons/Bulgaria-icon.png" style="display: none;">
-        <img src="./img/country_icons/Czech-Republic-icon.png" style="display: none;">
-        <img src="./img/country_icons/Denmark-icon.png" style="display: none;">
-        <img src="./img/country_icons/Estonia-icon.png" style="display: none;">
-        <img src="./img/country_icons/Finland-icon.png" style="display: none;">
-        <img src="./img/country_icons/France-icon.png" style="display: none;">
-        <img src="./img/country_icons/Greece-icon.png" style="display: none;">
-        <img src="./img/country_icons/Hungary-icon.png" style="display: none;">
-        <img src="./img/country_icons/Iceland-icon.png" style="display: none;">
-        <img src="./img/country_icons/Ireland-icon.png" style="display: none;">
-        <img src="./img/country_icons/Italy-icon.png" style="display: none;">
-        <img src="./img/country_icons/Lithuania-icon.png" style="display: none;">
-        <img src="./img/country_icons/Netherlands-icon.png" style="display: none;">
-        <img src="./img/country_icons/Norway-icon.png" style="display: none;">
-        <img src="./img/country_icons/Portugal-icon.png" style="display: none;">
-        <img src="./img/country_icons/Romania-icon.png" style="display: none;">
-        <img src="./img/country_icons/Spain-icon.png" style="display: none;">
-        <img src="./img/country_icons/Romania-icon.png" style="display: none;">
-        <img src="./img/country_icons/Sweden-icon.png" style="display: none;">
-        <img src="./img/country_icons/Switzerland-Flag-icon.png" style="display: none;">
-        <img src="./img/country_icons/Turkey-icon.png" style="display: none;">
-        <img src="./img/country_icons/Ulster-icon.png" style="display: none;">
-        <img src="./img/country_icons/United-Kingdom-icon.png" style="display: none;">
-        <img src="./img/country_icons/ussr.png" style="display: none;">
-        <img src="./img/country_icons/Yugoslavia-Flag-icon.png" style="display: none;">
-        <img src="./img/country_icons/Latvia-Flag-icon.png" style="display: none;">
+    <section class="hide">
+        <img src="./img/country_icons/German-Reich-icon.png" >
+        <img src="./img/country_icons/Albania-Flag-icon.png" >
+        <img src="./img/country_icons/Austria-icon.png" ">
+        <img src="./img/country_icons/Belgium-icon.png" ">
+        <img src="./img/country_icons/Bulgaria-icon.png" ">
+        <img src="./img/country_icons/Czech-Republic-icon.png" ">
+        <img src="./img/country_icons/Denmark-icon.png" ">
+        <img src="./img/country_icons/Estonia-icon.png" >
+        <img src="./img/country_icons/Finland-icon.png" >
+        <img src="./img/country_icons/France-icon.png" >
+        <img src="./img/country_icons/Greece-icon.png" >
+        <img src="./img/country_icons/Hungary-icon.png" >
+        <img src="./img/country_icons/Iceland-icon.png" ">
+        <img src="./img/country_icons/Ireland-icon.png" ">
+        <img src="./img/country_icons/Italy-icon.png" ">
+        <img src="./img/country_icons/Lithuania-icon.png" ">
+        <img src="./img/country_icons/Netherlands-icon.png" ">
+        <img src="./img/country_icons/Norway-icon.png" ">
+        <img src="./img/country_icons/Portugal-icon.png" ">
+        <img src="./img/country_icons/Romania-icon.png" ">
+        <img src="./img/country_icons/Spain-icon.png" ">
+        <img src="./img/country_icons/Romania-icon.png" ">
+        <img src="./img/country_icons/Sweden-icon.png" ">
+        <img src="./img/country_icons/Switzerland-Flag-icon.png" ">
+        <img src="./img/country_icons/Turkey-icon.png" ">
+        <img src="./img/country_icons/Ulster-icon.png" ">
+        <img src="./img/country_icons/United-Kingdom-icon.png" ">
+        <img src="./img/country_icons/ussr.png" ">
+        <img src="./img/country_icons/Yugoslavia-Flag-icon.png" ">
+        <img src="./img/country_icons/Latvia-Flag-icon.png" ">
+        <img src="./img/icons/train-icon.png" id="trainIconImg">
+        <img src="./img/icons/truck-icon.png"  id="truckIconImg">
+        <img src="./img/icons/ship-icon.png"   id="shipIconTypeImg">
     </section>
     </div>
    <script>

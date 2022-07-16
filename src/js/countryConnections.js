@@ -1016,13 +1016,13 @@ export let countryConnections = {
             "italy": 5062,
             "yugoslavia": 6232,
             "albania": 5852,
-            "greece": 1000,
+            "greece": 6219,
             "turkey": 6801,
             "bulgaria": 7073,
             "romania": 7159,
             "ireland" : 1635
         },
-        ireland:{ //Reykiavik
+        ireland:{ //Dublin
             "poland": 2346,
             "sweden": 2631,
             "finland": 2865,

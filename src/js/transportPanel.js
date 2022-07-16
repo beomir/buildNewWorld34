@@ -49,7 +49,7 @@ const originalNameOfVehicles = new Map(); // to future use for translate for exa
 const meanOfTransport = document.querySelector(".meanOfTransport");
 const singularCostValue = document.querySelector(".singularCostValue");
 
-const calculatedCostValue = document.querySelector(".calculatedCostValue");
+const calculatedCostValueTag = document.querySelector(".calculatedCostValue");
 let availableGoodQuantity;
 const capacityValue = document.querySelector(".capacityValue");
 const neccesseryQtyValue = document.querySelector(".neccesseryQtyValue");
@@ -59,7 +59,18 @@ let speedValueOfSelectedTransport;
 let capacityOfSelectedTransport;
 let neededTransportUnits = 0;
 
-const earnings = document.getElementById("earnings")
+const earnings = document.getElementById("earnings");
+const incomeValue = document.querySelector(".incomeValue");
+const profitValue = document.querySelector(".profitValue");
+let calculatedIncomeValue;
+
+let calculatedProfitValue;
+let calculatedCostValue;
+let goodPriceInStartedCountry;
+const transportTypeImg = document.querySelector(".transportTypeImg");
+
+const transportTypeData = document.querySelector(".transportTypeData")
+
 
 let transportType =  {
     land:{
@@ -135,8 +146,8 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
 
     currentEndCountryOfTheRoute = null;
     endCountryOfTheRoute.innerHTML = "";
-    goodPriceInEndCountry = "";
-    goodCostInEndCountryValue.innerHTML = ""
+    goodPriceInEndCountry = 0;
+    goodCostInEndCountryValue.innerHTML = 0
 
     howManyToTransportValue.value = 0;
     availableQtyValue.innerHTML = 0;
@@ -257,7 +268,7 @@ wares.addEventListener("change",function(){
     let startCountryObject = listObjects[startedCountry];
     
     availableGoodQuantity = startCountryObject.goodsAvailability[selectedWare];
-    let goodPriceInStartedCountry = startCountryObject.goodCosts[selectedWare];
+    goodPriceInStartedCountry = startCountryObject.goodCosts[selectedWare];
     
     goodCostInStartedCountryValue.innerHTML = goodPriceInStartedCountry;
     availableQtyValue.innerHTML = availableGoodQuantity;
@@ -277,17 +288,11 @@ howManyToTransportValue.addEventListener("change",function(){
     if(howManyToTransportValue.value>availableGoodQuantity){
         howManyToTransportValue.value = availableGoodQuantity;
     }
-
-    neededTransportUnits = howManyToTransportValue.value / capacityOfSelectedTransport ;
-    if(Math.ceil(neededTransportUnits) == 0){
-        neededTransportUnits = 1;
-    } else{
-        neededTransportUnits =  Math.ceil(neededTransportUnits);
-    };
+    if(howManyToTransportValue.value<0){
+        howManyToTransportValue.value = 0;
+    }
     
-    neccesseryQtyValue.innerHTML = neededTransportUnits;
     calculateCostValue();
-    
 })
 
 transportTypeList.addEventListener("change",function(){
@@ -299,7 +304,8 @@ transportTypeList.addEventListener("change",function(){
     calculateCostValue();
     
     if(lastActiveTransportBeforeChange != lastActiveTransportType[0]){
-        cleanCurrentRoute();
+         cleanCurrentRoute();
+         resetCostsAndEarnings();
          distanceRoute = [];
          calculetedRouteDistance = 0;
          routeDistanceValue.innerHTML = calculetedRouteDistance;
@@ -315,8 +321,8 @@ transportTypeList.addEventListener("change",function(){
 
         currentEndCountryOfTheRoute = null;
         endCountryOfTheRoute.innerHTML = "";
-        goodPriceInEndCountry = "";
-        goodCostInEndCountryValue.innerHTML = ""
+        goodPriceInEndCountry = 0;
+        goodCostInEndCountryValue.innerHTML = 0;
         
 
     }
@@ -414,7 +420,7 @@ function setProperTransportBasedOnGoods(){
             calculateCostValue();
         } 
     }
-}
+};
 
 function addToRoute(firstClickedCountryName,startedCountry,selectedTransportTypeToTransfer,event){
 
@@ -496,11 +502,11 @@ function checkWhichTransportType(selectedTransportType){
 
         // return typeDetail;
     }
-}
+};
 
 function getObjKeysByObjectAndValue(obj, value) {
     return Object.keys(obj).filter(key => obj[key] === value);
-  }
+  };
 
   function cleanRouteDistance(){
     distanceRoute = [];
@@ -559,7 +565,7 @@ function getObjKeysByObjectAndValue(obj, value) {
         tagToHighlight.parentElement.classList.add("inRoute");
         tagToHighlight.classList.add("inRouteBorder");
     }
-  }
+  };
 
   function highlightCountryOff(firstClickedCountryName,tagToHighlightOff){
     if(bigCountry.includes(firstClickedCountryName)){
@@ -569,7 +575,7 @@ function getObjKeysByObjectAndValue(obj, value) {
         tagToHighlightOff.parentElement.classList.remove("inRoute")
         tagToHighlightOff.classList.remove("inRouteBorder")
     }
-  }
+  };
 
   function addOptionsToMeanOfTransport(optionValue){
     // originalNameOfVehicles.set(selectedLanguage[vehicle],vehicle)
@@ -587,6 +593,7 @@ function getObjKeysByObjectAndValue(obj, value) {
   })
 
   function calculateCostValue(){
+    
     let mainTransportTypeName;
     let middleTransportTypeName;
     if(lastActiveTransportType[1] == "bus" || lastActiveTransportType[1] == "truck"){
@@ -608,16 +615,20 @@ function getObjKeysByObjectAndValue(obj, value) {
             middleTransportTypeName = "loadShips"
         }
     }
-    let selectedTransportTypeCost = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].cost;
-    singularCostValue.innerHTML = selectedTransportTypeCost;
-    console.log(selectedTransportTypeCost);
-    console.log(calculetedRouteDistance);
-    console.log(neededTransportUnits);
-    console.log(selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits);
-    calculatedCostValue.innerHTML = selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits;
-    displayEarningPanel();
+
     displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName);
     displayTransportTypeSpeed(mainTransportTypeName,middleTransportTypeName);
+    calculateNeededTransportUnits();
+
+    let selectedTransportTypeCost = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].cost;
+    singularCostValue.innerHTML = selectedTransportTypeCost;
+    calculatedCostValue = selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits;
+    calculatedCostValueTag.innerHTML = calculatedCostValue;
+
+    calculateEarnings();
+    displayEarningPanel();
+
+    setPoperTransportTypeImage();
   };
 
   function displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName){
@@ -633,12 +644,76 @@ function getObjKeysByObjectAndValue(obj, value) {
   function displayTransportTypeSpeed(mainTransportTypeName,middleTransportTypeName){
     speedValueOfSelectedTransport = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].speed;
     speedValue.innerHTML = speedValueOfSelectedTransport
-  }
+  };
+
+  function calculateEarnings(){
+   
+    if(!isNaN(howManyToTransportValue.value) && !isNaN(goodPriceInStartedCountry) && !isNaN(goodPriceInEndCountry)){
+    calculatedIncomeValue = (goodPriceInEndCountry - goodPriceInStartedCountry) * howManyToTransportValue.value;
+    incomeValue.innerHTML = calculatedIncomeValue;
+    };
+
+    if(!isNaN(calculatedIncomeValue) && !isNaN(calculatedCostValue)){
+     calculatedProfitValue = calculatedIncomeValue - calculatedCostValue;
+     profitValue.innerHTML = calculatedProfitValue;
+    };
+  };
 
   function displayEarningPanel(){
+    if(calculatedIncomeValue != null && calculatedIncomeValue != 0){
+        earnings.style.visibility = "visible"
+        if(calculatedProfitValue > 0){ //if calculatedProfitValue is bigger than 0 then mark background color on green
+            earnings.classList.remove("earningsMinus");
+            earnings.classList.add("earningsPlus");
+        } else{ //otherwise in red 
+            earnings.classList.remove("earningsPlus");
+            earnings.classList.add("earningsMinus");
+        }
+    } else {
+        earnings.style.visibility = "hidden"
+    }
+    
+  };
 
-    earnings.style.visibility = "visible"
+  function calculateNeededTransportUnits(){
+    neededTransportUnits = howManyToTransportValue.value / capacityOfSelectedTransport ;
+    if(Math.ceil(neededTransportUnits) == 0){
+        neededTransportUnits = 1;
+    } else{
+        neededTransportUnits =  Math.ceil(neededTransportUnits);
+    };
+    neccesseryQtyValue.innerHTML = neededTransportUnits;
+  };
+
+  function resetCostsAndEarnings(){
+    calculatedCostValue = 0;
+    calculatedCostValueTag.innerHTML = calculatedCostValue;
+    calculatedProfitValue = 0;
+    profitValue.innerHTML = calculatedProfitValue;
+
+    calculatedIncomeValue = 0;
+    incomeValue.innerHTML = calculatedIncomeValue;
+    displayEarningPanel();
+  };
+
+  function setPoperTransportTypeImage(){
+    let transportTypeValue = transportTypeList.value;
+    console.log(transportTypeValue);
+    if(selectedLanguage["bus"] == transportTypeValue){
+        transportTypeImg.src = "/bus-icon.04337034.png"
+        transportTypeData.style.backgroundColor = "#c34f7f"
+    } else if(selectedLanguage["railway"] == transportTypeValue){
+        transportTypeImg.src = "/train-icon.8bd23904.png"
+        transportTypeData.style.backgroundColor = "#c40856"
+    } else if(selectedLanguage["truck"] == transportTypeValue){
+        transportTypeImg.src = "/truck-icon.57ecb994.png"
+        transportTypeData.style.backgroundColor = "#863859"
+    } else if(selectedLanguage["maritime"] == transportTypeValue){
+        transportTypeImg.src = "/ship-icon.dfd19004.png"
+        transportTypeData.style.backgroundColor = "#6c58da"
+    }
   }
 
-    
 
+  /////TODO add logic with passangers
+  /////////TODO add efect rolling on for transport panel

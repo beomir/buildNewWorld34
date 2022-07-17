@@ -1,4 +1,4 @@
-import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue} from './map';
+import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue,time} from './map';
 import {selectedLanguage} from './translations';
 import {countryConnections} from './countryConnections';
 import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
@@ -70,6 +70,15 @@ let goodPriceInStartedCountry;
 const transportTypeImg = document.querySelector(".transportTypeImg");
 
 const transportTypeData = document.querySelector(".transportTypeData")
+let estimatedTimeOfArrival;
+let neededTimeForTransport;
+const estimatedArrivalValue = document.querySelector(".estimatedArrivalValue");
+
+const travelTimeValue = document.querySelector(".travelTimeValue");
+
+const thirtyOneDayMonths = ["1","3","5","7","8","10","12"];
+const thirtyDayMonths = ["2","4","6","9","11"];
+
 
 
 let transportType =  {
@@ -461,6 +470,7 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
     }
     
     calculateCostValue();
+    calculateEstimatedTimeOfArrival();
 };
 
 function checkWhichTransportType(selectedTransportType){
@@ -657,6 +667,8 @@ function getObjKeysByObjectAndValue(obj, value) {
      calculatedProfitValue = calculatedIncomeValue - calculatedCostValue;
      profitValue.innerHTML = calculatedProfitValue;
     };
+
+    calculateEstimatedTimeOfArrival();
   };
 
   function displayEarningPanel(){
@@ -698,7 +710,7 @@ function getObjKeysByObjectAndValue(obj, value) {
 
   function setPoperTransportTypeImage(){
     let transportTypeValue = transportTypeList.value;
-    console.log(transportTypeValue);
+
     if(selectedLanguage["bus"] == transportTypeValue){
         transportTypeImg.src = "/bus-icon.04337034.png"
         transportTypeData.style.backgroundColor = "#c34f7f"
@@ -712,7 +724,68 @@ function getObjKeysByObjectAndValue(obj, value) {
         transportTypeImg.src = "/ship-icon.dfd19004.png"
         transportTypeData.style.backgroundColor = "#6c58da"
     }
+  };
+
+  function calculateEstimatedTimeOfArrival(){
+    neededTimeForTransport = Math.round(calculetedRouteDistance / speedValueOfSelectedTransport);
+    travelTimeValue.innerHTML = neededTimeForTransport;
+    
+    let estimatedTimeOfArrival = getDateFromCurrentDatePlusHours(neededTimeForTransport)
+    estimatedArrivalValue.innerHTML = estimatedTimeOfArrival[0] + " " + selectedLanguage.hour + ": " + estimatedTimeOfArrival[1];
   }
+
+  function getDateFromCurrentDatePlusHours(plusHours){
+    let newDate;
+    let plusDays;
+    let newHour;
+    if(time.hour + plusHours > 24){
+
+        plusDays = Math.floor(time.hour + plusHours / 24);
+        newHour = addZeroToStringIfValueUnderTen(((time.hour + plusHours)*1) % 24);
+
+        if(dateValue.month == 2 && parseInt(dateValue.day) + parseInt(plusDays) > 28){ //if currently is february and we pass to next month
+            let dayInNewMonth = plusDays - (28 - dateValue.day);
+            newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + ".03." + dateValue.year
+        } else if(dateValue.month == 2 && parseInt(dateValue.day) + parseInt(plusDays) <= 28){
+            newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + dateValue.month + "." + dateValue.year
+        }
+        if(thirtyDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) > 30){ //if currently is thirty day month and we pass to next one
+            let dayInNewMonth = plusDays - (30 - dateValue.day);
+            newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + addZeroToStringIfValueUnderTen(parseInt(dateValue.month) + 1)+ "." + dateValue.year
+        } else if(thirtyDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) <= 30){
+            newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
+        }
+        if(thirtyOneDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) > 31){  //if currently is thirtyone day month and we pass to next one
+            if(dateValue.month == 12){
+                let dayInNewMonth = plusDays - (31 - dateValue.day);
+                let nextMonth = '01'
+                let nextYear = (dateValue.year + 1)*1
+                newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + nextMonth + "." + nextYear
+            } else{
+                let dayInNewMonth = plusDays - (31 - dateValue.day);
+                newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + addZeroToStringIfValueUnderTen(parseInt(dateValue.month) + 1)  + "." + dateValue.year
+            }
+        } else if(thirtyOneDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) <= 31){
+            newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
+        }
+    } else {
+        newDate = dateValue.day + "." + dateValue.month + "." + dateValue.year
+        newHour = addZeroToStringIfValueUnderTen(parseInt(time.hour) + parseInt(plusHours));
+    }
+    
+    let dateTimeAfterAddingHours = [newDate,newHour]
+    return dateTimeAfterAddingHours;
+  };
+
+  function addZeroToStringIfValueUnderTen(intToStringWithZero){
+    if(intToStringWithZero < 10){
+        intToStringWithZero = "0" + intToStringWithZero;
+    } else{
+        String(intToStringWithZero);
+    }
+    return intToStringWithZero;
+  }
+
 
 
   /////TODO add logic with passangers

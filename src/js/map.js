@@ -34,7 +34,7 @@ export let dateValue = {
       year: "1935"
 }
 
-let time = {
+export let time = {
     hour: 0
 }
 

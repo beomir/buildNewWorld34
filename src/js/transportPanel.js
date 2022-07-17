@@ -3,6 +3,7 @@ import {selectedLanguage} from './translations';
 import {countryConnections} from './countryConnections';
 import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {passengers,calculatePassengersForCountry} from './passengers';
 
 
 const createTransport = document.querySelector("#createTransport")
@@ -15,70 +16,70 @@ const truckOption = document.getElementById("truck");
 const busOption = document.getElementById("bus");
 const transportTypeList = document.getElementById("transportTypeList");
 
-const blockageForInfoNotifyTime = 5000;
-export let blockageForInfoNotify = false;
 const endCountryOfTheRoute = $(".endCountryOfTheRoute")[1];
-let currentEndCountryOfTheRoute;
-
-const route = $(".route")[0];
-let temporaryRouteValues = [];
-let startedCountry;
-const originNameOfWares = new Map();
-
 const goodCostInStartedCountryValue = $(".goodCostInStartedCountryValue")[0];
 const goodCostInEndCountryValue = $(".goodCostInEndCountryValue")[0];
 const availableQtyValue = $(".availableQtyValue")[0];
-let selectedWare;
 
-let endCountryObject;
-let goodPriceInEndCountry;
 const howManyToTransportValue = document.getElementById("howManyToTransportValue");
 const transportTypeValue = document.getElementById("transportTypeValue");
-
-let type;
-let lastTransportType;
-let typeDetail;
-let calculetedRouteDistance = 0;
-
-let distanceRoute = [];
-const routeDistanceValue = $(".routeDistanceValue")[0];
-const bigCountry = ["ussr","germany","france","italy","spain","sweden","norwnpmay","poland","greatBritain"];
-let clickedCountryTags = [];
-
-const originalNameOfVehicles = new Map(); // to future use for translate for example ship names
-const meanOfTransport = document.querySelector(".meanOfTransport");
-const singularCostValue = document.querySelector(".singularCostValue");
-
-const calculatedCostValueTag = document.querySelector(".calculatedCostValue");
-let availableGoodQuantity;
 const capacityValue = document.querySelector(".capacityValue");
 const neccesseryQtyValue = document.querySelector(".neccesseryQtyValue");
-
-const speedValue = document.querySelector(".speedValue");
-let speedValueOfSelectedTransport;
-let capacityOfSelectedTransport;
-let neededTransportUnits = 0;
 
 const earnings = document.getElementById("earnings");
 const incomeValue = document.querySelector(".incomeValue");
 const profitValue = document.querySelector(".profitValue");
+const speedValue = document.querySelector(".speedValue");
+
+const transportTypeImg = document.querySelector(".transportTypeImg");
+const estimatedArrivalValue = document.querySelector(".estimatedArrivalValue");
+const travelTimeValue = document.querySelector(".travelTimeValue");
+const transportTypeData = document.querySelector(".transportTypeData");
+
+const calculatedCostValueTag = document.querySelector(".calculatedCostValue");
+const meanOfTransport = document.querySelector(".meanOfTransport");
+const singularCostValue = document.querySelector(".singularCostValue");
+
+const route = $(".route")[0];
+const routeDistanceValue = $(".routeDistanceValue")[0];
+let temporaryRouteValues = [];
+let startedCountry;
+
+
+const blockageForInfoNotifyTime = 5000;
+export let blockageForInfoNotify = false;
+let selectedWare;
+let currentEndCountryOfTheRoute;
+
+let endCountryObject;
+let goodPriceInEndCountry;
+export let availableGoodQuantity;
+let neededTimeForTransport;
+
+let type;
+let lastTransportType;
+let typeDetail;
+export let calculetedRouteDistance = 0;
+
+let distanceRoute = [];
+const bigCountry = ["ussr","germany","france","italy","spain","sweden","norwnpmay","poland","greatBritain"];
+let clickedCountryTags = [];
+const originNameOfWares = new Map();
+
+const originalNameOfVehicles = new Map(); // to future use for translate for example ship names
+
+let speedValueOfSelectedTransport;
+let capacityOfSelectedTransport;
+let neededTransportUnits = 0;
 let calculatedIncomeValue;
 
 let calculatedProfitValue;
 let calculatedCostValue;
 let goodPriceInStartedCountry;
-const transportTypeImg = document.querySelector(".transportTypeImg");
-
-const transportTypeData = document.querySelector(".transportTypeData")
 let estimatedTimeOfArrival;
-let neededTimeForTransport;
-const estimatedArrivalValue = document.querySelector(".estimatedArrivalValue");
-
-const travelTimeValue = document.querySelector(".travelTimeValue");
 
 const thirtyOneDayMonths = ["1","3","5","7","8","10","12"];
 const thirtyDayMonths = ["2","4","6","9","11"];
-
 
 
 let transportType =  {
@@ -98,17 +99,14 @@ let transportType =  {
 
 let lastActiveTransportType = ["land","bus"];
 
+createTransport.addEventListener("click", function(){ 
 
-
-createTransport.addEventListener("click", 
-function(){ 
     hideActionForCountryList();
     toggleCountryPanelListClicked();
     toggleClickedCreateTransport();
     cleanCurrentRoute();
 
     setProperTransportBasedOnGoods();
-
     startedCountry = clickedCountryName;
     addAvaiableGoodOptions();
     countryStartNameValue.innerHTML = selectedLanguage[clickedCountryName];
@@ -291,18 +289,26 @@ wares.addEventListener("change",function(){
         if(howManyToTransportValue.value > availableGoodQuantity){
         howManyToTransportValue.value = availableGoodQuantity;
     }
+
+    if(wares.value == selectedLanguage["passengers"]){
+        calculatePassengersForCountry(0,startedCountry)
+    }
 });
 
 howManyToTransportValue.addEventListener("change",function(){
-    if(howManyToTransportValue.value>availableGoodQuantity){
-        howManyToTransportValue.value = availableGoodQuantity;
-    }
-    if(howManyToTransportValue.value<0){
-        howManyToTransportValue.value = 0;
-    }
-    
+    restoreMaxAvailableQtyToTransport();
     calculateCostValue();
-})
+});
+
+howManyToTransportValue.oninput = function () {
+    var max = parseInt(this.max);
+
+    if (parseInt(this.value) > max) {
+        this.value = max; 
+    }
+}
+
+
 
 transportTypeList.addEventListener("change",function(){
     originNameOfSelectedTransport = getObjKeysByObjectAndValue(selectedLanguage,transportTypeList.value)[0];
@@ -427,7 +433,7 @@ function setProperTransportBasedOnGoods(){
             lastActiveTransportType = ["land","truck"];
             setProperMeansOfTransport(selectedLanguage["truck"]);
             calculateCostValue();
-        } 
+        }
     }
 };
 
@@ -444,7 +450,6 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
     goodPriceInEndCountry = endCountryObject.goodCosts[selectedWare];
     goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
 
-    highlightCountry(firstClickedCountryName,event.target);
     //calculate route distance
     let distance
     if(currentRoute.length == 1){ //first country connected
@@ -467,7 +472,12 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
         calculetedRouteDistance += distance 
         distanceRoute.push(distance);
         routeDistanceValue.innerHTML = calculetedRouteDistance;
-    }
+    };
+
+    highlightCountry(firstClickedCountryName,event.target);
+    if(wares.value == selectedLanguage["passengers"]){
+    calculatePassengersForCountry(firstClickedCountryName,startedCountry)
+}
     
     calculateCostValue();
     calculateEstimatedTimeOfArrival();
@@ -554,12 +564,17 @@ function getObjKeysByObjectAndValue(obj, value) {
         if(currentRoute[currentRoute.length - 1] == null){
             endCountryOfTheRoute.innerHTML = "";
             goodCostInEndCountryValue.innerHTML = 0;
+            availableQtyValue.innerHTML = 0;
         } else{
             currentEndCountryOfTheRoute = currentRoute[currentRoute.length - 1]; 
             endCountryOfTheRoute.innerHTML = selectedLanguage[currentEndCountryOfTheRoute];
         }
         calculetedRouteDistance -= distanceForLastCountryInRoute;
         routeDistanceValue.innerHTML = calculetedRouteDistance;
+        if(wares.value == selectedLanguage["passengers"]){
+            calculatePassengersForCountry(currentRoute[currentRoute.length - 1],startedCountry);
+        }
+
         route.innerHTML = currentRouteTranslated;     
         calculateCostValue();
     } else{
@@ -624,6 +639,10 @@ function getObjKeysByObjectAndValue(obj, value) {
         } else {
             middleTransportTypeName = "loadShips"
         }
+    };
+
+    if(wares.value == selectedLanguage.passengers){
+        
     }
 
     displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName);
@@ -632,12 +651,11 @@ function getObjKeysByObjectAndValue(obj, value) {
 
     let selectedTransportTypeCost = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].cost;
     singularCostValue.innerHTML = selectedTransportTypeCost;
-    calculatedCostValue = selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits;
+    calculatedCostValue = Math.round(selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits*100)/100;
     calculatedCostValueTag.innerHTML = calculatedCostValue;
 
     calculateEarnings();
     displayEarningPanel();
-
     setPoperTransportTypeImage();
   };
 
@@ -659,12 +677,12 @@ function getObjKeysByObjectAndValue(obj, value) {
   function calculateEarnings(){
    
     if(!isNaN(howManyToTransportValue.value) && !isNaN(goodPriceInStartedCountry) && !isNaN(goodPriceInEndCountry)){
-    calculatedIncomeValue = (goodPriceInEndCountry - goodPriceInStartedCountry) * howManyToTransportValue.value;
+    calculatedIncomeValue = Math.round(((goodPriceInEndCountry - goodPriceInStartedCountry) * howManyToTransportValue.value)*100)/100;
     incomeValue.innerHTML = calculatedIncomeValue;
     };
 
     if(!isNaN(calculatedIncomeValue) && !isNaN(calculatedCostValue)){
-     calculatedProfitValue = calculatedIncomeValue - calculatedCostValue;
+     calculatedProfitValue = Math.round((calculatedIncomeValue - calculatedCostValue)*100)/100;
      profitValue.innerHTML = calculatedProfitValue;
     };
 
@@ -730,7 +748,7 @@ function getObjKeysByObjectAndValue(obj, value) {
     neededTimeForTransport = Math.round(calculetedRouteDistance / speedValueOfSelectedTransport);
     travelTimeValue.innerHTML = neededTimeForTransport;
     
-    let estimatedTimeOfArrival = getDateFromCurrentDatePlusHours(neededTimeForTransport)
+    estimatedTimeOfArrival = getDateFromCurrentDatePlusHours(neededTimeForTransport)
     estimatedArrivalValue.innerHTML = estimatedTimeOfArrival[0] + " " + selectedLanguage.hour + ": " + estimatedTimeOfArrival[1];
   }
 
@@ -786,7 +804,24 @@ function getObjKeysByObjectAndValue(obj, value) {
     return intToStringWithZero;
   }
 
+export function setCostInStartAndInEndCountry(startCountryCost,EndCountryCost){
+    goodPriceInStartedCountry = startCountryCost;
+    goodPriceInEndCountry = EndCountryCost;
 
+    goodCostInEndCountryValue.innerHTML = goodPriceInEndCountry;
+    goodCostInStartedCountryValue.innerHTML = goodPriceInStartedCountry;
+};
 
-  /////TODO add logic with passangers
+export function restoreMaxAvailableQtyToTransport(){
+    if(howManyToTransportValue.value>availableGoodQuantity){
+        howManyToTransportValue.value = availableGoodQuantity;
+    }
+    if(howManyToTransportValue.value<0){
+        howManyToTransportValue.value = 0;
+    }
+    
+}
+
+  /////TODO add logic with passangers --> balance costs and profits
+  ///////TODO block width of transportPanel
   /////////TODO add efect rolling on for transport panel

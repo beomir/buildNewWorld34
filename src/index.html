@@ -15,6 +15,8 @@
     <script src="./js/gameLogic.js" type="module"></script>
     <script src="./js/transportPanel.js" type="module"></script>
     <script src="./js/countryConnections.js" type="module"></script>
+    <script src="./js/passengers.js" type="module"></script>
+    <script src="./js/relations.js" type="module"></script>
 
     <title>Transport Game</title>
 </head>
@@ -252,14 +254,14 @@
             </div>
             <div class="transportType">
                 <span class="transportType" id="typeOfTransport">Typ transportu</span>
-                <select class="transportType" id="transportTypeList">
+                <select class="transportType select" id="transportTypeList">
                     <option id="bus">Autobusowy</option>
                     <option id="truck" style="display:none">Ciężarowy</option>
                     <option id="railway">Kolejowy</option>
                     <option id="maritime">Morski</option>
                     <option id="air" style="display:none">Lotniczy</option>
                 </select>
-                <select class="meanOfTransport">
+                <select class="meanOfTransport select">
                     <option class="transportModel">AECtypeQ</option>
                     <option class="transportModel">AMO4</option>
                     <option class="transportModel">LeylandTitan</option>
@@ -268,8 +270,8 @@
             <div class="availableQty">
                 <span class="availableQty">Dostępna ilość</span><span>: </span><span class="availableQtyValue values"></span>
             </div>
-            <div class="howManyToTransport">
-                <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input id="howManyToTransportValue" min="0" type="number"></input>
+            <div class="howManyToTransport" >
+                <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input  id="howManyToTransportValue" min="0" type="number"></input>
             </div>
             <div class="goodCostInStartedCountry">
                 <span class="goodCostInStartedCountry">Cena towaru w kraju startowym</span><span>: </span><span class="goodCostInStartedCountryValue values"></span>

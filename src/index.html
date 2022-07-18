@@ -239,7 +239,7 @@
         <li id="checkCountryDetails">Zobacz szczegóły kraju</li>
     </ol>
 
-    <div class="createTransportPanel" style="visibility: hidden;">
+    <div class="createTransportPanel createTransportPanel--inactive">
         <div class="createTransportPanelTitle"><span id="transportType">Rodzaj transportu</span>: <span id="transportTypeValue" style="font-weight: bold">Lądowy</span></div>
         <div class="createTransportPanelContent">
             <div class="countryStart">
@@ -247,8 +247,8 @@
                 <span> :</span>
                 <span class="countryStartNameValue">Polska</span>
             </div>
-            <div class="selectWare"><span class="selectWare">Wybierz towar</span><span> :</span>
-                <select class="wares">
+            <div class="selectWare" ><span class="selectWare">Wybierz towar</span><span> :</span>
+                <select class="wares" style="min-width: 71%;cursor: pointer;">
                     <option class="availableGoodOption"></option>
                 </select>
             </div>
@@ -270,7 +270,7 @@
             <div class="availableQty">
                 <span class="availableQty">Dostępna ilość</span><span>: </span><span class="availableQtyValue values"></span>
             </div>
-            <div class="howManyToTransport" >
+            <div class="howManyToTransport">
                 <span class="howManyToTransport">Ile chcesz przetransportować</span><span>: </span><input  id="howManyToTransportValue" min="0" type="number"></input>
             </div>
             <div class="goodCostInStartedCountry">
@@ -304,7 +304,7 @@
                 <div><span class="calculatedCost">Koszt wyliczony</span><span>: </span><span class="calculatedCostValue values">0</span></div>
             </div>
         </div>
-        <div id="earnings" class="earningsPlus" style="visibility: hidden;">
+        <div id="earnings" class="earnings earningsPlus earnings--inactive">
             <img style="position:absolute;right: 2%;" src="./img/icons/money-icon.png" id="profitImg" height="50">
             <div><span class="income">Dochód</span><span>: </span><span class="incomeValue values">0</span></div>
             <div><span class="profit">Zysk</span><span>: </span><span class="profitValue values">0</span></div>

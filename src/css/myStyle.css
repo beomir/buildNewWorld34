@@ -268,6 +268,37 @@ body{
 	font-size: xx-large;
 }
 
+.earningsPlus{
+	font-family: 'Dekko';
+	background-color: #dd9b0c;
+	border-bottom: 4px solid #2f1b75;
+	border-left: 4px solid #2f1b75;
+	border-right: 4px solid #2f1b75;
+	color:white;
+}
+
+.earningsMinus{
+	font-family: 'Dekko';
+	background-color: #533b06;
+	border-bottom: 4px solid #2f1b75;
+	border-left: 4px solid #2f1b75;
+	border-right: 4px solid #2f1b75;
+	color:white;
+}
+
+.earnings{
+	transition: transform .5s .1s ease-in-out;
+	transform: translatey(0px);
+	z-index: -20;
+	position: relative;
+}
+
+.earnings--inactive{
+	transform: translatey(-250px);
+	z-index: -20;
+	position: relative;
+}
+
 .createTransportPanelTitle {
 	border-top: 4px solid #2f1b75;
 	border-left: 4px solid #2f1b75;
@@ -275,7 +306,7 @@ body{
 	background-color: #751b1b;
 	color: aliceblue;
 	font-family: 'Dekko';
-	display:block
+	display:block;
 }
 
 .createTransportPanelContent {
@@ -284,7 +315,9 @@ body{
 	color: aliceblue;
 	font-family: 'Dekko';
 	display: inline-block;
+	min-width: 380px;
 }
+
 
 .createTransportPanelSwitchOff{
 	display: inline-block;
@@ -298,6 +331,13 @@ body{
 	left:0;
 	z-index: 200;
 	position:fixed;
+	transition: transform .5s .1s ease-in-out;
+	min-width: 380px;
+	transform: translatex(0px);
+}
+
+.createTransportPanel--inactive{
+	transform: translatex(-450px);
 }
 
 .values {
@@ -336,23 +376,6 @@ body{
 	border-right: 4px solid #2f1b75;
 }
 
-.earningsPlus{
-	font-family: 'Dekko';
-	background-color: #dd9b0c;
-	border-bottom: 4px solid #2f1b75;
-	border-left: 4px solid #2f1b75;
-	border-right: 4px solid #2f1b75;
-	color:white;
-}
-
-.earningsMinus{
-	font-family: 'Dekko';
-	background-color: #533b06;
-	border-bottom: 4px solid #2f1b75;
-	border-left: 4px solid #2f1b75;
-	border-right: 4px solid #2f1b75;
-	color:white;
-}
 
 .hide{
 	display: none;
@@ -360,7 +383,7 @@ body{
 
 
 .select {
-	width: 30%;
+	width: 35%;
 	border: 1px solid var(--select-border);
 	border-radius: 0.25em;
 	cursor: pointer;
@@ -368,3 +391,10 @@ body{
 	background-color: #fff;
 	background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
   }
+
+input{
+	min-width: 43%;
+}
+
+
+

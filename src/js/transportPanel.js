@@ -111,7 +111,7 @@ createTransport.addEventListener("click", function(){
     addAvaiableGoodOptions();
     countryStartNameValue.innerHTML = selectedLanguage[clickedCountryName];
 
-    createTransportPanel.style.visibility = "visible";
+    createTransportPanel.classList.remove("createTransportPanel--inactive");
     highlightCountry(startedCountry,lastClickedCountryTag);
 
 });
@@ -145,8 +145,10 @@ export function addAvaiableGoodOptions(){
 }
 
 createTransportPanelSwitchOff.addEventListener('click',function(){
-    createTransportPanel.style.visibility = "hidden";
-    earnings.style.visibility = "hidden";
+
+    createTransportPanel.classList.add('createTransportPanel--inactive')
+    // createTransportPanel.style.visibility = "hidden";
+    // earnings.style.visibility = "hidden";
     cleanCurrentRoute();
     toggleClickedCreateTransport();
     cleanRouteDistance();
@@ -400,8 +402,6 @@ function setProperMeansOfTransport(transportTypeName){
             }
         }
     }
-
-    
 }
 
 function setProperTransportBasedOnGoods(){
@@ -691,7 +691,7 @@ function getObjKeysByObjectAndValue(obj, value) {
 
   function displayEarningPanel(){
     if(calculatedIncomeValue != null && calculatedIncomeValue != 0){
-        earnings.style.visibility = "visible"
+        earnings.classList.remove('earnings--inactive');
         if(calculatedProfitValue > 0){ //if calculatedProfitValue is bigger than 0 then mark background color on green
             earnings.classList.remove("earningsMinus");
             earnings.classList.add("earningsPlus");
@@ -700,7 +700,7 @@ function getObjKeysByObjectAndValue(obj, value) {
             earnings.classList.add("earningsMinus");
         }
     } else {
-        earnings.style.visibility = "hidden"
+        earnings.classList.add('earnings--inactive')
     }
     
   };
@@ -818,10 +818,9 @@ export function restoreMaxAvailableQtyToTransport(){
     }
     if(howManyToTransportValue.value<0){
         howManyToTransportValue.value = 0;
-    }
-    
+    }   
 }
 
   /////TODO add logic with passangers --> balance costs and profits
-  ///////TODO block width of transportPanel
+
   /////////TODO add efect rolling on for transport panel

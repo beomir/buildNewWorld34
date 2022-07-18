@@ -9,7 +9,7 @@ export let calculatedPassengers
 
 export function calculatePassengersForCountry(toCountry,fromCountry){
     let relationsValue;
-    calculatedPassengers
+    calculatedPassengers = 0;
     if(toCountry != 0){
         relationsValue = relations[fromCountry][toCountry];
         if(relations[fromCountry][toCountry] < 1){
@@ -21,6 +21,10 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
     } else {
         calculatedPassengers = 0;
     }
+
+    if(isNaN(calculatedPassengers)){
+        calculatedPassengers = 0;
+    };
 
     howManyToTransportValue.max = calculatedPassengers;
     availableQtyValue.innerHTML = calculatedPassengers;

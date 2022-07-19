@@ -77,7 +77,10 @@ body{
     top: 0;
     right:0;
     cursor: pointer;
-    
+}
+
+.countryFlagActionCountry:active{
+	transform: scale(0.8);
 }
 
 
@@ -324,6 +327,36 @@ body{
 	top: 0;
 	position:absolute;
 	cursor: pointer;
+	transition: 0.7s;
+}
+
+.createTransportPanelSwitchOff:hover{
+	filter: brightness(70%);
+}
+
+.createTransportPanelSwitchOff:active {
+	transform:scale(0.8);
+}
+
+.addRoute{
+	display: inline-block;
+	bottom: 0;
+	position:absolute;
+	cursor: pointer;
+	transition: 0.7s;
+	transform: translatex(0px);
+}
+
+.addRoute:hover{
+	filter: brightness(70%);
+}
+
+.addRoute:active {
+	transform:scale(0.8);
+}
+
+.addRoute--inactive{
+	transform: translatex(-600px);
 }
 
 .createTransportPanel {

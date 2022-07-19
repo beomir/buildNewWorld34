@@ -39,6 +39,7 @@ const transportTypeData = document.querySelector(".transportTypeData");
 const calculatedCostValueTag = document.querySelector(".calculatedCostValue");
 const meanOfTransport = document.querySelector(".meanOfTransport");
 const singularCostValue = document.querySelector(".singularCostValue");
+const addToRouteImg = document.querySelector(".addRoute"); 
 
 const route = $(".route")[0];
 const routeDistanceValue = $(".routeDistanceValue")[0];
@@ -148,6 +149,7 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
 
     createTransportPanel.classList.add('createTransportPanel--inactive');
     earnings.classList.add('earnings--inactive');
+    addToRouteImg.classList.add('addRoute--inactive');
     cleanCurrentRoute();
     toggleClickedCreateTransport();
     cleanRouteDistance();
@@ -272,6 +274,7 @@ wares.addEventListener("change",function(){
     setProperTransportBasedOnGoods();  
     calculateCostValue()
     setProperMeansOfTransport(transportTypeList.value);  
+
     selectedWare = originNameOfWares.get(wares.value);
     let startCountryObject = listObjects[startedCountry];
     
@@ -318,6 +321,7 @@ transportTypeList.addEventListener("change",function(){
     checkWhichTransportType(originNameOfSelectedTransport);
     setProperMeansOfTransport(transportTypeList.value);
     calculateCostValue();
+
     
     if(lastActiveTransportBeforeChange != lastActiveTransportType[0]){
          cleanCurrentRoute();
@@ -656,6 +660,7 @@ function getObjKeysByObjectAndValue(obj, value) {
     calculateEarnings();
     displayEarningPanel();
     setPoperTransportTypeImage();
+    displayEarningPanel()
   };
 
   function displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName){
@@ -691,6 +696,7 @@ function getObjKeysByObjectAndValue(obj, value) {
   function displayEarningPanel(){
     if(calculatedIncomeValue != null && calculatedIncomeValue != 0){
         earnings.classList.remove('earnings--inactive');
+        addToRouteImg.classList.remove('addRoute--inactive');
         if(calculatedProfitValue > 0){ //if calculatedProfitValue is bigger than 0 then mark background color on green
             earnings.classList.remove("earningsMinus");
             earnings.classList.add("earningsPlus");
@@ -699,7 +705,8 @@ function getObjKeysByObjectAndValue(obj, value) {
             earnings.classList.add("earningsMinus");
         }
     } else {
-        earnings.classList.add('earnings--inactive')
+        earnings.classList.add('earnings--inactive');
+        addToRouteImg.classList.add('addRoute--inactive');
     }
     
   };

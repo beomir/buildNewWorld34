@@ -1,3 +1,5 @@
+import {selectedLanguage} from './translations'
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const clock = document.querySelector('.clock');
@@ -6,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const clockInitialWidth = clockStyles.width;
 
     const yClockPositon = window.scrollY + clock.getBoundingClientRect().top // Y
-    // const xClockPositon = window.scrollX + clock.getBoundingClientRect().top // X
+    const xClockPositon = window.scrollX + clock.getBoundingClientRect().left // X
     
     const date = document.querySelector('.date');
     const dateStyles = window.getComputedStyle(date);
@@ -40,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let Navy = $('.nav').offset().top;
 
         let ifScrolled = function(){
+            let xNewPositionForClock = xClockPositon*0.2;
             let ScrollY = $(window).scrollTop();
             if(ScrollY > Navy){
                 if(scrolled == false){
@@ -53,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 clock.style.height = "15px"
                 clock.style.width = "30px"
                 clock.style.top = yNewPositionOfDate - (yNewPositionOfDate*0.1) + "px"
+                clock.style.left = parseInt(xClockPositon + xNewPositionForClock) + "px"
                 $(".date").addClass("anChildLeft")
             }
                 scrolled = true;
@@ -63,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 clock.style.zIndex = "50"
                 clock.style.top = yClockPositon + "px";
+                clock.style.left = xClockPositon + "px"
                 clock.style.height = clockInitialHeight;
                 clock.style.width = clockInitialWidth;
                 scrolled = false;

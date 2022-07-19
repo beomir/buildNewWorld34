@@ -138,7 +138,14 @@ const   polish = {
         costFor: "Koszt za",
         calculatedCost : "Koszt wyliczony",
         income : "Dochód",
-        profit : "Zysk"
+        profit : "Zysk",
+        buses : "Autobusy",
+        planes: "Samoloty",
+        trucks: "Cięzarówki",
+        ships: "Statki",
+        trains: "Pociągi",
+        influence: "Wpływy",
+        money: "Pieniądze"
         
     }
     
@@ -257,7 +264,14 @@ const   english = {
         costFor: "Cost for",
         calculatedCost : "Calculated cost",
         income : "Income",
-        profit : "Profit"
+        profit : "Profit",
+        buses : "Buses",
+        planes: "Planes",
+        trucks: "Trucks",
+        ships: "Ships",
+        trains: "Trains",
+        influence: "Influence",
+        money: "Money"
     }
     
 const   russian = {
@@ -375,7 +389,14 @@ const   russian = {
         costFor: "Стоимость для",
         calculatedCost : "Расчетная стоимость",
         income : "Доход",
-        profit : "Прибыль"
+        profit : "Прибыль",
+        buses : "автобусов",
+        planes: "Самолеты",
+        trucks: "Фуры",
+        ships: "Корабли",
+        trains: "Поезда",
+        influence: "Влияние",
+        money: "Деньги"
     }
 
 export let selectedLanguage = polish;
@@ -429,6 +450,14 @@ export let selectedLanguage = polish;
    const income = $(".income")[0];
    const profit = $(".profit")[0];
 
+   const buses = $(".buses")[0];
+   const trucks = $(".trucks")[0];
+   const trains = $(".trains")[0];
+   const ships = $(".ships")[0];
+
+   const influence = document.getElementById("influence");
+   const money = document.getElementById("money");
+
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
     tranlationPlayerPanel.innerHTML = selectedLanguage.link0;
@@ -476,7 +505,14 @@ export let selectedLanguage = polish;
     calculatedCost.innerHTML = selectedLanguage.calculatedCost ;
     income.innerHTML = selectedLanguage.income ;
 
-    
+    buses.innerHTML = selectedLanguage.buses;
+    trucks.innerHTML = selectedLanguage.trucks;
+    ships.innerHTML = selectedLanguage.ships;
+    trains.innerHTML = selectedLanguage.trains;
+
+    influence.innerHTML = selectedLanguage.influence;
+    money.innerHTML = selectedLanguage.money;
+
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);
   }
@@ -512,9 +548,9 @@ export let selectedLanguage = polish;
   
   
       ussr = {
-      height: 400,
-      width: 310,
-      specialities: {
+        height: 400,
+        width: 310,
+        specialities: {
           1: goods.main[1],
           2: goods.main[2],
           3: goods.specific[3],
@@ -523,7 +559,7 @@ export let selectedLanguage = polish;
         population: 159
       }
   
-    germany = {
+      germany = {
         height: 188,
         width: 97,
         specialities: {
@@ -531,90 +567,20 @@ export let selectedLanguage = polish;
           2: goods.main[2],
           3: goods.specific[3]
         },
-        goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
         population: 74
       }
   
       lithuania = {
-      height: 101, 
-      width: 134, 
-      specialities: {
-        1: goods.additional[2],
-        2: goods.additional[3]
+        height: 101, 
+        width: 134, 
+        specialities: {
+          1: goods.additional[2],
+          2: goods.additional[3]
         },
-        goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
         population: 2
       }
   
-       poland = {
+      poland = {
         height: 298,
         width: 286,
         specialities: {
@@ -622,45 +588,10 @@ export let selectedLanguage = polish;
           2: goods.main[7],
           3: goods.additional[3]
           },
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
           population: 30
-        }
+      }
   
-       czechoslovakia = {
+      czechoslovakia = {
         height: 30,
         width: 120,
         specialities: {
@@ -668,45 +599,10 @@ export let selectedLanguage = polish;
           2: goods.main[4],
           3: goods.specific[4]
           },
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
           population: 13
       }
   
-       greatBritain = {
+      greatBritain = {
         height: 150,
         width: 120,
         specialities: {
@@ -715,89 +611,19 @@ export let selectedLanguage = polish;
           3: goods.additional[2],
           4: goods.specific[1]
           },
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
         population: 47
       }
   
-       austria = {
+      austria = {
         height: 55,
         width: 58,
         specialities: {
           1: goods.additional[3]
           },
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
           population: 6.8
       }
   
-       france = {
+      france = {
         height: 180,
         width: 180,
         specialities: {
@@ -806,965 +632,209 @@ export let selectedLanguage = polish;
           3: goods.main[5],
           4: goods.additional[1]
           },
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5
-          },
           population: 42
       }
 
-      let norway = {
+      norway = {
         height: 200,
         width: 68,
         specialities: {
             1: goods.additional[2]
-          },  
-          goodCosts: {
-            coal: 30,
-            steel: 70,
-            aluminium: 80,
-            copper: 60,
-            lead: 50,
-            grain: 5,
-            oil: 100,
-            wine: 35,
-            fish: 5,
-            flour: 10,
-            clothes: 20,
-            zinc: 75,
-            wolfram: 100,
-            mechanicalParts: 150,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
-          },
-          goodsAvailability: {
-            coal: 100,
-            steel: 80,
-            aluminium: 50,
-            copper: 120,
-            lead: 80,
-            grain: 1000,
-            oil: 300,
-            wine: 50,
-            fish: 70,
-            flour: 80,
-            clothes: 90,
-            zinc: 15,
-            wolfram: 40,
-            mechanicalParts: 5,
-            chrome : 5,
-            nickel: 3,
-            forestGoods: 20
           },
           population: 2.9
-        }
+      }
 
-        let sweden = {
-          height: 427.45,
-          width: 354.8,
-          specialities: {
-              1: goods.specific[2],
-              2: goods.main[4],
-              3: goods.main[2]
-            },  
-            goodCosts: {
-              coal: 30,
-              steel: 70,
-              aluminium: 80,
-              copper: 60,
-              lead: 50,
-              grain: 5,
-              oil: 100,
-              wine: 35,
-              fish: 5,
-              flour: 10,
-              clothes: 20,
-              zinc: 75,
-              wolfram: 100,
-              mechanicalParts: 150,
-              chrome : 5,
-              nickel: 3,
-              forestGoods: 20
-            },
-            goodsAvailability: {
-              coal: 100,
-              steel: 80,
-              aluminium: 50,
-              copper: 120,
-              lead: 80,
-              grain: 1000,
-              oil: 300,
-              wine: 50,
-              fish: 70,
-              flour: 80,
-              clothes: 90,
-              zinc: 15,
-              wolfram: 40,
-              mechanicalParts: 5,
-              chrome : 1,
-              nickel: 2,
-              forestGoods: 50
-            },
-            population: 6.2
-          }
+      sweden = {
+        height: 427.45,
+        width: 354.8,
+        specialities: {
+            1: goods.specific[2],
+            2: goods.main[4],
+            3: goods.main[2]
+          },
+          opulation: 6.2
+      }
 
-          let finland = {
-            height: 257.1,
-            width: 275,
-            specialities: {
-                1: goods.specific[6],
-                2: goods.additional[2]
-              },  
-              goodCosts: {
-                coal: 30,
-                steel: 70,
-                aluminium: 80,
-                copper: 60,
-                lead: 50,
-                grain: 5,
-                oil: 100,
-                wine: 35,
-                fish: 5,
-                flour: 10,
-                clothes: 20,
-                zinc: 75,
-                wolfram: 100,
-                mechanicalParts: 150,
-                chrome : 5,
-                nickel: 3,
-                forestGoods: 20
-              },
-              goodsAvailability: {
-                coal: 100,
-                steel: 80,
-                aluminium: 50,
-                copper: 120,
-                lead: 80,
-                grain: 1000,
-                oil: 300,
-                wine: 50,
-                fish: 70,
-                flour: 80,
-                clothes: 90,
-                zinc: 15,
-                wolfram: 40,
-                mechanicalParts: 5
-              },
-              population: 3.5
-            }
+      finland = {
+        height: 257.1,
+        width: 275,
+        specialities: {
+           1: goods.specific[6],
+           2: goods.additional[2]
+          },
+          population: 3.5
+      }
 
-            let latvia = {
-              height: 86.1,
-              width: 170,
-              specialities: {
-                  1: goods.specific[7]
-                },  
-                goodCosts: {
-                  coal: 30,
-                  steel: 70,
-                  aluminium: 80,
-                  copper: 60,
-                  lead: 50,
-                  grain: 5,
-                  oil: 100,
-                  wine: 35,
-                  fish: 5,
-                  flour: 10,
-                  clothes: 20,
-                  zinc: 75,
-                  wolfram: 100,
-                  mechanicalParts: 150,
-                  chrome : 5,
-                  nickel: 3,
-                  forestGoods: 20
-                },
-                goodsAvailability: {
-                  coal: 100,
-                  steel: 80,
-                  aluminium: 50,
-                  copper: 120,
-                  lead: 80,
-                  grain: 1000,
-                  oil: 300,
-                  wine: 50,
-                  fish: 70,
-                  flour: 80,
-                  clothes: 90,
-                  zinc: 15,
-                  wolfram: 40,
-                  mechanicalParts: 5,
-                  chrome : 1,
-                  nickel: 2,
-                  forestGoods: 50
-                },
-                population: 1.9
-              }
+      latvia = {
+        height: 86.1,
+        width: 170,
+        specialities: {
+           1: goods.specific[7]
+          },
+          population: 1.9
+      }
     
-              let estonia = {
-                height: 82.5,
-                width: 150,
-                specialities: {
-                  1: goods.additional[2]
-                  },  
-                  goodCosts: {
-                    coal: 30,
-                    steel: 70,
-                    aluminium: 80,
-                    copper: 60,
-                    lead: 50,
-                    grain: 5,
-                    oil: 100,
-                    wine: 35,
-                    fish: 5,
-                    flour: 10,
-                    clothes: 20,
-                    zinc: 75,
-                    wolfram: 100,
-                    mechanicalParts: 150,
-                    chrome : 5,
-                    nickel: 3,
-                    forestGoods: 20
-                  },
-                  goodsAvailability: {
-                    coal: 100,
-                    steel: 80,
-                    aluminium: 50,
-                    copper: 120,
-                    lead: 80,
-                    grain: 1000,
-                    oil: 300,
-                    wine: 50,
-                    fish: 70,
-                    flour: 80,
-                    clothes: 90,
-                    zinc: 15,
-                    wolfram: 40,
-                    mechanicalParts: 5
-                  },
-                  population: 1.1
-                }
+      estonia = {
+        height: 82.5,
+        width: 150,
+        specialities: {
+           1: goods.additional[2]
+          },
+          population: 1.1
+      }
 
-                let romania = {
-                  height: 330,
-                  width: 290.4,
-                  specialities: {
-                      1: goods.specific[2],
-                      2: goods.specific[3],
-                      3: goods.main[2]
-                    },  
-                    goodCosts: {
-                      coal: 30,
-                      steel: 70,
-                      aluminium: 80,
-                      copper: 60,
-                      lead: 50,
-                      grain: 5,
-                      oil: 100,
-                      wine: 35,
-                      fish: 5,
-                      flour: 10,
-                      clothes: 20,
-                      zinc: 75,
-                      wolfram: 100,
-                      mechanicalParts: 150,
-                      chrome : 5,
-                      nickel: 3,
-                      forestGoods: 20
-                    },
-                    goodsAvailability: {
-                      coal: 100,
-                      steel: 80,
-                      aluminium: 50,
-                      copper: 120,
-                      lead: 80,
-                      grain: 1000,
-                      oil: 300,
-                      wine: 50,
-                      fish: 70,
-                      flour: 80,
-                      clothes: 90,
-                      zinc: 15,
-                      wolfram: 40,
-                      mechanicalParts: 5
-                    },
-                    population: 15
-                  }
-                  let hungary = {
-                    height: 330,
-                    width: 290.4,
-                    specialities: {
-                        1: goods.specific[2],
-                        2: goods.specific[3],
-                        3: goods.main[2]
-                      },  
-                      goodCosts: {
-                        coal: 30,
-                        steel: 70,
-                        aluminium: 80,
-                        copper: 60,
-                        lead: 50,
-                        grain: 5,
-                        oil: 100,
-                        wine: 35,
-                        fish: 5,
-                        flour: 10,
-                        clothes: 20,
-                        zinc: 75,
-                        wolfram: 100,
-                        mechanicalParts: 150,
-                        chrome : 5,
-                        nickel: 3,
-                        forestGoods: 20
-                      },
-                      goodsAvailability: {
-                        coal: 100,
-                        steel: 80,
-                        aluminium: 50,
-                        copper: 120,
-                        lead: 80,
-                        grain: 1000,
-                        oil: 300,
-                        wine: 50,
-                        fish: 70,
-                        flour: 80,
-                        clothes: 90,
-                        zinc: 15,
-                        wolfram: 40,
-                        mechanicalParts: 5
-                      },
-                      population: 8.9
-                    }
+      romania = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+           1: goods.specific[2],
+           2: goods.specific[3],
+           3: goods.main[2]
+           },
+           population: 15
+      }
 
-            let turkey = {
-            height: 330,
-            width: 290.4,
-            specialities: {
-                1: goods.specific[2],
-                2: goods.specific[3],
-                3: goods.main[2]
-              },  
-              goodCosts: {
-                coal: 30,
-                steel: 70,
-                aluminium: 80,
-                copper: 60,
-                lead: 50,
-                grain: 5,
-                oil: 100,
-                wine: 35,
-                fish: 5,
-                flour: 10,
-                clothes: 20,
-                zinc: 75,
-                wolfram: 100,
-                mechanicalParts: 150,
-                chrome : 5,
-                nickel: 3,
-                forestGoods: 20
-              },
-              goodsAvailability: {
-                coal: 100,
-                steel: 80,
-                aluminium: 50,
-                copper: 120,
-                lead: 80,
-                grain: 1000,
-                oil: 300,
-                wine: 50,
-                fish: 70,
-                flour: 80,
-                clothes: 90,
-                zinc: 15,
-                wolfram: 40,
-                mechanicalParts: 5
-              },
-              population: 16.2
-            }
+      hungary = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 8.9
+      }
+
+      turkey = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 16.2
+      }
 
 
-            let yugoslavia = {
-              height: 330,
-              width: 290.4,
-              specialities: {
-                  1: goods.specific[2],
-                  2: goods.specific[3],
-                  3: goods.main[2]
-                },  
-                goodCosts: {
-                  coal: 30,
-                  steel: 70,
-                  aluminium: 80,
-                  copper: 60,
-                  lead: 50,
-                  grain: 5,
-                  oil: 100,
-                  wine: 35,
-                  fish: 5,
-                  flour: 10,
-                  clothes: 20,
-                  zinc: 75,
-                  wolfram: 100,
-                  mechanicalParts: 150,
-                  chrome : 5,
-                  nickel: 3,
-                  forestGoods: 20
-                },
-                goodsAvailability: {
-                  coal: 100,
-                  steel: 80,
-                  aluminium: 50,
-                  copper: 120,
-                  lead: 80,
-                  grain: 1000,
-                  oil: 300,
-                  wine: 50,
-                  fish: 70,
-                  flour: 80,
-                  clothes: 90,
-                  zinc: 15,
-                  wolfram: 40,
-                  mechanicalParts: 5
-                },
-                population: 14
-              }
+      yugoslavia = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 14
+      }
 
-              let greece = {
-                height: 330,
-                width: 290.4,
-                specialities: {
-                    1: goods.specific[2],
-                    2: goods.specific[3],
-                    3: goods.main[2]
-                  },  
-                  goodCosts: {
-                    coal: 30,
-                    steel: 70,
-                    aluminium: 80,
-                    copper: 60,
-                    lead: 50,
-                    grain: 5,
-                    oil: 100,
-                    wine: 35,
-                    fish: 5,
-                    flour: 10,
-                    clothes: 20,
-                    zinc: 75,
-                    wolfram: 100,
-                    mechanicalParts: 150,
-                    chrome : 5,
-                    nickel: 3,
-                    forestGoods: 20
-                  },
-                  goodsAvailability: {
-                    coal: 100,
-                    steel: 80,
-                    aluminium: 50,
-                    copper: 120,
-                    lead: 80,
-                    grain: 1000,
-                    oil: 300,
-                    wine: 50,
-                    fish: 70,
-                    flour: 80,
-                    clothes: 90,
-                    zinc: 15,
-                    wolfram: 40,
-                    mechanicalParts: 5
-                  },
-                  population: 6.8
-                }
+      greece = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 6.8
+      }
 
+      italy = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 42
+      }
 
-                let italy = {
-                  height: 330,
-                  width: 290.4,
-                  specialities: {
-                      1: goods.specific[2],
-                      2: goods.specific[3],
-                      3: goods.main[2]
-                    },  
-                    goodCosts: {
-                      coal: 30,
-                      steel: 70,
-                      aluminium: 80,
-                      copper: 60,
-                      lead: 50,
-                      grain: 5,
-                      oil: 100,
-                      wine: 35,
-                      fish: 5,
-                      flour: 10,
-                      clothes: 20,
-                      zinc: 75,
-                      wolfram: 100,
-                      mechanicalParts: 150,
-                      chrome : 5,
-                      nickel: 3,
-                      forestGoods: 20
-                    },
-                    goodsAvailability: {
-                      coal: 100,
-                      steel: 80,
-                      aluminium: 50,
-                      copper: 120,
-                      lead: 80,
-                      grain: 1000,
-                      oil: 300,
-                      wine: 50,
-                      fish: 70,
-                      flour: 80,
-                      clothes: 90,
-                      zinc: 15,
-                      wolfram: 40,
-                      mechanicalParts: 5
-                    },
-                    population: 42
-                  }
+     spain = {
+        height: 330,
+        width: 290.4,
+        specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 24
+     }
 
-            let spain = {
-                height: 330,
-                width: 290.4,
-                specialities: {
-                    1: goods.specific[2],
-                    2: goods.specific[3],
-                    3: goods.main[2]
-                  },  
-                  goodCosts: {
-                    coal: 30,
-                    steel: 70,
-                    aluminium: 80,
-                    copper: 60,
-                    lead: 50,
-                    grain: 5,
-                    oil: 100,
-                    wine: 35,
-                    fish: 5,
-                    flour: 10,
-                    clothes: 20,
-                    zinc: 75,
-                    wolfram: 100,
-                    mechanicalParts: 150
-                  },
-                  goodsAvailability: {
-                    coal: 100,
-                    steel: 80,
-                    aluminium: 50,
-                    copper: 120,
-                    lead: 80,
-                    grain: 1000,
-                    oil: 300,
-                    wine: 50,
-                    fish: 70,
-                    flour: 80,
-                    clothes: 90,
-                    zinc: 15,
-                    wolfram: 40,
-                    mechanicalParts: 5
-                  },
-                  population: 24
-                }
-
-
-                let portugal = {
-                  height: 330,
-                  width: 290.4,
-                  specialities: {
-                      1: goods.specific[2],
-                      2: goods.specific[3],
-                      3: goods.main[2]
-                    },  
-                    goodCosts: {
-                      coal: 30,
-                      steel: 70,
-                      aluminium: 80,
-                      copper: 60,
-                      lead: 50,
-                      grain: 5,
-                      oil: 100,
-                      wine: 35,
-                      fish: 5,
-                      flour: 10,
-                      clothes: 20,
-                      zinc: 75,
-                      wolfram: 100,
-                      mechanicalParts: 150
-                    },
-                    goodsAvailability: {
-                      coal: 100,
-                      steel: 80,
-                      aluminium: 50,
-                      copper: 120,
-                      lead: 80,
-                      grain: 1000,
-                      oil: 300,
-                      wine: 50,
-                      fish: 70,
-                      flour: 80,
-                      clothes: 90,
-                      zinc: 15,
-                      wolfram: 40,
-                      mechanicalParts: 5
-                    },
-                    population: 7.1
-                  }
+    portugal = {
+       height: 330,
+       width: 290.4,
+       specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 7.1
+    }
   
-                  let bulgaria = {
-                    height: 330,
-                    width: 290.4,
-                    specialities: {
-                        1: goods.specific[2],
-                        2: goods.specific[3],
-                        3: goods.main[2]
-                      },  
-                      goodCosts: {
-                        coal: 30,
-                        steel: 70,
-                        aluminium: 80,
-                        copper: 60,
-                        lead: 50,
-                        grain: 5,
-                        oil: 100,
-                        wine: 35,
-                        fish: 5,
-                        flour: 10,
-                        clothes: 20,
-                        zinc: 75,
-                        wolfram: 100,
-                        mechanicalParts: 150
-                      },
-                      goodsAvailability: {
-                        coal: 100,
-                        steel: 80,
-                        aluminium: 50,
-                        copper: 120,
-                        lead: 80,
-                        grain: 1000,
-                        oil: 300,
-                        wine: 50,
-                        fish: 70,
-                        flour: 80,
-                        clothes: 90,
-                        zinc: 15,
-                        wolfram: 40,
-                        mechanicalParts: 5
-                      },
-                      population: 6.3
-                    }
+    bulgaria = {
+       height: 330,
+       width: 290.4,
+       specialities: {
+          1: goods.specific[2],
+          2: goods.specific[3],
+          3: goods.main[2]
+          },
+          population: 6.3
+   }
                     
-                    let denmark = {
-                      height: 110,
-                      width: 105.6,
-                      specialities: {
-                        1: goods.additional[2]
-                        },
-                        goodCosts: {
-                          coal: 30,
-                          steel: 70,
-                          aluminium: 80,
-                          copper: 60,
-                          lead: 50,
-                          grain: 5,
-                          oil: 100,
-                          wine: 35,
-                          fish: 5,
-                          flour: 10,
-                          clothes: 20,
-                          zinc: 75,
-                          wolfram: 100,
-                          mechanicalParts: 150,
-                          chrome : 5,
-                          nickel: 3,
-                          forestGoods: 20
-                        },
-                        goodsAvailability: {
-                          coal: 100,
-                          steel: 80,
-                          aluminium: 50,
-                          copper: 120,
-                          lead: 80,
-                          grain: 1000,
-                          oil: 300,
-                          wine: 50,
-                          fish: 70,
-                          flour: 80,
-                          clothes: 90,
-                          zinc: 15,
-                          wolfram: 40,
-                          mechanicalParts: 5,
-                          chrome : 1,
-                          nickel: 2,
-                          forestGoods: 50
-                        },
-                        population: 3.7
-                    }
+    denmark = {
+       height: 110,
+       width: 105.6,
+       specialities: {
+          1: goods.additional[2]
+          },
+          population: 3.7
+   }
               
-                    let belgium = {
-                      height: 110,
-                      width: 105.6,
-                      specialities: {
-                        1: goods.additional[2]
-                        },
-                        goodCosts: {
-                          coal: 30,
-                          steel: 70,
-                          aluminium: 80,
-                          copper: 60,
-                          lead: 50,
-                          grain: 5,
-                          oil: 100,
-                          wine: 35,
-                          fish: 5,
-                          flour: 10,
-                          clothes: 20,
-                          zinc: 75,
-                          wolfram: 100,
-                          mechanicalParts: 150,
-                          chrome : 5,
-                          nickel: 3,
-                          forestGoods: 20
-                        },
-                        goodsAvailability: {
-                          coal: 100,
-                          steel: 80,
-                          aluminium: 50,
-                          copper: 120,
-                          lead: 80,
-                          grain: 1000,
-                          oil: 300,
-                          wine: 50,
-                          fish: 70,
-                          flour: 80,
-                          clothes: 90,
-                          zinc: 15,
-                          wolfram: 40,
-                          mechanicalParts: 5,
-                          chrome : 1,
-                          nickel: 2,
-                          forestGoods: 50
-                        },
-                        population: 8.3
-                    }
+    belgium = {
+       height: 110,
+       width: 105.6,
+       specialities: {
+          1: goods.additional[2]
+          },
+          population: 8.3
+    }
 
-                    let netherland = {
-                      height: 110,
-                      width: 105.6,
-                      specialities: {
-                        1: goods.additional[2]
-                        },
-                        goodCosts: {
-                          coal: 30,
-                          steel: 70,
-                          aluminium: 80,
-                          copper: 60,
-                          lead: 50,
-                          grain: 5,
-                          oil: 100,
-                          wine: 35,
-                          fish: 5,
-                          flour: 10,
-                          clothes: 20,
-                          zinc: 75,
-                          wolfram: 100,
-                          mechanicalParts: 150,
-                          chrome : 5,
-                          nickel: 3,
-                          forestGoods: 20
-                        },
-                        goodsAvailability: {
-                          coal: 100,
-                          steel: 80,
-                          aluminium: 50,
-                          copper: 120,
-                          lead: 80,
-                          grain: 1000,
-                          oil: 300,
-                          wine: 50,
-                          fish: 70,
-                          flour: 80,
-                          clothes: 90,
-                          zinc: 15,
-                          wolfram: 40,
-                          mechanicalParts: 5,
-                          chrome : 1,
-                          nickel: 2,
-                          forestGoods: 50
-                        },
-                        population: 8.3
-                    }
+    netherland = {
+       height: 110,
+       width: 105.6,
+       specialities: {
+          1: goods.additional[2]
+          },
+          population: 8.3
+    }
 
-                    let albania = {
-                      height: 78.7,
-                      width: 100,
-                      specialities: {
-                        1: goods.additional[2]
-                        },
-                        goodCosts: {
-                          coal: 30,
-                          steel: 70,
-                          aluminium: 80,
-                          copper: 60,
-                          lead: 50,
-                          grain: 5,
-                          oil: 100,
-                          wine: 35,
-                          fish: 5,
-                          flour: 10,
-                          clothes: 20,
-                          zinc: 75,
-                          wolfram: 100,
-                          mechanicalParts: 150,
-                          chrome : 5,
-                          nickel: 3,
-                          forestGoods: 20
-                        },
-                        goodsAvailability: {
-                          coal: 100,
-                          steel: 80,
-                          aluminium: 50,
-                          copper: 120,
-                          lead: 80,
-                          grain: 1000,
-                          oil: 300,
-                          wine: 50,
-                          fish: 70,
-                          flour: 80,
-                          clothes: 90,
-                          zinc: 15,
-                          wolfram: 40,
-                          mechanicalParts: 5,
-                          chrome : 1,
-                          nickel: 2,
-                          forestGoods: 50
-                        },
-                        population: 1
-                    }
+    albania = {
+       height: 78.7,
+       width: 100,
+       specialities: {
+          1: goods.additional[2]
+          },
+          population: 1
+    }
 
-                    iceland = {
-                      height: 123.5,
-                      width: 260,
-                      specialities: {
-                        1: goods.additional[2]
-                        },
-                        goodCosts: {
-                          coal: 30,
-                          steel: 70,
-                          aluminium: 80,
-                          copper: 60,
-                          lead: 50,
-                          grain: 5,
-                          oil: 100,
-                          wine: 35,
-                          fish: 5,
-                          flour: 10,
-                          clothes: 20,
-                          zinc: 75,
-                          wolfram: 100,
-                          mechanicalParts: 150,
-                          chrome : 5,
-                          nickel: 3,
-                          forestGoods: 20
-                        },
-                        goodsAvailability: {
-                          coal: 100,
-                          steel: 80,
-                          aluminium: 50,
-                          copper: 120,
-                          lead: 80,
-                          grain: 1000,
-                          oil: 300,
-                          wine: 50,
-                          fish: 70,
-                          flour: 80,
-                          clothes: 90,
-                          zinc: 15,
-                          wolfram: 40,
-                          mechanicalParts: 5,
-                          chrome : 1,
-                          nickel: 2,
-                          forestGoods: 50
-                        },
-                        population: 0.5
-                    }
+    iceland = {
+       height: 123.5,
+       width: 260,
+       specialities: {
+          1: goods.additional[2]
+          },
+          population: 0.5
+    }
 
-  
-
-    let switzerland = {
-      height: 80,
-      width: 45.6,
-      specialities: {
-        1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
-        },
-        population: 4.1
+    switzerland = {
+       height: 80,
+       width: 45.6,
+       specialities: {
+         1: goods.additional[2]
+         },
+         population: 4.1
     }
 
     sicily = {
@@ -1772,44 +842,6 @@ export let selectedLanguage = polish;
       width: 80,
       specialities: {
         1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
         },
         population: 4
     }
@@ -1820,91 +852,6 @@ export let selectedLanguage = polish;
       specialities: {
         1: goods.additional[2]
         },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
-        },
-        population: 1
-    }
-
-       sardynia = {
-      height: 80,
-      width: 53.6,
-      specialities: {
-        1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
-        },
         population: 1
     }
 
@@ -1913,44 +860,6 @@ export let selectedLanguage = polish;
       width: 34.65,
       specialities: {
         1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
         },
         population: 0.2
     }
@@ -1961,44 +870,6 @@ export let selectedLanguage = polish;
       specialities: {
         1: goods.additional[2]
         },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
-        },
         population: 7
     }
 
@@ -2007,44 +878,6 @@ export let selectedLanguage = polish;
       width: 280,
       specialities: {
         1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
         },
         population: 1.3
     }
@@ -2055,44 +888,6 @@ export let selectedLanguage = polish;
       specialities: {
         1: goods.additional[2]
         },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
-        },
         population: 3
     }
 
@@ -2101,44 +896,6 @@ export let selectedLanguage = polish;
       width: 139.5,
       specialities: {
         1: goods.additional[2]
-        },
-        goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
-        },
-        goodsAvailability: {
-          coal: 100,
-          steel: 80,
-          aluminium: 50,
-          copper: 120,
-          lead: 80,
-          grain: 1000,
-          oil: 300,
-          wine: 50,
-          fish: 70,
-          flour: 80,
-          clothes: 90,
-          zinc: 15,
-          wolfram: 40,
-          mechanicalParts: 5,
-          chrome : 1,
-          nickel: 2,
-          forestGoods: 50
         },
         population: 2.5
     }

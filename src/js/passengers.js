@@ -1,6 +1,4 @@
 import {relations} from './relations';
-import {countryConnections} from './countryConnections';
-import {selectedLanguage} from './translations';
 import {setCostInStartAndInEndCountry,calculetedRouteDistance} from './transportPanel'
 
 const availableQtyValue = document.querySelector(".availableQtyValue");
@@ -2415,16 +2413,3 @@ export let passengersRatio = {
     }
 }
 
-// function setProperTypeOfTransportBasedOnTransportType(transportType){
-//     let truckTranslation = selectedLanguage["truck"];
-//     let busTranslation = selectedLanguage["bus"];
-//     let railwayTranslation = selectedLanguage["railway"];
-//     let seaTranslation = selectedLanguage["maritime"];
-
-//     if(transportType == truckTranslation || transportType == busTranslation || transportType == railwayTranslation){
-//         return "land"
-//     } else if(transportType == seaTranslation){
-//         return "sea"
-//     }
-
-// };

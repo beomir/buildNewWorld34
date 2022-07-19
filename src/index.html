@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="./js/translations.js" type="module"></script>
     <script src="./js/map.js" type="module"></script>
-    <script src="./js/nav.js"></script>
+    <script src="./js/nav.js" type="module"></script>
     <script src="./js/gameLogic.js" type="module"></script>
     <script src="./js/transportPanel.js" type="module"></script>
     <script src="./js/countryConnections.js" type="module"></script>
@@ -54,9 +54,10 @@
         </ol>
     </div>
     <div class="additionalNav">
-        <div class="anChildLeft"><span id="busStock">Autobusy: </span><span id="busValue">0</span></div>
-        <div class="anChildLeft"><span id="planesStock">Samoloty: </span><span id="planesValue">0</span></div>
-        <div class="anChildLeft"><span id="trainsStock">Pociągi: </span><span id="trainsValue">0</span></div>
+        <div class="anChildLeft"><span class="buses">Autobusy</span>: <span id="busStockValue">0</span></div>
+        <div class="anChildLeft"><span class="trucks">Ciężarówki</span>: <span id="trucksStockValue">0</span></div>
+        <div class="anChildLeft"><span class="trains">Pociągi</span>: <span id="trainsStockValue">0</span></div>
+        <div class="anChildLeft"><span class="ships">Statki</span>: <span id="shipsStockValue">0</span></div>
         <div class="anChildLeftClose" id="startContainer">
             <svg class="icon">
                 <use href="./img/icons.svg#icon-play-solid" id="start"></use>
@@ -68,8 +69,8 @@
             </svg>
         </div>
         <div class="time"><span id="timeWatch"></span></div>
-        <div class="anChildRight"><span id="money">Pieniądze: </span><span id="moneyValue">315</span><span id="moneyCurrency">$</span></div>
-        <div class="anChildRight"><span id="influence">Wpływy: </span><span id="influenceValue">10</span></div>
+        <div class="anChildRight"><span id="money">Pieniądze</span>: <span id="moneyValue">315</span><span id="moneyCurrency">$</span></div>
+        <div class="anChildRight"><span id="influence">Wpływy</span>: <span id="influenceValue">10</span></div>
     </div>
 </div> 
 </section>

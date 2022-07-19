@@ -315,7 +315,7 @@ body{
 	color: aliceblue;
 	font-family: 'Dekko';
 	display: inline-block;
-	min-width: 380px;
+	min-width: 400px;
 }
 
 
@@ -332,12 +332,12 @@ body{
 	z-index: 200;
 	position:fixed;
 	transition: transform .5s .1s ease-in-out;
-	min-width: 380px;
+	min-width: 400px;
 	transform: translatex(0px);
 }
 
 .createTransportPanel--inactive{
-	transform: translatex(-450px);
+	transform: translatex(-480px);
 }
 
 .values {

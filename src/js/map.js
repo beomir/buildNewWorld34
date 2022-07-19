@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 import {selectedLanguage, refreshObjectsTranslation} from './translations'
-import {buildRoute,blockageForInfoNotify} from './transportPanel'
+import {buildRoute,blockageForInfoNotify,calculateEstimatedTimeOfArrival} from './transportPanel'
 
 
 let selectedCountryName;
@@ -3470,6 +3470,7 @@ function(){
             changeDate(dateValue);
           }
       }
+      calculateEstimatedTimeOfArrival();
   }
   
   function changeDate(dateValue){
@@ -3488,7 +3489,6 @@ function(){
   }
 
   const countryPanelList = document.querySelector(".countryPanelList");
-  const navHeight = document.querySelector('.nav').clientHeight;
   const placeForFlag = document.querySelector("#placeForFlag");  
   const countryFlagActionCountry = $(".countryFlagActionCountry")[0]
   export let countryPanelListClicked = false;

@@ -41,6 +41,8 @@ const meanOfTransport = document.querySelector(".meanOfTransport");
 const singularCostValue = document.querySelector(".singularCostValue");
 const addToRouteImg = document.querySelector(".addRoute"); 
 
+const informationTransportPanel = document.querySelector(".informationTransportPanel");
+
 const route = $(".route")[0];
 const routeDistanceValue = $(".routeDistanceValue")[0];
 let temporaryRouteValues = [];
@@ -150,6 +152,7 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
     createTransportPanel.classList.add('createTransportPanel--inactive');
     earnings.classList.add('earnings--inactive');
     addToRouteImg.classList.add('addRoute--inactive');
+    informationTransportPanel.classList.add('informationTransportPanel--inactive');
     cleanCurrentRoute();
     toggleClickedCreateTransport();
     cleanRouteDistance();
@@ -694,9 +697,10 @@ function getObjKeysByObjectAndValue(obj, value) {
   };
 
   function displayEarningPanel(){
-    if(calculatedIncomeValue != null && calculatedIncomeValue != 0){
+    if(calculatedProfitValue != null && calculatedProfitValue != 0 && calculatedIncomeValue != null && calculatedIncomeValue != 0){ //calculatedIncomeValue
         earnings.classList.remove('earnings--inactive');
         addToRouteImg.classList.remove('addRoute--inactive');
+        informationTransportPanel.classList.remove('informationTransportPanel--inactive');
         if(calculatedProfitValue > 0){ //if calculatedProfitValue is bigger than 0 then mark background color on green
             earnings.classList.remove("earningsMinus");
             earnings.classList.add("earningsPlus");
@@ -707,6 +711,7 @@ function getObjKeysByObjectAndValue(obj, value) {
     } else {
         earnings.classList.add('earnings--inactive');
         addToRouteImg.classList.add('addRoute--inactive');
+        informationTransportPanel.classList.add('informationTransportPanel--inactive');
     }
     
   };
@@ -836,6 +841,13 @@ export function restoreMaxAvailableQtyToTransport(){
     }   
 }
 
-  /////TODO add logic with passangers --> balance costs and profits
+informationTransportPanel.addEventListener("mouseover",function(){
+    let informationTransportPanelValue = checkInformationsAboutTransportPanel();
+    Notify.warning(informationTransportPanelValue);
+})
 
-  /////////TODO add efect rolling on for transport panel
+function checkInformationsAboutTransportPanel(){
+    //TODO check here current money and compare with potential cost, if everything is fine then display information with notify.info that route can be accepted if you dont have enough money then calculate how much is missing to target
+    return "To set a value";
+}
+

@@ -1,5 +1,7 @@
 import {relations} from './relations';
-import {setCostInStartAndInEndCountry,calculetedRouteDistance} from './transportPanel'
+import {setCostInStartAndInEndCountry,calculetedRouteDistance} from './transportPanel';
+import {countries} from './map';
+import {influence} from './gameLogic';
 
 const availableQtyValue = document.querySelector(".availableQtyValue");
 const howManyToTransportValue = document.getElementById("howManyToTransportValue");
@@ -15,7 +17,8 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
         } else if(relations[fromCountry][toCountry] < -50){
             relationsValue = 0;
         }
-    calculatedPassengers = passengers[fromCountry][toCountry] * relationsValue;
+
+    calculatedPassengers = Math.ceil((passengers[fromCountry][toCountry] * relationsValue * (countries[fromCountry].population / 100)) * influence *0.1); 
     } else {
         calculatedPassengers = 0;
     }
@@ -29,8 +32,6 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
     
     let ticketCost = Math.round(calculetedRouteDistance * 0.1*100)/100;
     setCostInStartAndInEndCountry(0,ticketCost);
-
-    
 
 }
 

@@ -58,7 +58,13 @@ Notify.init({
   },
   failure: {
     background: '#751b1b'
-}
+  },
+  warning:{
+    background: '#4fc419'
+  },
+  success:{
+    background: 'chartreuse'
+  }
 });
 
 

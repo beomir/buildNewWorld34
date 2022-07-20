@@ -338,6 +338,28 @@ body{
 	transform:scale(0.8);
 }
 
+.informationTransportPanel{
+	display: inline-block;
+	top: 60;
+	position:absolute;
+	cursor: pointer;
+	transition: 0.7s;
+	transform: translatex(0px);
+}
+
+.informationTransportPanel:hover{
+	filter: brightness(70%);
+}
+
+.informationTransportPanel:active {
+	transform:scale(0.8);
+}
+
+.informationTransportPanel--inactive{
+	transform: translatex(-600px);
+}
+
+
 .addRoute{
 	display: inline-block;
 	bottom: 0;

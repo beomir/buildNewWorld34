@@ -4,39 +4,39 @@ export const meansOfTransportList = {
                 truck:{
                         renaultTTD6:{
                             payLoad: 15,
-                            cost: 1,
-                            speed: 20
+                            cost: 2.5,
+                            speed: 21
                         },
                         renaultABG:{
                             payLoad: 10,
-                            cost: 0.77,
+                            cost: 1.6,
                             speed: 23
                         },
                         renaultYGDD:{
                             payLoad: 6,
-                            cost: 0.47,
+                            cost: 1,
                             speed: 21
                         },
                         VolvoLV80:{
                             payLoad: 5,
-                            cost: 0.43,
+                            cost: 0.8,
                             speed: 19
                         }
                     },
                 bus:{
                     AECtypeQ:{
                         passengers: 30,
-                        cost: 0.9,
+                        cost: 2.5,
                         speed: 22
                     },
                     AMO4:{
                         passengers: 22,
-                        cost: 0.8,
+                        cost: 1.8,
                         speed: 20
                     },
                     LeylandTitan:{
                         passengers: 51,
-                        cost: 1,
+                        cost: 4.3,
                         speed: 20
                     }
                 }  
@@ -45,24 +45,24 @@ export const meansOfTransportList = {
             passangerShips:{
                     steamer:{
                         passengers: 700,
-                        cost: 30,
+                        cost: 70,
                         speed: 12
                     },
                     internalCombustion:{
                         passengers: 1000,
-                        cost: 50,
+                        cost: 90,
                         speed: 15
                     }
                 },
             loadShips:{
                     steamer:{
-                        payLoad: 150,
-                        cost: 30,
+                        payLoad: 450,
+                        cost: 70,
                         speed: 25
                     },
                     internalCombustion:{
-                        payLoad: 170,
-                        cost: 50,
+                        payLoad: 500,
+                        cost: 90,
                         speed: 30
                     }
                 }
@@ -71,30 +71,29 @@ export const meansOfTransportList = {
                 passengerTrains:{
                     Mat34:{
                         passengers: 150,
-                        cost: 30,
+                        cost: 40,
                         speed: 50
                     },
                     LNERClassA4:{
                         passengers: 140,
-                        cost: 29,
+                        cost: 39,
                         speed: 48
                     },
                     DRGClassSVT137:{
                         passengers: 130,
-                        cost: 28,
+                        cost: 38,
                         speed: 46
                     }
-
                 }, 
                 loadTrains:{
                     DRGClassSVT877:{
-                        payLoad: 300,
-                        cost: 50,
+                        payLoad: 200,
+                        cost: 40,
                         speed: 30
                     },
                     DRGClass05:{
-                        payLoad: 250,
-                        cost: 45,
+                        payLoad: 150,
+                        cost: 35,
                         speed: 25
                     },
                     Pm2:{
@@ -108,10 +107,37 @@ export const meansOfTransportList = {
 }
 
 export let additionalTransportCost = {
-    trucks: 0.3,
-    bus: 0.3,
-    passengerTrains: 10,
-    loadTrains: 10,
-    passangerShips: 150,
-    loadShips: 150
+        rent:{
+            trucks: 20,
+            bus: 20,
+            passengerTrains: 300,
+            loadTrains: 300,
+            passangerShips: 100,
+            loadShips: 1000
+        },
+        duty:{
+            trucks: 20,
+            bus: 20,
+            passengerTrains: 50,
+            loadTrains: 50,
+            passangerShips: 350,
+            loadShips: 350
+        },
+        operatingCosts:{
+            trucks: 50,
+            bus: 50,
+            passengerTrains: 100,
+            loadTrains: 100,
+            passangerShips: 500,
+            loadShips: 500
+        },
+        transportToEndPoint:{
+            trucks: 10,
+            bus: 10,
+            passengerTrains: 30,
+            loadTrains: 30,
+            passangerShips: 100,
+            loadShips: 100
+        }
+    
 }

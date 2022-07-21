@@ -145,7 +145,11 @@ const   polish = {
         ships: "Statki",
         trains: "Pociągi",
         influence: "Wpływy",
-        money: "Pieniądze"
+        money: "Pieniądze",
+        theCalculatedCost: "Sumaryczny koszt",
+        isBiggerThanYourFinancialResources: "jest większy od Twoich zasobów finansowych",
+        decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Zmniejsz sumaryczny koszt poniżej Twoich zasobów finansowych i spróbuj ponownie",
+        everythingLooksFineYoucanAffordThisTransport : "Wszystko wygląda w porządku. Stać Cię na ten transport"
         
     }
     
@@ -271,7 +275,11 @@ const   english = {
         ships: "Ships",
         trains: "Trains",
         influence: "Influence",
-        money: "Money"
+        money: "Money",
+        theCalculatedCost: "The calculated cost",
+        isBiggerThanYourFinancialResources: "is bigger than your financial resources",
+        decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Decrease the cost under your financial resources and try again",
+        everythingLooksFineYoucanAffordThisTransport : "Everything looks fine. You can afford this transport"
     }
     
 const   russian = {
@@ -396,7 +404,11 @@ const   russian = {
         ships: "Корабли",
         trains: "Поезда",
         influence: "Влияние",
-        money: "Деньги"
+        money: "Деньги",
+        theCalculatedCost: "Расчетная стоимость",
+        isBiggerThanYourFinancialResources: "больше, чем ваши финансовые ресурсы",
+        decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Уменьшите стоимость в соответствии с вашими финансовыми ресурсами и повторите попытку",
+        everythingLooksFineYoucanAffordThisTransport : "Все выглядит хорошо. Вы можете позволить себе этот транспорт"
     }
 
 export let selectedLanguage = polish;

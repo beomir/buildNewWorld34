@@ -1,3 +1,7 @@
+import {checkInformationsAboutTransportPanel} from'./transportPanel';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const addRoute = document.querySelector(".addRoute");
 const influenceValue = document.getElementById("influenceValue");
 const moneyValue = document.getElementById("moneyValue");
 
@@ -5,6 +9,13 @@ export let influence = 1;
 export let money = 5000;
 export let companyCosts;
 export let companyIncomes;
+
+let ongoingRoutes = {
+
+};
+let historicalRoutes = {
+
+};
 
 setInfluence();
 setMoney();
@@ -35,6 +46,19 @@ function setMoney(){
     moneyValue.innerHTML = money;
 }
 
+addRoute.addEventListener("click",function(){
+    let validationOfCostAndMoney = checkInformationsAboutTransportPanel();
+    if(validationOfCostAndMoney){
+        addRouteToBeOngoing();
+    } else{
+        Notify.failure(selectedLanguage.theCalculatedCost + ": " + calculatedCostValue + " " +  selectedLanguage.isBiggerThanYourFinancialResources + ": " + money + ".") 
+    }
+})
+
+export function addRouteToBeOngoing(){
+    
+    Notify.success("Route added to ongoing")
+}
 
 //TODO calculate money
 ////TODO make a logic for calculate influence

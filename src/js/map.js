@@ -63,7 +63,8 @@ Notify.init({
     background: '#4fc419'
   },
   success:{
-    background: 'chartreuse'
+    background: '#4cf100',
+    textColor: "black"
   }
 });
 

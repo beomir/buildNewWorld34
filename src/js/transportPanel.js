@@ -4,6 +4,7 @@ import {countryConnections} from './countryConnections';
 import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {passengers,calculatePassengersForCountry} from './passengers';
+import { money } from './gameLogic';
 
 
 const createTransport = document.querySelector("#createTransport")
@@ -842,12 +843,27 @@ export function restoreMaxAvailableQtyToTransport(){
 }
 
 informationTransportPanel.addEventListener("mouseover",function(){
-    let informationTransportPanelValue = checkInformationsAboutTransportPanel();
-    Notify.warning(informationTransportPanelValue);
+    let routeStatus = checkInformationsAboutTransportPanel();
+    let information;
+    if(routeStatus){
+        information = selectedLanguage.everythingLooksFineYoucanAffordThisTransport;
+        Notify.info(information);
+    } else{
+        information = selectedLanguage.theCalculatedCost + ": " + calculatedCostValue + " " +  selectedLanguage.isBiggerThanYourFinancialResources + ": " + money + "."
+        Notify.warning(information);
+    }
 })
 
-function checkInformationsAboutTransportPanel(){
-    //TODO check here current money and compare with potential cost, if everything is fine then display information with notify.info that route can be accepted if you dont have enough money then calculate how much is missing to target
-    return "To set a value";
+export function checkInformationsAboutTransportPanel(){
+
+    if(calculatedCostValue>money){
+
+        return false;
+    } else{
+        
+        return true;  
+    }
 }
+    
+    
 

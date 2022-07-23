@@ -51,6 +51,7 @@ Notify.init({
   width: '350px',
   position: 'right-bottom',
   timeout: 5000,
+  messageMaxLength: 500,
   plainText: false,
   showOnlyTheLastOne: true,
   info: {
@@ -3571,6 +3572,11 @@ export function toggleClickedCreateTransport(){
 
 export function cleanCurrentRoute(){
   currentRoute = [];
+  currentRouteTranslated = [];
+  route.innerHTML = "";
+}
+
+export function cleanCurrentRouteTranslated(){
   currentRouteTranslated = [];
   route.innerHTML = "";
 }

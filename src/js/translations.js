@@ -149,7 +149,8 @@ const   polish = {
         theCalculatedCost: "Sumaryczny koszt",
         isBiggerThanYourFinancialResources: "jest większy od Twoich zasobów finansowych",
         decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Zmniejsz sumaryczny koszt poniżej Twoich zasobów finansowych i spróbuj ponownie",
-        everythingLooksFineYoucanAffordThisTransport : "Wszystko wygląda w porządku. Stać Cię na ten transport"
+        everythingLooksFineYoucanAffordThisTransport : "Wszystko wygląda w porządku. Stać Cię na ten transport",
+        afterAddCountryToRouteAvailableQtyWasChanged : "Po dodaniu kraju do trasy dostępna ilość towarów została zmieniona na mniejszą niż w okienku ile chcesz przetransportować"
         
     }
     
@@ -279,7 +280,9 @@ const   english = {
         theCalculatedCost: "The calculated cost",
         isBiggerThanYourFinancialResources: "is bigger than your financial resources",
         decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Decrease the cost under your financial resources and try again",
-        everythingLooksFineYoucanAffordThisTransport : "Everything looks fine. You can afford this transport"
+        everythingLooksFineYoucanAffordThisTransport : "Everything looks fine. You can afford this transport",
+        afterAddCountryToRouteAvailableQtyWasChanged : "After added country to route available quantity was changed on less than in input field how many do you want to transport"
+      
     }
     
 const   russian = {
@@ -408,7 +411,8 @@ const   russian = {
         theCalculatedCost: "Расчетная стоимость",
         isBiggerThanYourFinancialResources: "больше, чем ваши финансовые ресурсы",
         decreaseTheCostUnderYourFinancialResourcesAndTryAgain: "Уменьшите стоимость в соответствии с вашими финансовыми ресурсами и повторите попытку",
-        everythingLooksFineYoucanAffordThisTransport : "Все выглядит хорошо. Вы можете позволить себе этот транспорт"
+        everythingLooksFineYoucanAffordThisTransport : "Все выглядит хорошо. Вы можете позволить себе этот транспорт",
+        afterAddCountryToRouteAvailableQtyWasChanged : "После добавления страны в маршрут доступное количество было изменено на меньше, чем в поле ввода сколько вы хотите перевезти"
     }
 
 export let selectedLanguage = polish;
@@ -524,9 +528,10 @@ export let selectedLanguage = polish;
 
     influence.innerHTML = selectedLanguage.influence;
     money.innerHTML = selectedLanguage.money;
-
+    
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);
+
   }
 
   export function refreshObjectsTranslation(searchedObject){
@@ -950,7 +955,7 @@ export let selectedLanguage = polish;
         "ireland" : ireland,
         "easternPrussia" : easternPrussia
     }
-    
+
     let myObject = listObjects[searchedObject];
     return myObject
   }

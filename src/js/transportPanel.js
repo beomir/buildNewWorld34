@@ -1,4 +1,4 @@
-import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue,time} from './map';
+import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue,time,cleanCurrentRouteTranslated} from './map';
 import {selectedLanguage} from './translations';
 import {countryConnections} from './countryConnections';
 import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
@@ -78,7 +78,7 @@ let neededTransportUnits = 0;
 let calculatedIncomeValue;
 
 let calculatedProfitValue;
-let calculatedCostValue;
+export let calculatedCostValue;
 let goodPriceInStartedCountry;
 let estimatedTimeOfArrival;
 
@@ -253,11 +253,11 @@ function alreadyAllCountriesDeletedFromRoute(){
 }
 
 export function translateCurrentRoute(currentRoute){
-    cleanCurrentRoute();
-    if(temporaryRouteValues.length>0){
-        currentRoute = temporaryRouteValues;
-    }
+    route.innerHTML = ""
+    cleanCurrentRouteTranslated();
+    temporaryRouteValues = currentRoute
     if(currentRoute.length>0){
+        console.log("2 " + currentRoute);
         for(let nbrInArray in currentRoute){
             let countryName = currentRoute[nbrInArray];
             currentRouteTranslated.push(selectedLanguage[countryName])
@@ -266,6 +266,7 @@ export function translateCurrentRoute(currentRoute){
             }
             route.innerHTML = currentRouteTranslated;
         }
+        console.log(currentRouteTranslated);
     }
     //translate typeOfTransportValue
     transportTypeValue.innerHTML = selectedLanguage[lastActiveTransportType[0]];
@@ -309,7 +310,7 @@ howManyToTransportValue.addEventListener("change",function(){
 });
 
 howManyToTransportValue.oninput = function () {
-    var max = parseInt(this.max);
+    let max = parseInt(this.max);
 
     if (parseInt(this.value) > max) {
         this.value = max; 
@@ -485,9 +486,10 @@ function addToRoute(firstClickedCountryName,startedCountry,selectedTransportType
     if(wares.value == selectedLanguage["passengers"]){
     calculatePassengersForCountry(firstClickedCountryName,startedCountry)
 }
-    
+    restoreMaxAvailableQtyToTransport();
     calculateCostValue();
     calculateEstimatedTimeOfArrival();
+    
 };
 
 function checkWhichTransportType(selectedTransportType){
@@ -834,12 +836,17 @@ export function setCostInStartAndInEndCountry(startCountryCost,EndCountryCost){
 };
 
 export function restoreMaxAvailableQtyToTransport(){
-    if(howManyToTransportValue.value>availableGoodQuantity){
-        howManyToTransportValue.value = availableGoodQuantity;
+    let max = parseInt(availableQtyValue.textContent);
+    if(!isNaN(max)){       
+        if(parseInt(howManyToTransportValue.value)>max){
+            howManyToTransportValue.value = max;
+            Notify.warning(selectedLanguage.afterAddCountryToRouteAvailableQtyWasChanged)
+        }
+        if(parseInt(howManyToTransportValue.value)<0){
+            howManyToTransportValue.value = 0;
+   
+        }   
     }
-    if(howManyToTransportValue.value<0){
-        howManyToTransportValue.value = 0;
-    }   
 }
 
 informationTransportPanel.addEventListener("mouseover",function(){
@@ -849,7 +856,7 @@ informationTransportPanel.addEventListener("mouseover",function(){
         information = selectedLanguage.everythingLooksFineYoucanAffordThisTransport;
         Notify.info(information);
     } else{
-        information = selectedLanguage.theCalculatedCost + ": " + calculatedCostValue + " " +  selectedLanguage.isBiggerThanYourFinancialResources + ": " + money + "."
+        information = selectedLanguage.theCalculatedCost + ": <strong>" + calculatedCostValue + "</strong> " +  selectedLanguage.isBiggerThanYourFinancialResources + ": <strong>" + money + "</strong>."
         Notify.warning(information);
     }
 })

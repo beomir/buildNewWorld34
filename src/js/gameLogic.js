@@ -1,5 +1,6 @@
-import {checkInformationsAboutTransportPanel} from'./transportPanel';
+import {checkInformationsAboutTransportPanel,calculatedCostValue} from'./transportPanel';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {selectedLanguage} from './translations';
 
 const addRoute = document.querySelector(".addRoute");
 const influenceValue = document.getElementById("influenceValue");
@@ -51,7 +52,7 @@ addRoute.addEventListener("click",function(){
     if(validationOfCostAndMoney){
         addRouteToBeOngoing();
     } else{
-        Notify.failure(selectedLanguage.theCalculatedCost + ": " + calculatedCostValue + " " +  selectedLanguage.isBiggerThanYourFinancialResources + ": " + money + ".") 
+        Notify.failure(selectedLanguage.theCalculatedCost + ": <strong>" + calculatedCostValue + "</strong> " +  selectedLanguage.isBiggerThanYourFinancialResources + ": <strong>" + money + "</strong>.") 
     }
 })
 

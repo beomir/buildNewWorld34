@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/myStyle.css">
     <link rel="stylesheet" href="./css/countries.css">
     <link rel="stylesheet" href="./css/clock.css">
+    <link rel="stylesheet" href="./css/gameLogic.css">
     <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="./js/translations.js" type="module"></script>
@@ -69,8 +70,9 @@
             </svg>
         </div>
         <div class="time"><span id="timeWatch"></span></div>
-        <div class="anChildRight"><span id="money">Pieniądze</span>: <span id="moneyValue">5000</span><span id="moneyCurrency">$</span></div>
+        <div class="anChildRight"><div style="display: inline-block" class="moneyValueWithCurrency"><span id="money">Pieniądze</span>: <span id="moneyValue">5000</span><span id="moneyCurrency">$</span></div></div>
         <div class="anChildRight"><span id="influence">Wpływy</span>: <span id="influenceValue">1</span></div>
+        <div class="navInformation--inacvtive"></div>
     </div>
 </div> 
 </section>
@@ -291,7 +293,7 @@
             </div>
         </div>
         <img src="./img/icons/cross-icon.png" class="createTransportPanelSwitchOff" height="50">
-        <img src="./img/icons/plus-icon.png" class="addRoute addRoute--inactive" height="50">
+        <img src="./img/icons/plus-icon.png" title="Dodaj trasę" class="addRoute addRoute--inactive" height="50">
         <img src="./img/icons/info-icon.png" class="informationTransportPanel informationTransportPanel--inactive" height="47">
         <div id="transportTypeData" class="transportTypeData">
             <img style="position:absolute;right: 2%;" src="./img/icons/bus-icon.png" class="transportTypeImg" height="70">

@@ -149,7 +149,10 @@ export function addAvaiableGoodOptions(){
 }
 
 createTransportPanelSwitchOff.addEventListener('click',function(){
+    stwitchOffTransportPanel();
+})
 
+export function stwitchOffTransportPanel(){
     createTransportPanel.classList.add('createTransportPanel--inactive');
     earnings.classList.add('earnings--inactive');
     addToRouteImg.classList.add('addRoute--inactive');
@@ -168,8 +171,7 @@ createTransportPanelSwitchOff.addEventListener('click',function(){
 
     goodCostInStartedCountryValue.innerHTML = "";
     wares.value = selectedLanguage["passengers"];
-
-})
+}''
 
 export function buildRoute(firstClickedCountryName,event){
     
@@ -729,7 +731,7 @@ function getObjKeysByObjectAndValue(obj, value) {
     neccesseryQtyValue.innerHTML = neededTransportUnits;
   };
 
-  function resetCostsAndEarnings(){
+  export function resetCostsAndEarnings(){
     calculatedCostValue = 0;
     calculatedCostValueTag.innerHTML = calculatedCostValue;
     calculatedProfitValue = 0;

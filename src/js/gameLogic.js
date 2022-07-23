@@ -1,10 +1,14 @@
-import {checkInformationsAboutTransportPanel,calculatedCostValue} from'./transportPanel';
+import {checkInformationsAboutTransportPanel,calculatedCostValue,resetCostsAndEarnings,stwitchOffTransportPanel,calculatedCostValue} from'./transportPanel';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {selectedLanguage} from './translations';
 
 const addRoute = document.querySelector(".addRoute");
 const influenceValue = document.getElementById("influenceValue");
 const moneyValue = document.getElementById("moneyValue");
+const moneyValueWithCurrency = document.querySelector(".moneyValueWithCurrency");
+
+const navInformation = document.querySelector(".navInformation--inacvtive");
+const moneyInfo = $(".anChildRight")[0];
 
 export let influence = 1;
 export let money = 5000;
@@ -57,8 +61,48 @@ addRoute.addEventListener("click",function(){
 })
 
 export function addRouteToBeOngoing(){
+
+    // let width = getComputedStyle(moneyValue).width //moneyInfo.width;
+    // let height = getComputedStyle(moneyValue).height  //moneyInfo.height;
+    // console.log(width);
+    // console.log(height);
+    ///TODO catch poperly the width and height of tag
+    navInformation.innerHTML = calculatedCostValue*(-1);
+    navInformation.style.right = "55px"
+    navInformation.classList.add("navInformation")
+
+    let valueForSetTimeOut = 2000;
+
+    setBigClassAndSwitchItOff(moneyValueWithCurrency,valueForSetTimeOut);
+    setDisplayNoneAfterTimeOut(navInformation,valueForSetTimeOut+1000);
     
-    Notify.success("Route added to ongoing")
+    calculateMoney(calculatedCostValue);
+    stwitchOffTransportPanel();
+    resetCostsAndEarnings();
+
+    Notify.success("<strong>"+selectedLanguage.routeAddedToOngoing+"</strong>")
+};
+
+export function calculateMoney(cost){
+    money = money - cost;
+    setMoney();
+};
+
+function setBigClassAndSwitchItOff(htmlTag,valueForSetTimeOut){
+
+    htmlTag.classList.add("markChanges")
+
+    setTimeout( function() { 
+        htmlTag.classList.add("markChanges--inactive"); 
+    }, valueForSetTimeOut);
+}
+
+function setDisplayNoneAfterTimeOut(htmlTag,valueForSetTimeOut){
+
+    setTimeout( function() { 
+        htmlTag.classList.remove("navInformation")
+    }, valueForSetTimeOut);
+
 }
 
 //TODO calculate money

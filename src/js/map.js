@@ -56,12 +56,15 @@ Notify.init({
   showOnlyTheLastOne: true,
   info: {
     background: '#2b1675',
+    notiflixIconColor: '#eee4e4',
   },
   failure: {
-    background: '#751b1b'
+    background: '#751b1b',
+    notiflixIconColor: '#eee4e4',
   },
   warning:{
-    background: '#4fc419'
+    background: '#4fc419',
+    notiflixIconColor: '#751b1b',
   },
   success:{
     background: '#4cf100',

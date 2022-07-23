@@ -1,0 +1,27 @@
+.markChanges{
+    transition: all 0.6s;
+    transform: scale(1.2);
+    font-weight: bold;
+    color:bisque;
+}
+
+.markChanges--inactive{
+    transition: all 1s ease;
+    transform: scale(1);
+    font-weight: normal;
+    color:white;
+}
+
+.navInformation--inacvtive{
+    transition: transform .5s .1s ease-in-out;
+    transform: translatey(-150px);
+    color: white;
+    position: absolute;
+}
+
+.navInformation{
+    transform: translatey(10px);
+    color: white;
+    position: absolute;
+    font-weight: bold;
+}

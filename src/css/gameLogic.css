@@ -13,15 +13,15 @@
 }
 
 .navInformation--inacvtive{
-    transition: transform .5s .1s ease-in-out;
-    transform: translatey(-150px);
-    color: white;
+    transition: transform 2s .1s ease-in-out;
+    color: blue;
+    top: 30px;
     position: absolute;
 }
 
 .navInformation{
-    transform: translatey(10px);
-    color: white;
+    transform: translatex(50px);
+    color: blue;
     position: absolute;
     font-weight: bold;
 }

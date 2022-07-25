@@ -70,11 +70,13 @@ export function addRouteToBeOngoing(){
     navInformation.innerHTML = calculatedCostValue*(-1);
     navInformation.style.right = "55px"
     navInformation.classList.add("navInformation")
+    navInformation.style.visibility = "visible"
 
     let valueForSetTimeOut = 2000;
 
     setBigClassAndSwitchItOff(moneyValueWithCurrency,valueForSetTimeOut);
-    setDisplayNoneAfterTimeOut(navInformation,valueForSetTimeOut+1000);
+    
+    setDisplayNoneAfterTimeOut(navInformation,valueForSetTimeOut+gi500);
     
     calculateMoney(calculatedCostValue);
     stwitchOffTransportPanel();
@@ -101,6 +103,7 @@ function setDisplayNoneAfterTimeOut(htmlTag,valueForSetTimeOut){
 
     setTimeout( function() { 
         htmlTag.classList.remove("navInformation")
+        htmlTag.style.visibility = "hidden"
     }, valueForSetTimeOut);
 
 }

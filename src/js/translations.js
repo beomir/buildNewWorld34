@@ -152,7 +152,15 @@ const   polish = {
         everythingLooksFineYoucanAffordThisTransport : "Wszystko wygląda w porządku. Stać Cię na ten transport",
         afterAddCountryToRouteAvailableQtyWasChanged : "Po dodaniu kraju do trasy dostępna ilość towarów została zmieniona na mniejszą niż w okienku ile chcesz przetransportować",
         routeAddedToOngoing : "Trasa dodana do będących w toku",
-        addRoute : "Dodaj trasę"
+        addRoute : "Dodaj trasę",
+        routes : "Trasy",
+        currentOngoingRoute: "Aktualne trasy",
+        historicalRoutes : "Historyczne trasy",
+        settings : "Ustawienia",
+        route : "Trasa",
+        dateTime : "Data godzina",
+        transaction: "Transakcja",
+        accountBalanceAfterTransaction : "Stan konta po transakcji"
     }
     
 const   english = {
@@ -284,7 +292,15 @@ const   english = {
         everythingLooksFineYoucanAffordThisTransport : "Everything looks fine. You can afford this transport",
         afterAddCountryToRouteAvailableQtyWasChanged : "After added country to route available quantity was changed on less than in input field how many do you want to transport",
         routeAddedToOngoing : "Route added to in progress",
-        addRoute : "Add route"
+        addRoute : "Add route",
+        routes : "Routes",
+        currentOngoingRoute: "Ongoing routes",
+        historicalRoutes : "Historical routes",
+        settings : "Settings",
+        route : "Route",
+        dateTime : "Date time",
+        transaction: "Transaction",
+        accountBalanceAfterTransaction : "Account balance after transaction"
       
     }
     
@@ -417,8 +433,17 @@ const   russian = {
         everythingLooksFineYoucanAffordThisTransport : "Все выглядит хорошо. Вы можете позволить себе этот транспорт",
         afterAddCountryToRouteAvailableQtyWasChanged : "После добавления страны в маршрут доступное количество было изменено на меньше, чем в поле ввода сколько вы хотите перевезти",
         routeAddedToOngoing : "Маршрут добавлен в процессе",
-        addRoute : "Добавить маршрут"
-    }
+        addRoute : "Добавить маршрут",
+        routes : "Маршруты",
+        currentOngoingRoute: "Текущие маршруты",
+        historicalRoutes : "Исторические маршруты",
+        settings : "Настройки",
+        route : "Маршрут",
+        dateTime : "Дата время",
+        transaction: "Сделка",
+        accountBalanceAfterTransaction : "Баланс счета после транзакци"
+        
+      }
 
 export let selectedLanguage = polish;
 
@@ -478,7 +503,13 @@ export let selectedLanguage = polish;
 
    const influence = document.getElementById("influence");
    const money = document.getElementById("money");
-   const addRoute = document.querySelector(".addRoute")
+   const addRoute = document.querySelector(".addRoute");
+   const routes = document.querySelector("#link4");
+
+   const currentOngoingRoute = document.querySelector("#currentOngoingRoute");
+   const historicalRoutes = document.querySelector("#historicalRoutes");
+   const settings = document.querySelector("#link5");
+
 
     chosenLanguage.src = selectedLanguage.srcFlagTranslation;
     chosenLanguage.title = selectedLanguage.chosenLanguageTranslation;
@@ -535,6 +566,11 @@ export let selectedLanguage = polish;
     influence.innerHTML = selectedLanguage.influence;
     money.innerHTML = selectedLanguage.money;
     addRoute.title = selectedLanguage.addRoute;
+    routes.innerHTML = selectedLanguage.routes;
+
+    currentOngoingRoute.innerHTML = selectedLanguage.currentOngoingRoute;
+    historicalRoutes.innerHTML = selectedLanguage.historicalRoutes;
+    settings.innerHTML = selectedLanguage.settings;
     
     addAvaiableGoodOptions();
     translateCurrentRoute(currentRoute);

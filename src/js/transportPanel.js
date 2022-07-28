@@ -47,13 +47,13 @@ const informationTransportPanel = document.querySelector(".informationTransportP
 const route = $(".route")[0];
 const routeDistanceValue = $(".routeDistanceValue")[0];
 let temporaryRouteValues = [];
-let startedCountry;
+export let startedCountry;
 
 
 const blockageForInfoNotifyTime = 5000;
 export let blockageForInfoNotify = false;
 let selectedWare;
-let currentEndCountryOfTheRoute;
+export let currentEndCountryOfTheRoute;
 
 let endCountryObject;
 let goodPriceInEndCountry;
@@ -71,16 +71,17 @@ let clickedCountryTags = [];
 const originNameOfWares = new Map();
 
 const originalNameOfVehicles = new Map(); // to future use for translate for example ship names
+export let meanOfTransportValue;
 
 let speedValueOfSelectedTransport;
 let capacityOfSelectedTransport;
 let neededTransportUnits = 0;
-let calculatedIncomeValue;
+export let calculatedIncomeValue;
 
-let calculatedProfitValue;
+export let calculatedProfitValue;
 export let calculatedCostValue;
 let goodPriceInStartedCountry;
-let estimatedTimeOfArrival;
+export let estimatedTimeOfArrival;
 
 const thirtyOneDayMonths = ["1","3","5","7","8","10","12"];
 const thirtyDayMonths = ["2","4","6","9","11"];
@@ -101,7 +102,7 @@ let transportType =  {
     }
 }
 
-let lastActiveTransportType = ["land","bus"];
+export let lastActiveTransportType = ["land","bus"];
 
 createTransport.addEventListener("click", function(){ 
 
@@ -502,7 +503,7 @@ function checkWhichTransportType(selectedTransportType){
         lastTransportType = transportType[type];
         typeDetail = lastActiveTransportType[1];
 
-        lastTransportType[typeDetail] = false;
+        transportType[typeDetail] = false;
         lastActiveTransportType = ["land",selectedTransportType];
         transportTypeValue.innerHTML = selectedLanguage.land;
 
@@ -514,7 +515,7 @@ function checkWhichTransportType(selectedTransportType){
         lastTransportType = transportType[type];
         typeDetail = lastActiveTransportType[1];
 
-        lastTransportType[typeDetail] = false;
+        transportType[typeDetail] = false;
         lastActiveTransportType = ["sea",selectedTransportType];
         transportTypeValue.innerHTML = selectedLanguage.maritime;
 
@@ -527,7 +528,7 @@ function checkWhichTransportType(selectedTransportType){
         lastTransportType = transportType[type];
         typeDetail = lastActiveTransportType[1];
         
-        lastTransportType[typeDetail] = false;
+        transportType[typeDetail] = false;
         lastActiveTransportType = ["air",selectedTransportType];
         transportTypeValue.innerHTML = selectedLanguage.air;
 
@@ -659,7 +660,8 @@ function getObjKeysByObjectAndValue(obj, value) {
     displayTransportTypeCapacity(mainTransportTypeName,middleTransportTypeName);
     displayTransportTypeSpeed(mainTransportTypeName,middleTransportTypeName);
     calculateNeededTransportUnits();
-
+    meanOfTransportValue = meanOfTransport.value;
+    
     let selectedTransportTypeCost = meansOfTransportList[dateValue.year][mainTransportTypeName][middleTransportTypeName][meanOfTransport.value].cost;
     singularCostValue.innerHTML = selectedTransportTypeCost;
     calculatedCostValue = Math.round(selectedTransportTypeCost * calculetedRouteDistance * neededTransportUnits*100)/100;

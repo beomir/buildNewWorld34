@@ -52,6 +52,14 @@
             </li>
             <li><a id="link3" href="#">Kraje</a>
             </li>
+            <li><a id="link4" href="#">Trasy</a>
+                <ul class="list">
+                    <li><a id="currentOngoingRoute">Aktualne trasy</a></li>
+                    <li><a id="historicalRoutes">Historyczne trasy</a></li>
+                </ul>
+            </li>
+            <li><a id="link5" href="#">Ustawienia</a>
+            </li>
         </ol>
     </div>
     <div class="additionalNav">
@@ -70,9 +78,21 @@
             </svg>
         </div>
         <div class="time"><span id="timeWatch"></span></div>
-        <div class="anChildRight"><div style="display: inline-block" class="moneyValueWithCurrency"><span id="money">Pieniądze</span>: <span id="moneyValue">5000</span><span id="moneyCurrency">$</span></div></div>
+        <div class="anChildRight">
+            <div style="display: inline-block" class="moneyValueWithCurrency">
+                <span id="money">Pieniądze</span>: <span id="moneyValue">5000</span><span id="moneyCurrency">$</span>
+            </div>
+        </div>
+        <div id="lastMoneyMovements" class="navDropListInformation--inacvtive"></div>
         <div class="anChildRight"><span id="influence">Wpływy</span>: <span id="influenceValue">1</span></div>
-        <div class="navInformation--inacvtive"></div>
+        <div class="anChildRight"> 
+            <div style="display: inline-block" class="lastOngoingRoutesWithValue">
+                <span id="lastOngoingRoutes">Ostatnie aktualne trasy</span>: <span id="lastOngoingRoutesValue">0</span>
+            </div>
+        </div>
+        <div id="moneyMovementsValue" class="navInformation--inacvtive"></div>
+        <div id="influenceMovementsValue" class="navInformation--inacvtive"></div>
+        <div id="routeMovementsValue" class="navInformation--inacvtive"></div>
     </div>
 </div> 
 </section>

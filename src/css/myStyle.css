@@ -49,7 +49,7 @@ body{
 .mainNav
 { 
 	padding: 10px 0;
-	background-color: #c34f4f;
+	background-color: #08352f;
 	text-align: center;
 	border-top: 1px solid #751b1b;
 	border-bottom: 1px solid #751b1b;
@@ -140,23 +140,23 @@ body{
 	float: left;
 	width: 150px;
 	height: 40px;
-	border-right: 1px dashed #751b1b;
+	border-right: 1px dashed #a35e5e;
 }
 
 .mainNav > ol > li:first-child
 {
-	border-left: 1px dashed #751b1b;
+	border-left: 1px dashed #a35e5e;
 }
 
 .mainNav > ol > li:hover
 {
-	background-color: #cf6969;
+	background-color: #0a4139;
 	z-index: 100;
 }
 
 .mainNav > ol > li:hover > a
 {
-	color: #451717;
+	color: #4fc419
 }
 
 .mainNav > ol > li > ul
@@ -171,11 +171,12 @@ body{
 .mainNav > ol > li:hover > ul
 {
 	display: block;
+	
 }
 
 .mainNav > ol > li > ul > li
 {
-	background-color:#cf6969;
+	background-color: #0a4139;
 	position: relative;
 	z-index: 100;
 	border-top: 1px dashed #751b1b;
@@ -184,11 +185,12 @@ body{
 .mainNav > ol > li > ul > li:hover
 {
 	background-color: #c34f4f;
+
 }
 
 .mainNav > ol > li > ul > li:hover > a
 {
-	color: #451717;
+	color: #4fc419;
 }
 
 .anChildLeft {

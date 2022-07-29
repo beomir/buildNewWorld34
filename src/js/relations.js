@@ -1190,3 +1190,13 @@ export let relations = { /// max 100 min -100
         "algieria" : 3
     }
 }
+
+export function increaseRelations(){
+
+}
+
+
+//TODO should go equalize each day
+export function equalizeRelations(){
+    
+}

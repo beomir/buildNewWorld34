@@ -160,7 +160,9 @@ const   polish = {
         route : "Trasa",
         dateTime : "Data godzina",
         transaction: "Transakcja",
-        accountBalanceAfterTransaction : "Stan konta po transakcji"
+        accountBalanceAfterTransaction : "Stan konta po transakcji",
+        cost : "Koszt",
+        startDateTime : "Data rozpoczęcia"
     }
     
 const   english = {
@@ -300,7 +302,9 @@ const   english = {
         route : "Route",
         dateTime : "Date time",
         transaction: "Transaction",
-        accountBalanceAfterTransaction : "Account balance after transaction"
+        accountBalanceAfterTransaction : "Account balance after transaction",
+        cost : "Cost",
+        startDateTime : "Start date"
       
     }
     
@@ -441,7 +445,9 @@ const   russian = {
         route : "Маршрут",
         dateTime : "Дата время",
         transaction: "Сделка",
-        accountBalanceAfterTransaction : "Баланс счета после транзакци"
+        accountBalanceAfterTransaction : "Баланс счета после транзакци",
+        cost : "Расход",
+        startDateTime : "Дата начала"
         
       }
 

@@ -18,6 +18,7 @@
     <script src="./js/countryConnections.js" type="module"></script>
     <script src="./js/passengers.js" type="module"></script>
     <script src="./js/relations.js" type="module"></script>
+    <script src="./js/displayTableInformations.js" type="module"></script>
 
     <title>Transport Game</title>
 </head>
@@ -84,7 +85,11 @@
             </div>
         </div>
         <div id="lastMoneyMovements" class="navDropListInformation--inacvtive"></div>
-        <div class="anChildRight"><span id="influence">Wpływy</span>: <span id="influenceValue">1</span></div>
+        <div class="anChildRight">
+            <div style="display: inline-block" class="lastInfluenceIncrease">
+                <span id="influence">Wpływy</span>: <span id="influenceValue">1</span>
+            </div>
+        </div>
         <div class="anChildRight"> 
             <div style="display: inline-block" class="lastOngoingRoutesWithValue">
                 <span id="lastOngoingRoutes">Ostatnie aktualne trasy</span>: <span id="lastOngoingRoutesValue">0</span>

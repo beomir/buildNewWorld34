@@ -1,8 +1,9 @@
 import {meanOfTransportValue,lastActiveTransportType,checkInformationsAboutTransportPanel,resetCostsAndEarnings,stwitchOffTransportPanel,calculatedCostValue,startedCountry,currentEndCountryOfTheRoute,calculatedProfitValue,estimatedTimeOfArrival,calculatedIncomeValue} from'./transportPanel';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {selectedLanguage} from './translations';
-import {currentRoute,dateValue,time,countries} from './map';
+import {currentRoute,countries,renownIncrease} from './map';
 import {increaseRelations} from './relations'
+import {dateValue,time} from './dateTime';
 
 const addRoute = document.querySelector(".addRoute");
 const influenceValue = document.getElementById("influenceValue");
@@ -21,6 +22,8 @@ const howManyToTransportValue = document.getElementById("howManyToTransportValue
 const lastInfluenceIncrease = document.querySelector(".lastInfluenceIncrease");
 
 let maxInfluenceIncrease = 3;
+export const expireDateTimeOfOngoingRoutes = new Map(); 
+let valueForSetTimeOut = 2000;
 
 let qtyOfCurrentRoutes = 0;
 export let moneyMovements =[];
@@ -45,7 +48,7 @@ export let ongoingRoutes = {
         "estimatedDateTimeOfArrival": ""
     }
 };
-let historicalRoutes = {
+export let historicalRoutes = {
 
 };
 
@@ -97,11 +100,11 @@ export function addRouteToBeOngoing(transportQty){
     routeMovementStart();
     moneyMovementStart(calculatedCostValue*(-1),"red");
     increaseInfluence(transportQty);
+    renownIncrease(startedCountry,transportQty);
     
     qtyOfCurrentRoutes = Object.keys(ongoingRoutes).length;
     lastOngoingRoutesValue.innerHTML = qtyOfCurrentRoutes;
-    let valueForSetTimeOut = 2000;
-    
+        
     pushRouteToOngoingObject();
     setBigClassAndSwitchItOff(moneyValueWithCurrency,valueForSetTimeOut);
     setBigClassAndSwitchItOff(lastOngoingRoutesValue,valueForSetTimeOut);
@@ -158,6 +161,8 @@ function pushRouteToOngoingObject(){
         "startDateTime": dateValue.day + "." + dateValue.month + "." + dateValue.year + "," + time.hour,
         "estimatedDateTimeOfArrival": estimatedTimeOfArrival
     }
+
+    expireDateTimeOfOngoingRoutes.set(nextKey,estimatedTimeOfArrival)
 }
 
 
@@ -167,13 +172,13 @@ function increaseInfluence(transportQty){
     let endCountry = countries[currentEndCountryOfTheRoute];
 
     let togetherPopulation = startCountry["population"] + endCountry["population"];
-    console.log(togetherPopulation * 1000);
     let algorithmForInfluence = Math.round((transportQty / (togetherPopulation * 10))*100)/100
+
     if(algorithmForInfluence>maxInfluenceIncrease){
         algorithmForInfluence = maxInfluenceIncrease;
     }
 
-    influence += algorithmForInfluence;
+    influence = Math.round((influence + algorithmForInfluence)*100)/100;
     setInfluence();
     influenceMovementStart(algorithmForInfluence);
     //TODO to write smart logic
@@ -205,6 +210,72 @@ function influenceMovementStart(influenceIncrease){
     influenceMovementsValue.style.color = "green";
     influenceMovementsValue.classList.add("navInformation")
     influenceMovementsValue.style.visibility = "visible";
+}
+
+function removeFromExpireDateTimeOfOngoingRoutesMap(keyRoutesToRemove){
+    console.log("removeFromExpireDateTimeOfOngoingRoutesMap stated");
+    for(let i=0;i<keyRoutesToRemove.length;i++){
+        expireDateTimeOfOngoingRoutes.delete(keyRoutesToRemove[i]);
+    }
+    
+}
+
+
+export function checkIfExistsExpiredRoutes(dateTime){
+    console.log("checkIfExistsExpiredRoutes Started");
+    let expiredRoutesKeys = [];
+    for (const [key, value] of expireDateTimeOfOngoingRoutes) {
+      if(value == dateTime){
+        expiredRoutesKeys.push(key);
+      }
+    }
+    if(expiredRoutesKeys.length>0){
+        addIncomeFromRoutes(expiredRoutesKeys);
+        removeFromExpireDateTimeOfOngoingRoutesMap(expiredRoutesKeys)
+        transferRouteFromOngoingToHistorical(expiredRoutesKeys)
+    }
+}
+
+function addIncomeFromRoutes(routesSettlement){
+    console.log("addProfit Started");
+    let moneyToAdd = 0;
+    for(let i=0;i<routesSettlement.length;i++){
+        console.log("income: " + ongoingRoutes[routesSettlement[i]]["income"]);
+        moneyToAdd += ongoingRoutes[routesSettlement[i]]["income"];
+    }
+
+    money += moneyToAdd;
+    moneyValue.innerHTML = money;
+    Notify.success(selectedLanguage.routeIsFinished + "." + selectedLanguage.theAccountofTheCompanyWasReceived + ": <strong>" + moneyToAdd + "</strong>");
+    moneyMovementStart("+"+moneyToAdd,"green");
+    setBigClassAndSwitchItOff(moneyValueWithCurrency,valueForSetTimeOut);
+    setDisplayNoneAfterTimeOut(moneyMovementsValue,valueForSetTimeOut);
+}
+
+function transferRouteFromOngoingToHistorical(routesArrayToTransfer){
+    console.log("transferRouteFromOngoingToHistorical started");
+    let nextKey = historicalRoutes.length;
+
+    for(let i=0;i<routesArrayToTransfer.length;i++){
+        historicalRoutes[nextKey] = {
+            "startCountry" : ongoingRoutes[routesArrayToTransfer[i]]["startCountry"],
+            "finishCountry" : ongoingRoutes[routesArrayToTransfer[i]]["finishCountry"],
+            "route" : ongoingRoutes[routesArrayToTransfer[i]]["route"],
+            "cost": ongoingRoutes[routesArrayToTransfer[i]]["cost"] ,
+            "income" : parseInt(ongoingRoutes[routesArrayToTransfer[i]]["income"]),
+            "profit": parseInt(ongoingRoutes[routesArrayToTransfer[i]]["profit"]),
+            "transportType": ongoingRoutes[routesArrayToTransfer[i]]["transportType"],
+            "transportMachine": ongoingRoutes[routesArrayToTransfer[i]]["transportMachine"],
+            "startDateTime": ongoingRoutes[routesArrayToTransfer[i]]["startDateTime"],
+            "estimatedDateTimeOfArrival": ongoingRoutes[routesArrayToTransfer[i]]["estimatedDateTimeOfArrival"]
+        }
+
+        delete ongoingRoutes[routesArrayToTransfer[i]];
+    }
+
+    qtyOfCurrentRoutes = Object.keys(ongoingRoutes).length -1;
+    lastOngoingRoutesValue.innerHTML = qtyOfCurrentRoutes;
+  
 }
 
 

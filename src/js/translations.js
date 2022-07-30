@@ -22,7 +22,6 @@ languagesListTranslation.addEventListener("click",function(e){
 });
 
 
-
 const   polish = {
         specialization: "Specjalizacja",
         population: "Populacja",
@@ -162,7 +161,9 @@ const   polish = {
         transaction: "Transakcja",
         accountBalanceAfterTransaction : "Stan konta po transakcji",
         cost : "Koszt",
-        startDateTime : "Data rozpoczęcia"
+        startDateTime : "Data rozpoczęcia",
+        routeIsFinished : "Trasa dobiegła do końca",
+        theAccountofTheCompanyWasReceived : "Na konto firmy wpłyneło"
     }
     
 const   english = {
@@ -304,7 +305,9 @@ const   english = {
         transaction: "Transaction",
         accountBalanceAfterTransaction : "Account balance after transaction",
         cost : "Cost",
-        startDateTime : "Start date"
+        startDateTime : "Start date",
+        routeIsFinished : "Route is finished",
+        theAccountofTheCompanyWasReceived : "The account of the company was received"
       
     }
     
@@ -447,7 +450,9 @@ const   russian = {
         transaction: "Сделка",
         accountBalanceAfterTransaction : "Баланс счета после транзакци",
         cost : "Расход",
-        startDateTime : "Дата начала"
+        startDateTime : "Дата начала",
+        routeIsFinished : "Маршрут завершен",
+        theAccountofTheCompanyWasReceived : "Счет компании получен"
         
       }
 

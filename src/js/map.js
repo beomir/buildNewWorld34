@@ -1,15 +1,15 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
-import {selectedLanguage, refreshObjectsTranslation} from './translations'
-import {buildRoute,blockageForInfoNotify,calculateEstimatedTimeOfArrival} from './transportPanel'
+import {selectedLanguage, refreshObjectsTranslation} from './translations';
+import {buildRoute,blockageForInfoNotify} from './transportPanel';
+import {calculateDateTime } from './dateTime';
+import {historicalRoutes} from './gameLogic'
 
 
 let selectedCountryName;
 let selectedCountry;
 let specialitiesList = "";
-let pulsingInterval;
 
-let pauseClicked = false;
+
 let firstClickedCountryName;
 export let clickedCountryName = 'poland'; 
 let smallFlagSrc;
@@ -24,28 +24,11 @@ export let currentRoute = [];
 export let currentRouteTranslated = [];
 const route = $(".route")[0];
 
-let timeWatch = document.querySelector("#timeWatch");
+
 export let lastClickedCountryTag;
 
-let pulsingIntervalCounter;
-export let dateValue = {
-      day: "1",
-      month: "1",
-      year: "1935"
-}
 
-export let time = {
-    hour: 0
-}
 
-// Confirm.init({
-//   width: '350px',
-//   position: 'right-center',
-//   timeout: 3000,
-//   info: {
-//     background: '#2b1675',
-//   },
-// });
 
 Notify.init({
   width: '350px',
@@ -160,7 +143,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 2.9
+        population: 2.9,
+        renown: 0
       },
 
        sweden: {
@@ -218,7 +202,8 @@ export let countries = {
             nickel: 2,
             forestGoods: 50
           },
-          population: 6.2
+          population: 6.2,
+          renown: 0
         },
 
        finland: {
@@ -275,7 +260,8 @@ export let countries = {
               nickel: 2,
               forestGoods: 50
             },
-            population: 3.5
+            population: 3.5,
+            renown: 0
           },
 
           latvia: {
@@ -332,7 +318,8 @@ export let countries = {
                 nickel: 2,
                 forestGoods: 50
               },
-              population: 1.9
+              population: 1.9,
+              renown: 0
             },
 
             estonia: {
@@ -387,7 +374,8 @@ export let countries = {
                   nickel: 2,
                   forestGoods: 50
                 },
-                population: 1.1
+                population: 1.1,
+                renown: 0
               },
 
               romania: {
@@ -448,7 +436,8 @@ export let countries = {
                     nickel: 2,
                     forestGoods: 50
                   },
-                  population: 15
+                  population: 15,
+                  renown: 0
                 }
 
                 , hungary: {
@@ -507,7 +496,8 @@ export let countries = {
                       nickel: 2,
                       forestGoods: 50
                     },
-                    population: 8.9
+                    population: 8.9,
+                    renown: 0
                   }
 
           , turkey: {
@@ -565,7 +555,8 @@ export let countries = {
               nickel: 2,
               forestGoods: 50
             },
-            population: 16.2
+            population: 16.2,
+            renown: 0
           }
 
 
@@ -628,7 +619,8 @@ export let countries = {
                 nickel: 2,
                 forestGoods: 50
               },
-              population: 14
+              population: 14,
+              renown: 0
             }
 
             , greece: {
@@ -683,7 +675,8 @@ export let countries = {
                   nickel: 2,
                   forestGoods: 50
                 },
-                population: 6.8
+                population: 6.8,
+                renown: 0
               }
 
               , italy: {
@@ -742,7 +735,8 @@ export let countries = {
                     nickel: 2,
                     forestGoods: 50
                   },
-                  population: 42
+                  population: 42,
+                  renown: 0
                 }
 
           , spain: {
@@ -799,7 +793,8 @@ export let countries = {
                   nickel: 2,
                   forestGoods: 50
                 },
-                population: 24
+                population: 24,
+                renown: 0
               }
 
               , portugal: {
@@ -855,7 +850,8 @@ export let countries = {
                     nickel: 2,
                     forestGoods: 50
                   },
-                  population: 7.1
+                  population: 7.1,
+                  renown: 0
                 }
 
                 , bulgaria: {
@@ -914,7 +910,8 @@ export let countries = {
                       nickel: 2,
                       forestGoods: 50
                     },
-                    population: 6.3
+                    population: 6.3,
+                    renown: 0
                   }
 
    , ussr: {
@@ -977,7 +974,8 @@ export let countries = {
         nickel: 2,
         forestGoods: 50
       },
-      population: 159
+      population: 159,
+      renown: 0
     }
 
     , germany: {
@@ -1041,7 +1039,8 @@ export let countries = {
         nickel: 2,
         forestGoods: 50
       },
-      population: 74
+      population: 74,
+      renown: 0
     }
 
    , lithuania: {
@@ -1099,7 +1098,8 @@ export let countries = {
         nickel: 2,
         forestGoods: 50
       },
-      population: 2
+      population: 2,
+      renown: 0
     }
 
     , poland: {
@@ -1160,7 +1160,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 30
+        population: 30,
+        renown: 0
       }
 
     , czechoslovakia: {
@@ -1220,7 +1221,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 13
+        population: 13,
+        renown: 0
     }
 
     , greatBritain: {
@@ -1277,7 +1279,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-      population: 47
+      population: 47,
+      renown: 0
     }
 
     , austria: {
@@ -1336,7 +1339,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 6.8
+        population: 6.8,
+        renown: 0
     }
 
     , france: {
@@ -1397,7 +1401,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 42
+        population: 42,
+        renown: 0
     }
 
     , denmark: {
@@ -1452,7 +1457,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 3.7
+        population: 3.7,
+        renown: 0
     }
 
     ,iceland: {
@@ -1505,7 +1511,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 0.5
+        population: 0.5,
+        renown: 0
     }
 
     , belgium: {
@@ -1561,7 +1568,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 8.3
+        population: 8.3,
+        renown: 0
     }
 
     , netherland: {
@@ -1616,10 +1624,11 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 8.3
+        population: 8.3,
+        renown: 0
     }
 
-    , albania: {
+    ,albania: {
       height: 80,
       width: 45.6,
       neighbors :{
@@ -1671,10 +1680,11 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 1
+        population: 1,
+        renown: 0
     }
 
-    , switzerland: {
+    ,switzerland: {
       height: 54,
       width: 100,
       neighbors :{
@@ -1728,7 +1738,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 4.1
+        population: 4.1,
+        renown: 0
     }
 
     ,sicily: {
@@ -1782,7 +1793,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 4
+        population: 4,
+        renown: 0
     }
 
     ,sardynia: {
@@ -1835,7 +1847,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 1
+        population: 1,
+        renown: 0
     }
 
     ,corsica: {
@@ -1888,7 +1901,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 0.2
+        population: 0.2,
+        renown: 0
     }
 
     ,algieria: {
@@ -1941,7 +1955,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 7
+        population: 7,
+        renown: 0
     }
 
  
@@ -1997,7 +2012,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 1.3
+        population: 1.3,
+        renown: 0
     }
 
     ,ireland: {
@@ -2051,7 +2067,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 3
+        population: 3,
+        renown: 0
     }
 
     ,easternPrussia: {
@@ -2106,7 +2123,8 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
-        population: 2.5
+        population: 2.5,
+        renown: 0
     }
   }
 
@@ -2215,7 +2233,7 @@ export let countries = {
     const irelandMapLocation = $(".irelandMapLocation")[0];
     let irelandMap = document.querySelector(".irelandMap");
     
-    const dateValueOnMap = document.querySelector(".dateValue");
+    export const dateValueOnMap = document.querySelector(".dateValue");
     const dateOnMap = document.querySelector(".date");
     
     let resolutionBodyX = window.screen.width
@@ -3399,106 +3417,6 @@ function(){
         }
     }
 
-    let start = document.querySelector("#start");
-    const startContainer = document.querySelector("#startContainer"); 
-    const pause = document.querySelector("#pause"); 
-    const pauseContainer = document.querySelector("#pauseContainer"); 
-    const clockWheel = document.querySelector(".hours-container");  
-    const pauseLaunched = document.querySelector("#pauseLaunched");
-
-    start.addEventListener("click", 
-    function(){ 
-        startContainer.style.display = "none";
-        pauseContainer.style.display = "";
-        clockWheel.style.animationPlayState = 'running';
-        pauseLaunched.style.display = "none"
-        clearInterval(pulsingInterval);
-        calculateDateTimeInterval = setInterval(calculateDateTime,1000)
-        
-      }
-    );
-
-    pause.addEventListener("click", 
-    function(){ 
-        startContainer.style.display = "";
-        pauseContainer.style.display = "none";
-        clockWheel.style.animationPlayState = 'paused';
-        pauseLaunched.style.display = "inline-block"
-        pulsingIntervalCounter = 0;
-        pulsingInterval = setInterval(pulsing, 1000);
-        clearInterval(calculateDateTimeInterval);
-        pauseClicked = true;
-      }
-    );
-
-    function pulsing(){
-        pulsingIntervalCounter++
-        if(pulsingIntervalCounter%2 ==0){
-          pauseLaunched.style.transform = 'scale(1)'
-      } else {
-        pauseLaunched.style.transform = 'scale(1.2)'  
-    
-      }
-    }
-
-    function calculateDateTime(){
-      time.hour++
-      let hourWatch;
-      if(time.hour < 10){
-        hourWatch = "0" + time.hour
-      } else {
-        hourWatch =  time.hour;
-      }
-
-      timeWatch.innerHTML = selectedLanguage.hour + ": " + hourWatch;
-
-      if((time.hour==23 || time.hour== 11) && pauseClicked == true){
-        clockWheel.classList.add("animateDescriptor");
-        setTimeout(function() { 
-        clockWheel.classList.remove("animateDescriptor");    
-      }, 1000); 
-      pauseClicked = false;
-
-      }
-      if(time.hour==24){
-        time.hour = 0;
-        dateValue.day++;
-        changeDate(dateValue);
-          if((dateValue.month == 1 || dateValue.month == 3 || dateValue.month == 5 || dateValue.month == 7 || dateValue.month == 8 || dateValue.month == 10 || dateValue.month == 12) && dateValue == 31){
-            if(dateValue.month == 12){
-              dateValue.month = 1
-              dateValue.year++;
-              changeDate(dateValue);
-            } else{
-            dateValue.month++;
-            changeDate(dateValue);
-          }
-          } else if((dateValue.month == 4 || dateValue.month == 6 || dateValue.month == 9 || dateValue.month == 11) && dateValue.day ==30){
-            dateValue.month++;
-            changeDate(dateValue);
-          } else if(dateValue.month == 2 & dateValue.day == 28){
-            dateValue.month++;
-            changeDate(dateValue);
-          }
-      }
-      calculateEstimatedTimeOfArrival();
-  }
-  
-  function changeDate(dateValue){
-    let day;
-    let month;
-    if(dateValue.day < 10){
-      day = "0" + dateValue.day;
-    } else {
-      day = dateValue.day;
-    }
-    
-    if(dateValue.month < 10 ){
-      month = "0" + dateValue.month;
-    }
-    dateValueOnMap.innerHTML = day + "." + month + "." + dateValue.year;
-  }
-
   const countryPanelList = document.querySelector(".countryPanelList");
   const placeForFlag = document.querySelector("#placeForFlag");  
   const countryFlagActionCountry = $(".countryFlagActionCountry")[0]
@@ -3622,6 +3540,41 @@ export let listObjects = {
     "irelandNorth" : countries.irelandNorth,
     "ireland" : countries.ireland,
     "easternPrussia" : countries.easternPrussia
-}
+};
 
+export function renownIncrease(countryName,transportQty){
+  let countryToIncreaseRenown = countries[countryName]
+  let populationToTransportRatio = transportQty / (countryToIncreaseRenown["population"] * 100);
+  let qtyOfRoutesFrequencyFromCountry = 0;
 
+  let historicalRoutesKeys = Object.keys(historicalRoutes);
+  let lastHistoricalRouteNumber = historicalRoutesKeys.length
+  for(let i=lastHistoricalRouteNumber;i>3;i--){ //TODO to set 50
+    console.log("countryName to Renown " + countryName);
+    console.log("country in historicalRoutes: " + historicalRoutes[i]["startCountry"]);
+    if(historicalRoutes[i]["startCountry"] == countryName){
+      qtyOfRoutesFrequencyFromCountry++;
+    }
+  }
+
+  console.log("populationToTransportRatio " + populationToTransportRatio);
+  console.log("qtyOfRoutesFrequencyFromCountry " + qtyOfRoutesFrequencyFromCountry);
+  let renownBonus = Math.ceil((populationToTransportRatio * (qtyOfRoutesFrequencyFromCountry+1))*100)/100;
+  if(renownBonus>3){
+    renownBonus = 3;
+  }
+
+  console.log("renownBonus " + renownBonus);
+  console.log("country renown before bunus: " + countryToIncreaseRenown["renown"]);
+  if(countryToIncreaseRenown["renown"] + renownBonus <= 100){
+    countryToIncreaseRenown["renown"] += renownBonus;
+  }
+
+  console.log("Renown after bonus: " + countryToIncreaseRenown["renown"]);
+
+  equalizeRenown(countryName);
+};
+
+export function equalizeRenown(countryToEqualizeRenown){
+  
+};

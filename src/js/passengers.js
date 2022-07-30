@@ -19,6 +19,7 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
         }
 
     calculatedPassengers = Math.ceil((passengers[fromCountry][toCountry] * relationsValue * (countries[fromCountry].population / 100)) * influence *0.1); 
+    calculatedPassengers += (calculatedPassengers * countries[fromCountry].renown)
     } else {
         calculatedPassengers = 0;
     }
@@ -33,7 +34,17 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
     let ticketCost = Math.round(calculetedRouteDistance * 0.1*100)/100;
     setCostInStartAndInEndCountry(0,ticketCost);
 
+};
+
+function decreasePassangersAvailabilty(){
+    //decrease qty of passengers and set the time when they will be come back to basic values
+};
+
+function equalizePassengersAvailabilty(){
+    //logic where passengers qty will be come back to basic qty
 }
+
+
 
 
 export let passengers = {
@@ -150,7 +161,7 @@ export let passengers = {
                 "lithuania": 58,
                 "latvia": 85,
                 "estonia": 97,
-                "ussr": 124,
+                "ussr": 14,
                 "norway": 50,
                 "germany": 46,
                 "netherland": 15,
@@ -161,20 +172,20 @@ export let passengers = {
                 "italy": 9,
                 "yugoslavia": 96,
                 "albania": 11,
-                "greece": 83,
-                "turkey": 74,
+                "greece": 5,
+                "turkey": 4,
                 "bulgaria": 50,
                 "romania": 37,
                 "iceland": 31,
                 "ireland" : 61,
                 "czechoslovakia": 35,
-                "hungary": 80,
-                "austria" : 150,
+                "hungary": 8,
+                "austria" : 15,
                 "switzerland" : 35,
-                "sardynia" : 50,
-                "sicily" : 30,
-                "corsica" : 80,
-                "eastPrussia" : 100,
+                "sardynia" : 5,
+                "sicily" : 3,
+                "corsica" : 8,
+                "eastPrussia" : 15,
                 "algieria" : 10
             },
             greatBritain:{ 
@@ -206,10 +217,10 @@ export let passengers = {
                 "hungary":20,
                 "austria" : 15,
                 "switzerland" : 35,
-                "sardynia" : 50,
-                "sicily" : 30,
-                "corsica" : 80,
-                "eastPrussia" : 100,
+                "sardynia" : 15,
+                "sicily" : 17,
+                "corsica" : 5,
+                "eastPrussia" : 22,
                 "algieria" : 10
             },
             lithuania:{ 
@@ -244,7 +255,7 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 120,
+                "eastPrussia" : 12,
                 "algieria" : 10
             },
             latvia:{ 
@@ -276,10 +287,10 @@ export let passengers = {
                 "hungary":28,
                 "austria" : 15,
                 "switzerland" : 15,
-                "sardynia" : 50,
-                "sicily" : 30,
-                "corsica" : 80,
-                "eastPrussia" : 120,
+                "sardynia" : 5,
+                "sicily" : 3,
+                "corsica" : 8,
+                "eastPrussia" : 12,
                 "algieria" : 10
             },
             estonia:{ 
@@ -311,14 +322,14 @@ export let passengers = {
                 "hungary":20,
                 "austria" : 10,
                 "switzerland" : 16,
-                "sardynia" : 50,
-                "sicily" : 30,
-                "corsica" : 80,
-                "eastPrussia" : 10,
-                "algieria" : 10
+                "sardynia" : 5,
+                "sicily" : 3,
+                "corsica" : 8,
+                "eastPrussia" : 25,
+                "algieria" : 1
             },
             ussr:{ 
-                "poland": 160,
+                "poland": 120,
                 "sweden": 70,
                 "finland": 36,
                 "denmark": 12,
@@ -353,7 +364,7 @@ export let passengers = {
                 "algieria" : 10
             },
             norway:{ 
-                "poland": 96,
+                "poland": 17,
                 "sweden": 12,
                 "denmark": 50,
                 "greatBritain": 14,
@@ -434,10 +445,10 @@ export let passengers = {
                 "ussr": 23,
                 "norway": 97,
                 "germany": 92,
-                "belgium": 126,
-                "france": 258,
-                "spain": 145,
-                "portugal": 103,
+                "belgium": 96,
+                "france": 98,
+                "spain": 65,
+                "portugal": 43,
                 "italy": 40,
                 "yugoslavia": 52,
                 "albania": 4,
@@ -469,7 +480,7 @@ export let passengers = {
                 "ussr": 25,
                 "norway": 12,
                 "germany": 79,
-                "netherland": 126,
+                "netherland": 96,
                 "france": 116,
                 "spain": 14,
                 "portugal": 19,
@@ -504,7 +515,7 @@ export let passengers = {
                 "ussr": 27,
                 "norway": 14,
                 "germany": 369,
-                "netherland": 158,
+                "netherland": 98,
                 "belgium": 116,
                 "spain": 91,
                 "portugal": 49,
@@ -520,7 +531,7 @@ export let passengers = {
                 "czechoslovakia": 35,
                 "hungary":28,
                 "austria" : 15,
-                "switzerland" : 163,
+                "switzerland" : 123,
                 "sardynia" : 50,
                 "sicily" : 55,
                 "corsica" : 180,
@@ -532,7 +543,7 @@ export let passengers = {
                 "sweden": 32,
                 "finland": 36,
                 "denmark": 24,
-                "greatBritain": 121,
+                "greatBritain": 91,
                 "lithuania": 29,
                 "latvia": 32,
                 "estonia": 33,
@@ -541,9 +552,9 @@ export let passengers = {
                 "germany": 55,
                 "netherland": 14,
                 "belgium": 14,
-                "france": 152,
-                "portugal": 206,
-                "italy": 117,
+                "france": 92,
+                "portugal": 106,
+                "italy": 96,
                 "yugoslavia": 4,
                 "albania": 3,
                 "greece": 41,
@@ -567,7 +578,7 @@ export let passengers = {
                 "sweden": 13,
                 "finland": 40,
                 "denmark": 31,
-                "greatBritain": 163,
+                "greatBritain": 73,
                 "lithuania": 3,
                 "latvia": 3,
                 "estonia": 2,
@@ -577,7 +588,7 @@ export let passengers = {
                 "netherland": 20,
                 "belgium": 19,
                 "france": 53,
-                "spain": 156,
+                "spain": 76,
                 "italy": 21,
                 "yugoslavia": 6,
                 "albania": 2,
@@ -602,7 +613,7 @@ export let passengers = {
                 "sweden": 58,
                 "finland": 28,
                 "denmark": 10,
-                "greatBritain": 168,
+                "greatBritain": 88,
                 "lithuania": 3,
                 "latvia": 5,
                 "estonia": 6,
@@ -615,7 +626,7 @@ export let passengers = {
                 "spain": 31,
                 "portugal": 29,
                 "yugoslavia": 37,
-                "albania": 30,
+                "albania": 50,
                 "greece": 25,
                 "turkey": 23,
                 "bulgaria": 26,

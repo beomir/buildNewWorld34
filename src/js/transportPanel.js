@@ -1,10 +1,11 @@
-import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,dateValue,time,cleanCurrentRouteTranslated} from './map';
+import {clickedCountryName, listObjects, hideActionForCountryList, toggleCountryPanelListClicked, toggleClickedCreateTransport,cleanCurrentRoute,currentRoute,currentRouteTranslated,lastClickedCountryTag,cleanCurrentRouteTranslated} from './map';
 import {selectedLanguage} from './translations';
 import {countryConnections} from './countryConnections';
 import {meansOfTransportList,additionalTransportCost} from './meansOfTransport'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import {passengers,calculatePassengersForCountry} from './passengers';
+import {calculatePassengersForCountry} from './passengers';
 import { money } from './gameLogic';
+import {dateValue,time} from './dateTime';
 
 
 const createTransport = document.querySelector("#createTransport")
@@ -781,20 +782,17 @@ export  function calculateEstimatedTimeOfArrival(){
         newHour = addZeroToStringIfValueUnderTen(((time.hour + plusHours)*1) % 24);
 
         if(dateValue.month == 2 && parseInt(dateValue.day) + parseInt(plusDays) > 28){ //if currently is february and we pass to next month
-   
             let dayInNewMonth = plusDays - (28 - dateValue.day);
             newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + ".03." + dateValue.year
         } else if(dateValue.month == 2 && parseInt(dateValue.day) + parseInt(plusDays) <= 28){
-            newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + dateValue.month + "." + dateValue.year
-       
+            newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
+
         }
         if(thirtyDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) > 30){ //if currently is thirty day month and we pass to next one
             let dayInNewMonth = plusDays - (30 - dateValue.day);
             newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + addZeroToStringIfValueUnderTen(parseInt(dateValue.month) + 1)+ "." + dateValue.year
-      
         } else if(thirtyDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) <= 30){
             newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
-       
         }
         if(thirtyOneDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) > 31){  //if currently is thirtyone day month and we pass to next one
             if(dateValue.month == 12){
@@ -802,27 +800,23 @@ export  function calculateEstimatedTimeOfArrival(){
                 let nextMonth = '01'
                 let nextYear = (dateValue.year + 1)*1
                 newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + nextMonth + "." + nextYear
-               
             } else{
                 let dayInNewMonth = plusDays - (31 - dateValue.day);
                 newDate = addZeroToStringIfValueUnderTen(dayInNewMonth) + "." + addZeroToStringIfValueUnderTen(parseInt(dateValue.month) + 1)  + "." + dateValue.year
-              
             }
         } else if(thirtyOneDayMonths.includes(dateValue.month) && parseInt(dateValue.day) + parseInt(plusDays) <= 31){
             newDate = addZeroToStringIfValueUnderTen(parseInt(dateValue.day) + parseInt(plusDays)) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
-            
         }
     } else {
-        newDate = dateValue.day + "." + dateValue.month + "." + dateValue.year
+        newDate = addZeroToStringIfValueUnderTen(dateValue.day) + "." + addZeroToStringIfValueUnderTen(dateValue.month) + "." + dateValue.year
         newHour = addZeroToStringIfValueUnderTen(parseInt(time.hour) + parseInt(plusHours));
-  
     }
 
     let dateTimeAfterAddingHours = [newDate,newHour]
     return dateTimeAfterAddingHours;
   };
 
-  function addZeroToStringIfValueUnderTen(intToStringWithZero){
+  export function addZeroToStringIfValueUnderTen(intToStringWithZero){
     if(intToStringWithZero < 10){
         intToStringWithZero = "0" + intToStringWithZero;
     } else{

@@ -13,7 +13,7 @@ const createTransportPanel = $(".createTransportPanel")[0];
 const countryStartNameValue = $(".countryStartNameValue")[0];
 const createTransportPanelSwitchOff = $(".createTransportPanelSwitchOff")[0];
 
-const wares = $(".wares")[0];
+export const wares = $(".wares")[0];
 const truckOption = document.getElementById("truck");
 const busOption = document.getElementById("bus");
 const transportTypeList = document.getElementById("transportTypeList");
@@ -67,7 +67,7 @@ let typeDetail;
 export let calculetedRouteDistance = 0;
 
 let distanceRoute = [];
-const bigCountry = ["ussr","germany","france","italy","spain","sweden","norwnpmay","poland","greatBritain"];
+const bigCountry = ["ussr","germany","france","italy","spain","sweden","norway","poland","greatBritain"];
 let clickedCountryTags = [];
 const originNameOfWares = new Map();
 

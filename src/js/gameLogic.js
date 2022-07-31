@@ -1,7 +1,7 @@
-import {meanOfTransportValue,lastActiveTransportType,checkInformationsAboutTransportPanel,resetCostsAndEarnings,stwitchOffTransportPanel,calculatedCostValue,startedCountry,currentEndCountryOfTheRoute,calculatedProfitValue,estimatedTimeOfArrival,calculatedIncomeValue} from'./transportPanel';
+import {meanOfTransportValue,lastActiveTransportType,checkInformationsAboutTransportPanel,resetCostsAndEarnings,stwitchOffTransportPanel,calculatedCostValue,startedCountry,currentEndCountryOfTheRoute,calculatedProfitValue,estimatedTimeOfArrival,calculatedIncomeValue,wares} from'./transportPanel';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {selectedLanguage} from './translations';
-import {currentRoute,countries,renownIncrease} from './map';
+import {currentRoute,countries,renownIncrease,changePriceOfWare,changeWareAvailableQty} from './map';
 import {increaseRelations} from './relations'
 import {dateValue,time} from './dateTime';
 
@@ -84,13 +84,17 @@ function setMoney(){
 addRoute.addEventListener("click",function(){
     let validationOfCostAndMoney = checkInformationsAboutTransportPanel();
     if(validationOfCostAndMoney){
-        addRouteToBeOngoing(howManyToTransportValue.value);
+        addRouteToBeOngoing(howManyToTransportValue.value,wares.value);
     } else{
         Notify.failure(selectedLanguage.theCalculatedCost + ": <strong>" + calculatedCostValue + "</strong> " +  selectedLanguage.isBiggerThanYourFinancialResources + ": <strong>" + money + "</strong>.") 
     }
 })
 
-export function addRouteToBeOngoing(transportQty){
+export function addRouteToBeOngoing(transportQty,ware){
+
+    let wareName = Object.keys(selectedLanguage).filter(function(key) {return selectedLanguage[key] === ware})[0];
+    decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry);
+    increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,currentEndCountryOfTheRoute);
 
     // let width = getComputedStyle(moneyValue).width //moneyInfo.width;
     // let height = getComputedStyle(moneyValue).height  //moneyInfo.height;
@@ -250,6 +254,10 @@ function addIncomeFromRoutes(routesSettlement){
     moneyMovementStart("+"+moneyToAdd,"green");
     setBigClassAndSwitchItOff(moneyValueWithCurrency,valueForSetTimeOut);
     setDisplayNoneAfterTimeOut(moneyMovementsValue,valueForSetTimeOut);
+
+    moneyMovements.push("+"+moneyToAdd);
+    moneyAfterMovement.push(money);
+    dateTimeOfMoneyMovement.push(dateValue.day + "." + dateValue.month + "." + dateValue.year + "," + time.hour)
 }
 
 function transferRouteFromOngoingToHistorical(routesArrayToTransfer){
@@ -278,5 +286,22 @@ function transferRouteFromOngoingToHistorical(routesArrayToTransfer){
   
 }
 
+function decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry){
+   
+   changePriceOfWare(transportQty,wareName,startedCountry,1);
+   changeWareAvailableQty((transportQty*(-1)),wareName,startedCountry);
 
-////TODO make a logic for calculate influence
+};
+
+function increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,endCountry){
+
+
+    changePriceOfWare(transportQty,wareName,endCountry,-1);
+    changeWareAvailableQty(Math.ceil((transportQty*0.8)),wareName,endCountry);
+
+};
+
+
+
+
+

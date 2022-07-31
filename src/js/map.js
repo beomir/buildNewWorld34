@@ -143,6 +143,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 2.9,
         renown: 0
       },
@@ -184,6 +203,25 @@ export let countries = {
             forestGoods: 20
           },
           goodsAvailability: {
+            coal: 100,
+            steel: 80,
+            aluminium: 50,
+            copper: 120,
+            lead: 80,
+            grain: 1000,
+            oil: 300,
+            wine: 50,
+            fish: 70,
+            flour: 80,
+            clothes: 90,
+            zinc: 15,
+            wolfram: 40,
+            mechanicalParts: 5,
+            chrome : 1,
+            nickel: 2,
+            forestGoods: 50
+          },
+          maxGoodsAvailability: {
             coal: 100,
             steel: 80,
             aluminium: 50,
@@ -260,6 +298,25 @@ export let countries = {
               nickel: 2,
               forestGoods: 50
             },
+            maxGoodsAvailability:{
+              coal: 100,
+              steel: 80,
+              aluminium: 50,
+              copper: 120,
+              lead: 80,
+              grain: 1000,
+              oil: 300,
+              wine: 50,
+              fish: 70,
+              flour: 80,
+              clothes: 90,
+              zinc: 15,
+              wolfram: 40,
+              mechanicalParts: 5,
+              chrome : 1,
+              nickel: 2,
+              forestGoods: 50
+            },
             population: 3.5,
             renown: 0
           },
@@ -318,6 +375,25 @@ export let countries = {
                 nickel: 2,
                 forestGoods: 50
               },
+              maxGoodsAvailability: {
+                coal: 100,
+                steel: 80,
+                aluminium: 50,
+                copper: 120,
+                lead: 80,
+                grain: 1000,
+                oil: 300,
+                wine: 50,
+                fish: 70,
+                flour: 80,
+                clothes: 90,
+                zinc: 15,
+                wolfram: 40,
+                mechanicalParts: 5,
+                chrome : 1,
+                nickel: 2,
+                forestGoods: 50
+              },
               population: 1.9,
               renown: 0
             },
@@ -356,6 +432,25 @@ export let countries = {
                   forestGoods: 20
                 },
                 goodsAvailability: {
+                  coal: 100,
+                  steel: 80,
+                  aluminium: 50,
+                  copper: 120,
+                  lead: 80,
+                  grain: 1000,
+                  oil: 300,
+                  wine: 50,
+                  fish: 70,
+                  flour: 80,
+                  clothes: 90,
+                  zinc: 15,
+                  wolfram: 40,
+                  mechanicalParts: 5,
+                  chrome : 1,
+                  nickel: 2,
+                  forestGoods: 50
+                },
+                maxGoodsAvailability: {
                   coal: 100,
                   steel: 80,
                   aluminium: 50,
@@ -436,6 +531,25 @@ export let countries = {
                     nickel: 2,
                     forestGoods: 50
                   },
+                  maxGoodsAvailability:{
+                    coal: 100,
+                    steel: 80,
+                    aluminium: 50,
+                    copper: 120,
+                    lead: 80,
+                    grain: 1000,
+                    oil: 300,
+                    wine: 50,
+                    fish: 70,
+                    flour: 80,
+                    clothes: 90,
+                    zinc: 15,
+                    wolfram: 40,
+                    mechanicalParts: 5,
+                    chrome : 1,
+                    nickel: 2,
+                    forestGoods: 50 
+                  },
                   population: 15,
                   renown: 0
                 }
@@ -496,6 +610,25 @@ export let countries = {
                       nickel: 2,
                       forestGoods: 50
                     },
+                    maxGoodsAvailability:{
+                      coal: 100,
+                      steel: 80,
+                      aluminium: 50,
+                      copper: 120,
+                      lead: 80,
+                      grain: 1000,
+                      oil: 300,
+                      wine: 50,
+                      fish: 70,
+                      flour: 80,
+                      clothes: 90,
+                      zinc: 15,
+                      wolfram: 40,
+                      mechanicalParts: 5,
+                      chrome : 1,
+                      nickel: 2,
+                      forestGoods: 50  
+                    },
                     population: 8.9,
                     renown: 0
                   }
@@ -537,6 +670,25 @@ export let countries = {
               forestGoods: 20
             },
             goodsAvailability: {
+              coal: 100,
+              steel: 80,
+              aluminium: 50,
+              copper: 120,
+              lead: 80,
+              grain: 1000,
+              oil: 300,
+              wine: 50,
+              fish: 70,
+              flour: 80,
+              clothes: 90,
+              zinc: 15,
+              wolfram: 40,
+              mechanicalParts: 5,
+              chrome : 1,
+              nickel: 2,
+              forestGoods: 50
+            },
+            maxGoodsAvailability:{
               coal: 100,
               steel: 80,
               aluminium: 50,
@@ -619,6 +771,25 @@ export let countries = {
                 nickel: 2,
                 forestGoods: 50
               },
+              maxGoodsAvailability: {
+                coal: 100,
+                steel: 80,
+                aluminium: 50,
+                copper: 120,
+                lead: 80,
+                grain: 1000,
+                oil: 300,
+                wine: 50,
+                fish: 70,
+                flour: 80,
+                clothes: 90,
+                zinc: 15,
+                wolfram: 40,
+                mechanicalParts: 5,
+                chrome : 1,
+                nickel: 2,
+                forestGoods: 50
+              },
               population: 14,
               renown: 0
             }
@@ -675,6 +846,25 @@ export let countries = {
                   nickel: 2,
                   forestGoods: 50
                 },
+                maxGoodsAvailability:{
+                  coal: 100,
+                  steel: 80,
+                  aluminium: 50,
+                  copper: 120,
+                  lead: 80,
+                  grain: 1000,
+                  oil: 300,
+                  wine: 50,
+                  fish: 70,
+                  flour: 80,
+                  clothes: 90,
+                  zinc: 15,
+                  wolfram: 40,
+                  mechanicalParts: 5,
+                  chrome : 1,
+                  nickel: 2,
+                  forestGoods: 50  
+                },
                 population: 6.8,
                 renown: 0
               }
@@ -717,6 +907,25 @@ export let countries = {
                     forestGoods: 20
                   },
                   goodsAvailability: {
+                    coal: 100,
+                    steel: 80,
+                    aluminium: 50,
+                    copper: 120,
+                    lead: 80,
+                    grain: 1000,
+                    oil: 300,
+                    wine: 50,
+                    fish: 70,
+                    flour: 80,
+                    clothes: 90,
+                    zinc: 15,
+                    wolfram: 40,
+                    mechanicalParts: 5,
+                    chrome : 1,
+                    nickel: 2,
+                    forestGoods: 50
+                  },
+                  maxGoodsAvailability:{
                     coal: 100,
                     steel: 80,
                     aluminium: 50,
@@ -793,6 +1002,25 @@ export let countries = {
                   nickel: 2,
                   forestGoods: 50
                 },
+                maxGoodsAvailability:{
+                  coal: 100,
+                  steel: 80,
+                  aluminium: 50,
+                  copper: 120,
+                  lead: 80,
+                  grain: 1000,
+                  oil: 300,
+                  wine: 50,
+                  fish: 70,
+                  flour: 80,
+                  clothes: 90,
+                  zinc: 15,
+                  wolfram: 40,
+                  mechanicalParts: 5,
+                  chrome : 1,
+                  nickel: 2,
+                  forestGoods: 50
+                },
                 population: 24,
                 renown: 0
               }
@@ -832,6 +1060,25 @@ export let countries = {
                     forestGoods: 20
                   },
                   goodsAvailability: {
+                    coal: 100,
+                    steel: 80,
+                    aluminium: 50,
+                    copper: 120,
+                    lead: 80,
+                    grain: 1000,
+                    oil: 300,
+                    wine: 50,
+                    fish: 70,
+                    flour: 80,
+                    clothes: 90,
+                    zinc: 15,
+                    wolfram: 40,
+                    mechanicalParts: 5,
+                    chrome : 1,
+                    nickel: 2,
+                    forestGoods: 50
+                  },
+                  maxGoodsAvailability:{
                     coal: 100,
                     steel: 80,
                     aluminium: 50,
@@ -910,6 +1157,25 @@ export let countries = {
                       nickel: 2,
                       forestGoods: 50
                     },
+                    maxGoodsAvailability:{
+                      coal: 100,
+                      steel: 80,
+                      aluminium: 50,
+                      copper: 120,
+                      lead: 80,
+                      grain: 1000,
+                      oil: 300,
+                      wine: 50,
+                      fish: 70,
+                      flour: 80,
+                      clothes: 90,
+                      zinc: 15,
+                      wolfram: 40,
+                      mechanicalParts: 5,
+                      chrome : 1,
+                      nickel: 2,
+                      forestGoods: 50
+                    },
                     population: 6.3,
                     renown: 0
                   }
@@ -956,6 +1222,25 @@ export let countries = {
         forestGoods: 20
       },
       goodsAvailability: {
+        coal: 100,
+        steel: 80,
+        aluminium: 50,
+        copper: 120,
+        lead: 80,
+        grain: 1000,
+        oil: 300,
+        wine: 50,
+        fish: 70,
+        flour: 80,
+        clothes: 90,
+        zinc: 15,
+        wolfram: 40,
+        mechanicalParts: 5,
+        chrome : 1,
+        nickel: 2,
+        forestGoods: 50
+      },
+      maxGoodsAvailability:{
         coal: 100,
         steel: 80,
         aluminium: 50,
@@ -1039,6 +1324,25 @@ export let countries = {
         nickel: 2,
         forestGoods: 50
       },
+      maxGoodsAvailability:{
+        coal: 100,
+        steel: 80,
+        aluminium: 50,
+        copper: 120,
+        lead: 80,
+        grain: 1000,
+        oil: 300,
+        wine: 50,
+        fish: 70,
+        flour: 80,
+        clothes: 90,
+        zinc: 15,
+        wolfram: 40,
+        mechanicalParts: 5,
+        chrome : 1,
+        nickel: 2,
+        forestGoods: 50
+      },
       population: 74,
       renown: 0
     }
@@ -1080,6 +1384,25 @@ export let countries = {
         forestGoods: 20
       },
       goodsAvailability: {
+        coal: 100,
+        steel: 80,
+        aluminium: 50,
+        copper: 120,
+        lead: 80,
+        grain: 1000,
+        oil: 300,
+        wine: 50,
+        fish: 70,
+        flour: 80,
+        clothes: 90,
+        zinc: 15,
+        wolfram: 40,
+        mechanicalParts: 5,
+        chrome : 1,
+        nickel: 2,
+        forestGoods: 50
+      },
+      maxGoodsAvailability:{
         coal: 100,
         steel: 80,
         aluminium: 50,
@@ -1160,6 +1483,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 30,
         renown: 0
       }
@@ -1203,6 +1545,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1279,6 +1640,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 180,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
       population: 47,
       renown: 0
     }
@@ -1321,6 +1701,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1401,6 +1800,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50 
+        },
         population: 42,
         renown: 0
     }
@@ -1439,6 +1857,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1511,6 +1948,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 0.5,
         renown: 0
     }
@@ -1531,25 +1987,44 @@ export let countries = {
         1: goods.additional[2]
         },
         goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
+          coal: 33,
+          steel: 75,
+          aluminium: 88,
+          copper: 54,
+          lead: 32,
+          grain: 3,
+          oil: 121,
           wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
+          fish: 7,
+          flour: 13,
+          clothes: 25,
+          zinc: 88,
+          wolfram: 123,
+          mechanicalParts: 170,
+          chrome : 7,
+          nickel: 5,
+          forestGoods: 25
         },
         goodsAvailability: {
+          coal: 20,
+          steel: 10,
+          aluminium: 20,
+          copper: 20,
+          lead: 80,
+          grain: 200,
+          oil: 20,
+          wine: 30,
+          fish: 40,
+          flour: 20,
+          clothes: 50,
+          zinc: 5,
+          wolfram: 2,
+          mechanicalParts: 1,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 3
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1587,25 +2062,44 @@ export let countries = {
         1: goods.additional[2]
         },
         goodCosts: {
-          coal: 30,
-          steel: 70,
-          aluminium: 80,
-          copper: 60,
-          lead: 50,
-          grain: 5,
-          oil: 100,
-          wine: 35,
-          fish: 5,
-          flour: 10,
-          clothes: 20,
-          zinc: 75,
-          wolfram: 100,
-          mechanicalParts: 150,
-          chrome : 5,
-          nickel: 3,
-          forestGoods: 20
+          coal: 37,
+          steel: 77,
+          aluminium: 86,
+          copper: 71,
+          lead: 62,
+          grain: 6,
+          oil: 115,
+          wine: 45,
+          fish: 6,
+          flour: 15,
+          clothes: 27,
+          zinc: 79,
+          wolfram: 120,
+          mechanicalParts: 155,
+          chrome : 7,
+          nickel: 5,
+          forestGoods: 23
         },
         goodsAvailability: {
+          coal: 10,
+          steel: 15,
+          aluminium: 17,
+          copper: 22,
+          lead: 12,
+          grain: 100,
+          oil: 30,
+          wine: 5,
+          fish: 50,
+          flour: 15,
+          clothes: 15,
+          zinc: 8,
+          wolfram: 6,
+          mechanicalParts: 2,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 10
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1662,6 +2156,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1738,6 +2251,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 4.1,
         renown: 0
     }
@@ -1775,6 +2307,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -1847,6 +2398,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 1,
         renown: 0
     }
@@ -1901,6 +2471,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 0.2,
         renown: 0
     }
@@ -1937,6 +2526,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -2012,6 +2620,25 @@ export let countries = {
           nickel: 2,
           forestGoods: 50
         },
+        maxGoodsAvailability:{
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
         population: 1.3,
         renown: 0
     }
@@ -2049,6 +2676,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -2105,6 +2751,25 @@ export let countries = {
           forestGoods: 20
         },
         goodsAvailability: {
+          coal: 100,
+          steel: 80,
+          aluminium: 50,
+          copper: 120,
+          lead: 80,
+          grain: 1000,
+          oil: 300,
+          wine: 50,
+          fish: 70,
+          flour: 80,
+          clothes: 90,
+          zinc: 15,
+          wolfram: 40,
+          mechanicalParts: 5,
+          chrome : 1,
+          nickel: 2,
+          forestGoods: 50
+        },
+        maxGoodsAvailability:{
           coal: 100,
           steel: 80,
           aluminium: 50,
@@ -3542,6 +4207,44 @@ export let listObjects = {
     "easternPrussia" : countries.easternPrussia
 };
 
+let countriesArray = [
+    "ussr" ,
+    "germany",
+    "lithuania",
+    "poland" ,
+    "czechoslovakia" ,
+    "greatBritain" ,
+    "austria" ,
+    "france" ,
+    "norway" ,
+    "finland" ,
+    "sweden" ,
+    "latvia",
+    "estonia" ,
+    "romania" ,
+    "hungary" ,
+    "yugoslavia" ,
+    "bulgaria" ,
+    "turkey" ,
+    "greece",
+    "italy" ,
+    "spain" ,
+    "portugal" ,
+    "denmark" ,
+    "belgium",
+    "netherland" ,
+    "albania",
+    "iceland" ,
+    "switzerland" ,
+    "sicily" ,
+    "sardynia" ,
+    "corsica" ,
+    "algieria",
+    "irelandNorth",
+    "ireland",
+    "easternPrussia"
+  ]
+
 export function renownIncrease(countryName,transportQty){
   let countryToIncreaseRenown = countries[countryName]
   let populationToTransportRatio = transportQty / (countryToIncreaseRenown["population"] * 100);
@@ -3549,7 +4252,7 @@ export function renownIncrease(countryName,transportQty){
 
   let historicalRoutesKeys = Object.keys(historicalRoutes);
   let lastHistoricalRouteNumber = historicalRoutesKeys.length
-  for(let i=lastHistoricalRouteNumber;i>3;i--){ //TODO to set 50
+  for(let i=lastHistoricalRouteNumber;i>50;i--){ 
     console.log("countryName to Renown " + countryName);
     console.log("country in historicalRoutes: " + historicalRoutes[i]["startCountry"]);
     if(historicalRoutes[i]["startCountry"] == countryName){
@@ -3578,3 +4281,40 @@ export function renownIncrease(countryName,transportQty){
 export function equalizeRenown(countryToEqualizeRenown){
   
 };
+
+export function changeWareAvailableQty(transportQty,wareName,countryName){
+  console.log("changeWareAvailableQty started " + wareName);
+  if(wareName != selectedCountry["passengers"]){
+    let countryObject = countries[countryName];
+    let currentAvailableQty = countryObject["goodsAvailability"][wareName];
+    countryObject["goodsAvailability"][wareName] = Math.ceil(currentAvailableQty + transportQty);
+  } else{
+    //TODO calculate for passengers
+  }
+
+};
+
+export function changePriceOfWare(transportQty,wareName,countryName,direction){
+  console.log("changePriceOfWare started " + wareName);
+  if(wareName != selectedCountry["passengers"]){
+    let countryObject = countries[countryName];
+    let availableQtyOnEuropeanMarket = 0;
+
+    for(let i=0;i<countriesArray.length;i++){
+      availableQtyOnEuropeanMarket += countries[countriesArray[i]]["goodsAvailability"][wareName]
+    }
+
+    let priceCorrectionInEndCountry = 0.9;
+
+    let calculateRatioAvailableToTransported = Math.round((transportQty/availableQtyOnEuropeanMarket)*100)/100;
+    if(direction<0){
+      calculateRatioAvailableToTransported = priceCorrectionInEndCountry * calculateRatioAvailableToTransported;
+    }
+
+    countryObject["goodCosts"][wareName] = Math.ceil((countryObject["goodCosts"][wareName] + ((calculateRatioAvailableToTransported * countryObject["goodCosts"][wareName]) * direction))*100)/100
+  
+  } else{
+    //TODO calculate for passengers
+  }
+};
+

@@ -1,7 +1,7 @@
 import {relations} from './relations';
 import {setCostInStartAndInEndCountry,calculetedRouteDistance} from './transportPanel';
 import {countries} from './map';
-import {influence} from './gameLogic';
+import {influence, countriesArray} from './gameLogic';
 
 const availableQtyValue = document.querySelector(".availableQtyValue");
 const howManyToTransportValue = document.getElementById("howManyToTransportValue");
@@ -18,8 +18,14 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
             relationsValue = 0;
         }
 
-    calculatedPassengers = Math.ceil((passengers[fromCountry][toCountry] * relationsValue * (countries[fromCountry].population / 100)) * influence *0.1); 
-    calculatedPassengers += (calculatedPassengers * countries[fromCountry].renown)
+    console.log("from country"  + fromCountry + " to country: " + toCountry + " " + passengers[fromCountry][toCountry]);
+    console.log("relationsValue : " + relationsValue);
+    console.log("population: " + countries[fromCountry].population / 100);
+    console.log("influence: " + influence *0.1);
+    console.log("renown: " + countries[fromCountry].renown * 0.5);
+
+    calculatedPassengers = Math.ceil((passengers[fromCountry][toCountry] * relationsValue * (countries[fromCountry].population / 100)) * (influence *0.1)); 
+    calculatedPassengers += Math.ceil((calculatedPassengers * (countries[fromCountry].renown * 0.5)))
     } else {
         calculatedPassengers = 0;
     }
@@ -36,12 +42,30 @@ export function calculatePassengersForCountry(toCountry,fromCountry){
 
 };
 
-function decreasePassangersAvailabilty(){
-    //decrease qty of passengers and set the time when they will be come back to basic values
-};
+export function equalizePassengersAvailabilty(){
+let baseCountry;
+let toCountry;
+let countryMax
 
-function equalizePassengersAvailabilty(){
-    //logic where passengers qty will be come back to basic qty
+    for(let i=0;i<countriesArray.length;i++){
+        baseCountry = countriesArray[i]
+      //  console.log(countriesArray[i]);
+        for(let j=0;j<countriesArray.length;j++){
+            toCountry =  countriesArray[j];
+            if(baseCountry != toCountry){
+                for(let k=0;k<countriesArray.length;k++){
+                    countryMax = countriesArray[k];
+                    // console.log(passengers[countriesArray[i]]["max"][countries[k]]);
+                    if(toCountry == countryMax){
+                        if(passengers[baseCountry]["max"][countryMax] != passengers[baseCountry][toCountry]){
+                            console.log(baseCountry + " max: " + passengers[baseCountry]["max"][countryMax]);
+                            console.log(baseCountry + " available: " + passengers[baseCountry][toCountry]);
+                        }
+                    }
+                }
+            }   
+        }
+    }
 }
 
 
@@ -73,6 +97,7 @@ export let passengers = {
                 "romania": 32,
                 "iceland": 2,
                 "ireland" : 2,
+                "irelandNorth" : 2,
                 "czechoslovakia": 35,
                 "hungary": 28,
                 "austria" : 15,
@@ -80,7 +105,7 @@ export let passengers = {
                 "sardynia" : 12,
                 "sicily" : 15,
                 "corsica" : 8,
-                "eastPrussia" : 30,
+                "easternPrussia" : 30,
                 "algieria" : 1,
                 max:{
                 "sweden": 22,
@@ -114,8 +139,9 @@ export let passengers = {
                 "sardynia" : 12,
                 "sicily" : 15,
                 "corsica" : 8,
-                "eastPrussia" : 30,
-                "algieria" : 1
+                "easternPrussia" : 30,
+                "algieria" : 1,
+                "irelandNorth" : 2
                 }
             },
             sweden:{ 
@@ -150,8 +176,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 2,
                 "corsica" : 2,
-                "eastPrussia" : 20,
+                "easternPrussia" : 20,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 18,
                     "norway": 55,
@@ -184,8 +211,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 2,
                     "corsica" : 2,
-                    "eastPrussia" : 20,
-                    "algieria" : 1
+                    "easternPrussia" : 20,
+                    "algieria" : 1,
+                    "irelandNorth" : 2
                 }
             },
             finland:{ 
@@ -220,8 +248,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 5,
                 "corsica" : 4,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 12,
                 "sweden": 61,
@@ -254,8 +283,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 5,
                 "corsica" : 4,
-                "eastPrussia" : 12,
-                "algieria" : 1
+                "easternPrussia" : 12,
+                "algieria" : 1,
+                "irelandNorth" : 2
                 }
             },
             denmark:{ 
@@ -290,8 +320,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 15,
+                "easternPrussia" : 15,
                 "algieria" : 10,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 50,
                 "sweden": 79,
@@ -324,8 +355,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 15,
-                "algieria" : 10
+                "easternPrussia" : 15,
+                "algieria" : 10,
+                "irelandNorth" : 2
                 }
             },
             greatBritain:{ 
@@ -360,8 +392,9 @@ export let passengers = {
                 "sardynia" : 15,
                 "sicily" : 17,
                 "corsica" : 5,
-                "eastPrussia" : 22,
+                "easternPrussia" : 22,
                 "algieria" : 10,
+                "irelandNorth" : 50,
                 max: {
                 "poland": 79,
                 "sweden": 22,
@@ -394,8 +427,9 @@ export let passengers = {
                 "sardynia" : 15,
                 "sicily" : 17,
                 "corsica" : 5,
-                "eastPrussia" : 22,
-                "algieria" : 10
+                "easternPrussia" : 22,
+                "algieria" : 10,
+                "irelandNorth" : 50
                 }
             },
             lithuania:{ 
@@ -430,8 +464,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 10,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 21,
                 "sweden": 49,
@@ -464,8 +499,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
-                "algieria" : 10
+                "easternPrussia" : 12,
+                "algieria" : 10,
+                "irelandNorth" : 2
                 }
             },
             latvia:{ 
@@ -500,8 +536,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 10,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 14,
                 "sweden": 92,
@@ -534,8 +571,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
-                "algieria" : 10
+                "easternPrussia" : 12,
+                "algieria" : 10,
+                "irelandNorth" : 2
                 }
             },
             estonia:{ 
@@ -570,8 +608,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 25,
+                "easternPrussia" : 25,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 71,
                 "sweden": 41,
@@ -604,8 +643,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 25,
-                "algieria" : 1
+                "easternPrussia" : 25,
+                "algieria" : 1,
+                "irelandNorth" : 2
                 }
             },
             ussr:{ 
@@ -640,8 +680,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 2,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 120,
                 "sweden": 70,
@@ -674,8 +715,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
-                "algieria" : 2
+                "easternPrussia" : 12,
+                "algieria" : 2,
+                "irelandNorth" : 2
                 }
             },
             norway:{ 
@@ -710,8 +752,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 3,
+                "easternPrussia" : 3,
                 "algieria" : 2,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 17,
                 "sweden": 12,
@@ -744,8 +787,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 3,
-                "algieria" : 2
+                "easternPrussia" : 3,
+                "algieria" : 2,
+                "irelandNorth" : 2
                 }
             },
             germany:{ 
@@ -780,8 +824,9 @@ export let passengers = {
                 "sardynia" : 25,
                 "sicily" : 30,
                 "corsica" : 50,
-                "eastPrussia" : 320,
+                "easternPrussia" : 320,
                 "algieria" : 10,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 83,
                 "sweden": 18,
@@ -814,8 +859,9 @@ export let passengers = {
                 "sardynia" : 25,
                 "sicily" : 30,
                 "corsica" : 50,
-                "eastPrussia" : 320,
-                "algieria" : 10
+                "easternPrussia" : 320,
+                "algieria" : 10,
+                "irelandNorth" : 2
                 }
             },
             netherland:{ 
@@ -850,8 +896,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 15,
                 "sweden": 18,
@@ -884,8 +931,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
-                "algieria" : 1
+                "easternPrussia" : 12,
+                "algieria" : 1,
+                "irelandNorth" : 2
                 }
             },
             belgium:{ 
@@ -920,8 +968,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 17,
                 "sweden": 20,
@@ -954,8 +1003,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
-                "algieria" : 1
+                "easternPrussia" : 12,
+                "algieria" : 1,
+                "irelandNorth" : 2
                 }
             },
             france:{ 
@@ -990,8 +1040,9 @@ export let passengers = {
                 "sardynia" : 50,
                 "sicily" : 55,
                 "corsica" : 180,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 50,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 27,
                     "sweden": 26,
@@ -1024,8 +1075,9 @@ export let passengers = {
                     "sardynia" : 50,
                     "sicily" : 55,
                     "corsica" : 180,
-                    "eastPrussia" : 12,
-                    "algieria" : 50   
+                    "easternPrussia" : 12,
+                    "algieria" : 50   ,
+                    "irelandNorth" : 2
                 }
             },
             spain:{ 
@@ -1060,8 +1112,9 @@ export let passengers = {
                 "sardynia" : 50,
                 "sicily" : 53,
                 "corsica" : 55,
-                "eastPrussia" : 7,
+                "easternPrussia" : 7,
                 "algieria" : 12,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 20,
                     "sweden": 32,
@@ -1094,8 +1147,9 @@ export let passengers = {
                     "sardynia" : 50,
                     "sicily" : 53,
                     "corsica" : 55,
-                    "eastPrussia" : 7,
-                    "algieria" : 12   
+                    "easternPrussia" : 7,
+                    "algieria" : 12,
+                    "irelandNorth" : 2
                 }
             },
             portugal:{ 
@@ -1130,8 +1184,9 @@ export let passengers = {
                 "sardynia" : 12,
                 "sicily" : 21,
                 "corsica" : 22,
-                "eastPrussia" : 1,
+                "easternPrussia" : 1,
                 "algieria" : 18,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 34,
                 "sweden": 13,
@@ -1164,8 +1219,9 @@ export let passengers = {
                 "sardynia" : 12,
                 "sicily" : 21,
                 "corsica" : 22,
-                "eastPrussia" : 1,
-                "algieria" : 18
+                "easternPrussia" : 1,
+                "algieria" : 18,
+                "irelandNorth" : 2
                 }
             },
             italy:{ 
@@ -1200,8 +1256,9 @@ export let passengers = {
                 "sardynia" : 88,
                 "sicily" : 133,
                 "corsica" : 87,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 34,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 22,
                 "sweden": 58,
@@ -1234,8 +1291,9 @@ export let passengers = {
                 "sardynia" : 88,
                 "sicily" : 133,
                 "corsica" : 87,
-                "eastPrussia" : 12,
-                "algieria" : 34
+                "easternPrussia" : 12,
+                "algieria" : 34,
+                "irelandNorth" : 2
                 }
             },
             yugoslavia:{
@@ -1270,8 +1328,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 3,
+                "easternPrussia" : 3,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 23,
                     "sweden": 15,
@@ -1304,8 +1363,9 @@ export let passengers = {
                     "sardynia" : 5,
                     "sicily" : 3,
                     "corsica" : 8,
-                    "eastPrussia" : 3,
-                    "algieria" : 1    
+                    "easternPrussia" : 3,
+                    "algieria" : 1    ,
+                    "irelandNorth" : 2
                 }
             },
             albania:{ 
@@ -1340,8 +1400,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 1,
                 "corsica" : 1,
-                "eastPrussia" : 1,
+                "easternPrussia" : 1,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 1,
                     "sweden": 3,
@@ -1374,8 +1435,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 1,
                     "corsica" : 1,
-                    "eastPrussia" : 1,
-                    "algieria" : 1    
+                    "easternPrussia" : 1,
+                    "algieria" : 1  ,
+                    "irelandNorth" : 2  
                 }
             },
             greece:{ 
@@ -1410,8 +1472,9 @@ export let passengers = {
                 "sardynia" : 8,
                 "sicily" : 7,
                 "corsica" : 5,
-                "eastPrussia" : 1,
+                "easternPrussia" : 1,
                 "algieria" : 3,
+                "irelandNorth" : 2,
                 max:{
                 "poland": 5,
                 "sweden": 5,
@@ -1444,8 +1507,9 @@ export let passengers = {
                 "sardynia" : 8,
                 "sicily" : 7,
                 "corsica" : 5,
-                "eastPrussia" : 1,
-                "algieria" : 3
+                "easternPrussia" : 1,
+                "algieria" : 3,
+                "irelandNorth" : 2
                 }
             },
             turkey:{ 
@@ -1480,8 +1544,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 7,
                 "corsica" : 5,
-                "eastPrussia" : 31,
+                "easternPrussia" : 31,
                 "algieria" : 30,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 7,
                     "sweden": 5,
@@ -1514,8 +1579,9 @@ export let passengers = {
                     "sardynia" : 5,
                     "sicily" : 7,
                     "corsica" : 5,
-                    "eastPrussia" : 31,
-                    "algieria" : 30   
+                    "easternPrussia" : 31,
+                    "algieria" : 30  ,
+                    "irelandNorth" : 2 
                 }
             },
             bulgaria:{ 
@@ -1550,8 +1616,9 @@ export let passengers = {
                 "sardynia" : 5,
                 "sicily" : 8,
                 "corsica" : 7,
-                "eastPrussia" : 2,
+                "easternPrussia" : 2,
                 "algieria" : 18,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 5,
                     "sweden": 1,
@@ -1584,8 +1651,9 @@ export let passengers = {
                     "sardynia" : 5,
                     "sicily" : 8,
                     "corsica" : 7,
-                    "eastPrussia" : 2,
-                    "algieria" : 18    
+                    "easternPrussia" : 2,
+                    "algieria" : 18   ,
+                    "irelandNorth" : 2 
                 }
             },
             romania:{ 
@@ -1620,8 +1688,9 @@ export let passengers = {
                 "sardynia" : 2,
                 "sicily" : 3,
                 "corsica" : 8,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 3,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 41,
                     "sweden": 5,
@@ -1654,8 +1723,9 @@ export let passengers = {
                     "sardynia" : 2,
                     "sicily" : 3,
                     "corsica" : 8,
-                    "eastPrussia" : 12,
-                    "algieria" : 3    
+                    "easternPrussia" : 12,
+                    "algieria" : 3  ,
+                    "irelandNorth" : 2  
                 }
             },
             iceland:{ 
@@ -1690,8 +1760,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 1,
                 "corsica" : 1,
-                "eastPrussia" : 3,
+                "easternPrussia" : 3,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 3,
                     "sweden": 3,
@@ -1724,8 +1795,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 1,
                     "corsica" : 1,
-                    "eastPrussia" : 3,
-                    "algieria" : 1    
+                    "easternPrussia" : 3,
+                    "algieria" : 1  ,
+                    "irelandNorth" : 2  
                 }
             },
             ireland:{ 
@@ -1760,8 +1832,9 @@ export let passengers = {
                 "sardynia" : 22,
                 "sicily" : 10,
                 "corsica" : 20,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 12,
                     "sweden": 8,
@@ -1794,8 +1867,81 @@ export let passengers = {
                     "sardynia" : 22,
                     "sicily" : 10,
                     "corsica" : 20,
-                    "eastPrussia" : 12,
-                    "algieria" : 1    
+                    "easternPrussia" : 12,
+                    "algieria" : 1 ,
+                    "irelandNorth" : 2   
+                }
+            },
+            irelandNorth:{ 
+                "poland": 2,
+                "sweden": 5,
+                "finland": 2,
+                "denmark": 7,
+                "greatBritain": 45,
+                "lithuania": 2, 
+                "latvia": 1,
+                "estonia": 1,
+                "ussr": 13,
+                "norway": 5, 
+                "germany": 12,
+                "netherland": 2,
+                "belgium": 5,
+                "france": 12,
+                "spain": 6,
+                "portugal": 4,
+                "italy": 6,
+                "yugoslavia": 2,
+                "albania": 1,
+                "greece": 2,
+                "turkey": 2,
+                "bulgaria": 2,
+                "romania": 2,
+                "iceland": 2 ,
+                "czechoslovakia": 3,
+                "hungary":2,
+                "austria" : 1,
+                "switzerland" : 1,
+                "sardynia" : 1,
+                "sicily" : 1,
+                "corsica" : 1,
+                "easternPrussia" : 2,
+                "algieria" : 1,
+                "ireland" : 80,
+                max:{
+                    "poland": 2,
+                    "sweden": 5,
+                    "finland": 2,
+                    "denmark": 7,
+                    "greatBritain": 45,
+                    "lithuania": 2, 
+                    "latvia": 1,
+                    "estonia": 1,
+                    "ussr": 13,
+                    "norway": 5, 
+                    "germany": 12,
+                    "netherland": 2,
+                    "belgium": 5,
+                    "france": 12,
+                    "spain": 6,
+                    "portugal": 4,
+                    "italy": 6,
+                    "yugoslavia": 2,
+                    "albania": 1,
+                    "greece": 2,
+                    "turkey": 2,
+                    "bulgaria": 2,
+                    "romania": 2,
+                    "iceland": 2 ,
+                    "czechoslovakia": 3,
+                    "hungary":2,
+                    "austria" : 1,
+                    "switzerland" : 1,
+                    "sardynia" : 1,
+                    "sicily" : 1,
+                    "corsica" : 1,
+                    "easternPrussia" : 2,
+                    "algieria" : 1,
+                    "ireland" : 80  
                 }
             },
             czechoslovakia:{ 
@@ -1830,8 +1976,9 @@ export let passengers = {
                 "sardynia" : 2,
                 "sicily" : 2,
                 "corsica" : 2,
-                "eastPrussia" : 31,
+                "easternPrussia" : 31,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 55,
                     "sweden": 11,
@@ -1864,8 +2011,9 @@ export let passengers = {
                     "sardynia" : 2,
                     "sicily" : 2,
                     "corsica" : 2,
-                    "eastPrussia" : 31,
-                    "algieria" : 1    
+                    "easternPrussia" : 31,
+                    "algieria" : 1  ,
+                    "irelandNorth" : 2  
                 }
             },
             hungary:{ 
@@ -1900,8 +2048,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 1,
                 "corsica" : 1,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 41,
                     "sweden": 12,
@@ -1934,8 +2083,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 1,
                     "corsica" : 1,
-                    "eastPrussia" : 12,
-                    "algieria" : 1    
+                    "easternPrussia" : 12,
+                    "algieria" : 1 ,
+                    "irelandNorth" : 2   
                 }
             },
             austria:{ 
@@ -1970,8 +2120,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 1,
                 "corsica" : 1,
-                "eastPrussia" : 12,
+                "easternPrussia" : 12,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 5,
                     "sweden": 4,
@@ -2004,8 +2155,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 1,
                     "corsica" : 1,
-                    "eastPrussia" : 12,
-                    "algieria" : 1    
+                    "easternPrussia" : 12,
+                    "algieria" : 1,
+                    "irelandNorth" : 2    
                 }
             },
             switzerland:{ 
@@ -2040,8 +2192,9 @@ export let passengers = {
                 "sardynia" : 22,
                 "sicily" : 10,
                 "corsica" : 1,
-                "eastPrussia" : 5,
+                "easternPrussia" : 5,
                 "algieria" : 1,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 12,
                     "sweden": 7,
@@ -2074,11 +2227,12 @@ export let passengers = {
                     "sardynia" : 22,
                     "sicily" : 10,
                     "corsica" : 1,
-                    "eastPrussia" : 5,
-                    "algieria" : 1    
+                    "easternPrussia" : 5,
+                    "algieria" : 1 ,
+                    "irelandNorth" : 2   
                 }
             },
-            eastPrussia:{ 
+            easternPrussia:{ 
                 "poland": 71,
                 "sweden": 31,
                 "finland": 22,
@@ -2111,6 +2265,8 @@ export let passengers = {
                 "sicily" : 1,
                 "corsica" : 1,
                 "algieria" : 1,
+                "irelandNorth" : 2,
+                "switzerland" : 7,
                 max:{
                     "poland": 71,
                     "sweden": 31,
@@ -2143,7 +2299,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 1,
                     "corsica" : 1,
-                    "algieria" : 1    
+                    "algieria" : 1,
+                    "irelandNorth" : 2 ,
+                    "switzerland" : 7   
                 }
             },
             corsica:{ 
@@ -2177,8 +2335,10 @@ export let passengers = {
                 "ireland" : 1,
                 "sardynia" : 2,
                 "sicily" : 2,
-                "eastPrussia" : 1,
+                "easternPrussia" : 1,
                 "algieria" : 1,
+                "irelandNorth" : 2,
+                "switzerland" : 1,
                 max:{
                     "poland": 2,
                     "sweden": 2,
@@ -2210,8 +2370,10 @@ export let passengers = {
                     "ireland" : 1,
                     "sardynia" : 2,
                     "sicily" : 2,
-                    "eastPrussia" : 1,
-                    "algieria" : 1    
+                    "easternPrussia" : 1,
+                    "algieria" : 1  ,
+                    "irelandNorth" : 2 ,
+                    "switzerland" : 1 
                 }
             },
             algieria:{ 
@@ -2246,7 +2408,9 @@ export let passengers = {
                 "sardynia" : 1,
                 "sicily" : 2,
                 "corsica" : 1,
-                "eastPrussia" : 1,
+                "easternPrussia" : 1,
+                "irelandNorth" : 2,
+                "switzerland" : 1,
                 max:{
                     "poland": 2,
                     "sweden": 1,
@@ -2279,7 +2443,9 @@ export let passengers = {
                     "sardynia" : 1,
                     "sicily" : 2,
                     "corsica" : 1,
-                    "eastPrussia" : 1    
+                    "easternPrussia" : 1    ,
+                    "irelandNorth" : 2,
+                    "switzerland" : 1
                 }
             },
             sicily:{ 
@@ -2313,8 +2479,10 @@ export let passengers = {
                 "ireland" : 1,
                 "sardynia" : 28,
                 "corsica" : 20,
-                "eastPrussia" : 7,
+                "switzerland" : 2,
+                "easternPrussia" : 7,
                 "algieria" : 5,
+                "irelandNorth" : 2,
                 max:{
                     "poland": 2,
                     "sweden": 2,
@@ -2346,8 +2514,10 @@ export let passengers = {
                     "ireland" : 1,
                     "sardynia" : 28,
                     "corsica" : 20,
-                    "eastPrussia" : 7,
-                    "algieria" : 5    
+                    "switzerland" : 2,
+                    "easternPrussia" : 7,
+                    "algieria" : 5  ,
+                    "irelandNorth" : 2  
                 }
             },
             sardynia:{ 
@@ -2381,8 +2551,10 @@ export let passengers = {
                 "ireland" : 1,
                 "sicily" : 22,
                 "corsica" : 2,
-                "eastPrussia" : 2,
+                "easternPrussia" : 2,
                 "algieria" : 3,
+                "irelandNorth" : 2,
+                "switzerland" : 1,
                 max:{
                     "poland": 1,
                     "sweden": 1,
@@ -2414,8 +2586,10 @@ export let passengers = {
                     "ireland" : 1,
                     "sicily" : 22,
                     "corsica" : 2,
-                    "eastPrussia" : 2,
-                    "algieria" : 3   
+                    "easternPrussia" : 2,
+                    "algieria" : 3  ,
+                    "irelandNorth" : 2 ,
+                    "switzerland" : 1
                 }
             }
 }
@@ -2455,8 +2629,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     sweden:{ 
         "poland": 1,
@@ -2490,8 +2665,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     finland:{ 
         "poland": 1,
@@ -2525,8 +2701,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     denmark:{ 
         "poland": 1,
@@ -2560,8 +2737,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     greatBritain:{ 
         "poland": 1,
@@ -2595,8 +2773,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     lithuania:{ 
         "poland": 1,
@@ -2630,8 +2809,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     latvia:{ 
         "poland": 1,
@@ -2665,8 +2845,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     estonia:{ 
         "poland": 1,
@@ -2700,8 +2881,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     ussr:{ 
         "poland": 1,
@@ -2735,8 +2917,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     norway:{ 
         "poland": 1,
@@ -2770,8 +2953,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     germany:{ 
         "poland": 1,
@@ -2805,8 +2989,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     netherland:{ 
         "poland": 1,
@@ -2840,8 +3025,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     belgium:{ 
         "poland": 1,
@@ -2875,8 +3061,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     france:{ 
         "poland": 1,
@@ -2910,8 +3097,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     spain:{ 
         "poland": 1,
@@ -2945,8 +3133,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     portugal:{ 
         "poland": 1,
@@ -2980,8 +3169,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     italy:{ 
         "poland": 1,
@@ -3015,8 +3205,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     yugoslavia:{
         "poland": 1,
@@ -3050,8 +3241,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     albania:{ 
         "poland": 1,
@@ -3085,8 +3277,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     greece:{ 
         "poland": 1,
@@ -3120,8 +3313,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     turkey:{ 
         "poland": 1,
@@ -3155,8 +3349,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     bulgaria:{ 
         "poland": 1,
@@ -3190,8 +3385,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     romania:{ 
         "poland": 1,
@@ -3225,8 +3421,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     iceland:{ 
         "poland": 1,
@@ -3260,8 +3457,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     ireland:{ 
         "poland": 1,
@@ -3295,8 +3493,45 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
+    },
+    irelandNorth:{ 
+        "poland": 1,
+        "sweden": 1,
+        "finland": 1,
+        "denmark": 1,
+        "greatBritain": 1,
+        "lithuania": 1, 
+        "latvia": 1,
+        "estonia": 1,
+        "ussr": 1,
+        "norway": 1, 
+        "germany": 1,
+        "netherland": 1,
+        "belgium": 1,
+        "france": 1,
+        "spain": 1,
+        "portugal": 1,
+        "italy": 1,
+        "yugoslavia": 1,
+        "albania": 1,
+        "greece": 1,
+        "turkey": 1,
+        "bulgaria": 1,
+        "romania": 1,
+        "iceland": 1,
+        "czechoslovakia": 1,
+        "hungary": 1,
+        "austria" : 1,
+        "switzerland" : 1,
+        "sardynia" : 1,
+        "sicily" : 1,
+        "corsica" : 1,
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "ireland" : 1
     },
     czechoslovakia:{ 
         "poland": 1,
@@ -3330,8 +3565,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     hungary:{ 
         "poland": 1,
@@ -3365,8 +3601,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     austria:{ 
         "poland": 1,
@@ -3400,8 +3637,9 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     switzerland:{ 
         "poland": 1,
@@ -3435,10 +3673,11 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
-    eastPrussia:{ 
+    easternPrussia:{ 
         "poland": 1,
         "sweden": 1,
         "finland": 1,
@@ -3470,7 +3709,8 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "algieria" : 1
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     corsica:{ 
         "poland": 1,
@@ -3503,8 +3743,9 @@ export let passengersRatio = {
         "ireland" : 1,
         "sardynia" : 1,
         "sicily" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
     },
     algieria:{ 
         "poland": 1,
@@ -3538,7 +3779,8 @@ export let passengersRatio = {
         "sardynia" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1
+        "easternPrussia" : 1,
+        "irelandNorth" : 1
     },
     sicily:{ 
         "poland": 1,
@@ -3571,8 +3813,9 @@ export let passengersRatio = {
         "ireland" : 1,
         "sardynia" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" :   1
+        "easternPrussia" : 1,
+        "algieria" :   1,
+        "irelandNorth" : 1
     },
     sardynia:{ 
         "poland": 1,
@@ -3605,8 +3848,21 @@ export let passengersRatio = {
         "ireland" : 1,
         "sicily" : 1,
         "corsica" : 1,
-        "eastPrussia" : 1,
-        "algieria" : 1
+        "easternPrussia" : 1,
+        "algieria" : 1,
+        "irelandNorth" : 1
+    }
+}
+
+
+export function reduceAvailablePassengersAfter(transportQty,countryName,endCountry){
+    if(transportQty< 0){
+        //console.log("1. Passengers transportQty: " + transportQty + " countryName" + countryName + " endCountry" + endCountry);
+        passengers[countryName][endCountry] = passengers[countryName][endCountry] + Math.ceil(transportQty);
+    }else{
+        //TODO Think if it is necessary to add some qty after make route
+        //console.log("2. Passengers transportQty: " + transportQty + " countryName" + countryName + " endCountry" + endCountry);
+        // passengers[countryName][endCountry] = passengers[countryName][endCountry] + Math.ceil((transportQty*0.2));
     }
 }
 

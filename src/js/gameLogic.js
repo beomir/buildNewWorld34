@@ -93,8 +93,8 @@ addRoute.addEventListener("click",function(){
 export function addRouteToBeOngoing(transportQty,ware){
 
     let wareName = Object.keys(selectedLanguage).filter(function(key) {return selectedLanguage[key] === ware})[0];
-    decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry);
-    increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,currentEndCountryOfTheRoute);
+    decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry,currentEndCountryOfTheRoute);
+    increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,currentEndCountryOfTheRoute,startedCountry);
 
     // let width = getComputedStyle(moneyValue).width //moneyInfo.width;
     // let height = getComputedStyle(moneyValue).height  //moneyInfo.height;
@@ -286,22 +286,58 @@ function transferRouteFromOngoingToHistorical(routesArrayToTransfer){
   
 }
 
-function decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry){
+function decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry,endCountry){
    
    changePriceOfWare(transportQty,wareName,startedCountry,1);
-   changeWareAvailableQty((transportQty*(-1)),wareName,startedCountry);
+   changeWareAvailableQty((transportQty*(-1)),wareName,startedCountry,endCountry);
 
 };
 
-function increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,endCountry){
+function increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,endCountry,startedCountry){
 
 
     changePriceOfWare(transportQty,wareName,endCountry,-1);
-    changeWareAvailableQty(Math.ceil((transportQty*0.8)),wareName,endCountry);
+    changeWareAvailableQty(Math.ceil((transportQty*0.8)),wareName,endCountry,startedCountry);
 
 };
 
 
 
-
+export let countriesArray = [
+    "poland" ,
+    "ussr" ,
+    "germany",
+    "lithuania",
+    "czechoslovakia" ,
+    "greatBritain" ,
+    "austria" ,
+    "france" ,
+    "norway" ,
+    "finland" ,
+    "sweden" ,
+    "latvia",
+    "estonia" ,
+    "romania" ,
+    "hungary" ,
+    "yugoslavia" ,
+    "bulgaria" ,
+    "turkey" ,
+    "greece",
+    "italy" ,
+    "spain" ,
+    "portugal" ,
+    "denmark" ,
+    "belgium",
+    "netherland" ,
+    "albania",
+    "iceland" ,
+    "switzerland" ,
+    "sicily" ,
+    "sardynia" ,
+    "corsica" ,
+    "algieria",
+    "irelandNorth",
+    "ireland",
+    "easternPrussia"
+  ]
 

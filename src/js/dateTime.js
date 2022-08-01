@@ -3,11 +3,16 @@ import { selectedLanguage } from "./translations";
 import {calculateEstimatedTimeOfArrival,addZeroToStringIfValueUnderTen} from './transportPanel'
 import {dateValueOnMap} from './map'
 import {expireDateTimeOfOngoingRoutes,removeFromExpireDateTimeOfOngoingRoutesMap,checkIfExistsExpiredRoutes} from './gameLogic'
+import {equalizePassengersAvailabilty} from './passengers'
 
 let pulsingInterval;
 let pulsingIntervalCounter;
 let timeWatch = document.querySelector("#timeWatch");
 let pauseClicked = false;
+
+let dayOfTheGame = 1;
+let week = 1;
+let dayOfTheWeek = 1;
 
 export let dateValue = {
     day: "1",
@@ -43,6 +48,10 @@ export function calculateDateTime(){
     if(time.hour==24){
       time.hour = 0;
       dateValue.day++;
+      dayOfTheGame++;
+      checkDayOfTheWeek();
+
+
       changeDate(dateValue);
         if((dateValue.month == 1 || dateValue.month == 3 || dateValue.month == 5 || dateValue.month == 7 || dateValue.month == 8 || dateValue.month == 10 || dateValue.month == 12) && dateValue == 31){
           if(dateValue.month == 12){
@@ -119,6 +128,41 @@ function pulsing(){
     pauseLaunched.style.transform = 'scale(1.2)'  
 
   }
+}
+
+function checkDayOfTheWeek(){
+  dayOfTheWeek++;
+  if(dayOfTheWeek == 1){
+    console.log("monday");
+  }
+
+  if(dayOfTheWeek == 2){
+    console.log("tuesday");
+  }
+
+  if(dayOfTheWeek == 3){
+    console.log("wednesday");
+  }
+
+  if(dayOfTheWeek == 4){
+    console.log("thursday");
+  }
+  
+  if(dayOfTheWeek == 5){
+    console.log("friday");
+  }
+
+  if(dayOfTheWeek == 6){
+    console.log("saturday");
+  }
+
+  if(dayOfTheWeek == 7){
+    console.log("sunday");
+    week++;
+    equalizePassengersAvailabilty();
+    dayOfTheWeek = 0;
+  }
+
 }
 
 

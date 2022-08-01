@@ -1,9 +1,8 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {selectedLanguage, refreshObjectsTranslation} from './translations';
 import {buildRoute,blockageForInfoNotify} from './transportPanel';
-import {calculateDateTime } from './dateTime';
-import {historicalRoutes} from './gameLogic'
-
+import {historicalRoutes, countriesArray} from './gameLogic'
+import {reduceAvailablePassengersAfter,decreasePassangersAvailabilty} from './passengers'
 
 let selectedCountryName;
 let selectedCountry;
@@ -4207,43 +4206,7 @@ export let listObjects = {
     "easternPrussia" : countries.easternPrussia
 };
 
-let countriesArray = [
-    "ussr" ,
-    "germany",
-    "lithuania",
-    "poland" ,
-    "czechoslovakia" ,
-    "greatBritain" ,
-    "austria" ,
-    "france" ,
-    "norway" ,
-    "finland" ,
-    "sweden" ,
-    "latvia",
-    "estonia" ,
-    "romania" ,
-    "hungary" ,
-    "yugoslavia" ,
-    "bulgaria" ,
-    "turkey" ,
-    "greece",
-    "italy" ,
-    "spain" ,
-    "portugal" ,
-    "denmark" ,
-    "belgium",
-    "netherland" ,
-    "albania",
-    "iceland" ,
-    "switzerland" ,
-    "sicily" ,
-    "sardynia" ,
-    "corsica" ,
-    "algieria",
-    "irelandNorth",
-    "ireland",
-    "easternPrussia"
-  ]
+
 
 export function renownIncrease(countryName,transportQty){
   let countryToIncreaseRenown = countries[countryName]
@@ -4282,21 +4245,24 @@ export function equalizeRenown(countryToEqualizeRenown){
   
 };
 
-export function changeWareAvailableQty(transportQty,wareName,countryName){
+export function changeWareAvailableQty(transportQty,wareName,countryName,endCountry){
   console.log("changeWareAvailableQty started " + wareName);
-  if(wareName != selectedCountry["passengers"]){
+  if(wareName != "passengers"){
+    console.log("wareName: " + wareName);
+    
+
     let countryObject = countries[countryName];
     let currentAvailableQty = countryObject["goodsAvailability"][wareName];
     countryObject["goodsAvailability"][wareName] = Math.ceil(currentAvailableQty + transportQty);
   } else{
-    //TODO calculate for passengers
+    console.log("passengers");
+    reduceAvailablePassengersAfter(transportQty,countryName,endCountry);
   }
-
 };
 
 export function changePriceOfWare(transportQty,wareName,countryName,direction){
   console.log("changePriceOfWare started " + wareName);
-  if(wareName != selectedCountry["passengers"]){
+  if(wareName != selectedLanguage["passengers"]){
     let countryObject = countries[countryName];
     let availableQtyOnEuropeanMarket = 0;
 
@@ -4312,9 +4278,7 @@ export function changePriceOfWare(transportQty,wareName,countryName,direction){
     }
 
     countryObject["goodCosts"][wareName] = Math.ceil((countryObject["goodCosts"][wareName] + ((calculateRatioAvailableToTransported * countryObject["goodCosts"][wareName]) * direction))*100)/100
-  
   } else{
-    //TODO calculate for passengers
+    //TODO think about if change cost of passangers tickets are neccesery
   }
 };
-

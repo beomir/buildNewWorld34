@@ -1,12 +1,59 @@
 import {selectedLanguage} from './translations'
-import {ongoingRoutes,moneyMovements,moneyAfterMovement,dateTimeOfMoneyMovement} from './gameLogic'
+import {ongoingRoutes,moneyMovements,moneyAfterMovement,dateTimeOfMoneyMovement,influenceMovement} from './gameLogic'
 
 const moneyValueWithCurrency = document.querySelector(".moneyValueWithCurrency");
 const lastMoneyMovements = document.getElementById("lastMoneyMovements");
-const lastOngoingRoutesWithValue = document.querySelector(".lastOngoingRoutesWithValue")
+const lastOngoingRoutesWithValue = document.querySelector(".lastOngoingRoutesWithValue");
+const lastInfluenceIncrease = document.querySelector(".lastInfluenceIncrease");
+
+
+lastInfluenceIncrease.addEventListener('mouseover',function(){
+    lastMoneyMovements.classList.add("navDropListInformation");
+    let checkInfluenceMovementsQuantity = Object.keys(influenceMovement).length;
+    let lastFive;
+
+    if(checkInfluenceMovementsQuantity<5){
+        lastFive = 1
+    } else{
+        lastFive = checkInfluenceMovementsQuantity - 5;
+    }
+
+    tbl = document.createElement('table');
+    tbl.classList.add("lastInfluenceMovements");
+    const firstRow = tbl.insertRow();
+    firstRow.insertCell().appendChild(document.createTextNode(selectedLanguage.dateTime));
+    firstRow.insertCell().appendChild(document.createTextNode(selectedLanguage.reason));
+    firstRow.insertCell().appendChild(document.createTextNode(selectedLanguage.value));
+    for(let i=checkInfluenceMovementsQuantity;i>lastFive;i--){
+        const tr = tbl.insertRow();
+        for(let j=0;j<3;j++){
+            const td = tr.insertCell();
+            if(j==0){
+                td.appendChild(document.createTextNode(influenceMovement[i-1]["date"]));
+            } else if(j==1){
+                td.appendChild(document.createTextNode(influenceMovement[i-1]["reason"]));
+            } else if(j==2){
+                if(parseFloat(influenceMovement[i-1]["value"]) > 0){
+                    td.appendChild(document.createTextNode("+" + influenceMovement[i-1]["value"])); 
+                    td.style.color = "green"
+                } else if(parseFloat(influenceMovement[i-1]["value"]) < 0){
+                    td.appendChild(document.createTextNode("-" +  influenceMovement[i-1]["value"])); 
+                    td.style.color = "red"
+                }
+            }
+        }
+    }
+    lastMoneyMovements.appendChild(tbl)
+})
+
+lastInfluenceIncrease.addEventListener('mouseout',function(){
+    lastMoneyMovements.classList.remove("navDropListInformation")
+    const lastInfluenceMovements = $(".lastInfluenceMovements");
+    lastInfluenceMovements.remove(); 
+})
 
 moneyValueWithCurrency.addEventListener('mouseover',function(){
-    lastMoneyMovements.classList.add("navDropListInformation")
+    lastMoneyMovements.classList.add("navDropListInformation");
 
     let checkMoneyMovementsQuantity = moneyMovements.length;
     let lastFive;
@@ -31,12 +78,12 @@ moneyValueWithCurrency.addEventListener('mouseover',function(){
             if(j==0){
                 td.appendChild(document.createTextNode(dateTimeOfMoneyMovement[i-1]));
             } else if(j==1){
-                td.appendChild(document.createTextNode(moneyMovements[i-1]));
                 if(parseInt(moneyMovements[i-1]) < 0 ){
-                    td.color = "red"
+                    td.style.color = "red"
                 } else if(parseInt(moneyMovements[i-1]) > 0){
-                    td.color = "green"
+                    td.style.color = "green"
                 }
+                td.appendChild(document.createTextNode(moneyMovements[i-1]));
             }else if(j==2){
                 td.appendChild(document.createTextNode(moneyAfterMovement[i-1])); 
             }

@@ -57,9 +57,11 @@ let countryMax
                     countryMax = countriesArray[k];
                     // console.log(passengers[countriesArray[i]]["max"][countries[k]]);
                     if(toCountry == countryMax){
-                        if(passengers[baseCountry]["max"][countryMax] != passengers[baseCountry][toCountry]){
-                            console.log(baseCountry + " max: " + passengers[baseCountry]["max"][countryMax]);
-                            console.log(baseCountry + " available: " + passengers[baseCountry][toCountry]);
+                        if(passengers[baseCountry]["max"][countryMax] > passengers[baseCountry][toCountry]){
+                            let diff = passengers[baseCountry]["max"][countryMax] - passengers[baseCountry][toCountry]
+                            passengers[baseCountry][toCountry] = Math.ceil(passengers[baseCountry][toCountry] + (diff * 0.3));
+                            // console.log(baseCountry + " max: " + passengers[baseCountry]["max"][countryMax]);
+                            // console.log(baseCountry + " available: " + passengers[baseCountry][toCountry]);
                         }
                     }
                 }

@@ -163,7 +163,9 @@ const   polish = {
         cost : "Koszt",
         startDateTime : "Data rozpoczęcia",
         routeIsFinished : "Trasa dobiegła do końca",
-        theAccountofTheCompanyWasReceived : "Na konto firmy wpłyneło"
+        theAccountofTheCompanyWasReceived : "Na konto firmy wpłyneło",
+        reason: "Powód",
+        value: "Wartość"
     }
     
 const   english = {
@@ -307,7 +309,9 @@ const   english = {
         cost : "Cost",
         startDateTime : "Start date",
         routeIsFinished : "Route is finished",
-        theAccountofTheCompanyWasReceived : "The account of the company was received"
+        theAccountofTheCompanyWasReceived : "The account of the company was received",
+        reason: "Reason",
+        value: "Value"
       
     }
     
@@ -452,7 +456,9 @@ const   russian = {
         cost : "Расход",
         startDateTime : "Дата начала",
         routeIsFinished : "Маршрут завершен",
-        theAccountofTheCompanyWasReceived : "Счет компании получен"
+        theAccountofTheCompanyWasReceived : "Счет компании получен",
+        reason: "Причина",
+        value: "Ценность"
         
       }
 

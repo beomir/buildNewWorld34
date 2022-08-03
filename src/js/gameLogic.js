@@ -35,6 +35,14 @@ export let money = 5000;
 export let companyCosts;
 export let companyIncomes;
 
+export let influenceMovement = {
+    0:{
+        "date": "",
+        "reason": "",
+        "value": 0
+    }
+}
+
 export let ongoingRoutes = {
     0:{
         "startCountry" : "",
@@ -91,7 +99,6 @@ addRoute.addEventListener("click",function(){
 })
 
 export function addRouteToBeOngoing(transportQty,ware){
-
     let wareName = Object.keys(selectedLanguage).filter(function(key) {return selectedLanguage[key] === ware})[0];
     decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,wareName,startedCountry,currentEndCountryOfTheRoute);
     increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,currentEndCountryOfTheRoute,startedCountry);
@@ -182,10 +189,18 @@ function increaseInfluence(transportQty){
         algorithmForInfluence = maxInfluenceIncrease;
     }
 
+    let nbrOfInfluenceMovement = Object.keys(influenceMovement).length;
+
+    influenceMovement[nbrOfInfluenceMovement] = {
+        "date": dateValue.day + "." + dateValue.month + "." + dateValue.year + "," + time.hour,
+        "reason": "Create route",
+        "value": algorithmForInfluence
+    }
+
     influence = Math.round((influence + algorithmForInfluence)*100)/100;
     setInfluence();
     influenceMovementStart(algorithmForInfluence);
-    //TODO to write smart logic
+
 }
 
 function equalizeInfluence(){
@@ -220,8 +235,7 @@ function removeFromExpireDateTimeOfOngoingRoutesMap(keyRoutesToRemove){
     console.log("removeFromExpireDateTimeOfOngoingRoutesMap stated");
     for(let i=0;i<keyRoutesToRemove.length;i++){
         expireDateTimeOfOngoingRoutes.delete(keyRoutesToRemove[i]);
-    }
-    
+    }  
 }
 
 
@@ -294,7 +308,6 @@ function decreaseWareAndIncreasePriceInStartCountryAfterTransport(transportQty,w
 };
 
 function increaseWareAndDecreasePriceInEndCountryAfterTransport(transportQty,wareName,endCountry,startedCountry){
-
 
     changePriceOfWare(transportQty,wareName,endCountry,-1);
     changeWareAvailableQty(Math.ceil((transportQty*0.8)),wareName,endCountry,startedCountry);
